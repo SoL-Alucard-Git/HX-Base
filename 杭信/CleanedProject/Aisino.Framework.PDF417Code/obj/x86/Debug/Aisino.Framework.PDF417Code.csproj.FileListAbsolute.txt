@@ -1,0 +1,5 @@
+E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Output\Bin\Aisino.Framework.PDF417Code.dll
+E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Output\Bin\Aisino.Framework.PDF417Code.pdb
+E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Aisino.Framework.PDF417Code\obj\x86\Debug\Aisino.Framework.PDF417Code.dll
+E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Aisino.Framework.PDF417Code\obj\x86\Debug\Aisino.Framework.PDF417Code.pdb
+E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Aisino.Framework.PDF417Code\obj\x86\Debug\Aisino.Framework.PDF417Code.csprojResolveAssemblyReference.cache

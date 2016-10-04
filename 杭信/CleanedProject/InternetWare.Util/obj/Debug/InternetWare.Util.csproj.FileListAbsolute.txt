@@ -1,0 +1,5 @@
+E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Output\Bin\InternetWare.Util.dll
+E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Output\Bin\InternetWare.Util.pdb
+E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\InternetWare.Util\obj\Debug\InternetWare.Util.csprojResolveAssemblyReference.cache
+E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\InternetWare.Util\obj\Debug\InternetWare.Util.dll
+E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\InternetWare.Util\obj\Debug\InternetWare.Util.pdb

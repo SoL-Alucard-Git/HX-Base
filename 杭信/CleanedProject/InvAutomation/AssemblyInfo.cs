@@ -1,0 +1,20 @@
+﻿// Assembly InvAutomation, Version 1.0.1.10
+
+[assembly: System.Runtime.CompilerServices.RuntimeCompatibility(WrapNonExceptionThrows=true)]
+[assembly: System.Reflection.AssemblyTitle("InvAutomation")]
+[assembly: System.Runtime.CompilerServices.CompilationRelaxations(8)]
+[assembly: System.Reflection.AssemblyCompany("InvAutomation")]
+[assembly: System.Reflection.AssemblyDescription("InvAutomation")]
+[assembly: System.Reflection.AssemblyProduct("InvAutomation")]
+[assembly: System.Reflection.AssemblyCopyright("Copyright \x00a9 2012")]
+[assembly: System.Runtime.Versioning.TargetFramework(".NETFramework,Version=v4.0", FrameworkDisplayName=".NET Framework 4")]
+[assembly: System.Runtime.InteropServices.ComVisible(false)]
+[assembly: System.Runtime.InteropServices.Guid("9406918a-8592-4203-94df-a300a7ccb60f")]
+[assembly: System.Reflection.AssemblyFileVersion("1.0.1.10")]
+[assembly: log4net.Config.XmlConfigurator(ConfigFile="log4net.config", Watch=true)]
+[assembly: System.Diagnostics.Debuggable(System.Diagnostics.DebuggableAttribute.DebuggingModes.IgnoreSymbolStoreSequencePoints)]
+[assembly: System.Reflection.AssemblyKeyName("")]
+[assembly: System.Reflection.AssemblyTrademark("InvAutomation")]
+[assembly: System.Reflection.AssemblyDelaySign(false)]
+[assembly: System.Reflection.AssemblyConfiguration("InvAutomation")]
+

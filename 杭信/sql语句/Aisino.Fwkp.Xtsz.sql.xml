@@ -1,0 +1,294 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SQLLIB>
+  <!--更新主管姓名-->
+  <SQL id="aisino.Fwkp.Xtsz.QX_YHXXUpdate">
+    <value>update QX_YHXX set ZSXM=@NewName where ZSXM=@OldName</value>
+    <type>Text</type>
+    <param name="NewName" type="AnsiString"></param>
+    <param name="OldName" type="AnsiString"></param>
+  </SQL>
+  
+  <!--删除发票领用存月报表副表中数据-->
+  <SQL id="aisino.Fwkp.Xtsz.DeleteFPLYCYBBFB">
+    <value>DELETE FROM [FPLYCYBBFB]</value>
+  </SQL>
+
+  <!--查询发票领用存月报表副表行数-->
+  <SQL id="aisino.Fwkp.Xtsz.FPLYCYBBFBCount">
+    <value>SELECT DISTINCT COUNT(*) FROM [FPLYCYBBFB]</value>
+    <type>Text</type>
+  </SQL>
+  
+  <!--删除发票卷表中数据-->
+  <SQL id="aisino.Fwkp.Xtsz.DeleteFPJ">
+    <value>DELETE FROM [FPJ]</value>
+  </SQL>
+
+  <!--查询发票卷表行数-->
+  <SQL id="aisino.Fwkp.Xtsz.FPJCount">
+    <value>SELECT DISTINCT COUNT(*) FROM [FPJ]</value>
+    <type>Text</type>
+  </SQL>
+
+  <!--删除发票卷明细表中数据-->
+  <SQL id="aisino.Fwkp.Xtsz.DeleteFPJMX">
+    <value>DELETE FROM [FPJMX]</value>
+  </SQL>
+
+  <!--查询发票卷明细表行数-->
+  <SQL id="aisino.Fwkp.Xtsz.FPJMXCount">
+    <value>SELECT DISTINCT COUNT(*) FROM [FPJMX]</value>
+    <type>Text</type>
+  </SQL>
+
+  <!--删除红字发票申请单表中数据-->
+  <SQL id="aisino.Fwkp.Xtsz.DeleteHZFP_SQD">
+    <value>DELETE FROM [HZFP_SQD]</value>
+  </SQL>
+
+  <!--查询红字发票申请单表行数-->
+  <SQL id="aisino.Fwkp.Xtsz.HZFP_SQDCount">
+    <value>SELECT DISTINCT COUNT(*) FROM [HZFP_SQD]</value>
+    <type>Text</type>
+  </SQL>
+
+  <!--删除红字发票申请单明细表中数据-->
+  <SQL id="aisino.Fwkp.Xtsz.DeleteHZFP_SQD_MX">
+    <value>DELETE FROM [HZFP_SQD_MX]</value>
+  </SQL>
+
+  <!--查询红字发票申请单明细表行数-->
+  <SQL id="aisino.Fwkp.Xtsz.HZFP_SQD_MXCount">
+    <value>SELECT DISTINCT COUNT(*) FROM [HZFP_SQD_MX]</value>
+    <type>Text</type>
+  </SQL>
+
+  <!--删除进项发票表中数据-->
+  <SQL id="aisino.Fwkp.Xtsz.DeleteJXFP">
+    <value>DELETE FROM [JXFP]</value>
+  </SQL>
+
+  <!--查询进项发票表行数-->
+  <SQL id="aisino.Fwkp.Xtsz.JXFPCount">
+    <value>SELECT DISTINCT COUNT(*) FROM [JXFP]</value>
+    <type>Text</type>
+  </SQL>
+
+  <!--删除系统日志关系信息表中数据-->
+  <SQL id="aisino.Fwkp.Xtsz.DeleteRZXX">
+    <value>DELETE FROM [XT_RZXX]</value>
+  </SQL>
+
+  <!--查询系统日志关系信息表行数-->
+  <SQL id="aisino.Fwkp.Xtsz.RZXXCount">
+    <value>SELECT DISTINCT COUNT(*) FROM [XT_RZXX]</value>
+    <type>Text</type>
+  </SQL>
+
+  <!--删除销售单据表中数据-->
+  <SQL id="aisino.Fwkp.Xtsz.DeleteXSDJ">
+    <value>DELETE FROM [XSDJ]</value>
+  </SQL>
+
+  <!--查询销售单据表行数-->
+  <SQL id="aisino.Fwkp.Xtsz.XSDJCount">
+    <value>SELECT DISTINCT COUNT(*) FROM [XSDJ]</value>
+    <type>Text</type>
+  </SQL>
+
+  <!--删除销售单据还原表中数据-->
+  <SQL id="aisino.Fwkp.Xtsz.DeleteXSDJ_HY">
+    <value>DELETE FROM [XSDJ_HY]</value>
+  </SQL>
+
+  <!--查询销售单据还原表行数-->
+  <SQL id="aisino.Fwkp.Xtsz.XSDJ_HYCount">
+    <value>SELECT DISTINCT COUNT(*) FROM [XSDJ_HY]</value>
+    <type>Text</type>
+  </SQL>
+
+  <!--删除销售单据明细表中数据-->
+  <SQL id="aisino.Fwkp.Xtsz.DeleteXSDJ_MX">
+    <value>DELETE FROM [XSDJ_MX]</value>
+  </SQL>
+
+  <!--查询销售单据明细表行数-->
+  <SQL id="aisino.Fwkp.Xtsz.XSDJ_MXCount">
+    <value>SELECT DISTINCT COUNT(*) FROM [XSDJ_MX]</value>
+    <type>Text</type>
+  </SQL>
+
+  <!--删除销售单据明细还原表中数据-->
+  <SQL id="aisino.Fwkp.Xtsz.DeleteXSDJ_MX_HY">
+    <value>DELETE FROM [XSDJ_MX_HY]</value>
+  </SQL>
+
+  <!--查询销售单据明细还原表行数-->
+  <SQL id="aisino.Fwkp.Xtsz.XSDJ_MX_HYCount">
+    <value>SELECT DISTINCT COUNT(*) FROM [XSDJ_MX_HY]</value>
+    <type>Text</type>
+  </SQL>
+
+  <!--删除销项发票表中数据-->
+  <SQL id="aisino.Fwkp.Xtsz.DeleteXXFP">
+    <value>DELETE FROM [XXFP]</value>
+  </SQL>
+
+  <!--查询销项发票表行数-->
+  <SQL id="aisino.Fwkp.Xtsz.XXFPCount">
+    <value>SELECT DISTINCT COUNT(*) FROM [XXFP]</value>
+    <type>Text</type>
+  </SQL>
+
+  <!--删除销项发票明细表中数据-->
+  <SQL id="aisino.Fwkp.Xtsz.DeleteXXFP_MX">
+    <value>DELETE FROM [XXFP_MX]</value>
+  </SQL>
+
+  <!--查询销项发票明细表行数-->
+  <SQL id="aisino.Fwkp.Xtsz.XXFP_MXCount">
+    <value>SELECT DISTINCT COUNT(*) FROM [XXFP_MX]</value>
+    <type>Text</type>
+  </SQL>
+
+  <!--删除销项发票销货清单表中数据-->
+  <SQL id="aisino.Fwkp.Xtsz.DeleteXXFP_XHQD">
+    <value>DELETE FROM [XXFP_XHQD]</value>
+  </SQL>
+
+  <!--查询销项发票销货清单表行数-->
+  <SQL id="aisino.Fwkp.Xtsz.XXFP_XHQDCount">
+    <value>SELECT DISTINCT COUNT(*) FROM [XXFP_XHQD]</value>
+    <type>Text</type>
+  </SQL>
+
+  <!--删除系统状态信息表中数据-->
+  <SQL id="aisino.Fwkp.Xtsz.DeleteXTZTXX">
+    <value>DELETE FROM [XTZTXX]</value>
+  </SQL>
+
+  <!--查询系统状态信息表行数-->
+  <SQL id="aisino.Fwkp.Xtsz.XTZTXXCount">
+    <value>SELECT DISTINCT COUNT(*) FROM [XTZTXX]</value>
+    <type>Text</type>
+  </SQL>
+
+  <!--删除系统税务信息表中数据-->
+  <SQL id="aisino.Fwkp.Xtsz.DeleteXTSWXX">
+    <value>DELETE FROM [XTSWXX]</value>
+  </SQL>
+
+  <!--查询指定系统税务信息是否存在-->
+  <SQL id="aisino.Fwkp.Xtsz.XTSWXXIsExist">
+    <value>
+      SELECT COUNT(QYBH) FROM [XTSWXX]
+    </value>
+    <type>Text</type>
+  </SQL>
+  
+  <!--查询指定系统税务信息是否存在--><!--
+  <SQL id="aisino.Fwkp.Xtsz.XTSWXXIsExist">
+    <value>
+      SELECT COUNT(QYBH) FROM [XTSWXX]
+      WHERE CASE WHEN(@QYBH='') THEN 1=1 ELSE [QYBH]=@QYBH END
+    </value>
+    <type>Text</type>
+    <param name="QYBH" type="AnsiString"></param>
+  </SQL>-->
+
+  <!--增加记录到系统税务信息表-->
+  <SQL id="aisino.Fwkp.Xtsz.AddXTSWXX">
+    <value>
+      INSERT INTO [XTSWXX](
+      [QYBH], [QYMC], [ZCLX], [KPXE], [BSRQ], [BSRPHF], [YHZH], [FRDB], [YYDZ], [DHHM], [JYZS], [KJZG]
+      )VALUES(
+      @QYBH, @QYMC, @ZCLX, @KPXE, @BSRQ, @BSRPHF, @YHZH, @FRDB, @YYDZ, @DHHM, @JYZS, @KJZG
+      )
+    </value>
+    <type>Text</type>
+    <param name="QYBH" type="AnsiString"></param>
+    <param name="QYMC" type="AnsiString"></param>
+    <param name="ZCLX" type="AnsiString"></param>
+    <param name="KPXE" type="Int32"></param>
+    <param name="BSRQ" type="DateTime"></param>
+    <param name="BSRPHF" type="Int32"></param>
+    <param name="YHZH" type="AnsiString"></param>
+    <param name="FRDB" type="AnsiString"></param>
+    <param name="YYDZ" type="AnsiString"></param>
+    <param name="DHHM" type="AnsiString"></param>
+    <param name="JYZS" type="Boolean"></param>
+    <param name="KJZG" type="AnsiString"></param>
+  </SQL>
+
+  <!--查询系统税务信息-->
+  <SQL id="aisino.Fwkp.Xtsz.SelectXTSWXX">
+    <value>
+      SELECT * FROM [XTSWXX] WHERE [QYBH] = @QYBH
+    </value>
+    <type>Text</type>
+    <param name="QYBH" type="AnsiString"></param>
+  </SQL>
+
+  <!--更新系统税务信息-->
+  <SQL id="aisino.Fwkp.Xtsz.UpdateXTSWXX">
+    <value>
+      UPDATE [XTSWXX] SET [QYBH] = @QYBH, [YYDZ] = @YYDZ, [DHHM] = @DHHM, [YHZH] = @YHZH 
+    </value>
+    <type>Text</type>
+    <param name="QYBH" type="AnsiString"></param>
+    <param name="YYDZ" type="AnsiString"></param>
+    <param name="DHHM" type="AnsiString"></param>
+    <param name="YHZH" type="AnsiString"></param>
+  </SQL>
+
+  <!--获取电子底账参数信息-->
+  <SQL id="aisino.Fwkp.Xtsz.SelectDZDZXX">
+    <value>
+      SELECT * FROM [XTDZDZXX] LIMIT 1
+    </value>
+    <type>Text</type>
+  </SQL>
+
+  <!--更新电子底账数据库-->
+  <SQL id="aisino.Fwkp.Xtsz.UpdateXTDZDZXX">
+    <value>
+      UPDATE [XTDZDZXX] SET [ACCEPT_WEB_SERVER]=@ACCEPT_WEB_SERVER, [UPLOADNOW]=@UPLOADNOW, [INTERVALFLAG]=@INTERVALFLAG, [INTERVALTIME]=@INTERVALTIME, [ACCUMULATEFLAG]=@ACCUMULATEFLAG, [ACCUMULATENUM]=@ACCUMULATENUM, [DATASIZE]=@DATASIZE
+    </value>
+    <type>Text</type>
+    <param name="ACCEPT_WEB_SERVER" type="AnsiString"></param>
+    <param name="UPLOADNOW" type="Boolean"></param>
+    <param name="INTERVALFLAG" type="Boolean"></param>
+    <param name="INTERVALTIME" type="Int32"></param>
+    <param name="ACCUMULATEFLAG" type="Boolean"></param>
+    <param name="ACCUMULATENUM" type="Int32"></param>
+    <param name="DATASIZE" type="Int32"></param>
+  </SQL>
+
+  <!--查询电子底账信息是否存在-->
+  <SQL id="aisino.Fwkp.Xtsz.XTDZDZXXIsExist">
+    <value>
+      SELECT COUNT(*) FROM [XTDZDZXX]
+    </value>
+    <type>Text</type>
+  </SQL>
+
+  <SQL id="Aisino.Fwkp.Xtsz.SetAdminAndPwd">
+    <value>
+      update QX_YHXX set ZSXM = @ZSXM, MM= @MM where DM = @DM
+    </value>
+    <param name="DM" type="AnsiString"></param>
+    <param name="ZSXM" type="AnsiString"></param>
+    <param name="MM" type="AnsiString"></param>
+    <type>Text</type>
+  </SQL>
+
+  <!--只更新QYBH-->
+  <SQL id="aisino.Fwkp.Xtsz.UpdateXTSWXX_QYBH">
+    <value>
+      UPDATE [XTSWXX] SET [QYBH]=@QYBH
+    </value>
+    <type>Text</type>
+    <param name="QYBH" type="AnsiString"></param>
+  </SQL>
+
+</SQLLIB>

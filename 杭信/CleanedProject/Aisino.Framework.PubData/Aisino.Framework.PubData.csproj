@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <ProjectType>local</ProjectType>
+    <ProjectVersion>7.10.377</ProjectVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B8E87FD3-F8F8-4B6C-9335-9AA2968C1E47}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <AssemblyName>Aisino.Framework.PubData</AssemblyName>
+    <OutputType>Library</OutputType>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Output\Bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Reference Include="System" />
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Global.cs" />
+    <Compile Include="Aisino\Framework\PubData\DataType\MessageBase.cs" />
+    <Compile Include="Aisino\Framework\PubData\DataType\User.cs" />
+    <Compile Include="Aisino\Framework\PubData\DataType\UserCollection.cs" />
+    <Compile Include="Aisino\Framework\PubData\Tool\SerializeTool.cs" />
+    <Compile Include="Aisino\Framework\PubData\Message_S2C\SCMessage.cs" />
+    <Compile Include="Aisino\Framework\PubData\Message_S2C\CommonMessage.cs" />
+    <Compile Include="Aisino\Framework\PubData\Message_S2C\LoginOKMessage.cs" />
+    <Compile Include="Aisino\Framework\PubData\Message_S2C\HtmlMessage.cs" />
+    <Compile Include="Aisino\Framework\PubData\Message_S2C\StopSrvMessage.cs" />
+    <Compile Include="Aisino\Framework\PubData\Message_C2S\CSMessage.cs" />
+    <Compile Include="Aisino\Framework\PubData\Message_C2S\ReceiveOKMessage.cs" />
+    <Compile Include="Aisino\Framework\PubData\Message_C2S\LoginMessage.cs" />
+    <Compile Include="Aisino\Framework\PubData\Message_C2S\LogoutMessage.cs" />
+  </ItemGroup>
+</Project>

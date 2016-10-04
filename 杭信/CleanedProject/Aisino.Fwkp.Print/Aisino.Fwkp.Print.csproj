@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <ProjectType>local</ProjectType>
+    <ProjectVersion>7.10.377</ProjectVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1E1ED23B-B53D-4FBC-9677-CFF0E926080F}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <AssemblyName>Aisino.Fwkp.Print</AssemblyName>
+    <OutputType>Library</OutputType>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Output\Bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Reference Include="log4net">
+      <HintPath>..\..\脱壳后文件\Bin\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Global.cs" />
+    <Compile Include="Aisino\Fwkp\Print\PrintFactory.cs" />
+    <Compile Include="Aisino\Fwkp\Print\PrintFileModel.cs" />
+    <Compile Include="Aisino\Fwkp\Print\PrintZheHangModel.cs" />
+    <Compile Include="Aisino\Fwkp\Print\ReadXml.cs" />
+    <Compile Include="Aisino\Fwkp\Print\IPrint.cs" />
+    <Compile Include="Aisino\Fwkp\Print\QDModelPrint.cs" />
+    <Compile Include="Aisino\Fwkp\Print\Common.cs" />
+    <Compile Include="Aisino\Fwkp\Print\ZLTJPrint.cs" />
+    <Compile Include="Aisino\Fwkp\Print\PrintSetUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Print\PrintSetEventArgs.cs" />
+    <Compile Include="Aisino\Fwkp\Print\Printer.cs" />
+    <Compile Include="Aisino\Fwkp\Print\PrinterEventArgs.cs" />
+    <Compile Include="Aisino\Fwkp\Print\FpxfPrint.cs" />
+    <Compile Include="Aisino\Fwkp\Print\FPModelPrint.cs" />
+    <Compile Include="Aisino\Fwkp\Print\CGSPrint.cs" />
+    <Compile Include="Aisino\Fwkp\Print\QDPrint.cs" />
+    <Compile Include="Aisino\Fwkp\Print\FPPrint.cs" />
+    <Compile Include="Aisino\Fwkp\Print\YQHZFPPrint.cs" />
+    <Compile Include="Aisino\Fwkp\Print\HZFPSQDPrint.cs" />
+    <Compile Include="Aisino\Fwkp\Print\HZFPSQDModelPrint.cs" />
+    <Compile Include="_Module_{1267C75F-1906-4826-BCEF-3A4A70B42C3B}.cs" />
+    <EmbeddedResource Include="Aisino.Fwkp.Print.PrintSetUp.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Print.g.resources" />
+    <EmbeddedResource Include="aR3nbf8dQp2feLmk31.SplashForm.resources" />
+    <EmbeddedResource Include="aR3nbf8dQp2feLmk31.lSfgApatkdxsVcGcrktoFd.resources" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Aisino.Framework.Plugin.Core\Aisino.Framework.Plugin.Core.csproj">
+      <Project>{b65bb74a-99d3-4854-8151-a6bd4d4a489a}</Project>
+      <Name>Aisino.Framework.Plugin.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Aisino.FTaxBase\Aisino.FTaxBase.csproj">
+      <Project>{a9935674-60e2-44e1-8785-d391586d31f8}</Project>
+      <Name>Aisino.FTaxBase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Aisino.Fwkp.BusinessObject\Aisino.Fwkp.BusinessObject.csproj">
+      <Project>{75c5c3bc-cb11-4429-b042-46f1baab2fff}</Project>
+      <Name>Aisino.Fwkp.BusinessObject</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

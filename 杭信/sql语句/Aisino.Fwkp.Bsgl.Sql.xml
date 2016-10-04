@@ -1,0 +1,283 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SQLLIB>
+
+  <!--查询销项发票信息-->
+  <SQL id="aisino.fwkp.bsgl.selectXxfpByMonth">
+    <value>
+      <![CDATA[SELECT FPZL,FPDM,FPHM,KPRQ,GFSH,GFMC,GFDZDH,GFYHZH,XFSH,XFMC,XFDZDH,XFYHZH,HJJE,SLV,HJSE,HXM,ZFBZ,KPR,BZ,YYSBZ,QDBZ
+      FROM XXFP
+      WHERE XFSH = @XFSH AND SSYF = @SSYF]]>
+    </value>
+    <type>Text</type>
+    <param name="XFSH" type="AnsiString"></param>
+    <param name="SSYF" type="Int32"></param>
+  </SQL>
+
+  <!--查询销项发票信息 根据票种-->
+  <SQL id="aisino.fwkp.bsgl.selectXxfpByMonthFPZL">
+    <value>
+      <![CDATA[SELECT FPZL,FPDM,FPHM,KPRQ,GFSH,GFMC,GFDZDH,GFYHZH,XFSH,XFMC,XFDZDH,XFYHZH,HJJE,SLV,HJSE,HXM,ZFBZ,KPR,BZ,YYSBZ,QDBZ,CM,TYDH,SCCJMC,XFDZ,KHYHMC,QYD,ZHD,XHD,JQBH,YYZZH,MW,YSHWXX,HYBM,SKR,FHR,XSBM,XFDH,KHYHZH,MDD,JYM,SIGN,ZFRQ,WSPZHM,HZTZDH,LZDMHM,XSDJBH
+      FROM XXFP
+      WHERE XFSH = @XFSH AND SSYF = @SSYF AND FPZL = @FPZL]]>
+    </value>
+    <type>Text</type>
+    <param name="XFSH" type="AnsiString"></param>
+    <param name="SSYF" type="Int32"></param>
+    <param name="FPZL" type="AnsiString"></param>
+  </SQL>
+
+  <!--查询销项发票明细-->
+  <SQL id="aisino.fwkp.bsgl.selectXxfpMc">
+    <value>
+      <![CDATA[SELECT SPMC,GGXH,JLDW,SL,DJ,JE,SE,SLV,HSJBZ,FPMXXH,FLBM,XSYH,SPBH,LSLVBS,YHSM
+      FROM XXFP_MX
+      WHERE FPZL = @FPZL AND FPDM = @FPDM AND FPHM = @FPHM order by FPMXXH ASC]]>
+    </value>
+    <type>Text</type>
+    <param name="FPZL" type="AnsiString"></param>
+    <param name="FPDM" type="AnsiString"></param>
+    <param name="FPHM" type="Int32"></param>
+  </SQL>
+
+	<!--查询销项发票明细清单-->
+	<SQL id="aisino.fwkp.bsgl.selectXxfpMcQD">
+		<value>
+			<![CDATA[SELECT SPMC,GGXH,JLDW,SL,DJ,JE,SE,SLV,HSJBZ,FPMXXH,FLBM,XSYH,SPBH,LSLVBS,YHSM
+      FROM XXFP_XHQD
+      WHERE FPZL = @FPZL AND FPDM = @FPDM AND FPHM = @FPHM order by FPMXXH ASC]]>
+		</value>
+		<type>Text</type>
+		<param name="FPZL" type="AnsiString"></param>
+		<param name="FPDM" type="AnsiString"></param>
+		<param name="FPHM" type="Int32"></param>
+	</SQL>
+
+  <!--查询存根联发票明细接口发票信息-->
+  <SQL id="aisino.fwkp.bsgl.selectXxfpByDate">
+    <value>
+      <![CDATA[SELECT FPZL,FPDM,FPHM,KPRQ,GFSH,GFMC,GFDZDH,GFYHZH,XFSH,XFMC,XFDZDH,XFYHZH,HJJE,SLV,HJSE,HXM,ZFBZ,KPR,BZ,YYSBZ,QDBZ
+      FROM XXFP
+      WHERE KPRQ >= @QSRQ AND KPRQ < @ZZRQ]]>
+    </value>
+    <type>Text</type>
+    <param name="QSRQ" type="DateTime"></param>
+    <param name="ZZRQ" type="DateTime"></param>
+  </SQL>
+
+  <SQL id="aisino.fwkp.bsgl.selectXxfpByDateFPZL">
+    <value>
+      <![CDATA[SELECT FPZL,FPDM,FPHM,KPRQ,GFSH,GFMC,GFDZDH,GFYHZH,XFSH,XFMC,XFDZDH,XFYHZH,HJJE,SLV,HJSE,HXM,ZFBZ,KPR,BZ,YYSBZ,QDBZ,CM,TYDH,SCCJMC,XFDZ,KHYHMC,QYD,ZHD,XHD,JQBH,YYZZH,MW,YSHWXX,HYBM,SKR,FHR,XSBM,XFDH,KHYHZH,MDD,JYM,SIGN,ZFRQ,WSPZHM,HZTZDH,LZDMHM,XSDJBH,ZYSPMC,SPSM_BM,BMBBBH
+      FROM XXFP
+      WHERE KPRQ >= @QSRQ
+      AND KPRQ < @ZZRQ
+      AND FPZL = @FPZL
+      AND  case @QDBZ  when 0 then 1 = 1 else QDBZ=@QDBZ end]]>
+    </value>
+    <type>Text</type>
+    <param name="QSRQ" type="DateTime"></param>
+    <param name="ZZRQ" type="DateTime"></param>
+    <param name="FPZL" type="AnsiString"></param>
+    <param name="QDBZ" type="Int32"></param>
+  </SQL>
+
+  <!--修改报税标志-->
+  <SQL id="aisino.fwkp.bsgl.updateBSBZ">
+    <value>
+      <![CDATA[UPDATE XXFP SET BSBZ = @BSBZA WHERE BSBZ = @BSBZB AND KPRQ <= @KPRQ AND FPZL = @FPZL AND BSQ=@BSQ]]>
+    </value>
+    <type>Text</type>
+    <param name="BSBZA" type="Boolean"></param>
+    <param name="BSBZB" type="Boolean"></param>
+    <param name="KPRQ" type="DateTime"></param>
+    <param name="FPZL" type="AnsiString"></param>
+    <param name="BSQ" type="AnsiString"></param>
+  </SQL>
+
+  <!--查询存根联发票明细接口系统参数-->
+  <!--<SQL id="aisino.fwkp.bsgl.selectSysArgs">
+    <value>
+      SELECT CS_DM,CS_NR FROM XT_CSXX WHERE CS_DM IN ('cglfpmx_filepath', 'cglfpmx_ccmx')
+    </value>
+    <type>Text</type>
+  </SQL>-->
+
+  <!--增加存根联发票明细接口系统参数-->
+  <!--<SQL id="aisino.fwkp.bsgl.insertSysArgs">
+    <value>
+      INSERT INTO XT_CSXX (MK_DM,CS_DM,CS_NR,XGSJ,XGYH) VALUES (@MKDM,@CSDM,@CSNR,@XGSJ,@XGYH)
+    </value>
+    <type>Text</type>
+    <param name="MKDM" type="AnsiString"></param>
+    <param name="CSDM" type="AnsiString"></param>
+    <param name="CSNR" type="AnsiString"></param>
+    <param name="XGSJ" type="DateTime"></param>
+    <param name="XGYH" type="AnsiString"></param>
+  </SQL>-->
+
+  <!--修改存根联发票明细接口系统参数-->
+  <!--<SQL id="aisino.fwkp.bsgl.updateSysArgs">
+    <value>
+      UPDATE XT_CSXX SET CS_NR = @NR WHERE CS_DM = @DM
+    </value>
+    <type>Text</type>
+    <param name="DM" type="AnsiString"></param>
+    <param name="NR" type="AnsiString"></param>
+  </SQL>-->
+
+  <!--查找上次开票的最大日期-->
+  <SQL id="aisino.fwkp.bsgl.selectLastKPMaxDate">
+    <value>
+      SELECT MAX(KPRQ) FROM XXFP
+    </value>
+    <type>Text</type>
+  </SQL>
+
+
+  <!--获取某一月份发票信息-->
+  <SQL id="aisino.Fwkp.Bsgl.GetDetailXXFP">
+    <value>
+      <![CDATA[SELECT * FROM [XXFP] WHERE [KPRQ]>=@STARTDATE AND [KPRQ]<@ENDDATE ORDER BY [BSQ] ASC]]>
+    </value>
+    <type>Text</type>
+    <param name="STARTDATE" type="DateTime"></param>
+    <param name="ENDDATE" type="DateTime"></param>
+  </SQL>
+
+  <!--获取发票领用存月报表信息-->
+  <SQL id="aisino.Fwkp.Bsgl.GetDetailFPLYCYBB">
+    <value>
+      <![CDATA[SELECT * FROM [FPLYCYBB] WHERE [SSYF]=@SSYF]]>
+    </value>
+    <type>Text</type>
+    <param name="SSYF" type="AnsiString"></param>
+  </SQL>
+
+  <!--获取发票正数汇总信息-->
+  <SQL id="aisino.Fwkp.Bsgl.GetPlusTotalXXFP">
+    <value>
+      <![CDATA[SELECT [FPZL] AS 发票种类, [FPDM] AS 类别代码, [FPHM] AS 发票号码, [KPRQ] AS 开票日期,
+      [GFSH] AS 购方税号, [HJJE] AS 合计金额, [HJSE] AS 合计税额, [SLV] AS 税率,[YYSBZ] AS 营业税标志 FROM [XXFP]
+      WHERE [FPZL]=@FPZL AND [HJJE]>=0 AND [ZFBZ]=@ZFBZ AND [KPRQ]>=@STARTDATE AND [KPRQ]<@ENDDATE
+      and case @BSQ > 0 when 1 then BSQ=@BSQ else 1 = 1 end
+      ]]>
+    </value>
+    <type>Text</type>
+    <param name="FPZL" type="AnsiString"></param>
+    <param name="ZFBZ" type="Boolean"></param>
+    <param name="STARTDATE" type="DateTime"></param>
+    <param name="ENDDATE" type="DateTime"></param>
+    <param name="BSQ" type="Int32"></param>
+  </SQL>
+
+  <!--获取发票负数汇总信息-->
+  <SQL id="aisino.Fwkp.Bsgl.GetMinusTotalXXFP">
+    <value>
+      <![CDATA[SELECT [FPZL] AS 发票种类, [FPDM] AS 类别代码, [FPHM] AS 发票号码, [KPRQ] AS 开票日期,
+      [GFSH] AS 购方税号, [HJJE] AS 合计金额, [HJSE] AS 合计税额, [SLV] AS 税率,[YYSBZ] AS 营业税标志 FROM [XXFP]
+      WHERE [FPZL]=@FPZL AND [HJJE]<0 AND [ZFBZ]=@ZFBZ AND [KPRQ]>=@STARTDATE AND [KPRQ]<@ENDDATE
+      and case @BSQ > 0 when 1 then BSQ=@BSQ else 1 = 1 end
+      ]]>
+    </value>
+    <type>Text</type>
+    <param name="FPZL" type="AnsiString"></param>
+    <param name="ZFBZ" type="Boolean"></param>
+    <param name="STARTDATE" type="DateTime"></param>
+    <param name="ENDDATE" type="DateTime"></param>
+    <param name="BSQ" type="Int32"></param>
+  </SQL>
+
+  <!--获取某月发票张数、金额总额、税额总额信息-->
+  <SQL id="aisino.Fwkp.Bsgl.GetStatXXFP">
+    <value>
+      <![CDATA[SELECT COUNT(FPHM) AS TotalCount, SUM(HJJE) AS TotalCash, SUM(HJSE) AS TotalTax FROM [XXFP] WHERE [KPRQ]>=@STARTDATE AND [KPRQ]<@ENDDATE]]>
+    </value>
+    <type>Text</type>
+    <param name="STARTDATE" type="DateTime"></param>
+    <param name="ENDDATE" type="DateTime"></param>
+  </SQL>
+
+  <!--查询发票卷表行数-->
+  <SQL id="aisino.Fwkp.Bsgl.FPJCount">
+    <value>SELECT DISTINCT COUNT(*) FROM [FPJ]</value>
+    <type>Text</type>
+  </SQL>
+
+  <!--删除发票卷信息-->
+  <SQL id="aisino.Fwkp.Bsgl.DeleteFPJ">
+    <value>
+      <![CDATA[DELETE FROM FPJ]]>
+    </value>
+    <type>Text</type>
+  </SQL>
+
+  <!--增加发票卷信息-->
+  <SQL id="aisino.Fwkp.Bsgl.InsertFPJ">
+    <value>
+      <![CDATA[INSERT INTO FPJ VALUES(@JH, @FPZL, @LBDM, @QSHM, @FPZS, @LGRQ, @KPJH, @SYZS, @MSBZ, @DJBZ, @YWBZ, @SYBZ)]]>
+    </value>
+    <type>Text</type>
+    <param name="JH" type="AnsiString"></param>
+    <param name="FPZL" type="AnsiString"></param>
+    <param name="LBDM" type="AnsiString"></param>
+    <param name="QSHM" type="AnsiString"></param>
+    <param name="FPZS" type="AnsiString"></param>
+    <param name="LGRQ" type="DateTime"></param>
+    <param name="KPJH" type="AnsiString"></param>
+    <param name="SYZS" type="AnsiString"></param>
+    <param name="MSBZ" type="Boolean"></param>
+    <param name="DJBZ" type="Boolean"></param>
+    <param name="YWBZ" type="Boolean"></param>
+    <param name="SYBZ" type="Boolean"></param>
+  </SQL>
+
+  <!--查询发票领用存月报表行数-->
+  <SQL id="aisino.Fwkp.Bsgl.FPLYCYBBCount">
+    <value>SELECT DISTINCT COUNT(*) FROM [FPLYCYBB]</value>
+    <type>Text</type>
+  </SQL>
+
+  <!--删除发票领用存月报表信息-->
+  <SQL id="aisino.Fwkp.Bsgl.DeleteFPLYCYBB">
+    <value>
+      <![CDATA[DELETE FROM FPLYCYBB]]>
+    </value>
+    <type>Text</type>
+  </SQL>
+
+  <!--增加发票领用存月报表信息-->
+  <SQL id="aisino.Fwkp.Bsgl.InsertFPLYCYBB">
+    <value>
+      <![CDATA[INSERT INTO FPLYCYBB VALUES(@SSYF, @XH, @FPZL, @LBDM, @QCKCFS, @QCKCHM, @BQKCFS, @BQKCHM, @BQKJFS, @BQKJHM, @BQZFFS, @BQZFHM, @JHWKFS, @JHWKHM, @QMKCFS, @QMKCHM)]]>
+    </value>
+    <type>Text</type>
+    <param name="SSYF" type="Int32"></param>
+    <param name="XH" type="Int32"></param>
+    <param name="FPZL" type="AnsiString"></param>
+    <param name="LBDM" type="AnsiString"></param>
+    <param name="QCKCFS" type="Int32"></param>
+    <param name="QCKCHM" type="AnsiString"></param>
+    <param name="BQKCFS" type="Int32"></param>
+    <param name="BQKCHM" type="AnsiString"></param>
+    <param name="BQKJFS" type="Int32"></param>
+    <param name="BQKJHM" type="AnsiString"></param>
+    <param name="BQZFFS" type="Int32"></param>
+    <param name="BQZFHM" type="AnsiString"></param>
+    <param name="JHWKFS" type="Int32"></param>
+    <param name="JHWKHM" type="AnsiString"></param>
+    <param name="QMKCFS" type="Int32"></param>
+    <param name="QMKCHM" type="AnsiString"></param>
+  </SQL>
+
+  <!--查询单月所开发票张数-->
+  <SQL id="aisino.fwkp.bsgl.GetFPNum">
+    <value>
+      <![CDATA[SELECT COUNT(*)
+      FROM XXFP
+      WHERE FPZL = @FPZL AND SSYF=@SSYF]]>
+    </value>
+    <type>Text</type>
+    <param name="FPZL" type="AnsiString"></param>
+    <param name="SSYF" type="AnsiString"></param>
+  </SQL>
+
+</SQLLIB>

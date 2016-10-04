@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="GBK"?>
+<FPXT>
+  <OUTPUT>
+    <CODE>0000</CODE>
+    <MESS>同步成功</MESS>
+    <DATA>
+      <NSRSBH>91310110630763504R</NSRSBH>
+      <KPJH>0</KPJH>
+      <SBBH>661500073626</SBBH>
+      <SQXX>
+      </SQXX>
+      <SCCS>1,1,10</SCCS>
+      <SPBMBBH>12.0</SPBMBBH>
+      <SPBM>
+      </SPBM>
+      <SPBMXX>
+      </SPBMXX>
+    </DATA>
+  </OUTPUT>
+</FPXT>

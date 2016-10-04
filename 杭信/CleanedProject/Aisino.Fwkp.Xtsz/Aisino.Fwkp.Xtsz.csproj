@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <ProjectType>local</ProjectType>
+    <ProjectVersion>7.10.377</ProjectVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{19F004B2-7F42-47CF-B807-57C038DC6E14}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <AssemblyName>Aisino.Fwkp.Xtsz</AssemblyName>
+    <OutputType>Library</OutputType>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Output\Bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Reference Include="Aisino.Framework.Plugin.Core">
+      <HintPath>..\Aisino.Framework.Plugin.Core\bin\Debug\Aisino.Framework.Plugin.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net" />
+    <Reference Include="System" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="Aisino.FTaxBase">
+      <HintPath>..\Aisino.FTaxBase\bin\Debug\Aisino.FTaxBase.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Global.cs" />
+    <Compile Include="Aisino\Fwkp\Xtsz\Forms\TaxRegisterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Xtsz\Entry\QDPrintSetEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Xtsz\Forms\WizardParaSetForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Xtsz\Resources.cs" />
+    <Compile Include="Aisino\Fwkp\Xtsz\BLL\TaxReportRegisterBLL.cs" />
+    <Compile Include="Aisino\Fwkp\Xtsz\Forms\InitialForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Xtsz\SystemSetEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Xtsz\ShareMethodEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Xtsz\QueryDZDZInfoService.cs" />
+    <Compile Include="Aisino\Fwkp\Xtsz\UpdateDZDZInfoService.cs" />
+    <Compile Include="Aisino\Fwkp\Xtsz\QueryCorporationInfoService.cs" />
+    <Compile Include="Aisino\Fwkp\Xtsz\InitialService.cs" />
+    <Compile Include="Aisino\Fwkp\Xtsz\SetCorpInfoService.cs" />
+    <Compile Include="Aisino\Fwkp\Xtsz\CheckCorpInfoService.cs" />
+    <Compile Include="Aisino\Fwkp\Xtsz\Entry\PTFPPrintSetEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Xtsz\Entry\JDCNewPrintSetEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Xtsz\Entry\ZYXXBPrintSetEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Xtsz\Model\OperatorModel.cs" />
+    <Compile Include="Aisino\Fwkp\Xtsz\BLL\TaxEntityBLL.cs" />
+    <Compile Include="Aisino\Fwkp\Xtsz\ParaSetEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Xtsz\Factory\BLLFactorey.cs" />
+    <Compile Include="Aisino\Fwkp\Xtsz\TaxRegisterEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Xtsz\BLL\ParaSetBLL.cs" />
+    <Compile Include="Aisino\Fwkp\Xtsz\Model\DZDZInfoModel.cs" />
+    <Compile Include="Aisino\Fwkp\Xtsz\DAL\ParaSetDAL.cs" />
+    <Compile Include="Aisino\Fwkp\Xtsz\Model\SysTaxInfoModel.cs" />
+    <Compile Include="Aisino\Fwkp\Xtsz\Entry\ZYFPPrintSetEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Xtsz\DAL\InitialDAL.cs" />
+    <Compile Include="Aisino\Fwkp\Xtsz\Entry\JDCOldPrintSetEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Xtsz\Config.cs" />
+    <Compile Include="Aisino\Fwkp\Xtsz\Forms\ParaSetForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Xtsz\Entry\HYFPPrintSetEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Xtsz\Model\LoginUserModel.cs" />
+    <Compile Include="Aisino\Fwkp\Xtsz\Factory\DALFactory.cs" />
+    <Compile Include="Aisino\Fwkp\Xtsz\Common\CommFun.cs" />
+    <Compile Include="Aisino\Fwkp\Xtsz\Common\StringUtils.cs" />
+    <Compile Include="Aisino\Fwkp\Xtsz\Entry\HYXXBPrintEntry.cs" />
+    <EmbeddedResource Include="Aisino.Fwkp.Xtsz.Forms.ParaSetForm.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Xtsz.Forms.TaxRegisterForm.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Xtsz.Resources.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Xtsz.Forms.InitialForm.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Xtsz.Forms.WizardParaSetForm.resources" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Aisino.Framework.Dao\Aisino.Framework.Dao.csproj">
+      <Project>{ef96d157-73ba-410c-a2bd-698b4986fd18}</Project>
+      <Name>Aisino.Framework.Dao</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Aisino.Fwkp.Print\Aisino.Fwkp.Print.csproj">
+      <Project>{1e1ed23b-b53d-4fbc-9677-cff0e926080f}</Project>
+      <Name>Aisino.Fwkp.Print</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

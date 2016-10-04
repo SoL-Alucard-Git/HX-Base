@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <ProjectType>local</ProjectType>
+    <ProjectVersion>7.10.377</ProjectVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C4138C9D-7E92-43AE-B47C-8B979C11AFDA}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <AssemblyName>Aisino.Fwkp.Xtgl</AssemblyName>
+    <OutputType>Library</OutputType>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Output\Bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="log4net" />
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Data" />
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Global.cs" />
+    <Compile Include="Aisino\Fwkp\Xtgl\RegistForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Xtgl\TipForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Xtgl\NewUserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Xtgl\SysRegCommand.cs" />
+    <Compile Include="Aisino\Fwkp\Xtgl\RoleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Xtgl\Properties\Resources.cs" />
+    <Compile Include="Aisino\Fwkp\Xtgl\RoleUserDAL.cs" />
+    <Compile Include="Aisino\Fwkp\Xtgl\UserInfoManageCommand.cs" />
+    <Compile Include="Aisino\Fwkp\Xtgl\User.cs" />
+    <Compile Include="Aisino\Fwkp\Xtgl\RegFileWrapper.cs" />
+    <Compile Include="Aisino\Fwkp\Xtgl\RegFileType.cs" />
+    <Compile Include="Aisino\Fwkp\Xtgl\Win32.cs" />
+    <Compile Include="Aisino\Fwkp\Xtgl\UpdUserPwdForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Xtgl\UserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Xtgl\XtglShareMethods.cs" />
+    <Compile Include="Aisino\Fwkp\Xtgl\NewRoleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Xtgl\UserRoleService.cs" />
+    <Compile Include="Aisino\Fwkp\Xtgl\UserPwdService.cs" />
+    <Compile Include="Aisino\Fwkp\Xtgl\RegisitFileService.cs" />
+    <Compile Include="Aisino\Fwkp\Xtgl\Role.cs" />
+    <Compile Include="Aisino\Fwkp\Xtgl\RoleManageCommand.cs" />
+    <Compile Include="Aisino\Fwkp\Xtgl\UpdUserInfoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Xtgl\VerFlag.cs" />
+    <Compile Include="Aisino\Fwkp\Xtgl\TreeHelper.cs" />
+    <Compile Include="Aisino\Fwkp\Xtgl\UserManageCommand.cs" />
+    <Compile Include="Aisino\Fwkp\Xtgl\PermFunc.cs" />
+    <Compile Include="Aisino\Fwkp\Xtgl\RegistInfoDAL.cs" />
+    <Compile Include="Aisino\Fwkp\Xtgl\Common\StringUtils.cs" />
+    <EmbeddedResource Include="Aisino.Fwkp.Xtgl.UpdUserInfoForm.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Xtgl.UserForm.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Xtgl.RoleForm.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Xtgl.TipForm.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Xtgl.UpdUserPwdForm.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Xtgl.Properties.Resources.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Xtgl.NewUserForm.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Xtgl.NewRoleForm.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Xtgl.RegistForm.resources" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Aisino.Framework.Dao\Aisino.Framework.Dao.csproj">
+      <Project>{ef96d157-73ba-410c-a2bd-698b4986fd18}</Project>
+      <Name>Aisino.Framework.Dao</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Aisino.Framework.MainForm\Aisino.Framework.MainForm.csproj">
+      <Project>{6ca5bc40-07b1-45fc-8927-58356e838a77}</Project>
+      <Name>Aisino.Framework.MainForm</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Aisino.Framework.Plugin.Core\Aisino.Framework.Plugin.Core.csproj">
+      <Project>{b65bb74a-99d3-4854-8151-a6bd4d4a489a}</Project>
+      <Name>Aisino.Framework.Plugin.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Aisino.FTaxBase\Aisino.FTaxBase.csproj">
+      <Project>{a9935674-60e2-44e1-8785-d391586d31f8}</Project>
+      <Name>Aisino.FTaxBase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Aisino.Fwkp.BusinessObject\Aisino.Fwkp.BusinessObject.csproj">
+      <Project>{75c5c3bc-cb11-4429-b042-46f1baab2fff}</Project>
+      <Name>Aisino.Fwkp.BusinessObject</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

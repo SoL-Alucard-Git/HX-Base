@@ -1,0 +1,408 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <ProjectType>local</ProjectType>
+    <ProjectVersion>7.10.377</ProjectVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1666A6E3-1C18-4A12-9D2F-4C09262E1EDA}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <AssemblyName>Aisino.Fwkp.Bmgl</AssemblyName>
+    <OutputType>Library</OutputType>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Output\Bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="log4net">
+      <HintPath>..\Output\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Data" />
+    <Reference Include="ChnCharInfo">
+      <HintPath>..\Output\ChnCharInfo.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Global.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\Common\StringUtils.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\Forms\BMSPFenLei.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Bmgl\Model\BMBaseModel.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\Model\BMKHModel.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\Model\BMGHDWModel.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\Forms\BMBase!3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Bmgl\Forms\BMXHDW.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Bmgl\Forms\BMCLSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Bmgl\Forms\BMCLFenLei.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Bmgl\Forms\BMSPSMSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Bmgl\Forms\BMSPSMFenLei.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Bmgl\Forms\MsgForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Bmgl\Forms\BMGHDW.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Bmgl\Forms\BMEditBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Bmgl\BMSPManagerEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\IDAL\IBMFYXMManager.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\IDAL\IBMSPSMManager.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\DAL\BMSPSMManager.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\IBLL\IBMBaseManager.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\Properties\Resources.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\Forms\BMXHDW_Edit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Bmgl\Forms\BMCL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Bmgl\Forms\BMSFHRSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Bmgl\Forms\BMSFHRFenLei.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Bmgl\IDAL\IBMKHManager.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\DAL\BMKHManager.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\BMFYXMManagerEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\IDAL\IBMXHDWManager.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\DAL\BMXHDWManager.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\IDAL\IBMCLManager.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\IDAL\IBMSFHRManager.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\Common\ProgressHinter.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\BLLSys\AddFYXM.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\BLLSys\GetFYXM.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\BLLSys\GetFYXMMore.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\IBLL\IBMFYXMManager.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\BLL\BMFYXMManager.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\BLL\BMKHManager.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\Model\BMFYXMModel.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\Forms\BMXHDWSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Bmgl\Forms\BMXZQY.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Bmgl\Forms\BMSPSM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Bmgl\Forms\ImportReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Bmgl\BMXHDWManagerEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\IDAL\IBMSCCJManager.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\DAL\BMSCCJManager.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\IDAL\IBMXZQYManager.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\DAL\BMXZQYManager.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\IDAL\IBMCDManager.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\DAL\BMCDManager.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\Common\JinShuiKa.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\BLL\BMSFHRManager.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\IBLL\IBMSFHRManager.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\IBLL\IBMCDManager.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\Model\lastBMJG.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\Model\ImportResult.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\Forms\BMKHSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Bmgl\Forms\BMSPFL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Bmgl\Forms\BMXHDWFenLei.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Bmgl\Forms\BMSPSM_Edit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Bmgl\Forms\BMSFHR.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Bmgl\Forms\BMFYXM_Edit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Bmgl\Factory\BLLFactory.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\BLL\BMCDManager.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\Model\BMSFHRModel.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\Forms\BMKHFenLei.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Bmgl\Model\BMSPSMModel.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\Forms\ExportCode.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Bmgl\Forms\BMGHDWFenLei.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Bmgl\BLLSys\AddSPSM.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\BLLSys\UpdateSPSM.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\BLLSys\DeleteSPSM.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\BLLSys\GetSPSM.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\BLLSys\GetSPSMMore.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\IDAL\IBMCLZLManager.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\DAL\BMCLZLManager.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\CustomException.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\IBLL\IBMXHDWManager.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\IBLL\IBMSPSMManager.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\BLL\BMSPSMManager.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\IDAL\IBMSPManager.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\Forms\BMGHDW_Edit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Bmgl\Forms\BMGHDWSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Bmgl\Forms\BMCDSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Bmgl\BLLSys\AddXZQY.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\BLLSys\UpdateXZQY.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\BLLSys\DeleteXZQY.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\BLLSys\GetXZQY.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\IDAL\IBMGHDWManager.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\DAL\BMGHDWManager.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\Common\GetXmlFilePath.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\Common\ReadWriteXml.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\Common\GetReadWriteXml.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\Common\ImgFilePath.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\Common\CommonFunc.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\BLL\BMXHDWManager.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\IBLL\IBMSCCJManager.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\BLL\BMSCCJManager.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\IBLL\IBMXZQYManager.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\Forms\BMSP_Edit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Bmgl\Forms\BMSPSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Bmgl\BMCLManagerEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\BLL\BMXZQYManager.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\IBLL\IResultManager.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\BLL\ResultManager.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\Model\BMSCCJModel.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\Model\BMXZQYModel.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\Model\BMCDModel.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\Forms\BMSPFLSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Bmgl\Forms\BMSCCJSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Bmgl\Forms\BMCL_Edit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Bmgl\Forms\ImportCode.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Bmgl\Forms\BMFYXMSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Bmgl\BMSFHRManagerEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\IBLL\IBMCLZLManager.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\BLL\BMCLZLManager.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\IBLL\IBMGHDWManager.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\Model\SuccessFlags.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\Model\BMType.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\Model\SeparatorType.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\Model\ResultType.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\Model\DataResult.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\Forms\BMSFHR_Edit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Bmgl\Forms\BMFYXMFenLei.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Bmgl\BMSPSMManagerEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\DAL\BMCLManager.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\BLL\BMCLManager.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\IBLL\IBMCLManager.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\BLL\BMGHDWManager.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\Forms\BMXZQYSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Bmgl\Forms\BMKH_Edit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Bmgl\Forms\BMKH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Bmgl\BMSPFLManagerEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\BMXZQYManagerEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\Forms\BMSP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Bmgl\Forms\BMXZQY_Edit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Bmgl\Forms\BMXZQYFenLei.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Bmgl\DAL\BMSPFLManager.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\Forms\BMCLZLSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Bmgl\BLLSys\GetSPFLMore.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\BLLSys\GetSLV_BY_BM.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\BLLSys\CanUseThisSPFLBM.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\BLLSys\SPFLSelect.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\BLLSys\UpdateDatabaseBySPFL.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\BLLSys\Flbm.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\Common\GetSafeData.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\BLL\BMSPManager.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\Model\BMSPModel.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\Forms\BMFYXM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Bmgl\BMKHManagerEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\DAL\BMSPManager.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\BLLSys\AddKH.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\BLLSys\AddKHAuto.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\BLLSys\GetKH.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\BLLSys\GetKHbySH.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\BLLSys\GetKHMore.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\BLLSys\GetKhbyMcAndShMore.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\BLLSys\AddXHDW.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\BLLSys\GetXHDW.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\BLLSys\GetXHDWbySH.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\BLLSys\GetXHDWMore.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\BLLSys\AddSFHR.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\BLLSys\GetSFHR.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\BLLSys\GetSFHRbySH.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\BLLSys\GetSFHRMore.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\BLLSys\AddCL.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\BLLSys\GetCL.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\BLLSys\GetCLMore.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\BLLSys\GetSPMore.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\BLLSys\GetSP.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\BLLSys\IsNeedImportXTSP.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\BLLSys\ImportXTSP.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\BLLSys\CheckXTSP.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\BLLSys\GetXTCode.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\BLLSys\GetXTSPXX.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\BLLSys\CheckXTSPByName.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\BLLSys\AddSP.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\BLLSys\CheckPermission.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\BLLSys\AdjustTopBM.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\Factory\DALFactory.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\Model\BMXHDWModel.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\BMGHDWManagerEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\DAL\BMFYXMManager.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\BLLSys\AddGHDW.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\BLLSys\AddGHDWAuto.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\BLLSys\GetGHDW.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\BLLSys\GetGHDWbySH.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\BLLSys\GetGHDWMore.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\Model\BMCLModel.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\DAL\BMSFHRManager.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\BLL\BMSPFLManager.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\Resources.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\ShareMethodClass.cs" />
+    <Compile Include="Aisino\Fwkp\Bmgl\IDAL\IBMBaseManager.cs" />
+    <EmbeddedResource Include="Aisino.Fwkp.Bmgl.Forms.BMCL.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Bmgl.Forms.BMKH_Edit.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Bmgl.Forms.BMGHDW_Edit.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Bmgl.Forms.BMSFHRSelect.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Bmgl.Forms.BMGHDW.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Bmgl.Forms.BMCLSelect.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Bmgl.Forms.BMSPFLSelect.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Bmgl.Forms.BMSP_Edit.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Bmgl.Forms.BMSP.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Bmgl.Forms.BMGHDWFenLei.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Bmgl.Forms.BMFYXM_Edit.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Bmgl.Forms.BMFYXMSelect.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Bmgl.Forms.BMSPSMSelect.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Bmgl.Forms.ExportCode.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Bmgl.Forms.BMSPFenLei.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Bmgl.Forms.BMXHDW_Edit.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Bmgl.Forms.ImportCode.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Bmgl.Forms.BMSPFL.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Bmgl.Forms.BMXZQYFenLei.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Bmgl.Forms.BMXHDWFenLei.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Bmgl.Forms.BMCLZLSelect.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Bmgl.Forms.MsgForm.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Bmgl.Forms.BMKHFenLei.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Bmgl.Properties.Resources.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Bmgl.Forms.BMCL_Edit.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Bmgl.Forms.BMSFHRFenLei.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Bmgl.Forms.BMKH.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Bmgl.Forms.BMBase.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Bmgl.Resources.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Bmgl.Forms.BMFYXM.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Bmgl.Forms.BMCLFenLei.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Bmgl.Forms.BMSFHR_Edit.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Bmgl.Forms.BMSFHR.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Bmgl.Forms.BMSPSelect.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Bmgl.Forms.BMGHDWSelect.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Bmgl.Forms.BMXZQY_Edit.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Bmgl.Forms.BMSPSM_Edit.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Bmgl.Forms.BMSPSM.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Bmgl.Forms.ImportReport.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Bmgl.Forms.BMFYXMFenLei.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Bmgl.Forms.BMCDSelect.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Bmgl.Forms.BMXHDW.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Bmgl.Forms.BMSPSMFenLei.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Bmgl.Forms.BMEditBase.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Bmgl.Forms.BMXHDWSelect.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Bmgl.Forms.BMSCCJSelect.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Bmgl.Forms.BMXZQYSelect.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Bmgl.Forms.BMXZQY.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Bmgl.Forms.BMKHSelect.resources" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Aisino.Framework.Dao\Aisino.Framework.Dao.csproj">
+      <Project>{ef96d157-73ba-410c-a2bd-698b4986fd18}</Project>
+      <Name>Aisino.Framework.Dao</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Aisino.Framework.MainForm\Aisino.Framework.MainForm.csproj">
+      <Project>{6ca5bc40-07b1-45fc-8927-58356e838a77}</Project>
+      <Name>Aisino.Framework.MainForm</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Aisino.Framework.Plugin.Core\Aisino.Framework.Plugin.Core.csproj">
+      <Project>{b65bb74a-99d3-4854-8151-a6bd4d4a489a}</Project>
+      <Name>Aisino.Framework.Plugin.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Aisino.FTaxBase\Aisino.FTaxBase.csproj">
+      <Project>{a9935674-60e2-44e1-8785-d391586d31f8}</Project>
+      <Name>Aisino.FTaxBase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Aisino.Fwkp.BusinessObject\Aisino.Fwkp.BusinessObject.csproj">
+      <Project>{75c5c3bc-cb11-4429-b042-46f1baab2fff}</Project>
+      <Name>Aisino.Fwkp.BusinessObject</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,1869 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SQLLIB>
+  <!--删除销项发票-->
+  <SQL id="aisino.fwkp.fpkj.DeleteXXFP">
+    <value>Delete From xxfp WHERE fpzl=@FPZL AND fpdm=@FPDM AND fphm=@FPHM OR fphm &lt;  0 OR fphm &gt; 99999999</value>
+    <type>Text</type>
+    <param name="FPZL" type="AnsiString"></param>
+    <param name="FPDM" type="AnsiString"></param>
+    <param name="FPHM" type="Int32"></param>
+  </SQL>
+
+  <!--查询一条销项发票信息-->
+  <SQL id="aisino.fwkp.fpkj.SelectXXFP_ZL_DM_HM">
+    <value>
+      select  FPZL,FPDM,FPHM,KPJH,XSDJBH,GFMC,GFSH,GFDZDH,GFYHZH,XSBM,YDXS,XFMC,
+      XFSH,XFDZDH,XFYHZH,JMBBH,MW,datetime(KPRQ) KPRQ,HJJE,HJSE,ZYSPMC,SPSM_BM,BZ,KPR,FHR,
+      SKR,DYBZ,QDBZ,ZFBZ,BSBZ,XFBZ,JYM,BSQ,XZBZ,PZLB,PZHM,PZYWH,PZZT,
+      SLV,
+      case  PZRQ when '' then '1899-12-30 23:59:59' else strftime('%Y-%m-%d',PZRQ) end PZRQ,
+      BSZT,
+
+      HXM,SSYF,YYSBZ,
+      JZPZHM,WKBZ,HZTZDH,
+      SYH,SBBZ, CM, DLGRQ,KHYHMC, KHYHZH, TYDH, QYD,ZHD, XHD, MDD, YYZZH,HYBM, XFDZ, XFDH, JQBH, SCCJMC,
+      YSHWXX, SIGN,ZFRQ, WSPZHM,LZDMHM,PZWLYWH,BSRZ,DZSYH,KPSXH,BMBBBH
+      from XXFP
+      where FPZL=@FPZL and FPDM=@FPDM and FPHM = @FPHM
+    </value>
+    <type>Text</type>
+    <param name="FPZL" type="AnsiString"></param>
+    <param name="FPDM" type="AnsiString"></param>
+    <param name="FPHM" type="Int32"></param>
+  </SQL>
+
+  <!--查询一条销项发票信息-->
+  <SQL id="aisino.fwkp.fpkj.SelectXXFP_XSDJBH">
+    <value>
+      select  FPZL,FPDM,FPHM,KPJH,XSDJBH,GFMC,GFSH,GFDZDH,GFYHZH,XSBM,YDXS,XFMC,
+      XFSH,XFDZDH,XFYHZH,JMBBH,MW,datetime(KPRQ) KPRQ,HJJE,HJSE,ZYSPMC,SPSM_BM,BZ,KPR,FHR,
+      SKR,DYBZ,QDBZ,ZFBZ,BSBZ,XFBZ,JYM,BSQ,XZBZ,PZLB,PZHM,PZYWH,PZZT,
+      SLV,
+      case  PZRQ when '' then '1899-12-30 23:59:59' else strftime('%Y-%m-%d',PZRQ) end PZRQ,
+      BSZT,
+
+      HXM,SSYF,YYSBZ,
+      JZPZHM,WKBZ,HZTZDH,
+      SYH,SBBZ, CM, DLGRQ,KHYHMC, KHYHZH, TYDH, QYD,ZHD, XHD, MDD, YYZZH,HYBM, XFDZ, XFDH, JQBH, SCCJMC,
+      YSHWXX, SIGN,ZFRQ, WSPZHM,LZDMHM,PZWLYWH,BSRZ,DZSYH,KPSXH,BMBBBH
+      from XXFP
+      where XSDJBH=@XSDJBH
+    </value>
+    <type>Text</type>
+    <param name="XSDJBH" type="AnsiString"></param>
+  </SQL>
+
+  <!--作废销项发票-->
+  <SQL id="aisino.fwkp.fpkj.ZuoFeiXXFP">
+    <value>
+      Update XXFP SET
+      ZFBZ=@ZFBZ,
+      ZFRQ=@ZFRQ,
+      SIGN=@SIGN,
+      DZSYH=@DZSYH,
+      BSZT=0,
+      BSRZ = ''
+      where FPZL=@FPZL and FPDM=@FPDM and FPHM=@FPHM
+    </value>
+    <type>Text</type>
+    <param name="FPZL" type="AnsiString"></param>
+    <param name="FPDM" type="AnsiString"></param>
+    <param name="FPHM" type="AnsiString"></param>
+    <param name="ZFBZ" type="Boolean"></param>
+    <param name="ZFRQ" type="AnsiString"></param>
+    <param name="SIGN" type="AnsiString"></param>
+    <param name="DZSYH" type="AnsiString"></param>
+  </SQL>
+
+
+  <!--手工上传发票-->
+  <SQL id="aisino.fwkp.fpkj.ManualUpLoadXXFP">
+    <value>
+      Update XXFP SET
+      BSZT=0
+      WHERE BSZT = 2 OR BSZT = 4
+    </value>
+    <type>Text</type>
+  </SQL>
+
+  <!--添加销项发票明细-->
+  <SQL id="aisino.fwkp.fpkj.AddXXFPMX">
+    <value>
+      REPLACE INTO XXFP_MX
+      (FPZL,FPDM,FPHM,FPMXXH,XSDJBH,FPHXZ,JE,SLV,SE ,SPMC,SPSM ,
+      GGXH ,JLDW,SL ,DJ ,HSJBZ,SPBH,DJMXXH, FLBM, XSYH, YHSM, LSLVBS)
+      VALUES
+      (@FPZL,@FPDM,@FPHM,@FPMXXH,@XSDJBH,@FPHXZ,@JE,@SLV,@SE ,@SPMC,@SPSM ,
+      @GGXH ,@JLDW,@SL ,@DJ ,@HSJBZ,@SPBH,@DJMXXH, @FLBM, @XSYH, @YHSM, @LSLVBS)
+    </value>
+    <type>Text</type>
+    <param name="FPZL" type="AnsiString"></param>
+    <param name="FPDM" type="AnsiString"></param>
+    <param name="FPHM" type="AnsiString"></param>
+    <param name="FPMXXH" type="Double"></param>
+    <param name="XSDJBH" type="AnsiString"></param>
+    <param name="FPHXZ" type="Int32"></param>
+    <param name="JE" type="Decimal"></param>
+    <param name="SLV" type="Decimal"></param>
+    <param name="SE" type="Decimal"></param>
+    <param name="SPMC" type="AnsiString"></param>
+    <param name="SPSM" type="AnsiString"></param>
+    <param name="GGXH" type="AnsiString"></param>
+    <param name="JLDW" type="AnsiString"></param>
+    <param name="SL" type="AnsiString"></param>
+    <param name="DJ" type="AnsiString"></param>
+    <param name="HSJBZ" type="Boolean"></param>
+    <param name="SPBH" type="AnsiString"></param>
+    <param name="DJMXXH" type="Int32"></param>
+    
+    <param name="FLBM" type="AnsiString"></param>
+    <param name="XSYH" type="Int32"></param>
+    <param name="YHSM" type="AnsiString"></param>
+    <param name="LSLVBS" type="AnsiString"></param>
+  </SQL>
+  
+  <!--删除销项发票明细-->
+  <SQL id="aisino.fwkp.fpkj.DeleteXXFPMX">
+    <value>
+      delete from XXFP_MX
+      where FPZL=@FPZL and FPDM=@FPDM and FPHM=@FPHM and FPMXXH=@FPMXXH
+    </value>
+    <type>Text</type>
+    <param name="FPZL" type="AnsiString"></param>
+    <param name="FPDM" type="AnsiString"></param>
+    <param name="FPHM" type="AnsiString"></param>
+    <param name="FPMXXH" type="Double"></param>
+  </SQL>
+
+  <!--查询一条销项发票明细记录-->
+  <SQL id="aisino.fwkp.fpkj.SelectXXFPMX">
+    <value>
+      select  FPZL,FPDM,FPHM,FPMXXH,XSDJBH,FPHXZ,JE,SLV,SE,SPMC,SPSM,GGXH,JLDW,SL,DJ,HSJBZ,SPBH,DJMXXH, FLBM, XSYH, YHSM, LSLVBS from XXFP_MX
+      where FPZL=@FPZL and FPDM=@FPDM and FPHM=@FPHM and FPMXXH=@FPMXXH
+    </value>
+    <type>Text</type>
+    <param name="FPZL" type="AnsiString"></param>
+    <param name="FPDM" type="AnsiString"></param>
+    <param name="FPHM" type="AnsiString"></param>
+    <param name="FPMXXH" type="Double"></param>
+  </SQL>
+
+  <SQL id="aisino.fwkp.fpkj.SelectXXFPMXList">
+    <value>
+      select  FPZL,FPDM,FPHM,FPMXXH,XSDJBH,FPHXZ,JE,SLV,SE,SPMC,SPSM,GGXH,JLDW,SL,DJ,HSJBZ,SPBH,DJMXXH, FLBM, XSYH, YHSM, LSLVBS from XXFP_MX
+      where FPZL=@FPZL and FPDM=@FPDM and FPHM=@FPHM Order By FPMXXH Asc
+    </value>
+    <type>Text</type>
+    <param name="FPZL" type="AnsiString"></param>
+    <param name="FPDM" type="AnsiString"></param>
+    <param name="FPHM" type="AnsiString"></param>
+  </SQL>
+
+  <!--添加销项发票明细清单-->
+  <SQL id="aisino.fwkp.fpkj.AddXXFPMXQD">
+    <value>
+      REPLACE INTO XXFP_XHQD
+      (FPZL,FPDM,FPHM,FPMXXH,XSDJBH,FPHXZ,JE,SLV,SE ,SPMC,SPSM ,
+      GGXH ,JLDW,SL ,DJ ,HSJBZ,SPBH,DJMXXH, FLBM, XSYH, YHSM, LSLVBS)
+      VALUES
+      (@FPZL,@FPDM,@FPHM,@FPMXXH,@XSDJBH,@FPHXZ,@JE,@SLV,@SE ,@SPMC,@SPSM ,
+      @GGXH ,@JLDW,@SL ,@DJ ,@HSJBZ,@SPBH,@DJMXXH, @FLBM, @XSYH, @YHSM, @LSLVBS)
+    </value>
+    <type>Text</type>
+    <param name="FPZL" type="AnsiString"></param>
+    <param name="FPDM" type="AnsiString"></param>
+    <param name="FPHM" type="AnsiString"></param>
+    <param name="FPMXXH" type="Double"></param>
+    <param name="XSDJBH" type="AnsiString"></param>
+    <param name="FPHXZ" type="Int32"></param>
+    <param name="JE" type="Decimal"></param>
+    <param name="SLV" type="Decimal"></param>
+    <param name="SE" type="Decimal"></param>
+    <param name="SPMC" type="AnsiString"></param>
+    <param name="SPSM" type="AnsiString"></param>
+    <param name="GGXH" type="AnsiString"></param>
+    <param name="JLDW" type="AnsiString"></param>
+    <param name="SL" type="AnsiString"></param>
+    <param name="DJ" type="AnsiString"></param>
+    <param name="HSJBZ" type="Boolean"></param>
+    <param name="SPBH" type="AnsiString"></param>
+    <param name="DJMXXH" type="Int32"></param>
+    
+    <param name="FLBM" type="AnsiString"></param>
+    <param name="XSYH" type="Int32"></param>
+    <param name="YHSM" type="AnsiString"></param>
+    <param name="LSLVBS" type="AnsiString"></param>
+  </SQL>
+
+  <!--删除销项发票明细清单-->
+  <SQL id="aisino.fwkp.fpkj.DeleteXXFPMXQD">
+    <value>
+      delete from XXFP_XHQD
+      where FPZL=@FPZL and FPDM=@FPDM and FPHM=@FPHM and FPMXXH=@FPMXXH
+    </value>
+    <type>Text</type>
+    <param name="FPZL" type="AnsiString"></param>
+    <param name="FPDM" type="AnsiString"></param>
+    <param name="FPHM" type="AnsiString"></param>
+    <param name="FPMXXH" type="Double"></param>
+  </SQL>
+
+  <!--查询一条销项发票明细清单记录-->
+  <SQL id="aisino.fwkp.fpkj.SelectXXFPMXQD">
+    <value>
+      select  FPZL,FPDM,FPHM,FPMXXH,XSDJBH,FPHXZ,JE,SLV,SE,SPMC,SPSM,GGXH,JLDW,SL,DJ,HSJBZ,SPBH,DJMXXH, FLBM, XSYH, YHSM, LSLVBS from XXFP_MXQD
+      where FPZL=@FPZL and FPDM=@FPDM and FPHM=@FPHM and FPMXXH=@FPMXXH
+    </value>
+    <type>Text</type>
+    <param name="FPZL" type="AnsiString"></param>
+    <param name="FPDM" type="AnsiString"></param>
+    <param name="FPHM" type="AnsiString"></param>
+    <param name="FPMXXH" type="Double"></param>
+  </SQL>
+
+  <!--查询一条销项发票明细清单记录列表-->
+  <SQL id="aisino.fwkp.fpkj.SelectXXFPMXQDList">
+    <value>
+      select  FPZL,FPDM,FPHM,FPMXXH,XSDJBH,FPHXZ,JE,SLV,SE,SPMC,SPSM,GGXH,JLDW,SL,DJ,HSJBZ,SPBH,DJMXXH, FLBM, XSYH, YHSM, LSLVBS from XXFP_XHQD
+      where FPZL=@FPZL and FPDM=@FPDM and FPHM=@FPHM Order By FPMXXH ASC
+    </value>
+    <type>Text</type>
+    <param name="FPZL" type="AnsiString"></param>
+    <param name="FPDM" type="AnsiString"></param>
+    <param name="FPHM" type="Int32"></param>
+  </SQL>
+
+  <!--销货清单明细-->
+  <SQL id="aisino.fwkp.fpkj.XHQDMX">
+    <value>
+      REPLACE INTO XXFP_XHQD
+      (FPZL,FPDM,FPHM,XH,FPMXXH,XSDJBH,FPHXZ,JE,SLV,SE ,SPMC,SPSM ,
+      GGXH ,JLDW,SL ,DJ ,HSJBZ,SPBH,DJMXXH, FLBM, XSYH, YHSM, LSLVBS)
+      VALUES
+      (@FPZL,@FPDM,@FPHM,@XH,@FPMXXH,@XSDJBH,@FPHXZ,@JE,@SLV,@SE ,@SPMC,@SPSM ,
+      @GGXH ,@JLDW,@SL ,@DJ ,@HSJBZ,@SPBH,@DJMXXH, @FLBM, @XSYH, @YHSM, @LSLVBS)
+    </value>
+    <type>Text</type>
+    <param name="FPZL" type="AnsiString"></param>
+    <param name="FPDM" type="AnsiString"></param>
+    <param name="FPHM" type="AnsiString"></param>
+    <param name="XH" type="Double"></param>
+    <param name="XSDJBH" type="AnsiString"></param>
+    <param name="FPHXZ" type="Int32"></param>
+    <param name="JE" type="Decimal"></param>
+    <param name="SLV" type="Decimal"></param>
+    <param name="SE" type="Decimal"></param>
+    <param name="SPMC" type="AnsiString"></param>
+    <param name="SPSM" type="AnsiString"></param>
+    <param name="GGXH" type="AnsiString"></param>
+    <param name="JLDW" type="AnsiString"></param>
+    <param name="SL" type="AnsiString"></param>
+    <param name="DJ" type="AnsiString"></param>
+    <param name="HSJBZ" type="Boolean"></param>
+    <param name="SPBH" type="AnsiString"></param>
+    <param name="DJMXXH" type="Int32"></param>
+
+    <param name="FLBM" type="AnsiString"></param>
+    <param name="XSYH" type="Int32"></param>
+    <param name="YHSM" type="AnsiString"></param>
+    <param name="LSLVBS" type="AnsiString"></param>
+  </SQL>
+
+  <!--查询发票信息  设置查询条件以后执行 WHERE  KPRQ >= @ksrq and KPRQ <= !jsrq order by KPRQ DESC-->
+  <SQL id="aisino.fwkp.fpkj.SelectFPXX_TiaoJian">
+    <var name="condition" value=
+         "
+          KPRQ &gt;=@KsRq  
+          and
+          KPRQ &lt;=@JsRq   
+          and 
+          case when(@FPZL='') then 1=1 else  FPZL = @FPZL end
+          and 
+          case when(@AdminBz=1) then 1=1 else KPR=@Admin end
+          and 
+          case  when  (@BSZT1= 0 and @BSZT2 = -1 ) then BSZT = @BSZT1   
+                when  (@BSZT1= -1 and @BSZT2 = 4 ) then BSZT = @BSZT2
+                when  (@BSZT1= 0 and @BSZT2 = 4 ) then  BSZT = @BSZT1 or BSZT = @BSZT2         
+                else 1= 1 end   
+          and
+          (
+            case when(@FPDM='') then 1= 1 else FPDM = @FPDM end
+            or
+            case when(@FPHM='') then 1=1 else FPHM = @FPHM end
+            or
+            case when (@GFMC = '') then 1=1 else GFMC = @GFMC end
+            or
+            case when (@GFSH='') then 1=1 else GFSH = @GFSH end
+         )
+           "/>
+    <value>
+      select count(*) FROM XXFP WHERE #condition#;
+
+      SELECT   case  FPZL || substr(YYSBZ, 6, 1) when 'c0'  then '普通发票'
+      when 'c'  then '普通发票'
+      when 'c1'  then '农产品销售发票'
+      when 'c2'  then '收购发票'
+      when 's0' then '专用发票'
+      when 's' then '专用发票'
+      when 'j0' then '机动车销售统一发票'
+      when 'j' then '机动车销售统一发票'
+      when 'f0' then '货物运输业增值税专用发票'
+      when 'f' then '货物运输业增值税专用发票'
+      when 'p'  then '电子增值税普通发票'
+      when 'p0'  then '电子增值税普通发票'
+      when 'q'  then '增值税普通发票(卷票)'
+      when 'q0'  then '增值税普通发票(卷票)'
+      else  '未知'
+      end FPZL,
+      FPDM,
+      case length(FPHM) when 1 then '0000000'||FPHM
+      when 2 then '000000'||fphm
+      when 3 then '00000'||fphm
+      when 4 then '0000'||fphm
+      when 5 then '000'||fphm
+      when 6 then '00'||fphm
+      when 7 then '0'||fphm
+      else lower(FPHM)
+      end FPHM,
+      KPJH,GFMC,GFSH,GFDZDH,GFYHZH,JMBBH,MW,datetime(KPRQ) KPRQ,
+      case BSZT when 0 then '未报送'
+      when 1 then '已报送'
+      when 2 then '报送失败'
+      when 3 then '报送中'
+      when 4 then '验签失败'
+      when -1 then ''
+      end BSZT,BSRZ,
+
+      HJJE,HJSE,ZYSPMC,SPSM,BZ,KPR,SKR,FHR,
+
+      YYSBZ,SSYF,XSDJBH,YDXS,XSBM,XFMC,XFSH,XFDZDH,XFYHZH,BSBZ,JYM,
+      BSQ,XZBZ,case lower(PZHM) when '-1' then '' else lower(PZHM) end PZHM,
+      case lower(PZZT)
+      when '0' then '未审核'
+      when '1' then '已审核'
+      when '2' then '已记账'
+      when '3' then '暂存'
+      else ''
+      end PZZT,PZWLYWH,
+      SBBZ, CM, DLGRQ,KHYHMC, KHYHZH, TYDH, QYD,ZHD, XHD, MDD, YYZZH,HYBM, XFDZ, XFDH, JQBH, SCCJMC, YSHWXX,SIGN,ZFRQ, WSPZHM,
+
+      case  strftime('%Y-%m-%d',PZRQ) when '1899-12-30' then '' else strftime('%Y-%m-%d',PZRQ) end PZRQ,
+
+      HXM,case PZLB when '' then '' else PZLB end PZLB,
+      HZTZDH,
+      case  lower(FPZL || ifnull(SLV, '2'))
+      when  's2' then '多税率'
+      when  'c2' then '多税率'
+      when  'p2' then '多税率'
+      else  lower(slv)
+      end SLV,
+      case DYBZ when 0 then '否' else '是' end DYBZ,
+      case ZFBZ when 0 then '否' else '是' end ZFBZ,
+      case QDBZ when 0 then '否' else '是' end QDBZ,
+      case XFBZ when 0 then '否' else '是' end XFBZ,
+      case WKBZ when 0 then '否' else '是' end WKBZ,
+      DZSYH,KPSXH,BMBBBH
+
+      FROM XXFP  WHERE #condition#
+      Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+    </value>
+    <type>Text</type>
+    <param name="KsRq" type="AnsiString"></param>
+    <param name="JsRq" type="AnsiString"></param>
+    <param name="FPZL" type="AnsiString"></param>
+    <param name="AdminBz" type="Int32"></param>
+    <param name="Admin" type="AnsiString"></param>
+    <param name="BSZT1" type="Int32"></param>
+    <param name="BSZT2" type="Int32"></param>
+    <param name="FPDM" type="AnsiString"></param>
+    <param name="FPHM" type="AnsiString"></param>
+    <param name="GFMC" type="AnsiString"></param>
+    <param name="GFSH" type="AnsiString"></param>
+  </SQL>
+
+
+
+  <!--查询发票信息  设置查询条件以后执行 WHERE  KPRQ >= @ksrq and KPRQ <= !jsrq order by KPRQ DESC-->
+  <SQL id="aisino.fwkp.fpkj.SelectFPXX_TiaoJian_Date">
+    <var name="condition" value=
+         "
+          KPRQ &gt;=@KsRq  
+          and
+          KPRQ &lt;=@JsRq   
+          and 
+          case when(@FPZL='') then 1=1 else  FPZL = @FPZL end
+          and 
+          case when(@AdminBz=1) then 1=1 else KPR=@Admin end
+          and 
+          case  when  (@BSZT1= 0 and @BSZT2 = -1 ) then BSZT = @BSZT1   
+                when  (@BSZT1= -1 and @BSZT2 = 4 ) then BSZT = @BSZT2
+                when  (@BSZT1= 0 and @BSZT2 = 4 ) then  BSZT = @BSZT1 or BSZT = @BSZT2         
+                else 1= 1 end   
+          and
+          (
+            case when(@FPDM='') then 1= 1 else FPDM = @FPDM end
+            or
+            case when(@FPHM='') then 1=1 else FPHM = @FPHM end
+            or
+            case when (@GFMC = '') then 1=1 else GFMC = @GFMC end
+            or
+            case when (@GFSH='') then 1=1 else GFSH = @GFSH end
+         )
+           "/>
+    <value>
+      select count(*) FROM XXFP WHERE #condition#;
+
+      SELECT   case  FPZL || substr(YYSBZ, 6, 1) when 'c0'  then '普通发票'
+      when 'c'  then '普通发票'
+      when 'c1'  then '农产品销售发票'
+      when 'c2'  then '收购发票'
+      when 's0' then '专用发票'
+      when 's' then '专用发票'
+      when 'j0' then '机动车销售统一发票'
+      when 'j' then '机动车销售统一发票'
+      when 'f0' then '货物运输业增值税专用发票'
+      when 'f' then '货物运输业增值税专用发票'
+      when 'p'  then '电子增值税普通发票'
+      when 'p0'  then '电子增值税普通发票'
+      when 'q'  then '增值税普通发票(卷票)'
+      when 'q0'  then '增值税普通发票(卷票)'
+      else  '未知'
+      end FPZL,
+      FPDM,
+      case length(FPHM) when 1 then '0000000'||FPHM
+      when 2 then '000000'||fphm
+      when 3 then '00000'||fphm
+      when 4 then '0000'||fphm
+      when 5 then '000'||fphm
+      when 6 then '00'||fphm
+      when 7 then '0'||fphm
+      else lower(FPHM)
+      end FPHM,
+      KPJH,GFMC,GFSH,GFDZDH,GFYHZH,JMBBH,MW,datetime(KPRQ) KPRQ,
+      case BSZT when 0 then '未报送'
+      when 1 then '已报送'
+      when 2 then '报送失败'
+      when 3 then '报送中'
+      when 4 then '验签失败'
+      when -1 then ''
+      end BSZT,BSRZ,
+
+      HJJE,HJSE,ZYSPMC,SPSM,BZ,KPR,SKR,FHR,
+
+      YYSBZ,SSYF,XSDJBH,YDXS,XSBM,XFMC,XFSH,XFDZDH,XFYHZH,BSBZ,JYM,
+      BSQ,XZBZ,case lower(PZHM) when '-1' then '' else lower(PZHM) end PZHM,
+      case lower(PZZT)
+      when '0' then '未审核'
+      when '1' then '已审核'
+      when '2' then '已记账'
+      when '3' then '暂存'
+      else ''
+      end PZZT,PZWLYWH,
+      SBBZ, CM, DLGRQ,KHYHMC, KHYHZH, TYDH, QYD,ZHD, XHD, MDD, YYZZH,HYBM, XFDZ, XFDH, JQBH, SCCJMC, YSHWXX,SIGN,ZFRQ, WSPZHM,
+
+      case  strftime('%Y-%m-%d',PZRQ) when '1899-12-30' then '' else strftime('%Y-%m-%d',PZRQ) end PZRQ,
+
+      HXM,case PZLB when '' then '' else PZLB end PZLB,
+      HZTZDH,
+      case  lower(FPZL || ifnull(SLV, '2'))
+      when  's2' then '多税率'
+      when  'c2' then '多税率'
+      when  'p2' then '多税率'
+      else  lower(slv)
+      end SLV,
+      case DYBZ when 0 then '否' else '是' end DYBZ,
+      case ZFBZ when 0 then '否' else '是' end ZFBZ,
+      case QDBZ when 0 then '否' else '是' end QDBZ,
+      case XFBZ when 0 then '否' else '是' end XFBZ,
+      case WKBZ when 0 then '否' else '是' end WKBZ,
+      DZSYH,KPSXH,BMBBBH
+
+      FROM XXFP  WHERE #condition#
+      Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+    </value>
+    <type>Text</type>
+    <param name="KsRq" type="AnsiString"></param>
+    <param name="JsRq" type="AnsiString"></param>
+    <param name="FPZL" type="AnsiString"></param>
+    <param name="AdminBz" type="Int32"></param>
+    <param name="Admin" type="AnsiString"></param>
+    <param name="BSZT1" type="Int32"></param>
+    <param name="BSZT2" type="Int32"></param>
+    <param name="FPDM" type="AnsiString"></param>
+    <param name="FPHM" type="AnsiString"></param>
+    <param name="GFMC" type="AnsiString"></param>
+    <param name="GFSH" type="AnsiString"></param>
+  </SQL>
+
+  <!--查询发票信息  设置查询条件以后执行 WHERE  KPRQ >= @ksrq and KPRQ <= !jsrq order by KPRQ DESC-->
+  <SQL id="aisino.fwkp.fpkj.SelectFPXX_TiaoJian_QuickSearch">
+    <var name="condition" value=
+         "
+            case when(@FPDM='') then 1= 1 else FPDM = @FPDM end
+            or
+            case when(@FPHM='') then 1=1 else FPHM = @FPHM end
+            or
+            case when (@GFMC = '') then 1=1 else GFMC = @GFMC end
+            or
+            case when (@GFSH='') then 1=1 else GFSH = @GFSH end
+           "/>
+    <value>
+      select count(*) FROM XXFP WHERE #condition#;
+
+      SELECT   case  FPZL || substr(YYSBZ, 6, 1) when 'c0'  then '普通发票'
+      when 'c'  then '普通发票'
+      when 'c1'  then '农产品销售发票'
+      when 'c2'  then '收购发票'
+      when 's0' then '专用发票'
+      when 's' then '专用发票'
+      when 'j0' then '机动车销售统一发票'
+      when 'j' then '机动车销售统一发票'
+      when 'f0' then '货物运输业增值税专用发票'
+      when 'f' then '货物运输业增值税专用发票'
+      when 'p'  then '电子增值税普通发票'
+      when 'p0'  then '电子增值税普通发票'
+      when 'q'  then '增值税普通发票(卷票)'
+      when 'q0'  then '增值税普通发票(卷票)'
+      else  '未知'
+      end FPZL,
+      FPDM,
+      case length(FPHM) when 1 then '0000000'||FPHM
+      when 2 then '000000'||fphm
+      when 3 then '00000'||fphm
+      when 4 then '0000'||fphm
+      when 5 then '000'||fphm
+      when 6 then '00'||fphm
+      when 7 then '0'||fphm
+      else lower(FPHM)
+      end FPHM,
+      KPJH,GFMC,GFSH,GFDZDH,GFYHZH,JMBBH,MW,datetime(KPRQ) KPRQ,
+      case BSZT when 0 then '未报送'
+      when 1 then '已报送'
+      when 2 then '报送失败'
+      when 3 then '报送中'
+      when 4 then '验签失败'
+      when -1 then ''
+      end BSZT,BSRZ,
+
+      HJJE,HJSE,ZYSPMC,SPSM,BZ,KPR,SKR,FHR,
+
+      YYSBZ,SSYF,XSDJBH,YDXS,XSBM,XFMC,XFSH,XFDZDH,XFYHZH,BSBZ,JYM,
+      BSQ,XZBZ,case lower(PZHM) when '-1' then '' else lower(PZHM) end PZHM,
+      case lower(PZZT)
+      when '0' then '未审核'
+      when '1' then '已审核'
+      when '2' then '已记账'
+      when '3' then '暂存'
+      else ''
+      end PZZT,PZWLYWH,
+      SBBZ, CM, DLGRQ,KHYHMC, KHYHZH, TYDH, QYD,ZHD, XHD, MDD, YYZZH,HYBM, XFDZ, XFDH, JQBH, SCCJMC, YSHWXX,SIGN,ZFRQ, WSPZHM,
+
+      case  strftime('%Y-%m-%d',PZRQ) when '1899-12-30' then '' else strftime('%Y-%m-%d',PZRQ) end PZRQ,
+
+      HXM,case PZLB when '' then '' else PZLB end PZLB,
+      HZTZDH,
+      case  lower(FPZL || ifnull(SLV, '2'))
+      when  's2' then '多税率'
+      when  'c2' then '多税率'
+      when  'p2' then '多税率'
+      else  lower(slv)
+      end SLV,
+      case DYBZ when 0 then '否' else '是' end DYBZ,
+      case ZFBZ when 0 then '否' else '是' end ZFBZ,
+      case QDBZ when 0 then '否' else '是' end QDBZ,
+      case XFBZ when 0 then '否' else '是' end XFBZ,
+      case WKBZ when 0 then '否' else '是' end WKBZ,
+      DZSYH,KPSXH,BMBBBH
+
+      FROM XXFP  WHERE #condition#
+      Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+    </value>
+    <type>Text</type>
+    <param name="FPDM" type="AnsiString"></param>
+    <param name="FPHM" type="AnsiString"></param>
+    <param name="GFMC" type="AnsiString"></param>
+    <param name="GFSH" type="AnsiString"></param>
+  </SQL>
+  
+  <!--查询发票信息  设置查询条件以后执行 WHERE  KPRQ >= @ksrq and KPRQ <= !jsrq order by KPRQ DESC-->
+  <SQL id="aisino.fwkp.fpkj.SelectFPXX_TiaoJianSort">
+    <var name="condition" value=
+         "
+          KPRQ &gt;=@KsRq  
+          and
+          KPRQ &lt;=@JsRq   
+          and 
+          case when(@FPZL='') then 1=1 else  FPZL = @FPZL end
+          and 
+          case when(@AdminBz=1) then 1=1 else KPR=@Admin end
+          and 
+          case  when  (@BSZT1= 0 and @BSZT2 = -1 ) then BSZT = @BSZT1   
+                when  (@BSZT1= -1 and @BSZT2 = 4 ) then BSZT = @BSZT2
+                when  (@BSZT1= 0 and @BSZT2 = 4 ) then  BSZT = @BSZT1 or BSZT = @BSZT2         
+                else 1= 1 end   
+          and
+          (
+            FPDM Like @FPDM
+            or
+            FPHM Like @FPHM
+            or
+            GFMC Like @GFMC
+            or
+            GFSH Like @GFSH
+         )
+           "/>
+    <value>
+      select count(*) FROM XXFP WHERE #condition#;
+
+      SELECT   case  FPZL || substr(YYSBZ, 6, 1) when 'c0'  then '普通发票'
+      when 'c'  then '普通发票'
+      when 'c1'  then '农产品销售发票'
+      when 'c2'  then '收购发票'
+      when 's0' then '专用发票'
+      when 's' then '专用发票'
+      when 'j0' then '机动车销售统一发票'
+      when 'j' then '机动车销售统一发票'
+      when 'f0' then '货物运输业增值税专用发票'
+      when 'f' then '货物运输业增值税专用发票'
+      when 'p'  then '电子增值税普通发票'
+      when 'p0'  then '电子增值税普通发票'
+      when 'q'  then '增值税普通发票(卷票)'
+      when 'q0'  then '增值税普通发票(卷票)'
+      else  '未知'
+      end FPZL,
+      FPDM,
+      case length(FPHM) when 1 then '0000000'||FPHM
+      when 2 then '000000'||fphm
+      when 3 then '00000'||fphm
+      when 4 then '0000'||fphm
+      when 5 then '000'||fphm
+      when 6 then '00'||fphm
+      when 7 then '0'||fphm
+      else lower(FPHM)
+      end FPHM,
+      KPJH,GFMC,GFSH,GFDZDH,GFYHZH,JMBBH,MW,datetime(KPRQ) KPRQ,
+      case BSZT when 0 then '未报送'
+      when 1 then '已报送'
+      when 2 then '报送失败'
+      when 3 then '报送中'
+      when 4 then '验签失败'
+      when -1 then ''
+      end BSZT,BSRZ,
+
+      HJJE,HJSE,ZYSPMC,SPSM,BZ,KPR,SKR,FHR,
+
+      YYSBZ,SSYF,XSDJBH,YDXS,XSBM,XFMC,XFSH,XFDZDH,XFYHZH,BSBZ,JYM,
+      BSQ,XZBZ,case lower(PZHM) when '-1' then '' else lower(PZHM) end PZHM,
+      case lower(PZZT)
+      when '0' then '未审核'
+      when '1' then '已审核'
+      when '2' then '已记账'
+      when '3' then '暂存'
+      else ''
+      end PZZT,PZWLYWH,
+      SBBZ, CM, DLGRQ,KHYHMC, KHYHZH, TYDH, QYD,ZHD, XHD, MDD, YYZZH,HYBM, XFDZ, XFDH, JQBH, SCCJMC, YSHWXX,SIGN,ZFRQ, WSPZHM,
+
+      case  strftime('%Y-%m-%d',PZRQ) when '1899-12-30' then '' else strftime('%Y-%m-%d',PZRQ) end PZRQ,
+
+      HXM,case PZLB when '' then '' else PZLB end PZLB,
+      HZTZDH,
+      case  lower(FPZL || ifnull(SLV, '2'))
+      when  's2' then '多税率'
+      when  'c2' then '多税率'
+      when  'p2' then '多税率'
+      else  lower(slv)
+      end SLV,
+      case DYBZ when 0 then '否' else '是' end DYBZ,
+      case ZFBZ when 0 then '否' else '是' end ZFBZ,
+      case QDBZ when 0 then '否' else '是' end QDBZ,
+      case XFBZ when 0 then '否' else '是' end XFBZ,
+      case WKBZ when 0 then '否' else '是' end WKBZ,
+      DZSYH,KPSXH,BMBBBH
+
+      FROM XXFP  WHERE #condition# Order by Kprq desc
+      Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+    </value>
+    <type>Text</type>
+    <param name="KsRq" type="AnsiString"></param>
+    <param name="JsRq" type="AnsiString"></param>
+    <param name="FPZL" type="AnsiString"></param>
+    <param name="AdminBz" type="Int32"></param>
+    <param name="Admin" type="AnsiString"></param>
+    <param name="BSZT1" type="Int32"></param>
+    <param name="BSZT2" type="Int32"></param>
+    <param name="FPDM" type="AnsiString"></param>
+    <param name="FPHM" type="AnsiString"></param>
+    <param name="GFMC" type="AnsiString"></param>
+    <param name="GFSH" type="AnsiString"></param>
+  </SQL>
+  
+  <!--查询已开可以作废发票数目 -->
+  <SQL id="aisino.fwkp.fpkj.SelectFPXX_YiKaiFaPiaoZuoFeiCount">
+    <var name="condition" value=
+         "ZFBZ=0
+          and
+          BSBZ=0 
+          and 
+          fpzl != 'p'
+          and
+          SSYF = @Date
+          and
+          case when(@AdminBz=1) then 1=1 else KPR=@Admin or kpr='' end
+    "/>
+    <value>
+      select count(*)  NUM FROM XXFP WHERE #condition#;
+    </value>
+    <type>Text</type>
+    <param name="AdminBz" type="Int32"></param>
+    <param name="Admin" type="AnsiString"></param>
+    <param name="Date" type="Int32"></param>
+  </SQL>
+
+
+
+  <!--查询已开可以作废发票信息 -->
+  <SQL id="aisino.fwkp.fpkj.SelectFPXX_YiKaiFaPiaoZuoFei">
+    <var name="condition" value=
+         "ZFBZ=0
+          and
+          BSBZ=0 
+          and
+           KPRQ &gt;=@KsRq
+          and
+           KPRQ &lt;=@JsRq
+          and
+          fpzl != 'p'
+          and 
+          case when @FPZL ='' then 1= 1 else FPZL = @FPZL end                 
+          and 
+          case when(@AdminBz=1) then 1=1 else KPR=@Admin or kpr='' end
+          and 
+          case  when  (@BSZT = 4) then BSZT = @BSZT          
+                else 1= 1 end  
+          and
+          (
+            case when(@FPDM='') then 1= 1 else FPDM = @FPDM end
+            or
+            case when(@FPHM='') then 1=1 else FPHM = @FPHM end
+            or
+            case when (@GFMC = '') then 1=1 else GFMC = @GFMC end
+            or
+            case when (@GFSH='') then 1=1 else GFSH = @GFSH end
+   
+         )
+    "/>
+    <value>
+      select count(*) FROM XXFP WHERE #condition#;
+
+      SELECT   case FPZL || substr(YYSBZ, 6, 1) when 'c0'  then '普通发票'
+      when 'c'  then '普通发票'
+      when 'c1'  then '农产品销售发票'
+      when 'c2'  then '收购发票'
+      when 's0' then '专用发票'
+      when 's' then '专用发票'
+      when 'j0' then '机动车销售统一发票'
+      when 'j' then '机动车销售统一发票'
+      when 'f0' then '货物运输业增值税专用发票'
+      when 'f' then '货物运输业增值税专用发票'
+      when 'q'  then '增值税普通发票(卷票)'
+      when 'q0'  then '增值税普通发票(卷票)'
+      else  '未知'
+      end FPZL,
+      FPDM,
+      case length(FPHM) when 1 then '0000000'||FPHM
+      when 2 then '000000'||fphm
+      when 3 then '00000'||fphm
+      when 4 then '0000'||fphm
+      when 5 then '000'||fphm
+      when 6 then '00'||fphm
+      when 7 then '0'||fphm
+      else lower(FPHM)
+      end FPHM,
+      KPJH,GFMC,GFSH,GFDZDH,GFYHZH,JMBBH,MW,datetime(KPRQ) KPRQ,
+      case BSZT when 0 then '未报送'
+      when 1 then '已报送'
+      when 2 then '报送失败'
+      when 3 then '报送中'
+      when 4 then '验签失败'
+      when -1 then ''
+      end BSZT,BSRZ,
+      HJJE,HJSE,ZYSPMC,SPSM,BZ,KPR,SKR,FHR,
+
+      SBBZ, CM, DLGRQ,KHYHMC, KHYHZH, TYDH, QYD,ZHD, XHD, MDD, YYZZH,HYBM, XFDZ, XFDH, JQBH, SCCJMC, YSHWXX,SIGN,ZFRQ, WSPZHM,
+
+      YYSBZ,SSYF,XSDJBH,YDXS,XSBM,XFMC,XFSH,XFDZDH,XFYHZH,BSBZ,JYM,LZDMHM,
+      BSQ,XZBZ,
+      case lower(PZHM) when '-1' then '' else lower(PZHM) end PZHM,
+      case lower(PZZT)
+      when '0' then '未审核'
+      when '1' then '已审核'
+      when '2' then '已记账'
+      when '3' then '暂存'
+      else ''
+      end PZZT,PZWLYWH,PZYWH,KPSXH,DZSYH,
+      case  strftime('%Y-%m-%d',PZRQ) when '1899-12-30' then '' else strftime('%Y-%m-%d',PZRQ) end PZRQ,
+      case PZLB when '' then '' else PZLB end PZLB,
+      HZTZDH,HXM,
+      case  lower(FPZL || ifnull(SLV, '2'))
+      when  's2' then '多税率'
+      when  'c2' then '多税率'
+      when  'p2' then '多税率'
+      else  lower(slv)
+      end SLV,
+      case DYBZ when 0 then '否' else '是' end DYBZ,
+      case ZFBZ when 0 then '否' else '是' end ZFBZ,
+      case QDBZ when 0 then '否' else '是' end QDBZ,
+      case XFBZ when 0 then '否' else '是' end XFBZ,
+      case WKBZ when 0 then '否' else '是' end WKBZ,
+      BMBBBH,SPSP_BM
+      FROM XXFP  WHERE #condition#
+      Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+
+    </value>
+    <type>Text</type>
+    <param name="KsRq" type="AnsiString"></param>
+    <param name="JsRq" type="AnsiString"></param>
+    <param name="FPZL" type="AnsiString"></param>
+    <param name="AdminBz" type="Int32"></param>
+    <param name="Admin" type="AnsiString"></param>
+    <param name="FPDM" type="AnsiString"></param>
+    <param name="FPHM" type="AnsiString"></param>
+    <param name="GFMC" type="AnsiString"></param>
+    <param name="GFSH" type="AnsiString"></param>
+    <param name="BSZT" type="Int32"></param>
+  </SQL>
+
+  <!--查询已开可以作废发票信息 -->
+  <SQL id="aisino.fwkp.fpkj.SelectFPXX_YiKaiFaPiaoZuoFei_Date">
+    <var name="condition" value=
+         "ZFBZ=0
+          and
+          BSBZ=0 
+          and
+           KPRQ &gt;=@KsRq
+          and
+           KPRQ &lt;=@JsRq
+          and
+          fpzl != 'p'
+          and 
+          case when @FPZL ='' then 1= 1 else FPZL = @FPZL end                 
+          and 
+          case when(@AdminBz=1) then 1=1 else KPR=@Admin or kpr=''end
+          and 
+          case  when  (@BSZT = 4) then BSZT = @BSZT          
+                else 1= 1 end 
+    "/>
+    <value>
+      select count(*) FROM XXFP WHERE #condition#;
+
+      SELECT   case FPZL || substr(YYSBZ, 6, 1) when 'c0'  then '普通发票'
+      when 'c'  then '普通发票'
+      when 'c1'  then '农产品销售发票'
+      when 'c2'  then '收购发票'
+      when 's0' then '专用发票'
+      when 's' then '专用发票'
+      when 'j0' then '机动车销售统一发票'
+      when 'j' then '机动车销售统一发票'
+      when 'f0' then '货物运输业增值税专用发票'
+      when 'f' then '货物运输业增值税专用发票'
+      when 'q'  then '增值税普通发票(卷票)'
+      when 'q0'  then '增值税普通发票(卷票)'
+      else  '未知'
+      end FPZL,
+      FPDM,
+      case length(FPHM) when 1 then '0000000'||FPHM
+      when 2 then '000000'||fphm
+      when 3 then '00000'||fphm
+      when 4 then '0000'||fphm
+      when 5 then '000'||fphm
+      when 6 then '00'||fphm
+      when 7 then '0'||fphm
+      else lower(FPHM)
+      end FPHM,
+      KPJH,GFMC,GFSH,GFDZDH,GFYHZH,JMBBH,MW,datetime(KPRQ) KPRQ,
+      case BSZT when 0 then '未报送'
+      when 1 then '已报送'
+      when 2 then '报送失败'
+      when 3 then '报送中'
+      when 4 then '验签失败'
+      when -1 then ''
+      end BSZT,BSRZ,
+      HJJE,HJSE,ZYSPMC,SPSM,BZ,KPR,SKR,FHR,
+
+      SBBZ, CM, DLGRQ,KHYHMC, KHYHZH, TYDH, QYD,ZHD, XHD, MDD, YYZZH,HYBM, XFDZ, XFDH, JQBH, SCCJMC, YSHWXX,SIGN,ZFRQ, WSPZHM,
+
+      YYSBZ,SSYF,XSDJBH,YDXS,XSBM,XFMC,XFSH,XFDZDH,XFYHZH,BSBZ,JYM,LZDMHM,
+      BSQ,XZBZ,
+      case lower(PZHM) when '-1' then '' else lower(PZHM) end PZHM,
+      case lower(PZZT)
+      when '0' then '未审核'
+      when '1' then '已审核'
+      when '2' then '已记账'
+      when '3' then '暂存'
+      else ''
+      end PZZT,PZWLYWH,PZYWH,KPSXH,DZSYH,
+      case  strftime('%Y-%m-%d',PZRQ) when '1899-12-30' then '' else strftime('%Y-%m-%d',PZRQ) end PZRQ,
+      case PZLB when '' then '' else PZLB end PZLB,
+      HZTZDH,HXM,
+      case  lower(FPZL || ifnull(SLV, '2'))
+      when  's2' then '多税率'
+      when  'c2' then '多税率'
+      when  'p2' then '多税率'
+      else  lower(slv)
+      end SLV,
+      case DYBZ when 0 then '否' else '是' end DYBZ,
+      case ZFBZ when 0 then '否' else '是' end ZFBZ,
+      case QDBZ when 0 then '否' else '是' end QDBZ,
+      case XFBZ when 0 then '否' else '是' end XFBZ,
+      case WKBZ when 0 then '否' else '是' end WKBZ,
+      BMBBBH,SPSM_BM
+      FROM XXFP  WHERE #condition#
+      Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+
+    </value>
+    <type>Text</type>
+    <param name="KsRq" type="AnsiString"></param>
+    <param name="JsRq" type="AnsiString"></param>
+    <param name="FPZL" type="AnsiString"></param>
+    <param name="AdminBz" type="Int32"></param>
+    <param name="Admin" type="AnsiString"></param>
+    <param name="BSZT" type="Int32"></param>
+  </SQL>
+
+
+  <!--查询已开可以作废发票信息 -->
+  <SQL id="aisino.fwkp.fpkj.SelectFPXX_YiKaiFaPiaoZuoFeiSort">
+    <var name="condition" value=
+         "ZFBZ=0
+          and
+          BSBZ=0 
+          and
+           KPRQ &gt;=@KsRq
+          and
+           KPRQ &lt;=@JsRq
+          and
+          fpzl != 'p'
+          and 
+          case when @FPZL ='' then 1= 1 else FPZL = @FPZL end                 
+          and 
+          case when(@AdminBz=1) then 1=1 else KPR=@Admin or kpr='' end
+          and 
+          case  when  (@BSZT = 4) then BSZT = @BSZT          
+                else 1= 1 end  
+          and
+          (
+            FPDM Like @FPDM
+            or
+            FPHM Like @FPHM
+            or
+            GFMC Like @GFMC
+            or
+            GFSH Like @GFSH
+         )
+    "/>
+    <value>
+      select count(*) FROM XXFP WHERE #condition#;
+
+      SELECT   case FPZL || substr(YYSBZ, 6, 1) when 'c0'  then '普通发票'
+      when 'c'  then '普通发票'
+      when 'c1'  then '农产品销售发票'
+      when 'c2'  then '收购发票'
+      when 's0' then '专用发票'
+      when 's' then '专用发票'
+      when 'j0' then '机动车销售统一发票'
+      when 'j' then '机动车销售统一发票'
+      when 'f0' then '货物运输业增值税专用发票'
+      when 'f' then '货物运输业增值税专用发票'
+      when 'q'  then '增值税普通发票(卷票)'
+      when 'q0'  then '增值税普通发票(卷票)'
+      else  '未知'
+      end FPZL,
+      FPDM,
+      case length(FPHM) when 1 then '0000000'||FPHM
+      when 2 then '000000'||fphm
+      when 3 then '00000'||fphm
+      when 4 then '0000'||fphm
+      when 5 then '000'||fphm
+      when 6 then '00'||fphm
+      when 7 then '0'||fphm
+      else lower(FPHM)
+      end FPHM,
+      KPJH,GFMC,GFSH,GFDZDH,GFYHZH,JMBBH,MW,datetime(KPRQ) KPRQ,
+      case BSZT when 0 then '未报送'
+      when 1 then '已报送'
+      when 2 then '报送失败'
+      when 3 then '报送中'
+      when 4 then '验签失败'
+      when -1 then ''
+      end BSZT,BSRZ,
+      HJJE,HJSE,ZYSPMC,SPSM,BZ,KPR,SKR,FHR,
+
+      SBBZ, CM, DLGRQ,KHYHMC, KHYHZH, TYDH, QYD,ZHD, XHD, MDD, YYZZH,HYBM, XFDZ, XFDH, JQBH, SCCJMC, YSHWXX,SIGN,ZFRQ, WSPZHM,
+
+      YYSBZ,SSYF,XSDJBH,YDXS,XSBM,XFMC,XFSH,XFDZDH,XFYHZH,BSBZ,JYM,LZDMHM,
+      BSQ,XZBZ,
+      case lower(PZHM) when '-1' then '' else lower(PZHM) end PZHM,
+      case lower(PZZT)
+      when '0' then '未审核'
+      when '1' then '已审核'
+      when '2' then '已记账'
+      when '3' then '暂存'
+      else ''
+      end PZZT,PZWLYWH,PZYWH,KPSXH,DZSYH,
+      case  strftime('%Y-%m-%d',PZRQ) when '1899-12-30' then '' else strftime('%Y-%m-%d',PZRQ) end PZRQ,
+      case PZLB when '' then '' else PZLB end PZLB,
+      HZTZDH,HXM,
+      case  lower(FPZL || ifnull(SLV, '2'))
+      when  's2' then '多税率'
+      when  'c2' then '多税率'
+      when  'p2' then '多税率'
+      else  lower(slv)
+      end SLV,
+      case DYBZ when 0 then '否' else '是' end DYBZ,
+      case ZFBZ when 0 then '否' else '是' end ZFBZ,
+      case QDBZ when 0 then '否' else '是' end QDBZ,
+      case XFBZ when 0 then '否' else '是' end XFBZ,
+      case WKBZ when 0 then '否' else '是' end WKBZ,
+      BMBBBH,SPSM_BM
+      FROM XXFP  WHERE #condition# Order by Kprq desc
+      Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+
+    </value>
+    <type>Text</type>
+    <param name="KsRq" type="AnsiString"></param>
+    <param name="JsRq" type="AnsiString"></param>
+    <param name="FPZL" type="AnsiString"></param>
+    <param name="AdminBz" type="Int32"></param>
+    <param name="Admin" type="AnsiString"></param>
+    <param name="FPDM" type="AnsiString"></param>
+    <param name="FPHM" type="AnsiString"></param>
+    <param name="GFMC" type="AnsiString"></param>
+    <param name="GFSH" type="AnsiString"></param>
+    <param name="BSZT" type="Int32"></param>
+  </SQL>
+  
+  <!--查询发票复制发票信息 -->
+  <SQL id="aisino.fwkp.fpkj.SelectFPXX_FPFZ">
+    <var name="condition" value= "
+         FPZL= @Fpzl 
+         and
+         HJJE > 0
+         and (YYSBZ like @YYSBZ1 or YYSBZ like @YYSBZ2)
+         and
+         (
+         FPDM Like @FPDM
+         or
+         FPHM Like @FPHM
+         or
+         GFMC Like @GFMC
+         or
+         GFSH Like @GFSH
+         )
+         "/>
+    <value>
+      select count(*) FROM XXFP WHERE #condition#;
+
+      SELECT   case  FPZL || substr(YYSBZ, 6, 1) when 'c0'  then '普通发票'
+      when 'c'  then '普通发票'
+      when 'c1'  then '农产品销售发票'
+      when 'c2'  then '收购发票'
+      when 's0' then '专用发票'
+      when 's' then '专用发票'
+      when 'j0' then '机动车销售统一发票'
+      when 'j' then '机动车销售统一发票'
+      when 'f0' then '货物运输业增值税专用发票'
+      when 'f' then '货物运输业增值税专用发票'
+      when 'p'  then '电子增值税普通发票'
+      when 'p0'  then '电子增值税普通发票'
+      when 'q'  then '增值税普通发票(卷票)'
+      when 'q0'  then '增值税普通发票(卷票)'
+      else  '未知'
+      end FPZL,
+      FPDM,      case length(FPHM) when 1 then '0000000'||FPHM
+      when 2 then '000000'||fphm
+      when 3 then '00000'||fphm
+      when 4 then '0000'||fphm
+      when 5 then '000'||fphm
+      when 6 then '00'||fphm
+      when 7 then '0'||fphm
+      else lower(FPHM)
+      end FPHM,
+      KPJH,GFMC,GFSH,GFDZDH,GFYHZH,JMBBH,datetime(KPRQ) KPRQ,
+      case BSZT when 0 then '未报送'
+      when 1 then '已报送'
+      when 2 then '报送失败'
+      when 3 then '报送中'
+      when 4 then '验签失败'
+      when -1 then ''
+      end BSZT,BSRZ,
+      HJJE,HJSE,ZYSPMC,SPSM,BZ,KPR,SKR,FHR,
+
+      SBBZ, CM, DLGRQ,KHYHMC, KHYHZH, TYDH, QYD,ZHD, XHD, MDD, YYZZH,HYBM, XFDZ, XFDH, JQBH, SCCJMC, YSHWXX,SIGN,ZFRQ, WSPZHM,
+
+      YYSBZ,SSYF,XSDJBH,YDXS,XSBM,XFMC,XFSH,XFDZDH,XFYHZH,BSBZ,JYM,
+      BSQ,XZBZ,case lower(PZHM) when '-1' then '' else lower(PZHM) end PZHM,
+      case lower(PZZT)
+      when '0' then '未审核'
+      when '1' then '已审核'
+      when '2' then '已记账'
+      when '3' then '暂存'
+      else ''
+      end PZZT,PZWLYWH,
+      HXM,
+      case PZLB when '' then '' else PZLB end PZLB,
+
+      case  strftime('%Y-%m-%d',PZRQ) when '1899-12-30' then '' else strftime('%Y-%m-%d',PZRQ) end PZRQ,
+      case  lower(FPZL || ifnull(SLV, '2'))
+      when  's2' then '多税率'
+      when  'c2' then '多税率'
+      when  'p2' then '多税率'
+      else  lower(slv)
+      end SLV,
+      case DYBZ when 0 then '否' else '是' end DYBZ,
+      case ZFBZ when 0 then '否' else '是' end ZFBZ,
+      case QDBZ when 0 then '否' else '是' end QDBZ,
+      case XFBZ when 0 then '否' else '是' end XFBZ,
+      case WKBZ when 0 then '否' else '是' end WKBZ,
+      BMBBBH,SPSM_BM
+      FROM XXFP  WHERE #condition#
+      Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+
+    </value>
+    <type>Text</type>
+    <param name="Fpzl" type="AnsiString"></param>
+    <param name="YYSBZ1" type="AnsiString"></param>
+    <param name="YYSBZ2" type="AnsiString"></param>
+    <param name="FPDM" type="AnsiString"></param>
+    <param name="FPHM" type="AnsiString"></param>
+    <param name="GFMC" type="AnsiString"></param>
+    <param name="GFSH" type="AnsiString"></param>
+  </SQL>
+
+
+
+  <!--月份查询-->
+  <SQL id="aisino.fwkp.fpkj.YFCX">
+    <value>
+      select strftime('%m', KPRQ) mon from XXFP
+      where strftime('%Y', KPRQ)=@Year
+      and
+      case when(@AdminBz=1) then 1=1 else KPR=@Admin end
+      GROUP BY mon
+    </value>
+    <type>Text</type>
+    <param name="Year" type="AnsiString"></param>
+    <param name="Admin" type="AnsiString"></param>
+    <param name="AdminBz" type="Int32"></param>
+  </SQL>
+
+
+
+  <!--设置打印状态-->
+  <SQL id="aisino.fwkp.fpkj.SetYiDaYin">
+    <value>
+      UPDATE XXFP SET DYBZ = 1 WHERE  FPZL=@FPZL
+      and
+      FPDM=@FPDM
+      and
+      FPHM=@FPHM
+    </value>
+    <type>Text</type>
+    <param name="FPZL" type="AnsiString"></param>
+    <param name="FPDM" type="AnsiString"></param>
+    <param name="FPHM" type="Int32"></param>
+  </SQL>
+
+
+  <!--查询销项发票信息最小月份-->
+  <SQL id="aisino.fwkp.fpkj.SelectXXFP_MinKPRQ">
+    <value>
+      select MIN(KPRQ) as KPRQ
+      from XXFP
+    </value>
+    <type>Text</type>
+  </SQL>
+
+
+  <!--查询销项发票信息-->
+  <SQL id="aisino.fwkp.fpkj.SelectXXFPListByMonth">
+    <value>
+      SELECT FPZL, FPDM,FPHM,KPJH,GFMC,GFSH,GFDZDH,GFYHZH,JMBBH,MW,datetime(KPRQ) KPRQ, HJJE,HJSE,ZYSPMC,
+      SPSM,BZ,KPR,SKR,FHR, YYSBZ,SSYF,JZPZHM,XSDJBH,YDXS,XSBM,XFMC,XFSH,XFDZDH,XFYHZH,BSBZ,JYM,BSQ,
+      XZBZ,PZHM,PZZT,HXM,PZLB,PZYWH,HZTZDH,
+      case PZRQ when '' then '1899-12-30 23:59:59' else strftime('%Y-%m-%d',PZRQ) end PZRQ,
+      case  lower(FPZL || ifnull(SLV, '2'))
+      when  's2' then '多税率'
+      when  'c2' then '多税率'
+      when  'p2' then '多税率'
+      else  lower(slv)
+      end SLV,
+      case DYBZ when 0 then '否' else '是' end DYBZ,
+      case ZFBZ when 0 then '否' else '是' end ZFBZ,
+      case QDBZ when 0 then '否' else '是' end QDBZ,
+      case XFBZ when 0 then '否' else '是' end XFBZ,
+      case WKBZ when 0 then '否' else '是' end WKBZ,
+      case BSZT
+      when 0 then '未报送'
+      when 1 then '已报送'
+      when 2 then '报送失败'
+      when 3 then '报送中'
+      when 4 then '验签失败'
+      when -1 then ''
+      end BSZT,
+      SYH,SBBZ, CM, DLGRQ,KHYHMC, KHYHZH, TYDH, QYD,ZHD, XHD, MDD, YYZZH,HYBM, XFDZ, XFDH, JQBH, SCCJMC, YSHWXX,SIGN,ZFRQ, WSPZHM,BSRZ,BMBBBH
+      from XXFP where strftime('%Y', KPRQ) = strftime('%Y',@Year) and strftime('%m',KPRQ)=strftime('%m',@Year)
+      ORDER BY   KPRQ desc, FPHM desc
+    </value>
+    <type>Text</type>
+
+    <param name="Month" type="AnsiString" />
+    <param name="Year" type="AnsiString" />
+
+  </SQL>
+
+
+  <!--查询销项发票信息-->
+  <SQL id="aisino.fwkp.fpkj.SelectXXFPByMonth">
+    <value>
+      SELECT   FPZL,FPDM,FPHM,KPRQ,HJJE,SLV,HJSE
+      from XXFP
+      where strftime('%Y', KPRQ) = strftime('%Y',@Year)
+      and
+      strftime('%m',KPRQ)=strftime('%m',@Year)
+      ORDER BY   KPRQ desc, FPHM desc
+    </value>
+    <type>Text</type>
+    <param name="Month" type="AnsiString"></param>
+    <param name="Year" type="AnsiString"></param>
+  </SQL>
+
+  <!--删除全部销项发票明细清单-->
+  <SQL id="aisino.fwkp.fpkj.DeleteXXFPMXQD_All">
+    <value>
+      delete from xxfp_xhqd
+      where fpzl=@FPZL and fpdm=@FPDM and fphm=@FPHM
+    </value>
+    <type>Text</type>
+    <param name="FPZL" type="AnsiString"></param>
+    <param name="FPDM" type="AnsiString"></param>
+    <param name="FPHM" type="Int32"></param>
+  </SQL>
+
+
+  <!--删除全部销项发票明细-->
+  <SQL id="aisino.fwkp.fpkj.DeleteXXFPMX_All">
+    <value>
+      delete from xxfp_mx
+      where fpzl=@FPZL and fpdm=@FPDM and fphm=@FPHM
+    </value>
+    <type>Text</type>
+    <param name="FPZL" type="AnsiString"></param>
+    <param name="FPDM" type="AnsiString"></param>
+    <param name="FPHM" type="Int32"></param>
+  </SQL>
+
+
+  <!--查询发票信息  判断数据是否存在，根据开票日期的年月-->
+  <SQL id="aisino.fwkp.fpkj.ExistDate_YearMonth">
+    <value>
+      SELECT KPRQ
+      FROM XXFP
+      WHERE
+      case when(@QuanNianBZ=1) then strftime('%Y',KPRQ)=strftime('%Y',@KPRQ_YEAR_MONTH)
+      else strftime('%Y-%m',KPRQ)=strftime('%Y-%m',@KPRQ_YEAR_MONTH)  end
+    </value>
+    <type>Text</type>
+    <param name="KPRQ_YEAR_MONTH" type="AnsiString"></param>
+    <param name="QuanNianBZ" type="Int32"></param>
+  </SQL>
+
+  <!--[上传下载功能使用]查询销项发票明细-->
+  <SQL id="aisino.fwkp.fpkj.SelectFPMXUpDown">
+    <value>
+      select FPZL,FPDM,FPHM,FPMXXH,XSDJBH,FPHXZ,JE,SLV,SE ,SPMC,SPSM,GGXH,JLDW,SL,DJ,HSJBZ,SPBH,DJMXXH, FLBM, XSYH, YHSM, LSLVBS
+      from XXFP_MX
+      where FPZL=@FPZL and FPDM=@FPDM and FPHM=@FPHM order by FPMXXH ASC
+    </value>
+    <type>Text</type>
+    <param name="FPZL" type="AnsiString"></param>
+    <param name="FPDM" type="AnsiString"></param>
+    <param name="FPHM" type="Int32"></param>
+  </SQL>
+
+  <!--[上传下载功能使用]查询销货清单-->
+  <SQL id="aisino.fwkp.fpkj.SelectFPQDUpDown">
+    <value>
+      select FPZL,FPDM,FPHM,FPMXXH,XSDJBH,FPHXZ,JE,SLV,SE,SPMC,SPSM,GGXH,JLDW,SL,DJ,HSJBZ,SPBH,DJMXXH, FLBM, XSYH, YHSM, LSLVBS
+      from XXFP_XHQD
+      where FPZL=@FPZL and FPDM=@FPDM and FPHM=@FPHM order by FPMXXH ASC
+    </value>
+    <type>Text</type>
+    <param name="FPZL" type="AnsiString"></param>
+    <param name="FPDM" type="AnsiString"></param>
+    <param name="FPHM" type="Int32"></param>
+  </SQL>
+
+  <!--[发票查询界面的发票导出使用]查询销项发票明细-->
+  <SQL id="aisino.fwkp.fpkj.SelectFPDaoChu">
+    <var name="condition" value=
+         "KPRQ  &gt;= @KSRQ   and  KPRQ &lt;= @JSRQ and FPZL in('c','s')         
+           "/>
+    <value>
+      select  FPZL,FPDM,FPHM,KPJH,XSDJBH,GFMC,GFSH,GFDZDH,GFYHZH,XFMC,XFSH,XFDZDH,
+      XFYHZH,JMBBH,MW,datetime(KPRQ) KPRQ,HJJE,SLV,HJSE,ZYSPMC,SPSM,BZ,KPR,FHR,SKR,DYBZ,QDBZ,ZFBZ,
+      BSBZ,XFBZ,JYM,BSQ,HXM,HZTZDH,SBBZ,YYSBZ,SYH,XSBM, SSYF,CM,DLGRQ,KHYHMC,KHYHZH,
+      TYDH,QYD,ZHD,XHD,MDD,YYZZH,HYBM,XFDZ,XFDH,JQBH,SCCJMC,YSHWXX,BSZT, SIGN,ZFRQ, WSPZHM,LZDMHM,PZRQ,PZLB,PZHM,PZYWH,PZZT,
+      PZWLYWH,BSRZ,DZSYH,KPSXH,BMBBBH,SPSM_BM
+      from XXFP where  #condition#
+    </value>
+    <type>Text</type>
+    <param name="KSRQ" type="DateTime"></param>
+    <param name="JSRQ" type="DateTime"></param>
+  </SQL>
+
+  <!--添加销项发票专普票-->
+  <SQL id="aisino.fwkp.fpkj.AddXXFP_PT">
+    <value>
+      REPLACE INTO xxfp
+      (fpzl,fpdm,fphm,kpjh,xsdjbh,gfmc,gfsh,gfdzdh,gfyhzh,xfmc,xfsh,xfdzdh,xfyhzh,jmbbh,mw,kprq,hjje,slv,hjse,zyspmc,spsm_bm,bz,kpr,fhr,skr,dybz,qdbz,zfbz,bsbz,xfbz,jym,bsq,hxm,ssyf,hztzdh,yysbz,bszt,sign,zfrq, wspzhm, lzdmhm,pzrq,pzlb,pzhm,pzywh,pzzt,pzwlywh,bsrz, dzsyh, kpsxh, jqbh, bmbbbh)
+      values
+      (@FPZL,@FPDM,@FPHM,@KPJH,@XSDJBH,@GFMC,@GFSH,@GFDZDH,@GFYHZH,@XFMC,@XFSH,@XFDZDH,@XFYHZH,@JMBBH,@MW,@KPRQ,@HJJE,@SLV,@HJSE,@ZYSPMC,@SPSM_BM,@BZ,@KPR,@FHR,@SKR,@DYBZ,@QDBZ,@ZFBZ,@BSBZ,@XFBZ,@JYM,@BSQ,@HXM,@SSYF,@HZTZDH,@YYSBZ,@BSZT,@SIGN,@ZFRQ, @WSPZHM, @LZDMHM,@PZRQ,@PZLB,@PZHM,@PZYWH,@PZZT,@PZWLYWH,@BSRZ, @DZSYH, @KPSXH, @JQBH, @BMBBBH)
+    </value>
+    <type>Text</type>
+    <param name="FPZL" type="AnsiString"></param>
+    <param name="FPDM" type="AnsiString"></param>
+    <param name="FPHM" type="Int32"></param>
+    <param name="KPJH" type="Int32"></param>
+    <param name="XSDJBH" type="AnsiString"></param>
+    <param name="GFMC" type="AnsiString"></param>
+    <param name="GFSH" type="AnsiString"></param>
+    <param name="GFDZDH" type="AnsiString"></param>
+    <param name="GFYHZH" type="AnsiString"></param>
+    <param name="XFMC" type="AnsiString"></param>
+    <param name="XFSH" type="AnsiString"></param>
+    <param name="XFDZDH" type="AnsiString"></param>
+    <param name="XFYHZH" type="AnsiString"></param>
+    <param name="JMBBH" type="AnsiString"></param>
+    <param name="MW" type="AnsiString"></param>
+    <param name="KPRQ" type="DateTime"></param>
+    <param name="HJJE" type="Decimal"></param>
+    <param name="SLV" type="Double"></param>
+    <param name="HJSE" type="Decimal"></param>
+    <param name="ZYSPMC" type="AnsiString"></param>
+    <param name="SPSM_BM" type="AnsiString"></param>
+    <param name="BZ" type="AnsiString"></param>
+    <param name="KPR" type="AnsiString"></param>
+    <param name="FHR" type="AnsiString"></param>
+    <param name="SKR" type="AnsiString"></param>
+    <param name="DYBZ" type="Int32"></param>
+    <param name="QDBZ" type="Int32"></param>
+    <param name="ZFBZ" type="Int32"></param>
+    <param name="BSBZ" type="Int32"></param>
+    <param name="XFBZ" type="Int32"></param>
+    <param name="JYM" type="AnsiString"></param>
+    <param name="BSQ" type="Int32"></param>
+    <param name="HXM" type="AnsiString"></param>
+    <param name="SSYF" type="Int32"></param>
+    <param name="HZTZDH" type="AnsiString"></param>
+    <param name="YYSBZ" type="AnsiString"></param>
+
+    <param name="BSZT" type="Int32"></param>
+    <param name="SIGN" type="AnsiString"></param>
+    <param name="ZFRQ" type="AnsiString"></param>
+    <param name="WSPZHM" type="AnsiString"></param>
+    <param name="LZDMHM" type="AnsiString"></param>
+
+    <param name="PZRQ" type="DateTime"></param>
+    <param name="PZLB" type="AnsiString"></param>
+    <param name="PZHM" type="Int32"></param>
+    <param name="PZYWH" type="AnsiString"></param>
+    <param name="PZZT" type="Int32"></param>
+    <param name="PZWLYWH" type="AnsiString"></param>
+    <param name="BSRZ" type="AnsiString"></param>
+    <param name="DZSYH" type="AnsiString"></param>
+    <param name="KPSXH" type="AnsiString"></param>
+    <param name="JQBH" type="AnsiString"></param>
+
+    <param name="BMBBBH" type="AnsiString"></param>
+  </SQL>
+
+  <!--添加销项发票-货运机动车发票-->
+  <SQL id="aisino.fwkp.fpkj.AddXXFP_HWYS_JDC">
+    <value>
+      REPLACE into xxfp
+      (fpzl,fpdm,fphm,kpjh,xsdjbh,gfmc,gfsh,gfdzdh,gfyhzh,xfmc,xfsh,xfdzdh,xfyhzh,jmbbh,mw,kprq,hjje,slv,hjse,zyspmc,spsm_bm,bz,kpr,fhr,skr,dybz,qdbz,zfbz,bsbz,xfbz,jym,bsq,hxm,ssyf,hztzdh,yysbz,xsbm, cm,khyhmc,khyhzh,tydh,qyd,zhd,xhd,mdd,yyzzh,hybm,xfdz,xfdh,jqbh, sccjmc,yshwxx,bszt,sign,zfrq, wspzhm, lzdmhm,pzrq,pzlb,pzhm,pzywh,pzzt,pzwlywh, bsrz, dzsyh, kpsxh, bmbbbh)
+      values
+      (@FPZL,@FPDM,@FPHM,@KPJH,@XSDJBH,@GFMC,@GFSH,@GFDZDH,@GFYHZH,@XFMC,@XFSH,@XFDZDH,@XFYHZH,@JMBBH,@MW,@KPRQ,@HJJE,@SLV,@HJSE,@ZYSPMC,@SPSM_BM,@BZ,@KPR,@FHR,@SKR,@DYBZ,@QDBZ,@ZFBZ,@BSBZ,@XFBZ,@JYM,@BSQ,@HXM,@SSYF,@HZTZDH,@YYSBZ,@XSBM,@CM, @KHYHMC, @KHYHZH, @TYDH, @QYD, @ZHD, @XHD, @MDD, @YYZZH, @HYBM, @XFDZ, @XFDH,@JQBH, @SCCJMC,@YSHWXX,@BSZT,@SIGN,@ZFRQ, @WSPZHM, @LZDMHM,@PZRQ,@PZLB,@PZHM,@PZYWH,@PZZT,@PZWLYWH, @BSRZ,@DZSYH, @KPSXH, @BMBBBH)
+    </value>
+    <type>Text</type>
+    <param name="FPZL" type="AnsiString"></param>
+    <param name="FPDM" type="AnsiString"></param>
+    <param name="FPHM" type="Int32"></param>
+    <param name="KPJH" type="Int32"></param>
+    <param name="XSDJBH" type="AnsiString"></param>
+    <param name="GFMC" type="AnsiString"></param>
+    <param name="GFSH" type="AnsiString"></param>
+    <param name="GFDZDH" type="AnsiString"></param>
+    <param name="GFYHZH" type="AnsiString"></param>
+    <param name="XFMC" type="AnsiString"></param>
+    <param name="XFSH" type="AnsiString"></param>
+    <param name="XFDZDH" type="AnsiString"></param>
+    <param name="XFYHZH" type="AnsiString"></param>
+    <param name="JMBBH" type="AnsiString"></param>
+    <param name="MW" type="AnsiString"></param>
+    <param name="KPRQ" type="DateTime"></param>
+    <param name="HJJE" type="Decimal"></param>
+    <param name="SLV" type="Double"></param>
+    <param name="HJSE" type="Decimal"></param>
+    <param name="ZYSPMC" type="AnsiString"></param>
+    <param name="SPSM_BM" type="AnsiString"></param>
+    <param name="BZ" type="AnsiString"></param>
+    <param name="KPR" type="AnsiString"></param>
+    <param name="FHR" type="AnsiString"></param>
+    <param name="SKR" type="AnsiString"></param>
+    <param name="DYBZ" type="Int32"></param>
+    <param name="QDBZ" type="Int32"></param>
+    <param name="ZFBZ" type="Int32"></param>
+    <param name="BSBZ" type="Int32"></param>
+    <param name="XFBZ" type="Int32"></param>
+    <param name="JYM" type="AnsiString"></param>
+    <param name="BSQ" type="Int32"></param>
+    <param name="HXM" type="AnsiString"></param>
+    <param name="SSYF" type="Int32"></param>
+    <param name="HZTZDH" type="AnsiString"></param>
+    <param name="YYSBZ" type="AnsiString"></param>
+
+    <param name="XSBM" type="AnsiString"></param>
+    <param name="CM" type="AnsiString"></param>
+    <param name="KHYHMC" type="AnsiString"></param>
+    <param name="KHYHZH" type="AnsiString"></param>
+    <param name="TYDH" type="AnsiString"></param>
+    <param name="QYD" type="AnsiString"></param>
+    <param name="ZHD" type="AnsiString"></param>
+    <param name="XHD" type="AnsiString"></param>
+    <param name="MDD" type="AnsiString"></param>
+    <param name="YYZZH" type="AnsiString"></param>
+    <param name="HYBM" type="AnsiString"></param>
+    <param name="XFDZ" type="AnsiString"></param>
+    <param name="XFDH" type="AnsiString"></param>
+    <param name="JQBH" type="AnsiString"></param>
+    <param name="SCCJMC" type="AnsiString"></param>
+    <param name="YSHWXX" type="AnsiString"></param>
+    <param name="BSZT" type="Int32"></param>
+    <param name="SIGN" type="AnsiString"></param>
+    <param name="ZFRQ" type="AnsiString"></param>
+    <param name="WSPZHM" type="AnsiString"></param>
+    <param name="LZDMHM" type="AnsiString"></param>
+
+    <param name="PZRQ" type="DateTime"></param>
+    <param name="PZLB" type="AnsiString"></param>
+    <param name="PZHM" type="Int32"></param>
+    <param name="PZYWH" type="AnsiString"></param>
+    <param name="PZZT" type="Int32"></param>
+    <param name="PZWLYWH" type="AnsiString"></param>
+    <param name="BSRZ" type="AnsiString"></param>
+
+    <param name="DZSYH" type="AnsiString"></param>
+    <param name="KPSXH" type="AnsiString"></param>
+
+    <param name="BMBBBH" type="AnsiString"></param>
+  </SQL>
+
+  <!--添加销项发票明细-->
+  <SQL id="aisino.fwkp.fpkj.ADDFPMX">
+    <value>
+      REPLACE into xxfp_mx
+      (fpzl,fpdm,fphm,fpmxxh,xsdjbh,fphxz,je,slv,se ,spmc,spsm,ggxh,jldw,sl,dj,hsjbz,spbh,djmxxh, flbm, xsyh, yhsm, lslvbs)
+      VALUES
+      (@FPZL,@FPDM,@FPHM,@FPMXXH,@XSDJBH,@FPHXZ,@JE,@SLV,@SE ,@SPMC,@SPSM,@GGXH,@JLDW,@SL,@DJ,@HSJBZ,@SPBH,@DJMXXH, @FLBM, @XSYH, @YHSM, @LSLVBS)
+    </value>
+    <type>Text</type>
+    <param name="FPZL" type="AnsiString"></param>
+    <param name="FPDM" type="AnsiString"></param>
+    <param name="FPHM" type="Int32"></param>
+    <param name="FPMXXH" type="Double"></param>
+    <param name="XSDJBH" type="AnsiString"></param>
+    <param name="FPHXZ" type="Int32"></param>
+    <param name="JE" type="Decimal"></param>
+    <param name="SLV" type="Double"></param>
+    <param name="SE" type="Decimal"></param>
+    <param name="SPMC" type="AnsiString"></param>
+    <param name="SPSM" type="AnsiString"></param>
+    <param name="GGXH" type="AnsiString"></param>
+    <param name="JLDW" type="AnsiString"></param>
+    <param name="SL" type="AnsiString"></param>
+    <param name="DJ" type="AnsiString"></param>
+    <param name="HSJBZ" type="Int32"></param>
+    <param name="SPBH" type="AnsiString"></param>
+    <param name="DJMXXH" type="Int32"></param>
+    <param name="FLBM" type="AnsiString"></param>
+    <param name="XSYH" type="Int32"></param>
+    <param name="YHSM" type="AnsiString"></param>
+    <param name="LSLVBS" type="AnsiString"></param>
+  </SQL>
+
+  <!--添加销货清单-->
+  <SQL id="aisino.fwkp.fpkj.ADDFPQD">
+    <value>
+      REPLACE into xxfp_xhqd
+      (fpzl,fpdm,fphm,fpmxxh,xsdjbh,fphxz,je,slv,se,spmc,spsm,ggxh,jldw,sl,dj,hsjbz,spbh,djmxxh, flbm, xsyh, yhsm, lslvbs)
+      VALUES
+      (@FPZL,@FPDM,@FPHM,@FPMXXH,@XSDJBH,@FPHXZ,@JE,@SLV,@SE ,@SPMC,@SPSM,@GGXH,@JLDW,@SL,@DJ,@HSJBZ,@SPBH,@DJMXXH, @FLBM, @XSYH, @YHSM, @LSLVBS)
+    </value>
+    <type>Text</type>
+    <param name="FPZL" type="AnsiString"></param>
+    <param name="FPDM" type="AnsiString"></param>
+    <param name="FPHM" type="Int32"></param>
+    <param name="FPMXXH" type="Double"></param>
+    <param name="XSDJBH" type="AnsiString"></param>
+    <param name="FPHXZ" type="Int32"></param>
+    <param name="JE" type="Decimal"></param>
+    <param name="SLV" type="Double"></param>
+    <param name="SE" type="Decimal"></param>
+    <param name="SPMC" type="AnsiString"></param>
+    <param name="SPSM" type="AnsiString"></param>
+    <param name="GGXH" type="AnsiString"></param>
+    <param name="JLDW" type="AnsiString"></param>
+    <param name="SL" type="AnsiString"></param>
+    <param name="DJ" type="AnsiString"></param>
+    <param name="HSJBZ" type="Int32"></param>
+    <param name="SPBH" type="AnsiString"></param>
+    <param name="DJMXXH" type="Int32"></param>
+
+    <param name="FLBM" type="AnsiString"></param>
+    <param name="XSYH" type="Int32"></param>
+    <param name="YHSM" type="AnsiString"></param>
+    <param name="LSLVBS" type="AnsiString"></param>
+  </SQL>
+
+  <!--[已开发票作废使用]查询是否存在对应红字发票信息-->
+  <SQL id="aisino.fwkp.fpkj.IsExistHZFP">
+    <value>
+      select  count(*) NUM
+      from XXFP where ZFBZ = 0 and LZDMHM = @LZDMHM and FPZL = @FPZL
+    </value>
+    <type>Text</type>
+    <param name="LZDMHM" type="AnsiString"></param>
+    <param name="FPZL" type="AnsiString"></param>
+  </SQL>
+
+
+  <!--[上传下载功能使用]分页查询发票信息-->
+  <SQL id="aisino.fwkp.fpkj.SelectXXFPUpDownPage">
+    <value>
+      select  FPZL,FPDM,FPHM,KPJH,XSDJBH,GFMC,GFSH,GFDZDH,GFYHZH,XFMC,XFSH,XFDZDH,
+      XFYHZH,JMBBH,MW,datetime(KPRQ) KPRQ,HJJE,SLV,HJSE,ZYSPMC,SPSM,BZ,KPR,FHR,SKR,DYBZ,QDBZ,ZFBZ,
+      BSBZ,XFBZ,JYM,BSQ,HXM,HZTZDH,SBBZ,YYSBZ,SYH,XSBM, SSYF,CM,DLGRQ,KHYHMC,KHYHZH,
+      TYDH,QYD,ZHD,XHD,MDD,YYZZH,HYBM,XFDZ,XFDH,JQBH,SCCJMC,YSHWXX,BSZT, SIGN,ZFRQ,
+      WSPZHM,LZDMHM,SPSM_BM,
+      case  PZRQ when '' then '1899-12-30 23:59:59' else strftime('%Y-%m-%d',PZRQ) end PZRQ,
+      PZLB,PZHM,PZYWH,PZZT,PZWLYWH,BSRZ,KPSXH,DZSYH,BMBBBH
+      from XXFP where  sign is not null and length(sign) > 20 and ( bszt = @BSZT1 or bszt = @BSZT2 ) order by kprq asc
+      Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+    </value>
+    <type>Text</type>
+    <param name="beginNO" type="Int32"></param>
+    <param name="endNO" type="Int32"></param>
+    <param name="BSZT1" type="AnsiString"></param>
+    <param name="BSZT2" type="AnsiString"></param>
+  </SQL>
+  
+   <!--[上传下载功能使用]批量查询发票信息-->
+  <SQL id="aisino.fwkp.fpkj.SelectXXFPUpDownPatch">
+    <value>
+      select  FPZL,FPDM,FPHM,KPJH,XSDJBH,GFMC,GFSH,GFDZDH,GFYHZH,XFMC,XFSH,XFDZDH,
+      XFYHZH,JMBBH,MW,datetime(KPRQ) KPRQ,HJJE,SLV,HJSE,ZYSPMC,SPSM_BM,BZ,KPR,FHR,SKR,DYBZ,QDBZ,ZFBZ,
+      BSBZ,XFBZ,JYM,BSQ,HXM,HZTZDH,SBBZ,YYSBZ,SYH,XSBM, SSYF,CM,DLGRQ,KHYHMC,KHYHZH,
+      TYDH,QYD,ZHD,XHD,MDD,YYZZH,HYBM,XFDZ,XFDH,JQBH,SCCJMC,YSHWXX,BSZT, SIGN,ZFRQ,
+      WSPZHM,LZDMHM,
+      case  PZRQ when '' then '1899-12-30 23:59:59' else strftime('%Y-%m-%d',PZRQ) end PZRQ,
+      PZLB,PZHM,PZYWH,PZZT,PZWLYWH,BSRZ,KPSXH,DZSYH,BMBBBH
+      from XXFP where FPZL=@FPZL and FPDM=@FPDM and FPHM = @FPHM
+    </value>
+    <type>Text</type>
+    <param name="FPZL" type="AnsiString"></param>
+    <param name="FPDM" type="AnsiString"></param>
+    <param name="FPHM" type="Int32"></param>
+  </SQL>
+
+  <!--[发票查找]获取数据库中最小的开票日期-->
+  <SQL id="aisino.fwkp.fpkj.SelectXXFPMinKPRQ">
+    <value>
+      select min(SSYF) as MinKprq from xxfp
+    </value>
+    <type>Text</type>
+  </SQL>
+
+  <!--[发票查找]获取数据库中所有的发票类别-->
+  <SQL id="aisino.fwkp.fpkj.SelectXXFPMFPLBList">
+    <value>
+      select distinct fpzl   from xxfp
+    </value>
+    <type>Text</type>
+  </SQL>
+
+  <!--[发票查找]获取数据库中某一天的所有发票-->
+  <SQL id="aisino.fwkp.fpkj.SelectFPListFromKprq">
+    <value>
+      select  FPZL,FPDM,FPHM,KPJH,XSDJBH,GFMC,GFSH,GFDZDH,GFYHZH,XFMC,XFSH,XFDZDH,
+      XFYHZH,JMBBH,MW,datetime(KPRQ) KPRQ,HJJE,SLV,HJSE,ZYSPMC,SPSM,BZ,KPR,FHR,SKR,DYBZ,QDBZ,ZFBZ,
+      BSBZ,XFBZ,JYM,BSQ,HXM,HZTZDH,SBBZ,YYSBZ,SYH,XSBM, SSYF,CM,DLGRQ,KHYHMC,KHYHZH,
+      TYDH,QYD,ZHD,XHD,MDD,YYZZH,HYBM,XFDZ,XFDH,JQBH,SCCJMC,YSHWXX,BSZT, SIGN,ZFRQ,
+      WSPZHM,LZDMHM,PZRQ,PZLB,PZHM,PZYWH,PZZT,PZWLYWH,BSRZ,DZSYH,KPSXH,BMBBBH,SPSM_BM
+      from XXFP where SSYF=@SSYF
+    </value>
+    <type>Text</type>
+    <param name="SSYF" type="Int32"></param>
+  </SQL>
+
+  <!--组件接口发票查询语句-->
+  <SQL id="aisino.fwkp.fpkj.SelectFPZJDaoChu">
+    <var name="condition" value=
+         "
+          case when(@GFMC='%%') then 1=1 else GFMC like @GFMC  end 
+          and
+          case when(@GFSH='%%') then 1=1 else GFSH like @GFSH end  
+          and 
+          KPRQ &gt;=strftime('%Y-%m-%d %H:%M:%S',@StartDate)  
+          and
+          KPRQ &lt;=strftime('%Y-%m-%d %H:%M:%S',@EndDate)   
+          and 
+           FPDM like @FPDM
+          and 
+           case when (@StartFphm != '' and  @EndFphm = '') then FPHM &gt;= @StartFphm
+                when (@StartFphm = '' and  @EndFphm != '') then FPHM &lt;= @EndFphm
+                when (@StartFphm != '' and  @EndFphm != '') then FPHM &gt;= @StartFphm and  FPHM &lt;= @EndFphm
+                else 1 = 1 end
+          and 
+          case when(@FPZL='c') then FPZL = @FPZL  
+               when(@FPZL='s') then FPZL = @FPZL  
+               else FPZL = 'c' or FPZL = 's' end
+          and 
+          case  when(@ZFBZ='2') then 1=1 else ZFBZ=@ZFBZ end
+          and 
+          case  when(@ZFFP='0')   then HJJE &lt; 0 
+                when(@ZFFP='1')   then HJJE &gt;= 0
+                else 1 = 1 end
+           "/>
+    <value>
+      select count(*) FROM XXFP WHERE #condition#;
+
+      SELECT  FPZL, FPDM,
+      case length(FPHM) when 1 then '0000000'||FPHM
+      when 2 then '000000'||fphm
+      when 3 then '00000'||fphm
+      when 4 then '0000'||fphm
+      when 5 then '000'||fphm
+      when 6 then '00'||fphm
+      when 7 then '0'||fphm
+      else lower(FPHM)
+      end FPHM,datetime(KPRQ) KPRQ,
+      KPJH,GFMC,GFSH,ZYSPMC, BZ
+
+      FROM XXFP  WHERE #condition#
+      ORDER BY FPZL asc, FPDM desc, FPHM desc
+      Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+    </value>
+    <type>Text</type>
+    <param name="StartDate" type="DateTime"></param>
+    <param name="EndDate" type="DateTime"></param>
+    <param name="GFMC" type="AnsiString"></param>
+    <param name="GFSH" type="AnsiString"></param>
+    <param name="FPDM" type="AnsiString"></param>
+    <param name="StartFphm" type="AnsiString"></param>
+    <param name="EndFphm" type="AnsiString"></param>
+    <param name="FPZL" type="AnsiString"></param>
+    <param name="ZFBZ" type="AnsiString"></param>
+    <param name="ZFFP" type="AnsiString"></param>
+  </SQL>
+
+
+  <!--组件接口发票查询数据导出-->
+  <SQL id="aisino.fwkp.fpkj.SelectFPZJDataDaoChu">
+    <var name="condition" value=
+         "
+          case when(@GFMC='%%') then 1=1 else GFMC like @GFMC  end 
+          and
+          case when(@GFSH='%%') then 1=1 else GFSH like @GFSH end  
+          and 
+          KPRQ &gt;=strftime('%Y-%m-%d %H:%M:%S',@StartDate)  
+          and
+          KPRQ &lt;=strftime('%Y-%m-%d %H:%M:%S',@EndDate)  
+          and
+          FPDM like @FPDM
+          and 
+           case when (@StartFphm != '' and  @EndFphm = '') then FPHM  &gt;= @StartFphm
+                when (@StartFphm = '' and  @EndFphm != '') then FPHM  &lt;= @EndFphm
+                when (@StartFphm != '' and  @EndFphm != '') then FPHM &gt;= @StartFphm and  FPHM &lt;= @EndFphm
+                else 1 = 1 end          
+          and 
+          case when(@FPZL='c') then FPZL = @FPZL  
+               when(@FPZL='s') then FPZL = @FPZL  
+               else FPZL = 'c' or FPZL = 's' end
+          and 
+          case  when(@ZFBZ='2') then 1=1 else ZFBZ=@ZFBZ end
+          and 
+          case  when(@ZFFP='0')   then HJJE &lt; 0 
+                when(@ZFFP='1')   then HJJE &gt;= 0
+                else 1 = 1 end
+           "/>
+    <value>
+      select  FPZL,FPDM,FPHM,KPJH,XSDJBH,GFMC,GFSH,GFDZDH,GFYHZH,XFMC,XFSH,XFDZDH,
+      XFYHZH,JMBBH,MW,datetime(KPRQ) KPRQ,HJJE,SLV,HJSE,ZYSPMC,SPSM_BM,BZ,KPR,FHR,SKR,DYBZ,QDBZ,ZFBZ,
+      BSBZ,XFBZ,JYM,BSQ,HXM,HZTZDH,SBBZ,YYSBZ,SYH,XSBM, SSYF,CM,DLGRQ,KHYHMC,KHYHZH,
+      TYDH,QYD,ZHD,XHD,MDD,YYZZH,HYBM,XFDZ,XFDH,JQBH,SCCJMC,YSHWXX,BSZT, SIGN,ZFRQ,
+      WSPZHM,LZDMHM,PZRQ,PZLB,PZHM,PZYWH,PZZT,PZWLYWH,BSRZ,DZSYH,KPSXH,BMBBBH
+      from XXFP where  #condition#
+    </value>
+    <type>Text</type>
+    <param name="StartDate" type="DateTime"></param>
+    <param name="EndDate" type="DateTime"></param>
+    <param name="GFMC" type="AnsiString"></param>
+    <param name="GFSH" type="AnsiString"></param>
+    <param name="FPDM" type="AnsiString"></param>
+    <param name="StartFphm" type="AnsiString"></param>
+    <param name="EndFphm" type="AnsiString"></param>
+    <param name="FPZL" type="AnsiString"></param>
+    <param name="ZFBZ" type="AnsiString"></param>
+    <param name="ZFFP" type="AnsiString"></param>
+  </SQL>
+
+
+  <!-- Cao Jun Add 2014-08-14-->
+
+  <!--添加抵扣发票-->
+  <SQL id="aisino.fwkp.fpkj.AddDKFP">
+    <value>
+      insert into DKFP(
+      FPDM,FPHM,RZLX,FPLX,KPRQ,XFSBH,JE,SE,RZRQ,XZSJ
+      )
+      values (
+      @FPDM,@FPHM,@RZLX,@FPLX,@KPRQ,@XFSBH,@JE,@SE,@RZRQ,@XZSJ
+      )
+    </value>
+    <type>Text</type>
+    <param name="FPDM" type="AnsiString"></param>
+    <param name="FPHM" type="Int32"></param>
+    <param name="RZLX" type="AnsiString"></param>
+    <param name="FPLX" type="AnsiString"></param>
+    <param name="KPRQ" type="DateTime"></param>
+    <param name="XFSBH" type="AnsiString"></param>
+    <param name="JE" type="Decimal"></param>
+    <param name="SE" type="Decimal"></param>
+    <param name="RZRQ" type="DateTime"></param>
+    <param name="XZSJ" type="DateTime"></param>
+  </SQL>
+
+
+  <!--查询一条抵扣发票信息-->
+  <SQL id="aisino.fwkp.fpkj.SelectDKFP">
+    <value>
+      select  FPDM,FPHM,RZLX,FPLX,KPRQ,XFSBH,RZRQ,JE,SE,XZSJ
+      from DKFP
+      where FPDM=@FPDM and FPHM=@FPHM
+    </value>
+    <type>Text</type>
+    <param name="FPDM" type="AnsiString"></param>
+    <param name="FPHM" type="Int32"></param>
+  </SQL>
+
+
+  <!--查询抵扣发票分页列表-->
+  <SQL id="aisino.Fwkp.Fpkj.SelectDKFPList">
+
+    <value>
+      SELECT count(*) FROM DKFP;
+      SELECT FPDM,FPHM,KPRQ,XFSBH,RZRQ,JE,SE,XZSJ,
+      case RZLX when '0' then '本期认证相符' else '前期认证相符' end RZLX,
+      case FPLX when '01' then '专用发票'
+      when '02' then '货物运输业增值税专用发票'
+      when '03' then '机动车销售统一发票'
+      else '发票类型错误' end FPLX
+      FROM DKFP
+      ORDER BY XZSJ desc
+      Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+    </value>
+    <type>Text</type>
+  </SQL>
+
+
+  <!--查询抵扣发票信息  设置查询条件以后执行 WHERE  KPRQ >= @ksrq and KPRQ <= !jsrq order by KPRQ DESC-->
+  <SQL id="aisino.fwkp.fpkj.SelectDKFP_TiaoJian">
+    <var name="condition" value=
+         "case when (@FPDM='') then 1=1 else FPDM = @FPDM  end  
+          and
+          case when (@FPHM=0) then 1=1 else FPHM = @FPHM  end 
+          and
+          case when (@XFSBH='') then 1=1 else XFSBH = @XFSBH  end  
+          and
+          case when (@FPZL='-1') then 1=1 else FPLX = @FPZL end
+          and         
+          case when (@KPRQ_S_CK ='0') then 1=1 else KPRQ  &gt;= @KPRQ_S end
+          and
+          case when (@KPRQ_E_CK ='0') then 1=1 else KPRQ &lt;= @KPRQ_E end
+          and
+          case when (@RZRQ_S_CK ='0') then 1=1 else RZRQ  &gt;= @RZRQ_S end
+          and
+          case when (@RZRQ_E_CK ='0') then 1=1 else RZRQ &lt;= @RZRQ_E end          
+           "/>
+    <value>
+      select count(*) FROM DKFP WHERE #condition#;
+      SELECT FPDM,FPHM,datetime(KPRQ) KPRQ,XFSBH,RZRQ,JE,SE,XZSJ,
+      case RZLX when '0' then '本期认证相符' else '前期认证相符' end RZLX,
+      case FPLX when '01' then '专用发票'
+      when '02' then '货物运输业增值税专用发票'
+      when '03' then '机动车销售统一发票'
+      end FPLX
+      FROM DKFP  WHERE #condition#
+      order by XZSJ desc
+      Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+    </value>
+    <type>Text</type>
+    <param name="FPDM" type="AnsiString"></param>
+    <param name="FPHM" type="Int32"></param>
+    <param name="KPRQ_S" type="DateTime"></param>
+    <param name="KPRQ_E" type="DateTime"></param>
+    <param name="RZRQ_S" type="DateTime"></param>
+    <param name="RZRQ_E" type="DateTime"></param>
+    <param name="FPZL" type="AnsiString"></param>
+    <param name="XFSBH" type="AnsiString"></param>
+    <param name="KPRQ_S_CK" type="AnsiString"></param>
+    <param name="KPRQ_E_CK" type="AnsiString"></param>
+    <param name="RZRQ_S_CK" type="AnsiString"></param>
+    <param name="RZRQ_E_CK" type="AnsiString"></param>
+
+  </SQL>
+
+
+  <!--通过FPDM  FPHM 删除抵扣发票信息 -->
+  <SQL id="aisino.fwkp.fpkj.DeleteDKFP">
+    <value>Delete From DKFP WHERE  FPDM=@FPDM AND FPHM=@FPHM OR FPHM &lt;  0 OR FPHM &gt; 99999999</value>
+    <type>Text</type>
+    <param name="FPDM" type="AnsiString"></param>
+    <param name="FPHM" type="Int32"></param>
+  </SQL>
+
+  <!--[发票查询界面的发票导出使用]查询进项抵扣发票明细-->
+  <SQL id="aisino.fwkp.fpkj.SelectDKFPDaoChu">
+    <var name="condition" value=
+         "case when(@IncludeKSRQ=1) then KPRQ  &gt;= @KSRQ else KPRQ &gt; @KSRQ end  
+          and
+          case when(@IncludeJSRQ=1) then KPRQ &lt;= @JSRQ else KPRQ &lt; @JSRQ end 
+          and
+          FPLX in('01','02')
+         "/>
+    <value>
+      select FPDM,FPHM,RZLX,FPLX,KPRQ,XFSBH,RZRQ,JE,SE,XZSJ
+      from DKFP where  #condition#
+    </value>
+    <type>Text</type>
+    <param name="KSRQ" type="DateTime"></param>
+    <param name="JSRQ" type="DateTime"></param>
+    <param name="IncludeKSRQ" type="Int32"></param>
+    <param name="IncludeJSRQ" type="Int32"></param>
+  </SQL>
+
+  <!-- Cao Jun Add 2014-08-14  End-->
+
+
+</SQLLIB>

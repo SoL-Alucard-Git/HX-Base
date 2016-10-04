@@ -1,0 +1,4 @@
+E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Output\Automation\RegMakeFile.dll
+E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Output\Automation\RegMakeFile.pdb
+E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\RegMakeFile\obj\x86\Debug\RegMakeFile.dll
+E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\RegMakeFile\obj\x86\Debug\RegMakeFile.pdb

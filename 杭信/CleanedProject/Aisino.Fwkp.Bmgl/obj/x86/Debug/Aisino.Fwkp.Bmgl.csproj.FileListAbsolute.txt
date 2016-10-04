@@ -1,0 +1,5 @@
+E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Aisino.Fwkp.Bmgl\obj\x86\Debug\Aisino.Fwkp.Bmgl.csprojResolveAssemblyReference.cache
+E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Output\Bin\Aisino.Fwkp.Bmgl.dll
+E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Output\Bin\Aisino.Fwkp.Bmgl.pdb
+E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Aisino.Fwkp.Bmgl\obj\x86\Debug\Aisino.Fwkp.Bmgl.dll
+E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Aisino.Fwkp.Bmgl\obj\x86\Debug\Aisino.Fwkp.Bmgl.pdb

@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <ProjectType>local</ProjectType>
+    <ProjectVersion>7.10.377</ProjectVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{75C5C3BC-CB11-4429-B042-46F1BAAB2FFF}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <AssemblyName>Aisino.Fwkp.BusinessObject</AssemblyName>
+    <OutputType>Library</OutputType>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Output\Bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Reference Include="log4net">
+      <HintPath>..\..\脱壳后文件\Bin\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Global.cs" />
+    <Compile Include="Aisino\Fwkp\BusinessObject\VersionInfo.cs" />
+    <Compile Include="Aisino\Fwkp\BusinessObject\Invoice.cs" />
+    <Compile Include="Aisino\Fwkp\BusinessObject\Fpxx.cs" />
+    <Compile Include="Aisino\Fwkp\BusinessObject\OpType.cs" />
+    <Compile Include="Aisino\Fwkp\BusinessObject\SPXX.cs" />
+    <Compile Include="Aisino\Fwkp\BusinessObject\FPLX.cs" />
+    <Compile Include="Aisino\Fwkp\BusinessObject\ZYFP_LX.cs" />
+    <Compile Include="Aisino\Fwkp\BusinessObject\FPHXZ.cs" />
+    <Compile Include="ns3\Struct40.cs" />
+    <Compile Include="ns3\Class34.cs" />
+    <Compile Include="ns3\Class35.cs" />
+    <Compile Include="Aisino\Fwkp\BusinessObject\InvoiceHandler.cs" />
+    <Compile Include="ns3\Class36.cs" />
+    <Compile Include="ns3\Class37.cs" />
+    <Compile Include="Aisino\Fwkp\BusinessObject\SplittingField.cs" />
+    <Compile Include="Aisino\Fwkp\BusinessObject\JskFpmxVersion.cs" />
+    <EmbeddedResource Include="Aisino.Fwkp.BusinessObject.g.resources" />
+    <EmbeddedResource Include="aR3nbf8dQp2feLmk31.SplashForm.resources" />
+    <EmbeddedResource Include="aR3nbf8dQp2feLmk31.lSfgApatkdxsVcGcrktoFd.resources" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Aisino.Framework.Plugin.Core\Aisino.Framework.Plugin.Core.csproj">
+      <Project>{b65bb74a-99d3-4854-8151-a6bd4d4a489a}</Project>
+      <Name>Aisino.Framework.Plugin.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Aisino.FTaxBase\Aisino.FTaxBase.csproj">
+      <Project>{a9935674-60e2-44e1-8785-d391586d31f8}</Project>
+      <Name>Aisino.FTaxBase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Aisino.Fwkp.CommonLibrary\Aisino.Fwkp.CommonLibrary.csproj">
+      <Project>{413f30c7-87a1-4418-9234-be436af12264}</Project>
+      <Name>Aisino.Fwkp.CommonLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

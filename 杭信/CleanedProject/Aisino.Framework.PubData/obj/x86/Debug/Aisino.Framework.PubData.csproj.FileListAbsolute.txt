@@ -1,0 +1,4 @@
+E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Output\Bin\Aisino.Framework.PubData.dll
+E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Output\Bin\Aisino.Framework.PubData.pdb
+E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Aisino.Framework.PubData\obj\x86\Debug\Aisino.Framework.PubData.dll
+E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Aisino.Framework.PubData\obj\x86\Debug\Aisino.Framework.PubData.pdb

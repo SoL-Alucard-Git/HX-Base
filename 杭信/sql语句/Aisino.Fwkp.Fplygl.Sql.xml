@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SQLLIB>
+
+  <!--查询发票类别编码表-->
+  <SQL id = "aisino.Fwkp.Fplygl.FPLBBM.AllData">
+    <value>
+      select BM,MC
+      from	BM_XZQY
+      where 1=1
+      ORDER BY BM
+    </value>
+    <type>Text</type>
+  </SQL>
+
+  <!--卷票-->
+  <SQL id = "aisino.Fwkp.Fplygl.JPInfo.InsertSingle">
+    <value>
+      insert into LYGL_JPXX
+      (LBDM,JQSH,JZZH,LGZS,QSHM, SYZS, KPXE, LGRQ,JPGG)
+      values (@LBDM,@JQSH,@JZZH,@LGZS,@QSHM,@SYZS,@KPXE,@LGRQ,@JPGG)
+    </value>
+    <type>Text</type>
+    <param name="LBDM" type="AnsiString"></param>
+    <param name="JQSH" type="Int32"></param>
+    <param name="JZZH" type="Int32"></param>
+    <param name="LGZS" type="Int32"></param>
+    <param name="QSHM" type="AnsiString"></param>
+    <param name="SYZS" type="Int32"></param>
+    <param name="KPXE" type="Int32"></param>
+    <param name="LGRQ" type="DateTime"></param>
+    <param name="JPGG" type="AnsiString"></param>
+  </SQL>
+
+  <SQL id = "aisino.Fwkp.Fplygl.JPInfo.UpdateSingle">
+    <value>
+      update LYGL_JPXX set
+      JPGG = @JPGG
+      where LBDM = @LBDM and JZZH = @JZZH
+    </value>
+    <type>Text</type>
+    <param name="LBDM" type="AnsiString"></param>
+    <param name="JQSH" type="Int32"></param>
+    <param name="JZZH" type="Int32"></param>
+    <param name="JPGG" type="AnsiString"></param>
+  </SQL>
+
+  <SQL id = "aisino.Fwkp.Fplygl.JPInfo.DeleteSingle">
+    <value>
+      delete from LYGL_JPXX
+      where LBDM = @LBDM and JZZH = @JZZH
+    </value>
+    <type>Text</type>
+    <param name="LBDM" type="AnsiString"></param>
+    <param name="JQSH" type="Int32"></param>
+    <param name="JZZH" type="Int32"></param>
+  </SQL>
+
+  <SQL id = "aisino.Fwkp.Fplygl.JPInfo.SelectList">
+    <value>
+      select * from LYGL_JPXX
+    </value>
+    <type>Text</type>
+  </SQL>
+
+  <SQL id = "aisino.Fwkp.Fplygl.JPInfo.GetSpecificFormat">
+    <value>
+      select JPGG from LYGL_JPXX
+      where LBDM = @LBDM and JZZH = @JZZH
+    </value>
+    <type>Text</type>
+    <param name="LBDM" type="AnsiString"></param>
+    <param name="JQSH" type="Int32"></param>
+    <param name="JZZH" type="Int32"></param>
+  </SQL>
+
+  <!--配送-->
+  <SQL id = "aisino.Fwkp.Fplygl.PSInfo.Insert">
+    <value>
+      insert into LYGL_PSXX
+      (SFMR,SJR,YZBM,DZ,GDDH,YDDH,BZ,SFTB)
+      values (@SFMR,@SJR,@YZBM,@DZ,@GDDH,@YDDH,@BZ,@SFTB)
+    </value>
+    <type>Text</type>
+    <param name="SFMR" type="Boolean"></param>
+    <param name="SJR" type="AnsiString"></param>
+    <param name="YZBM" type="AnsiString"></param>
+    <param name="DZ" type="AnsiString"></param>
+    <param name="GDDH" type="AnsiString"></param>
+    <param name="YDDH" type="AnsiString"></param>
+    <param name="BZ" type="AnsiString"></param>
+    <param name="SFTB" type="Boolean"></param>
+  </SQL>
+
+  <SQL id = "aisino.Fwkp.Fplygl.PSInfo.Delete">
+    <value>
+      delete from LYGL_PSXX
+      where SJR = @SJR and YZBM = @YZBM and DZ = @DZ and GDDH = @GDDH and YDDH = @YDDH and BZ = @BZ
+    </value>
+    <type>Text</type>
+    <param name="SJR" type="AnsiString"></param>
+    <param name="YZBM" type="AnsiString"></param>
+    <param name="DZ" type="AnsiString"></param>
+    <param name="GDDH" type="AnsiString"></param>
+    <param name="YDDH" type="AnsiString"></param>
+    <param name="BZ" type="AnsiString"></param>
+  </SQL>
+
+  <SQL id = "aisino.Fwkp.Fplygl.PSInfo.UpdateDefault">
+    <value>
+      update LYGL_PSXX set
+      SFMR = @SFMR
+      where SJR = @SJR and YZBM = @YZBM and DZ = @DZ and GDDH = @GDDH and YDDH = @YDDH and BZ = @BZ
+    </value>
+    <type>Text</type>
+    <param name="SFMR" type="Boolean"></param>
+    <param name="SJR" type="AnsiString"></param>
+    <param name="YZBM" type="AnsiString"></param>
+    <param name="DZ" type="AnsiString"></param>
+    <param name="GDDH" type="AnsiString"></param>
+    <param name="YDDH" type="AnsiString"></param>
+    <param name="BZ" type="AnsiString"></param>
+  </SQL>
+
+  <SQL id = "aisino.Fwkp.Fplygl.PSInfo.CheckExist">
+    <value>
+      select * from LYGL_PSXX
+      where SJR = @SJR and YZBM = @YZBM and DZ = @DZ and GDDH = @GDDH and YDDH = @YDDH and BZ = @BZ
+    </value>
+    <type>Text</type>
+    <param name="SJR" type="AnsiString"></param>
+    <param name="YZBM" type="AnsiString"></param>
+    <param name="DZ" type="AnsiString"></param>
+    <param name="GDDH" type="AnsiString"></param>
+    <param name="YDDH" type="AnsiString"></param>
+    <param name="BZ" type="AnsiString"></param>
+  </SQL>
+
+  <SQL id = "aisino.Fwkp.Fplygl.PSInfo.SelectDefault">
+    <value>
+      select * from LYGL_PSXX
+      where SFMR = 1
+    </value>
+    <type>Text</type>
+  </SQL>
+
+  <SQL id = "aisino.Fwkp.Fplygl.PSInfo.SelectList">
+    <value>
+      select * from LYGL_PSXX
+    </value>
+    <type>Text</type>
+  </SQL>
+
+  <SQL id = "aisino.Fwkp.Fplygl.PSInfo.DeleteSyn">
+    <value>
+      delete from LYGL_PSXX
+      where SFTB = 1
+    </value>
+    <type>Text</type>
+  </SQL>
+
+  <SQL id = "aisino.Fwkp.Fplygl.PSInfo.CountSynItems">
+    <value>
+      select * from LYGL_PSXX
+      where SFTB = 1
+    </value>
+    <type>Text</type>
+  </SQL>
+
+</SQLLIB>

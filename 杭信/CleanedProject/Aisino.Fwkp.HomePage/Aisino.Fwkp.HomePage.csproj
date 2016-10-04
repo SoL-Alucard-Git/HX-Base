@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <ProjectType>local</ProjectType>
+    <ProjectVersion>7.10.377</ProjectVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C987DE88-6793-4A84-A325-19DBD8962E3D}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <AssemblyName>Aisino.Fwkp.HomePage</AssemblyName>
+    <OutputType>Library</OutputType>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Output\Bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="Aisino.Framework.Plugin.Core">
+      <HintPath>..\Aisino.Framework.Plugin.Core\bin\Debug\Aisino.Framework.Plugin.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Aisino.FTaxBase">
+      <HintPath>..\Aisino.FTaxBase\bin\Debug\Aisino.FTaxBase.dll</HintPath>
+    </Reference>
+    <Reference Include="Aisino.Framework.MainForm" />
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Global.cs" />
+    <Compile Include="Aisino\Fwkp\HomePage\AisinoDock\Move\StoryBoard.cs" />
+    <Compile Include="Aisino\Fwkp\HomePage\AisinoDock\Move\Animation.cs" />
+    <Compile Include="Aisino\Fwkp\HomePage\AisinoDock\Move\AnimationPoint.cs" />
+    <Compile Include="Aisino\Fwkp\HomePage\AisinoDock\Move\AnimationInt.cs" />
+    <Compile Include="Aisino\Fwkp\HomePage\AisinoDock\Docks\DoubelPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\HomePage\Home.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\HomePage\AisinoDock\IDock.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\HomePage\AisinoDock\MetorChangeEventArgs.cs" />
+    <Compile Include="Aisino\Fwkp\HomePage\AisinoDock\IDockClickEventArgs.cs" />
+    <Compile Include="Aisino\Fwkp\HomePage\AisinoDock\Docks\ButtonClickStyle.cs" />
+    <Compile Include="Aisino\Fwkp\HomePage\AisinoDock\Docks\ButtonControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\HomePage\AisinoDock\DockManage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\HomePage\AisinoDock\IconManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\HomePage\AisinoDock\IconManagerEventArgs.cs" />
+    <Compile Include="Aisino\Fwkp\HomePage\AisinoDock\ButtonControlExEventArgs.cs" />
+    <Compile Include="Aisino\Fwkp\HomePage\AisinoDock\GetIcon.cs" />
+    <Compile Include="Aisino\Fwkp\HomePage\AisinoDock\Docks\IconDock.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\HomePage\AisinoDock\Common.cs" />
+    <Compile Include="Aisino\Fwkp\HomePage\AisinoDock\Docks\JScardDock.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\HomePage\Properties\Resources.cs" />
+    <Compile Include="Aisino\Fwkp\HomePage\AisinoDock\Docks\TongjiDock.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\HomePage\AisinoDock\Docks\InfoDock.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\HomePage\AisinoDock\Docks\ButtonDesigner.cs" />
+    <Compile Include="Aisino\Fwkp\HomePage\AisinoDock\PageXml.cs" />
+    <Compile Include="Aisino\Fwkp\HomePage\DockStart.cs" />
+    <Compile Include="Aisino\Fwkp\HomePage\AisinoDock\PageControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <EmbeddedResource Include="Aisino.Fwkp.HomePage.Home.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.HomePage.AisinoDock.Docks.ButtonControl.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.HomePage.AisinoDock.Docks.TongjiDock.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.HomePage.AisinoDock.DockManage.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.HomePage.AisinoDock.PageControl.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.HomePage.Properties.Resources.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.HomePage.AisinoDock.IDock.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.HomePage.AisinoDock.Docks.InfoDock.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.HomePage.AisinoDock.Docks.JScardDock.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.HomePage.AisinoDock.IconManager.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.HomePage.AisinoDock.Docks.IconDock.resources" />
+  </ItemGroup>
+</Project>

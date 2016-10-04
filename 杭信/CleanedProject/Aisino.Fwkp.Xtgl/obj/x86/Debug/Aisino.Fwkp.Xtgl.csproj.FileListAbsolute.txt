@@ -1,0 +1,4 @@
+E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Output\Bin\Aisino.Fwkp.Xtgl.dll
+E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Output\Bin\Aisino.Fwkp.Xtgl.pdb
+E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Aisino.Fwkp.Xtgl\obj\x86\Debug\Aisino.Fwkp.Xtgl.dll
+E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Aisino.Fwkp.Xtgl\obj\x86\Debug\Aisino.Fwkp.Xtgl.pdb

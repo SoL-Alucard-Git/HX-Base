@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<PlugIn id="Aisino.Fwkp.Fpkj" name="发票开具" description="发票开具插件">
+  <Runtime>
+    <Import assembly="..\Aisino.Fwkp.Fpkj.dll" resource="Aisino.Fwkp.Fpkj.Properties.Resources"/>
+    <SqlLib file="Aisino.Fwkp.Fpkj.Sql.xml"/>
+  </Runtime>
+
+  <Auto>
+    <Class id="Aisino.Fwkp.Fpkj.ShareMethodClass" alwaysPermit="true"  class="Aisino.Fwkp.Fpkj.ShareMethodClass" label="ShareMethodClass"/>
+  </Auto>
+  
+  <Menu>
+    <MenuItem id="Menu.Fpgl" type="Menu" class="Aisino.Fwkp.Fpkj.FpglMain" label="发票管理" insertAfter="Menu.Fplygl" icon="发票管理_发票管理">
+
+		<MenuItem id="Menu.Fpgl.Fpkj.ykfpcx" type="Command" class="Aisino.Fwkp.Fpkj.FaPiaoChaXun" label="已开发票查询" icon="发票管理_已开发票查询"/>
+		<MenuItem id="Menu.Fpgl.Fpkj.ykfpzf" type="Command" class="Aisino.Fwkp.Fpkj.ZuoFeiYiKaiFaPiao" label="已开发票作废" icon="发票管理_已开发票作废"/>
+		<MenuItem id="Menu.Fpgl.Fpkj.Wkfpzf" type="Menu" class="Aisino.Fwkp.Fpkj.ZuoFeiWeiKai" label="未开发票作废" icon="发票管理_未开发票作废">
+			<MenuItem id="Menu.Fpgl.Fpkj.Wkfpzf.S" type="Command" class="Aisino.Fwkp.Fpkj.ZuoFeiWeiKai_S" label="增值税专用发票作废" icon="发票管理_普通发票作废"/>
+			<MenuItem id="Menu.Fpgl.Fpkj.Wkfpzf.C" type="Command" class="Aisino.Fwkp.Fpkj.ZuoFeiWeiKai_C" label="增值税普通发票作废" icon="发票管理_普通发票作废"/>
+      <MenuItem id="Menu.Fpgl.Fpkj.Wkfpzf.Q" type="Command" class="Aisino.Fwkp.Fpkj.ZuoFeiWeiKai_Q" label="增值税普通发票(卷票)作废" icon="发票管理_普通发票作废"/>
+      <MenuItem id="Menu.Fpgl.Fpkj.Wkfpzf.F" type="Command" class="Aisino.Fwkp.Fpkj.ZuoFeiWeiKai_F" label="货物运输业增值税专用发票作废" icon="发票管理_普通发票作废"/>
+      <MenuItem id="Menu.Fpgl.Fpkj.Wkfpzf.J" type="Command" class="Aisino.Fwkp.Fpkj.ZuoFeiWeiKai_J" label="机动车销售统一发票作废" icon="发票管理_普通发票作废"/>
+		</MenuItem>
+		<MenuItem id="Menu.Fpgl.Fpkj.Fpxf.2" type="Separator" /> 
+		<MenuItem id="Menu.Fpgl.Fpkj.Fpxf" type="Command" class="Aisino.Fwkp.Fpkj.FaPiaoXiuFu" label="发票修复" icon="发票管理_发票修复"/>
+    <MenuItem id="Menu.Fpgl.Fpkj.Fpxf.3" type="Separator" />
+    <MenuItem id="Menu.Fpgl.Fpkj.Fpxzdc" type="Command" class="Aisino.Fwkp.Fpkj.DiKouFaPiao" label="抵扣发票下载导出" icon="发票领用管理_抵扣联发票接收"/>
+      <MenuItem id="Menu.Fpgl.Fpkj.DKFPPLXZ" type="Command" class="Aisino.Fwkp.Fpkj.DKFPPLXZ.Entry" label="抵扣发票批量下载" />
+    </MenuItem>
+  </Menu>
+	<Tree>
+		<TreeNode id="Menu.Fpgl" type="Menu" class="Aisino.Fwkp.Fpkj.FpglMain" label="发票管理" insertAfter="Menu.Fplygl" icon="发票管理_Tree">
+			<TreeNode id="Menu.Fpgl.Fpkj.ykfpcx" type="Command" class="Aisino.Fwkp.Fpkj.FaPiaoChaXun" label="已开发票查询" icon="发票管理_已开发票查询"/>
+			<TreeNode id="Menu.Fpgl.Fpkj.ykfpzf" type="Command" class="Aisino.Fwkp.Fpkj.ZuoFeiYiKaiFaPiao" label="已开发票作废" icon="发票管理_已开发票作废"/>
+			<TreeNode id="Menu.Fpgl.Fpkj.Wkfpzf" type="Menu" label="未开发票作废" icon="发票管理_未开发票作废">
+				<TreeNode id="Menu.Fpgl.Fpkj.Wkfpzf.S" type="Command" class="Aisino.Fwkp.Fpkj.ZuoFeiWeiKai_S" label="增值税专用发票作废" icon="发票管理_普通发票作废"/>
+				<TreeNode id="Menu.Fpgl.Fpkj.Wkfpzf.C" type="Command" class="Aisino.Fwkp.Fpkj.ZuoFeiWeiKai_C" label="增值税普通发票作废" icon="发票管理_普通发票作废"/>
+        <TreeNode id="Menu.Fpgl.Fpkj.Wkfpzf.Q" type="Command" class="Aisino.Fwkp.Fpkj.ZuoFeiWeiKai_Q" label="增值税普通发票(卷票)作废" icon="发票管理_普通发票作废"/>
+        <TreeNode id="Menu.Fpgl.Fpkj.Wkfpzf.J" type="Command" class="Aisino.Fwkp.Fpkj.ZuoFeiWeiKai_J" label="机动车销售统一发票作废" icon="发票管理_普通发票作废"/>
+        <TreeNode id="Menu.Fpgl.Fpkj.Wkfpzf.F" type="Command" class="Aisino.Fwkp.Fpkj.ZuoFeiWeiKai_F" label="货物运输业增值税专用发票作废" icon="发票管理_普通发票作废"/>
+      </TreeNode>
+			<TreeNode id="Menu.Fpgl.Fpkj.Fpxf" type="Command" class="Aisino.Fwkp.Fpkj.FaPiaoXiuFu" label="发票修复" icon="发票管理_发票修复"/>
+      <TreeNode id="Menu.Fpgl.Fpkj.Fpxzdc" type="Command" class="Aisino.Fwkp.Fpkj.DiKouFaPiao" label="抵扣发票下载导出" icon="发票管理_抵扣发票下载导出"/>
+    </TreeNode>
+	</Tree>
+	
+</PlugIn>

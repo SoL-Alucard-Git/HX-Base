@@ -1,0 +1,18 @@
+2016-09-21 14:19:01 ERROR InvAutomation.DlgDown 
+    未能找到路径“C:\Program Files\开票软件\91310110630763504R.0\Bin\verflag.dat”的一部分。
+
+2016-09-21 14:19:07 INFO  InvAutomation.DlgDown 
+    未检测到金税盘GetVerNo = 1
+
+2016-09-21 14:58:08 DEBUG InvAutomation.DlgDown 
+    AutoUpdate：值不能为 null。
+参数名: key
+
+2016-09-21 14:59:26 DEBUG InvAutomation.DlgDown 
+    AutoUpdate：值不能为 null。
+参数名: key
+
+2016-09-21 15:11:16 DEBUG InvAutomation.DlgDown 
+    AutoUpdate：值不能为 null。
+参数名: key
+

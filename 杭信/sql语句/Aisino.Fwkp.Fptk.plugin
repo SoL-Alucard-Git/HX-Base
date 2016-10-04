@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<PlugIn id="Aisino.Fwkp.Fptk" name="发票开具" description="发票开具插件" depend="_Bmgl,Aisino.Fwkp.Fpkj,Aisino.Fwkp.Xtgl">
+  <Runtime>
+    <Import assembly="..\Aisino.Fwkp.Fptk.dll" resource="Aisino.Fwkp.Fptk.Properties.Resources"/>
+    <SqlLib file="Aisino.Fwkp.Fptk.Sql.xml"/>
+  </Runtime>
+  <Auto>
+    <Class id="Aisino.Fwkp.Fptk.Entry.ShareCommonEntry" alwaysPermit="true" class="Aisino.Fwkp.Fptk.Entry.ShareCommonEntry" lable="共享方法"></Class>
+  </Auto>
+  <Menu>
+    <MenuItem id="Menu.Fpgl" type="Menu" label="发票管理" icon="发票管理_发票管理">
+      <MenuItem id="Menu.Fpgl.Fptk" type="Menu" label="发票填开" isFirst="true" class="Aisino.Fwkp.Fptk.Entry.InvEntry" icon="发票管理_发票填开0">
+        <MenuItem id="Menu.Fpgl.Fptk.ZyFptk" type="Command" class="Aisino.Fwkp.Fptk.Entry.SpecialInvEntry" label="增值税专用发票填开" icon="发票管理_专用发票填开"/>
+        <MenuItem id="Menu.Fpgl.Fptk.PtFptk" type="Command" class="Aisino.Fwkp.Fptk.Entry.CommonInvEntry" label="增值税普通发票填开" icon="发票管理_普通发票填开"/>
+        <MenuItem id="Menu.Fpgl.Fptk.DzFptk" type="Command" class="Aisino.Fwkp.Fptk.Entry.ElectronInvEntry" label="电子增值税普通发票填开" icon="发票管理_电子增值税普通发票填开"/>
+        <MenuItem id="Menu.Fpgl.Fptk.JsFptk" type="Command" class="Aisino.Fwkp.Fptk.Entry.RollInvEntry" label="增值税普通发票(卷票)填开" icon="发票管理_普通发票(卷票)填开"/>
+        <MenuItem id="Menu.Fpgl.Fptk.HyFptk" type="Command" class="Aisino.Fwkp.Fptk.Entry.CargoInvEntry" label="货物运输业增值税专用发票填开" icon="发票管理_货运发票填开"/>
+        <MenuItem id="Menu.Fpgl.Fptk.JdcFptk" type="Command" class="Aisino.Fwkp.Fptk.Entry.VehicleInvEntry" label="机动车销售统一发票填开" icon="发票管理_机动车发票填开"/>
+        <MenuItem id="Menu.Fpgl.Fptk.SNYFptk" type="Command" class="Aisino.Fwkp.Fptk.Entry.SNYInvEntry" label="石脑油、燃料油发票填开" icon="发票管理_石脑油、燃料油发票填开"/>
+        <MenuItem id="Menu.Fpgl.Fptk.NCPXSFptk" type="Command" class="Aisino.Fwkp.Fptk.Entry.NCPXSInvEntry" label="农产品销售发票填开" icon="农产品销售发票填开"/>
+        <MenuItem id="Menu.Fpgl.Fptk.NCPSGFptk" type="Command" class="Aisino.Fwkp.Fptk.Entry.NCPSGInvEntry" label="收购发票填开" icon="农产品收购发票填开"/>
+
+      </MenuItem>
+    </MenuItem>
+
+    <MenuItem id="Menu.Xtsz" type="Menu" label="系统设置" isFirst="true" >
+      <MenuItem id="Menu.Xtsz.DKSet" type="Menu" label="税务代开设置"  class="Aisino.Fwkp.Fptk.Entry.InvDkTypeSetEntry"  icon="系统设置_税务代开设置">
+        <MenuItem id="Menu.Xtsz.DKSet.InvDkTypeSet" type="Command" class="Aisino.Fwkp.Fptk.Entry.InvDkTypeSetEntry"   label="证书读入" icon="系统设置_税务代开设置_证书读入"/>
+      </MenuItem>
+    </MenuItem>
+    
+  </Menu>
+  <Tree>
+    <TreeNode id="Menu.Fpgl" type="Menu" label="发票管理" icon="发票管理_Tree">
+      <TreeNode id="Menu.Fpgl.Fptk" type="Menu" label="发票填开" isFirst="true" class="Aisino.Fwkp.Fptk.Entry.InvEntry" icon="发票管理_发票填开0">
+        <TreeNode id="Menu.Fpgl.Fptk.ZyFptk" type="Command" class="Aisino.Fwkp.Fptk.Entry.SpecialInvEntry" label="专用发票填开" icon="发票管理_专用发票填开"/>
+        <TreeNode id="Menu.Fpgl.Fptk.PtFptk" type="Command" class="Aisino.Fwkp.Fptk.Entry.CommonInvEntry" label="普通发票填开" icon="发票管理_普通发票填开"/>
+        <TreeNode id="Menu.Fpgl.Fptk.DzFptk" type="Command" class="Aisino.Fwkp.Fptk.Entry.ElectronInvEntry" label="电子增值税普通发票填开" icon="发票管理_电子增值税普通发票填开"/>
+        <TreeNode id="Menu.Fpgl.Fptk.JsFptk" type="Command" class="Aisino.Fwkp.Fptk.Entry.RollInvEntry" label="增值税普通发票(卷票)填开" icon="发票管理_普通发票(卷票)填开"/>
+        <TreeNode id="Menu.Fpgl.Fptk.HyFptk" type="Command" class="Aisino.Fwkp.Fptk.Entry.CargoInvEntry" label="货物运输业增值税专用发票填开" icon="发票管理_货运发票填开"/>
+        <TreeNode id="Menu.Fpgl.Fptk.JdcFptk" type="Command" class="Aisino.Fwkp.Fptk.Entry.VehicleInvEntry" label="机动车销售统一发票填开" icon="发票管理_机动车发票填开"/>
+        <TreeNode id="Menu.Fpgl.Fptk.SNYFptk" type="Command" class="Aisino.Fwkp.Fptk.Entry.SNYInvEntry" label="石脑油、燃料油发票填开" icon="发票管理_石脑油、燃料油发票填开"/>
+        <TreeNode id="Menu.Fpgl.Fptk.NCPXSFptk" type="Command" class="Aisino.Fwkp.Fptk.Entry.NCPXSInvEntry" label="农产品销售发票填开" icon="农产品销售发票填开"/>
+        <TreeNode id="Menu.Fpgl.Fptk.NCPSGFptk" type="Command" class="Aisino.Fwkp.Fptk.Entry.NCPSGInvEntry" label="收购发票填开" icon="农产品收购发票填开"/>
+
+      </TreeNode>
+    </TreeNode>
+
+    <TreeNode id="Menu.Xtsz" type="Menu" label="系统设置" isFirst="true">
+      <TreeNode id="Menu.Xtsz.DKSet" type="Menu" label="税务代开设置"  class="Aisino.Fwkp.Fptk.Entry.InvDkTypeSetEntry"  icon="系统设置_税务代开设置">
+        <TreeNode id="Menu.Xtsz.DKSet.InvDkTypeSet" type="Command" isFirst="true"  class="Aisino.Fwkp.Fptk.Entry.InvDkTypeSetEntry" label="证书读入" icon="系统设置_税务代开设置_证书读入"/>
+      </TreeNode>
+    </TreeNode>  
+  </Tree>
+</PlugIn>

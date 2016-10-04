@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <ProjectType>local</ProjectType>
+    <ProjectVersion>7.10.377</ProjectVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{947CEF5A-5D81-477F-AC76-3F573FAED157}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <AssemblyName>Aisino.Fwkp.Bsgl</AssemblyName>
+    <OutputType>Library</OutputType>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Output\Bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Reference Include="Aisino.Framework.Plugin.Core">
+      <HintPath>..\Aisino.Framework.Plugin.Core\obj\x86\Debug\Aisino.Framework.Plugin.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="log4net" />
+    <Reference Include="Aisino.FTaxBase">
+      <HintPath>..\Aisino.FTaxBase\bin\Debug\Aisino.FTaxBase.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="Aisino.Framework.Dao" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Data" />
+    <Reference Include="Microsoft.Office.Interop.Excel" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="NPOI" />
+    <Reference Include="Aisino.Framework.MainForm" />
+    <Reference Include="Aisino.Fwkp.BusinessObject" />
+    <Reference Include="BSDC" />
+    <Reference Include="Aisino.Fwkp.CommonLibrary" />
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Global.cs" />
+    <Compile Include="Aisino\Fwkp\Bsgl\GoodsInfo.cs" />
+    <Compile Include="Aisino\Fwkp\Bsgl\DataSumForm.cs" />
+    <Compile Include="Aisino\Fwkp\Bsgl\JSPStateQuery.cs" />
+    <Compile Include="Aisino\Fwkp\Bsgl\InvoiceReportEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Bsgl\ChaoshuiForm.cs" />
+    <Compile Include="Aisino\Fwkp\Bsgl\FPDetailDAL.cs" />
+    <Compile Include="Aisino\Fwkp\Bsgl\Properties\Resources.cs" />
+    <Compile Include="Aisino\Fwkp\Bsgl\FPDetail.cs" />
+    <Compile Include="Aisino\Fwkp\Bsgl\FPType.cs" />
+    <Compile Include="Aisino\Fwkp\Bsgl\StubFPOutput.cs" />
+    <Compile Include="Aisino\Fwkp\Bsgl\InvRepHtmlEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Bsgl\ChaoShuiProcess.cs" />
+    <Compile Include="Aisino\Fwkp\Bsgl\InvoiceReportDAL.cs" />
+    <Compile Include="Aisino\Fwkp\Bsgl\XMLOPEntity.cs" />
+    <Compile Include="Aisino\Fwkp\Bsgl\InvVolumeStatEntity.cs" />
+    <Compile Include="Aisino\Fwkp\Bsgl\InvVolumeEntity.cs" />
+    <Compile Include="Aisino\Fwkp\Bsgl\TaxDataEntity.cs" />
+    <Compile Include="Aisino\Fwkp\Bsgl\TaxDateSegment.cs" />
+    <Compile Include="Aisino\Fwkp\Bsgl\INV_TYPE.cs" />
+    <Compile Include="Aisino\Fwkp\Bsgl\ITEM_ACTION.cs" />
+    <Compile Include="Aisino\Fwkp\Bsgl\QueryPrintEntity.cs" />
+    <Compile Include="Aisino\Fwkp\Bsgl\InvTypeEntity.cs" />
+    <Compile Include="Aisino\Fwkp\Bsgl\ItemEntity.cs" />
+    <Compile Include="Aisino\Fwkp\Bsgl\PrintEntity.cs" />
+    <Compile Include="Aisino\Fwkp\Bsgl\CInvStatData.cs" />
+    <Compile Include="Aisino\Fwkp\Bsgl\CommFun.cs" />
+    <Compile Include="Aisino\Fwkp\Bsgl\Commands\JskStatusQueryWebEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Bsgl\ChaoshuiMedium.cs" />
+    <Compile Include="Aisino\Fwkp\Bsgl\JSKClock.cs" />
+    <Compile Include="Aisino\Fwkp\Bsgl\FPSerialPrint.cs" />
+    <Compile Include="Aisino\Fwkp\Bsgl\SysArgsDAL.cs" />
+    <Compile Include="Aisino\Fwkp\Bsgl\WaitForm.cs" />
+    <Compile Include="Aisino\Fwkp\Bsgl\InvStatForm.cs" />
+    <Compile Include="Aisino\Fwkp\Bsgl\FPQuery.cs" />
+    <Compile Include="Aisino\Fwkp\Bsgl\YearlyStatEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Bsgl\FPExportJDC.cs" />
+    <Compile Include="Aisino\Fwkp\Bsgl\InvoiceResultForm.cs" />
+    <Compile Include="Aisino\Fwkp\Bsgl\InvoiceReportForm.cs" />
+    <Compile Include="Aisino\Fwkp\Bsgl\FPExport.cs" />
+    <Compile Include="Aisino\Fwkp\Bsgl\IdTextPair.cs" />
+    <Compile Include="Aisino\Fwkp\Bsgl\JskPasswordSet.cs" />
+    <Compile Include="Aisino\Fwkp\Bsgl\FpDataExport.cs" />
+    <Compile Include="Aisino\Fwkp\Bsgl\Resource1.cs" />
+    <Compile Include="Aisino\Fwkp\Bsgl\PrintForm.cs" />
+    <Compile Include="Aisino\Fwkp\Bsgl\FPProgressBar.cs" />
+    <Compile Include="Aisino\Fwkp\Bsgl\StubFpDetailInterface.cs" />
+    <Compile Include="Aisino\Fwkp\Bsgl\BSLoginForm.cs" />
+    <Compile Include="Aisino\Fwkp\Bsgl\JSKPassword.cs" />
+    <Compile Include="Aisino\Fwkp\Bsgl\TaxcardDataStatisticEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Bsgl\FpQueryPrint.cs" />
+    <Compile Include="Aisino\Fwkp\Bsgl\InvStatBLL.cs" />
+    <Compile Include="Aisino\Fwkp\Bsgl\TaxcardDataMonthlyStatisticEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Bsgl\JskClockSet.cs" />
+    <Compile Include="Aisino\Fwkp\Bsgl\Factory.cs" />
+    <Compile Include="Aisino\Fwkp\Bsgl\DataSumDAL.cs" />
+    <Compile Include="Aisino\Fwkp\Bsgl\TaxcardEntityBLL.cs" />
+    <Compile Include="Aisino\Fwkp\Bsgl\FPExportJDCPath.cs" />
+    <Compile Include="Aisino\Fwkp\Bsgl\JSKStateQuery.cs" />
+    <Compile Include="Aisino\Fwkp\Bsgl\FPQueryPrint.cs" />
+    <Compile Include="Aisino\Fwkp\Bsgl\JskStatusQueryCommand.cs" />
+    <Compile Include="Aisino\Fwkp\Bsgl\BszldcMethod.cs" />
+    <Compile Include="Aisino\Fwkp\Bsgl\InvoiceReportBLL.cs" />
+    <Compile Include="Aisino\Fwkp\Bsgl\MonthStatEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Bsgl\QueryPrintDAL.cs" />
+    <Compile Include="Aisino\Fwkp\Bsgl\ExportJDC.cs" />
+    <Compile Include="Aisino\Fwkp\Bsgl\QueryPrintBLL.cs" />
+    <Compile Include="Aisino\Fwkp\Bsgl\TaxStateWrapper.cs" />
+    <Compile Include="Aisino\Fwkp\Bsgl\Entry\ChaoShuiWebEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Bsgl\BSData.cs" />
+    <Compile Include="Aisino\Fwkp\Bsgl\FPLB.cs" />
+    <Compile Include="Aisino\Fwkp\Bsgl\TaxDataOutput.cs" />
+    <Compile Include="Aisino\Fwkp\Bsgl\BSDataOutput.cs" />
+    <Compile Include="Aisino\Fwkp\Bsgl\QDFPDataExport.cs" />
+    <EmbeddedResource Include="Aisino.Fwkp.Bsgl.JSPStateQuery.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Bsgl.InvStatForm.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Bsgl.DataSumForm.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Bsgl.FPExportJDCPath.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Bsgl.PrintForm.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Bsgl.WaitForm.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Bsgl.JSKStateQuery.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Bsgl.InvoiceReportForm.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Bsgl.Properties.Resources.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Bsgl.BSDataOutput.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Bsgl.StubFPOutput.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Bsgl.FPQuery.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Bsgl.InvoiceResultForm.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Bsgl.FPExportJDC.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Bsgl.FPQueryPrint.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Bsgl.FPExport.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Bsgl.Resource1.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Bsgl.JSKPassword.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Bsgl.ChaoshuiForm.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Bsgl.JSKClock.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Bsgl.FPSerialPrint.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Bsgl.FPProgressBar.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Bsgl.ChaoshuiMedium.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Bsgl.BSLoginForm.resources" />
+  </ItemGroup>
+</Project>

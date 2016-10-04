@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--根节点为PlugIn，可以设置插件ID、name、author、description等属性-->
+<PlugIn id="Aisino.Fwkp.DockPage" name= "首页" author= "test" description = "测试插件">
+  <!--插件运行时信息-->
+  <Runtime>
+    <!--指定插件程序集，采用相对路径-->
+    <Import assembly = "..\Aisino.Fwkp.HomePage.dll"/>
+  </Runtime>
+  <!--<Auto>
+    <Class id="Aisino.Fwkp.HomePage.Auto" class="Aisino.Fwkp.HomePage.DockStart" label="首页"></Class>
+  </Auto>-->
+  <!--新建菜单资源-->
+  <!--<Menu>
+    --><!--新建菜单项目，type="Menu"表示包含下级项目的菜单，lable表示菜单显示文字--><!--
+    <MenuItem id = "DockPage_Menu" type = "Menu" label = "首页菜单">
+      --><!--type = "Command"表示最下层菜单项，此时须指定class属性，shortcut表示快捷键--><!--
+      <MenuItem id = "DockPage_DockStart" type = "Command" class = "Aisino.Fwkp.HomePage.DockStart" label = "首页" shortcut="F12"/>
+    </MenuItem>
+  </Menu>-->
+</PlugIn>

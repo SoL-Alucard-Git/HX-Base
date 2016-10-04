@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<PlugIn id="Aisino.Fwkp.DataMigrationTool" name="数据迁移工具" description="发票开具插件">
+  <Runtime>
+    <Import assembly="..\Aisino.Fwkp.DataMigrationTool.dll"/>
+  </Runtime>
+
+  <Auto>
+    <Class id="Aisino.Fwkp.DataMigrationTool.method" class="Aisino.Fwkp.DataMigrationTool.Common.ShareMethodClass" label="ShareMethodClass" alwaysPermit="true"/>
+  </Auto>
+  
+  <Menu>
+		
+    <MenuItem id = "Menu.Xtwh" type = "Menu" label = "系统维护" insertAfter="Menu.Bsgl.InvData"  icon="系统维护_系统维护">
+      <MenuItem id="Aisino.Fwkp.DataMigrationTool.Entry.DataMigrationToolEntry" type="Command" class="Aisino.Fwkp.DataMigrationTool.Entry.DataMigrationToolEntry" label="数据迁移工具"/>
+      <MenuItem id="Aisino.Fwkp.DataMigrationTool.Entry.TaxcodeChangeEntry" type="Command" class="Aisino.Fwkp.DataMigrationTool.Entry.TaxcodeChangeEntry" label="税号变更"/>
+    </MenuItem>
+    
+  </Menu>
+
+  <Tree>
+
+    <TreeNode id = "Aisino.Fwkp.Stwh" type = "Menu" label = "系统维护" icon="系统设置_Tree">
+
+      <TreeNode id="Aisino.Fwkp.DataMigrationTool.Entry.DataMigrationToolEntry" type="Command" class="Aisino.Fwkp.DataMigrationTool.Entry.DataMigrationToolEntry" label="数据迁移工具"/>
+
+    </TreeNode>
+
+  </Tree>
+  
+</PlugIn>

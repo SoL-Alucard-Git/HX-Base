@@ -1,0 +1,687 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <ProjectType>local</ProjectType>
+    <ProjectVersion>7.10.377</ProjectVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B65BB74A-99D3-4854-8151-A6BD4D4A489A}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <AssemblyName>Aisino.Framework.Plugin.Core</AssemblyName>
+    <OutputType>Library</OutputType>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Output\Bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System" />
+    <Reference Include="log4net">
+      <HintPath>..\..\脱壳后文件\Bin\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Npgsql">
+      <HintPath>..\..\脱壳后文件\Bin\Npgsql.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>..\..\脱壳后文件\Bin\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
+    <Reference Include="System.Data.SQLite">
+      <HintPath>..\..\脱壳后文件\Bin\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Services" />
+    <Reference Include="NPOI">
+      <HintPath>..\..\脱壳后文件\Bin\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Global.cs" />
+    <Compile Include="Class112.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Util\XmlComponentUtil.cs" />
+    <Compile Include="ns6\Class113.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\AisinoTVW.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\TreeViewBtnBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\StatisticsGrid\GridStatisticsUtil.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Http\UploadEventArgs.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\PrintGrid\DataGridPrintToolsN.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\MutiQuery\MutiConditionQuery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\ExcelXml\ExcelXmlWorkbook.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\ExcelXml\PrintOptions.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\ExcelXml\Parameter.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\ExcelXml\Formula.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\MessageDlg\ProcessForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\TabCloseEventHandler.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\AisinoTAB.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\TabControlSkin.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\TabControlEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\SkinForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ns8\Control0.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ns8\Enum12.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\NavigatePage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ns8\Delegate34.cs" />
+    <Compile Include="ns8\EventArgs0.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\InvoicePanelLt.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\CustomInfoText.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\ButtonPw.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\Util\QdfwUtil.cs" />
+    <Compile Include="ns9\Class114.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\Plugin\PlugInTree.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\CoreStartup.cs" />
+    <Compile Include="ns10\Interface1.cs" />
+    <Compile Include="ns10\Interface2.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Command\AbstractCommand.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\MutiQuery\QueryArgsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\BaseException.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\DALException.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\ExcelXml\CellIndexInfo.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\ExcelXml\CellSettingsApplier.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\ExcelXml\IStyle.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\ExcelXml\Styles.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\ExcelXml\Cell.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\MessageDlg\MessageBaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\FormSplash.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\ToolStripCheckBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\AisinoTXT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\TextBoxWaterMark.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\TextBoxWait.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\GetTextEventHandler.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\GetTextEventArgs.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\TextBoxTreeView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\PopupHost.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\OutlookBar\OutlookItem.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ns8\Control1.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Core\Controls\NavigateMenuNode.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\LastTree.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\EditStyle.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\ButtonStyle.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\AisinoComboxBorderStyle.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\AutoComplateStyle.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\AisinoMultiCombox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ns8\Class116.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Tree\TreeNodeCommand_All.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\ToolbarLoader.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Registry\RegFileSetupResult.cs" />
+    <Compile Include="ns11\Interface3.cs" />
+    <Compile Include="ns11\Class119.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\AisinoDataSet.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\PrintGrid\PrintOptionsFormN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\DateBaseException.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\ExcelGrid\ExportEndedEventArgs.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\ExcelXml\DocumentProperties.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\AisinoBTN.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\CustomButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\NavigateToolScrip.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\MenuColorTable.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\PrintControl\PrintFileModel.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\PrintControl\PrintZheHangModel.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\PrintControl\ReadXml.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\PrintControl\AisinoPrintControl.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\PrintControl\AisinoPrintPanel.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\PrintControl\AisinoPrintLabel.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\PrintControl\AisinoFormat.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\PrintControl\HorizontalType.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\PrintControl\VerticalType.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\PrintControl\DataType.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\PrintControl\AisinoPrintImage.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\AisinoPrint.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\AisinoMTX.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\Util\SQLUtil.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\ExceptionHandler.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\StyleGrid\PropertyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\Menu\MenuCommand.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\PrintGrid\DataGridPrintTools.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\MessageDlg\SysMessageBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\BusinessObjectException.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\MessageDlg\ProcessBarForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\BaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\MessageDlg\EmailCanShuSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\TriStateTreeView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\SysUtil.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\TreeViewBM.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\TreeSelectEventArgs.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\NavigateMenuNodeCollection.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\InvoiceLittle.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\PrintControl\Common.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Util\CLSIme.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Service\ServiceFactory.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Registry\qwe.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Registry\TextRegHead.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Registry\Xihaa.cs" />
+    <Compile Include="ns12\Class120.cs" />
+    <Compile Include="ns11\Class121.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\MenuLoader.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\MutiQuery\EnumHelper.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\MutiQuery\Condition.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\ExcelXml\IFontOptions.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\ExcelXml\FontOptions.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\ExcelXml\IInteriorOptions.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\ExcelXml\InteriorOptions.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\ExcelXml\IAlignmentOptions.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\ExcelXml\AlignmentOptions.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\ExcelXml\IBorderOptions.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\ExcelXml\BorderOptions.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\ExcelXml\XmlStyle.cs" />
+    <Compile Include="System\Runtime\CompilerServices\ExtensionAttribute.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\TabControlPwSkin.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\NavigateMenuNodeRect.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\AisinoSPL.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\Util\ZipUtil.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Util\ProgressData.cs" />
+    <Compile Include="Interface4.cs" />
+    <Compile Include="ns8\WarnForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ns8\MessForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\ExcelXml\Extensions\XmlSettingAttribute.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\MessageBoxHelper.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\TabPageEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\OutlookBar\OutlookBarNode.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\CustomStyleDataGrid.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\CustomStyle.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\ToolBarItemCollection.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\PrintControl\GControl0.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\AisinoPNL.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\AisinoNUD.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\Util\IniFileUtil.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Util\FontSetupUtil.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Util\CheckSystemUtil.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Util\CheckCodeRoles.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Menu\MenuCheckBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ns10\Interface5.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Command\AbstractCheckableCommand.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\PrintGrid\DataGridPrintToolsQD.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\MutiQuery\CompCondition.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\ExcelXml\Extensions\EncryptDecrypt.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\ExcelXml\Extensions\DateSpan.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Crypto\IDEA_Ctypt.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\OutlookBar\OutlookItemCollection.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\OutlookBar\OutlookBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ns13\Delegate37.cs" />
+    <Compile Include="ns13\Class122.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\DataGridViewDisableCheckBoxColumn.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\tpButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\ToolBarItem.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\AisinoLST.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\Util\UserLoginUtil.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Util\SerializeUtil.cs" />
+    <Compile Include="ns6\Class123.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Util\ResourceUtil.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Toolbar\ToolBarButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ns11\Class124.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\ExcelXml\Row.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\ExcelXml\Extensions\FolderExtensions.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\TabPagePw.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\TabControlPw.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\OutlookBar\OutlookBarNodeCollection.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\NavigateMenuNode.cs" />
+    <Compile Include="ns8\Delegate38.cs" />
+    <Compile Include="ns8\Class125.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\FileControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\CtlState.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\AisinoButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\PrintControl\AisinoPrintLine.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\PrintControl\AisinoPrintGrid.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\AisinoRDO.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\TaxCardFactory.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Util\StringUtil.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Util\FileUtil.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\TreeLoader.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\StatisticsGrid\StatisticsOptions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\Menu\MenuLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\Http\WebClient.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Crypto\MD5_Crypt.cs" />
+    <Compile Include="ns8\ErroForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\PrintGrid\PrintOptionsFormQD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\Plugin\ReStartupException.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\ExcelXml\FormulaHelper.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\ExcelXml\ExportToXml.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\DockForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form0.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\Mail\MailData.cs" />
+    <Compile Include="Aisino\Framework\Startup\Login\UserInfo.cs" />
+    <Compile Include="Aisino\Framework\Startup\Login\ILogin.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\XmlComponentLoader.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\TreeViewAddNeed.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\OutlookBar\OutlookBounds.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\OutlookBar\MenuDirection.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\NoPasteText.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\InvoicePaper.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\Util\UpLoadCheckState.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Util\ToolUtil.cs" />
+    <Compile Include="ns6\Exception0.cs" />
+    <Compile Include="ns6\Class126.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Util\ProductName.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Service\AbstractService.cs" />
+    <Compile Include="ns11\Class127.cs" />
+    <Compile Include="ns11\Class128.cs" />
+    <Compile Include="ns12\EventArgs1.cs" />
+    <Compile Include="ns12\EventArgs2.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Plugin\Function.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Http\DownloadEventArgs.cs" />
+    <Compile Include="ns14\Class129.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\MessageDlg\CusMessageBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\Crypto\IDEAXT.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\SkinFormT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\DataGridMX.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\AisinoPIC.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\WebService\WebServiceFactory.cs" />
+    <Compile Include="ns9\Class130.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\StyleGrid\GridColumnProperty.cs" />
+    <Compile Include="Class131.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Registry\RegisterManager.cs" />
+    <Compile Include="Enum15.cs" />
+    <Compile Include="ns12\Class132.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\PrintGrid\PrintOptionsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\MutiQuery\DataField.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\MutiQuery\FieldType.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\BusinessLogicException.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\ExcelXml\Worksheet.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\MessageDlg\ProcessHelper.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\AisinoCHK.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ns8\Class133.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\FormStyle.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\PrintControl\PointFConverter.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\PrintControl\SizeFConverter.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\PrintControl\Canvas.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\PrintControl\AisinoPrintRepeater.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\AisinoCMB.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ns12\Class134.cs" />
+    <Compile Include="ns12\Class135.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Http\MultipartForm.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\AisinoDataGrid.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ns15\Class136.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\PrintGrid\PrinterItems.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\ExcelGrid\ExportDataGridViewToExcel.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\ExcelXml\FontOptionsBase.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\ExcelXml\InteriorOptionsBase.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\ExcelXml\AlignmentOptionsBase.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\ExcelXml\BorderOptionsBase.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\ExcelXml\Range.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\ExcelXml\Extensions\FileExtensions.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\FormSplashHelper.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Crypto\DecodeXT.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\SelectedStatus.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\DataGridViewDisableCheckBoxCell.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\CustomListView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\PrintControl\DataDict.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\PrintControl\AsHSEncode.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Util\WaitForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\Util\ProgressForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\Util\DataGridUtil.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\StatisticsGrid\StatisticsResult.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\DataGridRowEventArgs.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\DataGridRowCellValidatingEventArgs.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\DataGridRowCellCancelEventArgs.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\GoToPageEventArgs.cs" />
+    <Compile Include="ns10\Interface6.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Command\AbstractLabelCommand.cs" />
+    <Compile Include="ns15\Class137.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\ExcelXml\Extensions\ObjectExtensions.cs" />
+    <Compile Include="ns14\Enum16.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\ExcelXml\ParameterType.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\ExcelXml\DisplayFormatType.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\ExcelXml\ContentType.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\ExcelXml\VerticalAlignment.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\ExcelXml\HorizontalAlignment.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\ExcelXml\Borderline.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\ExcelXml\BorderSides.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\ExcelXml\Pattern.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\ExcelXml\PageLayout.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\ExcelXml\PageOrientation.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\MessageDlg\SendErrMail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\MessageDlg\MessageHelper.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Https\HttpsSender.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Crypto\XTSP_Crypt.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\TextBoxRegex.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ns8\Control3.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\ComplexInputStyle.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\MultiColumnComboBoxType.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Util\WaitFormService.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Util\LogUtil.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Util\UserNamePatternConvert.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Tree\TreeNodeCommand.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Toolbar\ToolBarLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ns12\Exception1.cs" />
+    <Compile Include="Class138.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ns8\ErroEndForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ns8\Control4.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\CustomComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\AisinoToolBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\PrintControl\AisinoPrintAsQR.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\AisinoControls\PrintPreviewDialogEx.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\Util\XmlManager.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Util\Win32.cs" />
+    <Compile Include="ns6\Enum17.cs" />
+    <Compile Include="ns6\Enum18.cs" />
+    <Compile Include="ns6\Enum19.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Util\StringHelper.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Util\MessageManager.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Util\ControlStyleUtil.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Toolbar\ToolBarCommand.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\Plugin\PlugIn.cs" />
+    <Compile Include="ns8\ConfForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\MutiQuery\LogicOperator.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\MutiQuery\ArithOperator.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\MutiQuery\BaseCondition.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\ExcelXml\Extensions\XmlReaderAttributeItem.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\ExcelXml\Column.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\AisinoRTX.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\AisinoPRG.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\AisinoLBLEX.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\AisinoLBL.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\AisinoGRP.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\Util\PropertyUtil.cs" />
+    <Compile Include="ns12\Exception2.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Crypto\RSA_Crypt.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Crypto\AES_Crypt.cs" />
+    <Compile Include="ns14\Class139.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\ExcelXml\Extensions\XmlSettings.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\ExcelXml\CellCollection.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\MessageDlg\Model\Fwsk_ErrInfo.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Mail\MailService.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\TreeNodeTemp.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\OutlookBar\TitleCilckEventHander.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\DataGridViewFPMX.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\PrintControl\AisinoPrintAsHX.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\AisinoDUD.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\AisinoCKL.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Aisino\Framework\Plugin\Core\Const\SystemColor.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Util\ProgressHelper.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Registry\RegFileInfo.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Properties\Resources.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\ExcelXml\Extensions\XmlSettingIgnoreAttribute.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\Controls\PrintControl\AisinoPrintCheck.cs" />
+    <Compile Include="Aisino\Framework\Plugin\Core\CodeRoles.cs" />
+    <Compile Include="_Module_{5C4F3341-ABD4-426F-BFF5-874726F9F1A3}.cs" />
+    <Compile Include="Class140.cs" />
+    <EmbeddedResource Include="Class131.resources" />
+    <EmbeddedResource Include="Aisino.Framework.Plugin.Core.PrintGrid.PrintOptionsFormQD.resources" />
+    <EmbeddedResource Include="ns8.MessForm.resources" />
+    <EmbeddedResource Include="Aisino.Framework.Plugin.Core.Controls.AisinoMultiCombox.resources" />
+    <EmbeddedResource Include="Aisino.Framework.Plugin.Core.MutiQuery.MutiConditionQuery.resources" />
+    <EmbeddedResource Include="Aisino.Framework.Plugin.Core.MessageDlg.EmailCanShuSet.resources" />
+    <EmbeddedResource Include="Aisino.Framework.Plugin.Core.FormSplash.resources" />
+    <EmbeddedResource Include="ns8.ErroForm.resources" />
+    <EmbeddedResource Include="Aisino.Framework.Plugin.Core.Controls.NavigatePage.resources" />
+    <EmbeddedResource Include="Aisino.Framework.Plugin.Core.Controls.NavigateToolScrip.resources" />
+    <EmbeddedResource Include="Aisino.Framework.Plugin.Core.MessageDlg.SysMessageBox.resources" />
+    <EmbeddedResource Include="ns8.ErroEndForm.resources" />
+    <EmbeddedResource Include="Aisino.Framework.Plugin.Core.MutiQuery.QueryArgsForm.resources" />
+    <EmbeddedResource Include="Aisino.Framework.Plugin.Core.Controls.InvoicePanelLt.resources" />
+    <EmbeddedResource Include="Aisino.Framework.Plugin.Core.Controls.SkinForm.resources" />
+    <EmbeddedResource Include="Aisino.Framework.Plugin.Core.Controls.AisinoToolBar.resources" />
+    <EmbeddedResource Include="Aisino.Framework.Plugin.Core.MessageDlg.SendErrMail.resources" />
+    <EmbeddedResource Include="ns8.ConfForm.resources" />
+    <EmbeddedResource Include="Aisino.Framework.Plugin.Core.Controls.FileControl.resources" />
+    <EmbeddedResource Include="ns8.WarnForm.resources" />
+    <EmbeddedResource Include="Aisino.Framework.Plugin.Core.Controls.SkinFormT.resources" />
+    <EmbeddedResource Include="Aisino.Framework.Plugin.Core.Controls.BaseForm.resources" />
+    <EmbeddedResource Include="Aisino.Framework.Plugin.Core.Controls.InvoiceLittle.resources" />
+    <EmbeddedResource Include="Aisino.Framework.Plugin.Core.StatisticsGrid.StatisticsResult.resources" />
+    <EmbeddedResource Include="Aisino.Framework.Plugin.Core.StatisticsGrid.StatisticsOptions.resources" />
+    <EmbeddedResource Include="Aisino.Framework.Plugin.Core.PrintGrid.PrintOptionsFormN.resources" />
+    <EmbeddedResource Include="Aisino.Framework.Plugin.Core.PrintGrid.PrintOptionsForm.resources" />
+    <EmbeddedResource Include="Aisino.Framework.Plugin.Core.Controls.InvoicePaper.resources" />
+    <EmbeddedResource Include="Aisino.Framework.Plugin.Core.StyleGrid.PropertyForm.resources" />
+    <EmbeddedResource Include="Aisino.Framework.Plugin.Core.Controls.TreeViewAddNeed.resources" />
+    <EmbeddedResource Include="Aisino.Framework.Plugin.Core.Controls.OutlookBar.OutlookBarNode.resources" />
+    <EmbeddedResource Include="Aisino.Framework.Plugin.Core.MessageDlg.MessageBaseForm.resources" />
+    <EmbeddedResource Include="Aisino.Framework.Plugin.Core.MessageDlg.ProcessBarForm.resources" />
+    <EmbeddedResource Include="Aisino.Framework.Plugin.Core.Controls.TreeViewBM.resources" />
+    <EmbeddedResource Include="Aisino.Framework.Plugin.Core.Util.WaitForm.resources" />
+    <EmbeddedResource Include="Aisino.Framework.Plugin.Core.Util.ProgressForm.resources" />
+    <EmbeddedResource Include="Aisino.Framework.Plugin.Core.MessageDlg.ProcessForm.resources" />
+    <EmbeddedResource Include="Aisino.Framework.Plugin.Core.Controls.AisinoDataGrid.resources" />
+    <EmbeddedResource Include="Aisino.Framework.Plugin.Core.MessageDlg.CusMessageBox.resources" />
+    <EmbeddedResource Include="Aisino.Framework.Plugin.Core.g.resources" />
+    <EmbeddedResource Include="aR3nbf8dQp2feLmk31.SplashForm.resources" />
+    <EmbeddedResource Include="aR3nbf8dQp2feLmk31.lSfgApatkdxsVcGcrktoFd.resources" />
+    <EmbeddedResource Include="Aisino.Framework.Plugin.Core.Properties.Resources.resources" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Aisino.Framework.PDF417Code\Aisino.Framework.PDF417Code.csproj">
+      <Project>{e2b6b915-4eec-499d-afc9-2d404804e764}</Project>
+      <Name>Aisino.Framework.PDF417Code</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Aisino.Framework.QRCode\Aisino.Framework.QRCode.csproj">
+      <Project>{7af0e3f6-cbfa-4ba6-a27d-bf77f929fca0}</Project>
+      <Name>Aisino.Framework.QRCode</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Aisino.FTaxBase\Aisino.FTaxBase.csproj">
+      <Project>{a9935674-60e2-44e1-8785-d391586d31f8}</Project>
+      <Name>Aisino.FTaxBase</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

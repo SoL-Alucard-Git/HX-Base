@@ -1,0 +1,759 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SQLLIB>
+
+  <!--
+
+  <查询发票信息  设置查询条件以后执行 WHERE  KPRQ >= @ksrq and KPRQ <= !jsrq order by KPRQ DESC>
+  <SQL id="aisino.fwkp.fpkj.SelectFPXX_TiaoJian">
+    <var name="condition" value=
+         "case when(@McMhBz=1) then GFMC like @GFMC else GFMC = @GFMC  end 
+          and
+          case when(@YueFenBz=1) then 1=1 else strftime('%m',KPRQ) = strftime('%m',@YueFen)  end 
+          and 
+          case when(@ShMhBz=1) then GFSH like @GFSH else GFSH = @GFSH end 
+          and 
+          case when(@KsRqBrBz=1) then 1=1 else KPRQ>=strftime('%Y-%m-%d %H:%M:%S',@KsRq) end 
+          and
+          case when(@JsRqBrBz=1) then 1=1 else KPRQ &lt;=strftime('%Y-%m-%d %H:%M:%S',@JsRq) end  
+          and 
+          case when(upper(@FPZL)='C') then upper(FPZL) = upper(@FPZL) else 1 = 1 end
+          and 
+          case when(upper(@FPZL)='S') then upper(FPZL) = upper(@FPZL) else 1 = 1 end
+          and
+          strftime('%Y',KPRQ) = strftime('%Y',@BenNianDu) 
+          and 
+          case when(@ZFBZBz=1) then 1=1 else ZFBZ=@ZFBZ end
+          and 
+          case when(@AdminBz=1) then 1=1 else KPR=@Admin end
+           "/>
+    <value>
+      select COUNT(*) FROM XXFP WHERE #condition#;
+
+      SELECT   case  upper(FPZL) when 'C' then '普通发票' else '专用发票' end FPZL,
+      FPDM,FPHM,KPJH,GFMC,GFSH,GFDZDH,GFYHZH,JMBBH,MW,KPRQ,
+      HJJE,SLv,HJSE,ZYSPMC,SPSM,BZ,KPR,SKR,FHR,
+      case DYBZ when 0 then '否' else '是' end DYBZ,
+      case ZFBZ when 0 then '否' else '是' end ZFBZ,
+      case QDBZ when 0 then '否' else '是' end QDBZ,
+      case XFBZ when 0 then '否' else '是' end XFBZ,
+      case WKBZ when 0 then '否' else '是' end WKBZ
+      FROM XXFP  WHERE #condition#
+      ORDER BY KPRQ desc Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+
+    </value>
+    <type>Text</type>
+    <param name="McMhBz" type="Int32"></param>
+    <param name="GFMC" type="AnsiString"></param>
+    <param name="YueFenBz" type="Int32"></param>
+    <param name="YueFen" type="AnsiString"></param>
+    <param name="ShMhBz" type="Boolean"></param>
+    <param name="GFSH" type="AnsiString"></param>
+    <param name="KsRqBrBz" type="Int32"></param>
+    <param name="KsRq" type="AnsiString"></param>
+    <param name="JsRqBrBz" type="Int32"></param>
+    <param name="JsRq" type="AnsiString"></param>
+    <param name="FPZL" type="AnsiString"></param>
+    <param name="BenNianDu" type="AnsiString"></param>
+    <param name="ZFBZBz" type="Int32"></param>
+    <param name="ZFBZ" type="AnsiString"></param>
+    <param name="AdminBz" type="Int32"></param>
+    <param name="Admin" type="AnsiString"></param>
+  </SQL>
+  -->
+
+  <!--修改商品科目表-销售收入科目-->
+  <SQL id="aisino.fwkp.Fpzpz.UpdateSPKMB_XSSRKM">
+    <value>
+      UPDATE SPKMB SET XSSRKM=@strXSSRKM WHERE SPBH=@strSPBH
+    </value>
+    <type>Text</type>
+    <param name="strXSSRKM" type="AnsiString"></param>
+    <param name="strSPBH" type="AnsiString"></param>
+  </SQL>
+
+  <!--修改商品科目表-应缴增值税科目-->
+  <SQL id="aisino.fwkp.Fpzpz.UpdateSPKMB_YJZZSKM">
+    <value>
+      UPDATE SPKMB SET YJZZSKM=@strYJZZSKM WHERE SPBH=@strSPBH
+    </value>
+    <type>Text</type>
+    <param name="strYJZZSKM" type="AnsiString"></param>
+    <param name="strSPBH" type="AnsiString"></param>
+  </SQL>
+
+  <!--修改商品科目表-销售退回科目-->
+  <SQL id="aisino.fwkp.Fpzpz.UpdateSPKMB_XSTHKM">
+    <value>
+      UPDATE SPKMB SET XSTHKM=@strXSTHKM WHERE SPBH=@strSPBH
+    </value>
+    <type>Text</type>
+    <param name="strXSTHKM" type="AnsiString"></param>
+    <param name="strSPBH" type="AnsiString"></param>
+  </SQL>
+
+
+  <!--查询客户编码-文件类型-->
+  <SQL id="aisino.fwkp.Fpzpz.SelectKHBM_WJ">
+    <value>
+      SELECT * FROM BM_KH
+      where WJ=@iWJ
+    </value>
+    <type>Text</type>
+    <param name="iWJ" type="Int32"></param>
+  </SQL>
+
+
+  <!--查询客户编码-编码-->
+  <SQL id="aisino.fwkp.Fpzpz.SelectKHBM_BM">
+    <value>
+      SELECT * FROM BM_KH
+      where BM=@strBM and WJ=0
+    </value>
+    <type>Text</type>
+    <param name="strBM" type="AnsiString"></param>
+  </SQL>
+
+
+  <!--查询客户科目表-->
+  <SQL id="aisino.fwkp.Fpzpz.SelectKHKMB">
+    <value>
+      SELECT * FROM KHKMB
+    </value>
+    <type>Text</type>
+  </SQL>
+
+
+  <!--查询客户科目表-客户编号-->
+  <SQL id="aisino.fwkp.Fpzpz.SelectKHKMB_KHBH">
+    <value>
+      SELECT * FROM KHKMB
+      where KHBH=@strKHBH
+    </value>
+    <type>Text</type>
+    <param name="strKHBH" type="AnsiString"></param>
+  </SQL>
+
+
+  <!--查询商品科目表-->
+  <SQL id="aisino.fwkp.Fpzpz.SelectSPKMB">
+    <value>
+      SELECT * FROM SPKMB
+    </value>
+    <type>Text</type>
+  </SQL>
+
+
+  <!--查询商品科目表-商品编码-->
+  <SQL id="aisino.fwkp.Fpzpz.SelectSPKMB_SPBH">
+    <value>
+      SELECT * FROM SPKMB
+      where SPBH=@strSPBH
+    </value>
+    <type>Text</type>
+    <param name="strSPBH" type="AnsiString"></param>
+  </SQL>
+
+
+  <!--查询商品编码表-商品编码-->
+  <SQL id="aisino.fwkp.Fpzpz.SelectSPBM_SPMC">
+    <value>
+      SELECT * FROM BM_SP
+      where MC=@strSPMC
+    </value>
+    <type>Text</type>
+    <param name="strSPMC" type="AnsiString"></param>
+  </SQL>
+
+
+  <!--添加凭证分录表数据-->
+  <SQL id="aisino.fwkp.Fpzpz.InsertTempTable_PZFLB">
+    <value>
+      insert INTO PZFLB(ZH, DJXX, KHBH,
+      JE, KM, JDBZ, SPBH,
+      SL, DJ , KPRQ, JLDW,
+      HSBZ)
+      values(@iZH, @strDJXX, @strKHBH,
+      @decJE, @strKM, @iJDBZ, @strSPBH,
+      @dSL, @dDJ, @dateKPRQ, @strJLDW,
+      @iHSBZ)
+    </value>
+    <type>Text</type>
+    <param name="iZH" type="Int32"></param>
+    <param name="strDJXX" type="AnsiString"></param>
+    <param name="strKHBH" type="AnsiString"></param>
+    <param name="decJE" type="Decimal"></param>
+    <param name="strKM" type="AnsiString"></param>
+    <param name="iJDBZ" type="Int32"></param>
+    <param name="strSPBH" type="AnsiString"></param>
+    <param name="dSL" type="Double"></param>
+    <param name="dDJ" type="Double"></param>
+    <param name="dateKPRQ" type="DateTime"></param>
+    <param name="strJLDW" type="AnsiString"></param>
+    <param name="iHSBZ" type="Int32"></param>
+  </SQL>
+
+
+  <!--添加客户科目表数据-->
+  <SQL id="aisino.fwkp.Fpzpz.InsertTempTable_KHKMB">
+    <value>
+      insert INTO KHKMB(KHBH, YSKM, SJBM) values(@strKHBH, @strYSKM, @strSJBM)
+    </value>
+    <type>Text</type>
+    <param name="strKHBH" type="AnsiString"></param>
+    <param name="strYSKM" type="AnsiString"></param>
+    <param name="strSJBM" type="AnsiString"></param>
+  </SQL>
+
+
+  <!--添加商品科目表数据-->
+  <SQL id="aisino.fwkp.Fpzpz.InsertTempTable_SPKMB">
+    <value>
+      insert INTO
+      SPKMB (SPBH, XSSRKM, YJZZSKM, XSTHKM, SJBM)
+      values(@strSPBH, @strXSSRKM, @strYJZZSKM, @strXSTHKM, @strSJBM)
+    </value>
+    <type>Text</type>
+    <param name="strSPBH" type="AnsiString"></param>
+    <param name="strXSSRKM" type="AnsiString"></param>
+    <param name="strYJZZSKM" type="AnsiString"></param>
+    <param name="strXSTHKM" type="AnsiString"></param>
+    <param name="strSJBM" type="AnsiString"></param>
+  </SQL>
+
+
+  <!--查询客户编码表-名称 编码-->
+  <SQL id="aisino.fwkp.Fpzpz.SelectKHBM_MC_BM">
+    <value>
+      SELECT BM,MC,JM,SJBM,KJM,SH,DZDH,JWBZ,YHZH,YJDZ,BZ,YSKM,DQBM,DQMC,DQKM,SFZJY,WJ
+      FROM
+      BM_KH
+      WHERE WJ=1 and (MC=@strMC or BM=@strBM)
+      GROUP BY BM,MC
+    </value>
+    <type>Text</type>
+    <param name="strMC" type="AnsiString"></param>
+    <param name="strBM" type="AnsiString"></param>
+  </SQL>
+
+  <!--查询商品编码表-编码-->
+  <SQL id="aisino.fwkp.Fpzpz.SelectSPBM_BM">
+    <value>
+      SELECT BM,MC,JM,SJBM,KJM,SLV,SPSM,GGXH,JLDW,DJ,HSJBZ,
+      XSSRKM,YJZZSKM,XSTHKM,HYSY,SPZL,SPSX,WJ
+      FROM
+      BM_SP
+      WHERE WJ=0 and BM=@strBM
+      GROUP BY BM,MC
+    </value>
+    <type>Text</type>
+    <param name="strBM" type="AnsiString"></param>
+  </SQL>
+
+  <!--查询商品编码表-名称 编码-->
+  <SQL id="aisino.fwkp.Fpzpz.SelectSPBM_MC_BM">
+    <value>
+      SELECT BM,MC,JM,SJBM,KJM,SLV,SPSM,GGXH,JLDW,DJ,HSJBZ,
+      XSSRKM,YJZZSKM,XSTHKM,HYSY,SPZL,SPSX,WJ
+      FROM
+      BM_SP
+      WHERE WJ=1 and (MC=@strMC or BM=@strBM)
+      GROUP BY BM,MC
+    </value>
+    <type>Text</type>
+    <param name="strMC" type="AnsiString"></param>
+    <param name="strBM" type="AnsiString"></param>
+  </SQL>
+
+  <!--查询客户编码表-按客户分类-->
+  <SQL id="aisino.fwkp.Fpzpz.SelectKHBM_KHFL">
+    <value>
+      SELECT BM,MC,JM,SJBM,KJM,SH,DZDH,JWBZ,YHZH,YJDZ,BZ,YSKM,DQBM,DQMC,DQKM,SFZJY,WJ
+      FROM
+      BM_KH
+      WHERE WJ=0 GROUP BY BM,MC
+    </value>
+    <type>Text</type>
+  </SQL>
+
+
+  <!--修改客户科目表-修改应收科目-->
+  <SQL id="aisino.fwkp.Fpzpz.UpdateKHKMB_Yskm">
+    <value>
+      UPDATE KHKMB SET YSKM=@strYSKM WHERE KHBH=@strKHBH
+    </value>
+    <type>Text</type>
+    <param name="strYSKM" type="AnsiString"></param>
+    <param name="strKHBH" type="AnsiString"></param>
+  </SQL>
+
+
+  <!--修改客户编码表-修改应收科目-->
+  <SQL id="aisino.fwkp.Fpzpz.UpdateKHBM_Yskm">
+    <value>
+      UPDATE BM_KH SET YSKM=@strYSKM WHERE BM=@strBM
+    </value>
+    <type>Text</type>
+    <param name="strYSKM" type="AnsiString"></param>
+    <param name="strBM" type="AnsiString"></param>
+  </SQL>
+
+
+  <!--查询客户编码表-按客户-->
+  <SQL id="aisino.fwkp.Fpzpz.SelectKHBM_KH">
+    <value>
+      SELECT BM,MC,JM,SJBM,KJM,SH,DZDH,JWBZ,YHZH,YJDZ,BZ,YSKM,DQBM,DQMC,DQKM,SFZJY,WJ
+      FROM
+      BM_KH
+      WHERE WJ=1 GROUP BY BM,MC
+    </value>
+    <type>Text</type>
+  </SQL>
+
+
+  <!--查询客户编码表-按地区分类-->
+  <SQL id="aisino.fwkp.Fpzpz.SelectKHBM_DQFL">
+    <value>
+      SELECT BM,MC,JM,SJBM,KJM,SH,DZDH,JWBZ,YHZH,YJDZ,BZ,YSKM,DQBM,DQMC,DQKM,SFZJY,WJ
+      FROM
+      BM_KH
+      WHERE DQBM!='' AND DQBM!='0000000000' GROUP BY DQBM,DQMC
+    </value>
+    <type>Text</type>
+  </SQL>
+
+  <!--修改客户编码表-修改地区科目-->
+  <SQL id="aisino.fwkp.Fpzpz.UpdateKHBM_Dqkm">
+    <value>
+      UPDATE BM_KH SET DQKM=@strDQKM WHERE DQBM!='' AND DQBM!='0000000000' and DQBM=@strDQBM and DQMC=@strDQMC
+    </value>
+    <type>Text</type>
+    <param name="strDQBM" type="AnsiString"></param>
+    <param name="strDQMC" type="AnsiString"></param>
+    <param name="strDQKM" type="AnsiString"></param>
+  </SQL>
+
+
+
+
+
+
+
+  <!--查询商品编码表-按存货分类-->
+  <SQL id="aisino.fwkp.Fpzpz.SelectSPBM_CHFL">
+    <value>
+      SELECT BM,MC,JM,SJBM,KJM,SLV,SPSM,GGXH,JLDW,DJ,HSJBZ,
+      XSSRKM,YJZZSKM,XSTHKM,HYSY,SPZL,SPSX,WJ
+      FROM
+      BM_SP
+      WHERE WJ=0 GROUP BY BM,MC
+    </value>
+    <type>Text</type>
+  </SQL>
+
+  <!--查询商品编码表-按存货-->
+  <SQL id="aisino.fwkp.Fpzpz.SelectSPBM_CH">
+    <value>
+      SELECT BM,MC,JM,SJBM,KJM,SLV,SPSM,GGXH,JLDW,DJ,HSJBZ,
+      XSSRKM,YJZZSKM,XSTHKM,HYSY,SPZL,SPSX,WJ
+      FROM
+      BM_SP
+      WHERE WJ=1 GROUP BY BM,MC
+    </value>
+    <type>Text</type>
+  </SQL>
+
+  <!--修改商品编码表-修改销售收入科目-->
+  <SQL id="aisino.fwkp.Fpzpz.UpdateSPBM_XSSRKM">
+    <value>
+      UPDATE BM_SP SET XSSRKM=@strXSSRKM WHERE BM=@strBM
+    </value>
+    <type>Text</type>
+    <param name="strXSSRKM" type="AnsiString"></param>
+    <param name="strBM" type="AnsiString"></param>
+  </SQL>
+
+  <!--修改商品编码表-修改应缴增值税科目-->
+  <SQL id="aisino.fwkp.Fpzpz.UpdateSPBM_YJZZSKM">
+    <value>
+      UPDATE BM_SP SET YJZZSKM=@strYJZZSKM WHERE BM=@strBM
+    </value>
+    <type>Text</type>
+    <param name="strYJZZSKM" type="AnsiString"></param>
+    <param name="strBM" type="AnsiString"></param>
+  </SQL>
+
+  <!--修改商品编码表-修改销售退回科目-->
+  <SQL id="aisino.fwkp.Fpzpz.UpdateSPBM_XSTHKM">
+    <value>
+      UPDATE BM_SP SET XSTHKM=@strXSTHKM WHERE BM=@strBM
+    </value>
+    <type>Text</type>
+    <param name="strXSTHKM" type="AnsiString"></param>
+    <param name="strBM" type="AnsiString"></param>
+  </SQL>
+
+
+
+
+  <!--查询发票信息  -->
+  <SQL id="aisino.fwkp.Fpzpz.SelectFPXX_TiaoJian">
+    <var name="condition" value=
+         "
+           case when(@GFMC='') then 1=1 else case when(@McMhBz=1 or @GFMC='') then GFMC like @GFMC else GFMC = @GFMC  end  end
+      and
+      case when(@GFSH='') then 1=1 else case when(@ShMhBz=1) then GFSH like @GFSH else GFSH = @GFSH end end
+      and
+      KPRQ &gt;=strftime('%Y-%m-%d %H:%M:%S',@KsRq)
+      and
+      KPRQ &lt;=strftime('%Y-%m-%d %H:%M:%S',@JsRq)
+      and
+      case when(@FPZL_QbBz=1) then 1=1 else FPZL=@FPZL  end
+      and
+      case when(@FPDM='') then 1=1 else FPDM=@FPDM  end
+      and
+      case when(@FPHM_Ks!=0) then FPHM>=@FPHM_Ks else 1 = 1 end
+      and
+      case when(@FPHM_Js!=0) then FPHM &lt;=@FPHM_Js else 1 = 1 end
+      and
+      case when(@JE_Ks!=0.0) then HJJE >=@JE_Ks else 1 = 1 end
+      and
+      case when(@JE_Js!=0.0) then HJJE &lt;=@JE_Js else 1 = 1 end
+      and (fpzl='c' or fpzl='s') and zfbz=0 and ifnull(pzywh,'')=''
+      and 
+      case when(FPZL='c') then substr(yysbz,6,1)!='2' else 1=1 end
+      and
+      case when(FPZL='c') then substr(yysbz,6,1)!='1' else 1=1 end
+           "/>
+    <value>
+      SELECT
+      FPZL,XZBZ,FPDM,FPHM,GFMC,GFSH,strftime('%Y-%m-%d',KPRQ) as KPRQ,
+      HJJE,HJSE,(HJJE+HJSE) as JSHJ,GFBH,ZFBZ
+      FROM XXFP
+      where #condition#
+      order by FPHM ASC
+    </value>
+    <type>Text</type>
+    <param name="McMhBz" type="Int32"></param>
+    <param name="GFMC" type="AnsiString"></param>
+    <param name="ShMhBz" type="Int32"></param>
+    <param name="GFSH" type="AnsiString"></param>
+    <param name="KsRq" type="AnsiString"></param>
+    <param name="JsRq" type="AnsiString"></param>
+    <param name="FPZL_QbBz" type="Int32"></param>
+    <param name="FPZL" type="AnsiString"></param>
+    <param name="FPDM" type="AnsiString"></param>
+    <param name="FPHM_Ks" type="Int32"></param>
+    <param name="FPHM_Js" type="Int32"></param>
+    <param name="JE_Ks" type="Double"></param>
+    <param name="JE_Js" type="Double"></param>
+  </SQL>
+
+
+  <!--查询凭证信息  -->
+  <SQL id="aisino.fwkp.Fpzpz.SelectFPXX_PingZheng_TiaoJian">
+    <var name="condition" value=
+         "
+      case when(@GFMC='') then 1=1 else case when(@McMhBz=1 or @GFMC='') then GFMC like @GFMC else GFMC = @GFMC  end end
+      and
+      case when(@GFSH='') then 1=1 else case when(@ShMhBz=1) then GFSH like @GFSH else GFSH = @GFSH end end
+      and
+      case when(@KprqKprqBz=1) then KPRQ>=strftime('%Y-%m-%d %H:%M:%S',@KsRq) and KPRQ &lt;=strftime('%Y-%m-%d %H:%M:%S',@JsRq) 
+                               else PZRQ>=strftime('%Y-%m-%d %H:%M:%S',@KsRq) and PZRQ &lt;=strftime('%Y-%m-%d %H:%M:%S',@JsRq)  end
+      and
+      case when(@FPZL_QbBz=1) then 1=1 else FPZL=@FPZL  end
+      and
+      case when(@FPDM='') then 1=1 else FPDM=@FPDM  end
+      and
+      case when(@FPHM_Ks!=0) then FPHM>=@FPHM_Ks else 1 = 1 end
+      and
+      case when(@FPHM_Js!=0) then FPHM&lt;=@FPHM_Js else 1 = 1 end
+      and
+      case when(@WzfBz=0) then ZFBZ=0 else ZFBZ=1 end 
+      and
+      case when(@PZHM_Ks!=0) then PZHM>=@PZHM_Ks else 1 = 1 end
+      and
+      case when(@PZHM_Js!=0) then (PZHM&lt;=@PZHM_Js or ifnull(PZHM,'')='') else 1 = 1 end
+      and
+      case when(@PZWLYWH='') then 1=1 else case when (@PZWLYWH_Bz='1') then PZWLYWH like @PZWLYWH else PZWLYWH=@PZWLYWH end end
+      and
+      case when(@PZLB!='') then PZLB=@PZLB else 1 = 1 end
+      and ifnull(PZYWH,'')!=''
+           "/>
+    <value>
+      SELECT  FPZL,
+      strftime('%Y-%m-%d',PZRQ) as PZRQ,PZLB,PZHM,PZYWH,PZZT,strftime('%Y-%m-%d',KPRQ) as KPRQ,
+      FPDM,FPHM,GFMC,GFSH,ZFBZ,PZWLYWH
+      FROM XXFP  WHERE #condition#
+      order by PZYWH ASC
+    </value>
+    <type>Text</type>
+    <param name="McMhBz" type="Int32"></param>
+    <param name="GFMC" type="AnsiString"></param>
+    <param name="ShMhBz" type="Int32"></param>
+    <param name="GFSH" type="AnsiString"></param>
+    <param name="KprqKprqBz" type="Int32"></param>
+    <param name="KsRq" type="AnsiString"></param>
+    <param name="JsRq" type="AnsiString"></param>
+    <param name="FPZL_QbBz" type="Int32"></param>
+    <param name="FPZL" type="AnsiString"></param>
+    <param name="FPDM" type="AnsiString"></param>
+    <param name="FPHM_Ks" type="Int32"></param>
+    <param name="FPHM_Js" type="Int32"></param>
+    <param name="WzfBz" type="Int32"></param>
+    <param name="PZHM_Ks" type="Int32"></param>
+    <param name="PZHM_Js" type="Int32"></param>
+    <param name="PZLB" type="AnsiString"></param>
+    <param name="PZWLYWH_Bz" type="AnsiString"></param>
+    <param name="PZWLYWH" type="AnsiString"></param>
+  </SQL>
+
+
+  <!--添加临时表 1地区科目表-->
+  <SQL id="aisino.fwkp.Fpzpz.CreateTempTable_DQKMB">
+    <value>
+      CREATE TABLE DQKMB (DQBM varchar(10), DQMC varchar(20), DQKM varchar(20))
+    </value>
+    <type>Text</type>
+  </SQL>
+
+  <!--添加临时表 2客户科目表-->
+  <SQL id="aisino.fwkp.Fpzpz.CreateTempTable_KHKMB">
+    <value>
+      CREATE TABLE KHKMB (KHBH varchar(30), YSKM varchar(20), SJBM varchar(30))
+    </value>
+    <type>Text</type>
+  </SQL>
+
+  <!--添加临时表 3凭证分录表-->
+  <SQL id="aisino.fwkp.Fpzpz.CreateTempTable_PZFLB">
+    <value>
+      CREATE TABLE PZFLB (ZH INT, DJXX varchar(30), KHBH varchar(30),
+      JE decimal, KM varchar(20), JDBZ INT, SPBH varchar(30),
+      SL DOUBLE, DJ DOUBLE, KPRQ datetime,JLDW varchar(32),
+      HSBZ INT)
+    </value>
+    <type>Text</type>
+  </SQL>
+
+  <!--添加临时表 4商品科目表-->
+  <SQL id="aisino.fwkp.Fpzpz.CreateTempTable_SPKMB">
+    <value>
+      CREATE TABLE
+      SPKMB (SPBH varchar(30),XSSRKM varchar(20),YJZZSKM varchar(20),XSTHKM varchar(20),SJBM varchar(30))
+    </value>
+    <type>Text</type>
+  </SQL>
+
+
+
+
+
+
+
+  <!--临时表是否存在 1地区科目表，2客户科目表，3凭证分录表，4商品科目表-->
+  <SQL id="aisino.fwkp.Fpzpz.ExistTempTable">
+    <value>
+      SELECT COUNT(*) as CNT FROM sqlite_master where type='table' and name=@strTableName
+    </value>
+    <type>Text</type>
+    <param name="strTableName" type="AnsiString"></param>
+  </SQL>
+
+
+  <!--清空临时表 1地区科目表-->
+  <SQL id="aisino.fwkp.Fpzpz.EmptyTempTable_DQKMB">
+    <value>
+      delete from DQKMB
+    </value>
+    <type>Text</type>
+  </SQL>
+
+  <!--清空临时表 2客户科目表-->
+  <SQL id="aisino.fwkp.Fpzpz.EmptyTempTable_KHKMB">
+    <value>
+      delete from KHKMB
+    </value>
+    <type>Text</type>
+  </SQL>
+
+  <!--清空临时表 3凭证分录表-->
+  <SQL id="aisino.fwkp.Fpzpz.EmptyTempTable_PZFLB">
+    <value>
+      delete from PZFLB
+    </value>
+    <type>Text</type>
+  </SQL>
+
+  <!--清空临时表 4商品科目表-->
+  <SQL id="aisino.fwkp.Fpzpz.EmptyTempTable_SPKMB">
+    <value>
+      delete from SPKMB
+    </value>
+    <type>Text</type>
+  </SQL>
+
+
+  <!--删除临时表 1地区科目表-->
+  <SQL id="aisino.fwkp.Fpzpz.DropTempTable_DQKMB">
+    <value>
+      drop TABLE DQKMB
+    </value>
+    <type>Text</type>
+  </SQL>
+
+  <!--删除临时表 2客户科目表-->
+  <SQL id="aisino.fwkp.Fpzpz.DropTempTable_KHKMB">
+    <value>
+      drop TABLE KHKMB
+    </value>
+    <type>Text</type>
+  </SQL>
+
+  <!--删除临时表 3凭证分录表-->
+  <SQL id="aisino.fwkp.Fpzpz.DropTempTable_PZFLB">
+    <value>
+      drop TABLE PZFLB
+    </value>
+    <type>Text</type>
+  </SQL>
+
+  <!--删除临时表 4商品科目表-->
+  <SQL id="aisino.fwkp.Fpzpz.DropTempTable_SPKMB">
+    <value>
+      drop TABLE SPKMB
+    </value>
+    <type>Text</type>
+  </SQL>
+
+
+
+  <!--修改行政区域编码-->
+  <SQL id="aisino.fwkp.Fpzpz.UpdateXZQYBM">
+    <value>
+      UPDATE BM_XZQY SET @strSET WHERE @strWHERE
+    </value>
+    <type>Text</type>
+    <param name="strSET" type="AnsiString"></param>
+    <param name="strWHERE" type="AnsiString"></param>
+  </SQL>
+
+
+  <!--查询行政区域编码-->
+  <SQL id="aisino.fwkp.Fpzpz.SelectXZQYBM_BM">
+    <value>
+      SELECT *
+      FROM
+      BM_XZQY
+      WHERE BM=@strBM
+    </value>
+    <type>Text</type>
+    <param name="strBM" type="AnsiString"></param>
+  </SQL>
+
+
+  <!--修改客户编码-->
+  <SQL id="aisino.fwkp.Fpzpz.UpdateKHBM_DQBM">
+    <value>
+      UPDATE BM_KH SET DQBM=@strDQBM WHERE BM=@strBM
+    </value>
+    <type>Text</type>
+    <param name="strBM" type="AnsiString"></param>
+    <param name="strDQBM" type="AnsiString"></param>
+  </SQL>
+
+
+  <!--修改客户编码-->
+  <SQL id="aisino.fwkp.Fpzpz.UpdateKHBM_DQMC">
+    <value>
+      UPDATE BM_KH SET DQMC=@strDQMC WHERE BM=@strBM
+    </value>
+    <type>Text</type>
+    <param name="strBM" type="AnsiString"></param>
+    <param name="strDQMC" type="AnsiString"></param>
+  </SQL>
+
+  <!--查询凭证分录表-组号-->
+  <SQL id="aisino.fwkp.Fpzpz.SelectPZFLB_ZH">
+    <value>
+      SELECT ZH
+      FROM
+      PZFLB
+      GROUP by ZH
+    </value>
+    <type>Text</type>
+  </SQL>
+
+
+  <!--查询凭证分录表-组号-单据信息-->
+  <SQL id="aisino.fwkp.Fpzpz.SelectPZFLB_ZH_DJXX">
+    <value>
+      SELECT ZH,DJXX
+      FROM
+      PZFLB where ZH=@iZH
+      GROUP by ZH,DJXX
+    </value>
+    <type>Text</type>
+    <param name="iZH" type="Int32"></param>
+  </SQL>
+
+
+  <!--查询发票凭证业务号-->
+  <SQL id="aisino.fwkp.Fpzpz.SelectPZYWH">
+    <value>
+      SELECT PZYWH FROM XXFP WHERE FPDM=@FPDM AND FPHM=@FPHM AND FPZL=@FPZL
+    </value>
+    <type>Text</type>
+    <param name="FPDM" type="AnsiString"></param>
+    <param name="FPHM" type="AnsiString"></param>
+    <param name="FPZL" type="AnsiString"></param>
+  </SQL>
+
+
+  <!--清空科目属性信息-->
+  <SQL id="aisino.fwkp.Fpzpz.DeleteKMPrpperty">
+    <value>
+      DELETE FROM BM_Property
+    </value>
+    <type>Text</type>
+  </SQL>
+
+  <!--清空科目属性信息-->
+  <SQL id="aisino.fwkp.Fpzpz.DeleteOneRecordKMPrpperty">
+    <value>
+      DELETE FROM BM_Property WHERE BM=@BM
+    </value>
+    <type>Text</type>
+    <param name="BM" type="AnsiString"></param>
+  </SQL>
+  
+  <!--新增或者修改科目属性表信息-->
+  <SQL id="aisino.fwkp.Fpzpz.ReplaceKMProperty">
+    <value>
+      REPLACE INTO BM_Property (BM,iContact,uomName,cSupGUID,cCustGUID,cMateGUID,cDeptGUID,cEmpGUID) VALUES(@BM,@iContact,@uomName,@cSupGUID,@cCustGUID,@cMateGUID,@cDeptGUID,@cEmpGUID)
+    </value>
+    <type>Text</type>
+    <param name="BM" type="AnsiString"></param>
+    <param name="iContact" type="AnsiString"></param>
+    <param name="uomName" type="AnsiString"></param>
+    <param name="cSupGUID" type="AnsiString"></param>
+    <param name="cCustGUID" type="AnsiString"></param>
+    <param name="cMateGUID" type="AnsiString"></param>
+    <param name="cDeptGUID" type="AnsiString"></param>
+    <param name="cEmpGUID" type="AnsiString"></param>
+  </SQL>
+
+
+  <!--查询科目属性表所有编码-->
+  <SQL id="aisino.fwkp.Fpzpz.SelectKMPrppertyBM">
+    <value>
+      SELECT BM FROM BM_PROPERTY
+    </value>
+  </SQL>
+
+  <!--查询科目属性表所有编码-->
+  <SQL id="aisino.fwkp.Fpzpz.SelectKMPrppertyInfo">
+    <value>
+      SELECT * FROM BM_PROPERTY
+    </value>
+  </SQL>
+</SQLLIB>

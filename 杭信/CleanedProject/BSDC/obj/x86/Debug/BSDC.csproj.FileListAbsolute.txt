@@ -1,0 +1,5 @@
+E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\BSDC\obj\x86\Debug\BSDC.csprojResolveAssemblyReference.cache
+E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Output\Bin\BSDC.dll
+E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Output\Bin\BSDC.pdb
+E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\BSDC\obj\x86\Debug\BSDC.dll
+E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\BSDC\obj\x86\Debug\BSDC.pdb

@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<PlugIn id="_Wbjk" name= "文本接口" author= "panjun" description = "文本接口插件" hidden="true">
+  <Runtime>
+    <Import assembly = "..\Aisino.Fwkp.Wbjk.dll" resource="Aisino.Fwkp.Wbjk.Properties.Resources"/>
+    <SqlLib file="Aisino.Fwkp.Wbjk.Sql.xml"/>
+  </Runtime>
+  <Auto>
+    <Class id="Aisino.Fwkp.Wbjk.Entry.ShareInterfaceEntry" alwaysPermit="true" class="Aisino.Fwkp.Wbjk.Entry.ShareInterfaceEntry" lable="共享方法"></Class>
+  </Auto>
+
+  <Menu>
+    <MenuItem id = "Menu.Wbjk" type = "Menu" class = "Aisino.Fwkp.Wbjk.WbjkEntry" label = "单据管理" insertBefore="_PUBMNG" icon="文本接口_Tree">
+      <MenuItem id = "DanJuImport" type = "Menu" label="单据传入" icon="文本接口_单据传入" >
+        <MenuItem id = "_XSDJTxtCR" type = "Command" class = "Aisino.Fwkp.Wbjk.DanJuTxtCREntry" label = "文本传入" icon="文本接口_文本传入" />
+        <MenuItem id = "_XSDJExcelCR" type = "Command" class = "Aisino.Fwkp.Wbjk.DanJuExcelCREntry" label = "Excel传入"  />
+      </MenuItem>
+      <MenuItem id = "DanJuMaintain" type = "Menu" label="单据维护" icon="文本接口_单据维护" >
+        <MenuItem id = "_XSDJXG" type = "Command" class = "Aisino.Fwkp.Wbjk.DanJuEditEntry" label = "单据修改" icon="文本接口_单据修改" />
+        <MenuItem id = "_XSDJCF" type = "Command" class = "Aisino.Fwkp.Wbjk.DanJuCFEntry" label = "单据拆分" icon="文本接口_单据拆分" />
+        <MenuItem id = "_XSDJHB" type = "Command" class = "Aisino.Fwkp.Wbjk.DanJuHBEntry" label = "单据合并" icon="文本接口_单据合并" />
+        <MenuItem id = "_XSDJHY" type = "Command" class = "Aisino.Fwkp.Wbjk.DanJuHYEntry" label = "单据还原" icon="文本接口_单据还原" />
+        <MenuItem id = "_XSDJZKHZ" type = "Command" class = "Aisino.Fwkp.Wbjk.DanJuZKHZEntry" label = "单据折扣汇总" icon="文本接口_单据折扣汇总" />
+        <MenuItem id = "_XSDJQL" type = "Command" class = "Aisino.Fwkp.Wbjk.DanJuQLEntry" label = "单据清理" icon="文本接口_作废已生成发票" />
+      </MenuItem>
+      <MenuItem id = "DanJuInvaliding" type = "Menu" label="单据作废" icon="文本接口_单据作废" >
+        <MenuItem id = "_XSDJZFCR" type = "Command" class = "Aisino.Fwkp.Wbjk.DanJuZuoFeiCREntry" label = "单据作废信息传入" icon="文本接口_单据作废信息传入" />
+        <MenuItem id = "_FaPiaoZF" type = "Command" class = "Aisino.Fwkp.Wbjk.FaPiaoZFEntry" label = "作废已生成发票" icon="文本接口_作废已生成发票" />
+      </MenuItem>
+      <MenuItem id = "FaPiaoExport" type = "Menu" label="发票传出" icon="文本接口_发票传出" >
+        <MenuItem id = "_FaPiaoCC" type = "Command" class = "Aisino.Fwkp.Wbjk.FaPiaoCCEntry" label = "发票传出" icon="文本接口_发票传出" />
+      </MenuItem>
+      <MenuItem id = "FaPiaoQuery" type = "Menu" label="发票查询" icon="文本接口_发票查询" >
+        <MenuItem id = "_ShangPinCX" type = "Command" class = "Aisino.Fwkp.Wbjk.ShangPinCXEntry" label = "商品查询" icon="文本接口_商品查询" />
+        <MenuItem id = "_FaPiaoCX" type = "Command" class = "Aisino.Fwkp.Wbjk.FaPiaoCXEntry" label = "发票查询" icon="文本接口_发票查询" />
+      </MenuItem>  
+      <MenuItem id = "FaPiaoGenerate" type = "Menu" label="发票生成" icon="文本接口_发票生成" >
+        <MenuItem id = "_GenerateSpecial" type = "Command" class = "Aisino.Fwkp.Wbjk.GenerateZYFPEntry" label = "生成增值税专用发票" icon="文本接口_生成增值税专用发票" />
+        <MenuItem id = "_GenerateCommon" type = "Command" class = "Aisino.Fwkp.Wbjk.GeneratePTFPEntry" label = "生成增值税普通发票" icon="文本接口_生成增值税普通发票" />
+        <MenuItem id = "_GenerateCommonNCPSG" type = "Command" class = "Aisino.Fwkp.Wbjk.GenerateNCPSGPTFPEntry" label = "生成收购发票" icon="文本接口_生成收购发票" />
+        <MenuItem id = "_GenerateTransportation" type = "Command" class = "Aisino.Fwkp.Wbjk.GenerateHYFPEntry" label = "生成货物运输业增值税专用发票" icon="文本接口_生成货物运输业增值税专用发票" />
+        <MenuItem id = "_GenerateVehiclesales" type = "Command" class = "Aisino.Fwkp.Wbjk.GenerateJDCFPEntry" label = "生成机动车销售统一发票(旧)" icon="文本接口_生成机动车销售统一发票(旧)" />
+        <MenuItem id = "_GenerateVehiclesalesNew" type = "Command" class = "Aisino.Fwkp.Wbjk.GenerateJDCFPNewEntry" label = "生成机动车销售统一发票(新)" icon="文本接口_生成机动车销售统一发票(新)" />
+        <MenuItem id = "GenerateSetSpecial" type = "Command" class = "Aisino.Fwkp.Wbjk.GenerateSetSpecial" label = "设置增值税专用发票" icon="文本接口_生成增值税专用发票" />
+        <MenuItem id = "GenerateSetCommon" type = "Command" class = "Aisino.Fwkp.Wbjk.GenerateSetCommon" label = "设置增值税普通发票" icon="文本接口_生成增值税普通发票" />
+      </MenuItem>
+    </MenuItem>
+  </Menu>
+
+
+
+  <Tree>
+    <TreeNode id = "_Wbjk" type = "Menu" class = "Aisino.Fwkp.Wbjk.WbjkEntry" label = "文本接口" insertBefore="_PUBMNG">
+      <TreeNode id = "DanJuImport" type = "Menu" label="单据传入" icon="文本接口_单据传入" >
+        <TreeNode id = "_XSDJTxtCR" type = "Command" class = "Aisino.Fwkp.Wbjk.DanJuTxtCREntry" label = "文本传入" icon="文本接口_文本传入" />
+        <TreeNode id = "_XSDJExcelCR" type = "Command" class = "Aisino.Fwkp.Wbjk.DanJuExcelCREntry" label = "Excel传入" />
+      </TreeNode>
+      <TreeNode id = "DanJuMaintain" type = "Menu" label="单据维护" icon="文本接口_单据维护" >
+        <TreeNode id = "_XSDJXG" type = "Command" class = "Aisino.Fwkp.Wbjk.DanJuEditEntry" label = "单据修改" icon="文本接口_单据修改" />
+        <TreeNode id = "_XSDJCF" type = "Command" class = "Aisino.Fwkp.Wbjk.DanJuCFEntry" label = "单据拆分" icon="文本接口_单据拆分" />
+        <TreeNode id = "_XSDJHB" type = "Command" class = "Aisino.Fwkp.Wbjk.DanJuHBEntry" label = "单据合并" icon="文本接口_单据合并" />
+        <TreeNode id = "_XSDJHY" type = "Command" class = "Aisino.Fwkp.Wbjk.DanJuHYEntry" label = "单据还原" icon="文本接口_单据还原" />
+        <TreeNode id = "_XSDJZKHZ" type = "Command" class = "Aisino.Fwkp.Wbjk.DanJuZKHZEntry" label = "单据折扣汇总" icon="文本接口_单据折扣汇总" />
+      </TreeNode>
+      <TreeNode id = "DanJuInvaliding" type = "Menu" label="单据作废" icon="文本接口_单据作废" >
+        <TreeNode id = "_XSDJZFCR" type = "Command" class = "Aisino.Fwkp.Wbjk.DanJuZuoFeiCREntry" label = "单据作废信息传入" icon="文本接口_单据作废信息传入" />
+        <TreeNode id = "_FaPiaoZF" type = "Command" class = "Aisino.Fwkp.Wbjk.FaPiaoZFEntry" label = "作废已生成发票" icon="文本接口_作废已生成发票" />
+      </TreeNode>
+      <TreeNode id = "FaPiaoExport" type = "Menu" label="发票传出" icon="文本接口_发票传出" >
+        <TreeNode id = "_FaPiaoCC" type = "Command" class = "Aisino.Fwkp.Wbjk.FaPiaoCCEntry" label = "发票传出" icon="文本接口_发票传出" />
+      </TreeNode>
+      <TreeNode id = "FaPiaoQuery" type = "Menu" label="发票查询" icon="文本接口_发票查询" >
+        <TreeNode id = "_ShangPinCX" type = "Command" class = "Aisino.Fwkp.Wbjk.ShangPinCXEntry" label = "商品查询" icon="文本接口_商品查询" />
+        <TreeNode id = "_FaPiaoCX" type = "Command" class = "Aisino.Fwkp.Wbjk.FaPiaoCXEntry" label = "发票查询" icon="文本接口_发票查询" />
+      </TreeNode> 
+      <TreeNode id = "FaPiaoGenerate" type = "Menu" label="发票生成" icon="文本接口_发票生成" >
+        <TreeNode id = "_GenerateSpecial" type = "Command" class = "Aisino.Fwkp.Wbjk.GenerateZYFPEntry" label = "生成增值税专用发票" icon="文本接口_生成增值税专用发票" />
+        <TreeNode id = "_GenerateCommon" type = "Command" class = "Aisino.Fwkp.Wbjk.GeneratePTFPEntry" label = "生成增值税普通发票" icon="文本接口_生成增值税普通发票" />
+        <TreeNode id = "_GenerateCommonNCPSG" type = "Command" class = "Aisino.Fwkp.Wbjk.GenerateNCPSGPTFPEntry" label = "生成收购发票" icon="文本接口_生成收购发票" />
+        <TreeNode id = "_GenerateTransportation" type = "Command" class = "Aisino.Fwkp.Wbjk.GenerateHYFPEntry" label = "生成货物运输业增值税专用发票" icon="文本接口_生成货物运输业增值税专用发票" />
+        <TreeNode id = "_GenerateVehiclesales" type = "Command" class = "Aisino.Fwkp.Wbjk.GenerateJDCFPEntry" label = "生成机动车销售统一发票(旧)" icon="文本接口_生成机动车销售统一发票(旧)" />
+        <TreeNode id = "_GenerateVehiclesalesNew" type = "Command" class = "Aisino.Fwkp.Wbjk.GenerateJDCFPNewEntry" label = "生成机动车销售统一发票(新)" icon="文本接口_生成机动车销售统一发票(新)" />
+        <TreeNode id = "GenerateSetSpecial" type = "Command" class = "Aisino.Fwkp.Wbjk.GenerateSetSpecial" label = "设置开具增值税专用发票" icon="文本接口_生成增值税专用发票" />
+        <TreeNode id = "GenerateSetCommon" type = "Command" class = "Aisino.Fwkp.Wbjk.GenerateSetCommon" label = "设置开具增值税普通发票" icon="文本接口_生成增值税普通发票" />
+      </TreeNode>
+    </TreeNode>
+  </Tree>
+</PlugIn>

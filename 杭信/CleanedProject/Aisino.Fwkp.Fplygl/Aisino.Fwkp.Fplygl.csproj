@@ -1,0 +1,261 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <ProjectType>local</ProjectType>
+    <ProjectVersion>7.10.377</ProjectVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3501974D-4126-40F2-AED3-54C99973ED63}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <AssemblyName>Aisino.Fwkp.Fplygl</AssemblyName>
+    <OutputType>Library</OutputType>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Output\Bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Reference Include="Aisino.Framework.Plugin.Core">
+      <HintPath>..\Aisino.Framework.Plugin.Core\bin\Debug\Aisino.Framework.Plugin.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="log4net" />
+    <Reference Include="Aisino.FTaxBase">
+      <HintPath>..\Aisino.FTaxBase\bin\Debug\Aisino.FTaxBase.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Aisino.Framework.Dao" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Core" />
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Global.cs" />
+    <Compile Include="Aisino\Fwkp\Fplygl\Form\AbsForms\ParentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fplygl\Form\FPLYGL_1\YgfpthFromCard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fplygl\Form\WSFTP_6\AllocateVolume.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fplygl\Form\WLGP_4\DownloadQueryList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fplygl\Form\FJFPGL_2\XfjfpfpForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fplygl\Form\WSFTP_6\AllocateQueryList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fplygl\GeneralStructure\AddressInfo.cs" />
+    <Compile Include="Aisino\Fwkp\Fplygl\Form\AbsForms\ChooseMedium.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fplygl\Form\FJFPGL_2\ChooseReclaimMedium.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fplygl\Entry\WebModualEntry\Download_QueryEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Fplygl\Entry\WebModualEntry\ApplyMenuEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Fplygl\Form\FPLYGL_1\DrxgfpFromCard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fplygl\Form\AbsForms\InvInfoMsg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fplygl\Form\WSFTP_6\InvInfoWebAllocMsg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fplygl\Form\WSFTP_6\InvInfoAllocDownloadConfirmMsg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fplygl\Form\AbsForms\ApplySuccessParent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fplygl\Form\WLSL_5\ApplySuccessConfirm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fplygl\Form\WLGP_4\DownloadController.cs" />
+    <Compile Include="Aisino\Fwkp\Fplygl\Form\FJFPGL_2\ChooseRevokeMedium.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fplygl\Form\FPLYGL_1\ChooseReadMedium.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fplygl\Form\FJFPGL_2\ChooseAllocateMedium.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fplygl\IBLL\ILYGL_JPXX.cs" />
+    <Compile Include="Aisino\Fwkp\Fplygl\BLL\LYGL_JPXX.cs" />
+    <Compile Include="Aisino\Fwkp\Fplygl\Form\WLSL_5\ApplyAddressList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fplygl\Form\FJFPGL_2\ShfjgpForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fplygl\Entry\WebModualEntry\Download_VolumeEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Fplygl\Entry\WebModualEntry\Allocate_VolumeEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Fplygl\IBLL\ILYGL_PSXX.cs" />
+    <Compile Include="Aisino\Fwkp\Fplygl\BLL\LYGL_PSXX.cs" />
+    <Compile Include="Aisino\Fwkp\Fplygl\Common\Tool.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fplygl\Form\WSFTP_6\AllocateQueryCondition.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fplygl\Form\WSFTP_6\AllocateDownload.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fplygl\Form\WSFTP_6\AllocateController.cs" />
+    <Compile Include="Aisino\Fwkp\Fplygl\Form\FJFPGL_2\AllocateSuccess.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fplygl\Entry\WebModualEntry\Allocate_DownloadEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Fplygl\Common\GetTaxStateInfo.cs" />
+    <Compile Include="Aisino\Fwkp\Fplygl\Form\WSFTP_6\AllocateInput.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fplygl\GeneralStructure\Volumn.cs" />
+    <Compile Include="Aisino\Fwkp\Fplygl\Form\WLGP_4\ListDown.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fplygl\Form\WLGP_4\DownloadQueryCondition.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fplygl\Form\FPLYGL_1\InvErrMsg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fplygl\Form\AbsForms\SetFormat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fplygl\Form\WLGP_4\InvInfoWebgetMsg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fplygl\Common\PopUpBox.cs" />
+    <Compile Include="Aisino\Fwkp\Fplygl\Form\WSFTP_6\QueryController.cs" />
+    <Compile Include="Aisino\Fwkp\Fplygl\Form\FPLYGL_1\InvInfoReturnMsg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fplygl\Form\FPLYGL_1\InvInfoReadMsg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fplygl\Form\FJFPGL_2\InvInfoNewReclaimMsg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fplygl\Entry\WebModualEntry\DownloadMenuEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Fplygl\Entry\WebModualEntry\Apply_StatusQueryEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Fplygl\Entry\EmailSetEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Fplygl\Form\WLGP_4\SingleVolumn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fplygl\Form\WLSL_5\ApplySuccessRevoke.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fplygl\Form\WLSL_5\ApplyLegalNotice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fplygl\Entry\YgfpthFromCardEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Fplygl\Entry\WebModualEntry\SeparatorEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Fplygl\Entry\WebModualEntry\AllocateMenuEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Fplygl\Entry\SetFormatEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Fplygl\Form\WLSL_5\ApplyVolume.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fplygl\Factory\BLLFactory.cs" />
+    <Compile Include="Aisino\Fwkp\Fplygl\Form\FJFPGL_2\ShfjtpForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fplygl\GeneralStructure\QueryCondition.cs" />
+    <Compile Include="Aisino\Fwkp\Fplygl\Form\WLSL_5\CheckApply.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fplygl\GeneralStructure\DownloadInfo.cs" />
+    <Compile Include="Aisino\Fwkp\Fplygl\Form\Common\DownloadCommon.cs" />
+    <Compile Include="Aisino\Fwkp\Fplygl\Entry\WebModualEntry\Apply_ApplyFormEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Fplygl\Entry\WebModualEntry\Allocate_QueryEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Fplygl\Form\WLSL_5\DetailList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fplygl\Form\FPLYGL_1\ChooseReturnMedium.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fplygl\Entry\XfjfpfpEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Fplygl\Entry\WebModualEntry\Apply_SuccessConfirmEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Fplygl\Entry\MediumModualEntry\ReadInEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Fplygl\Entry\AccessToTest.cs" />
+    <Compile Include="Aisino\Fwkp\Fplygl\Form\FJFPGL_2\XfkpjfpfpForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fplygl\Entry\FplyglEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Fplygl\Form\WSFTP_6\Common\AllocateCommon.cs" />
+    <Compile Include="Aisino\Fwkp\Fplygl\GeneralStructure\OneTypeVolumes.cs" />
+    <Compile Include="Aisino\Fwkp\Fplygl\Entry\DrxgfpFromCardEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Fplygl\ShareMethodEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Fplygl\GetStockInfoService.cs" />
+    <Compile Include="Aisino\Fwkp\Fplygl\QueryAllocateInfoService.cs" />
+    <Compile Include="Aisino\Fwkp\Fplygl\AllocateExcuteService.cs" />
+    <Compile Include="Aisino\Fwkp\Fplygl\DownloadQueryService.cs" />
+    <Compile Include="Aisino\Fwkp\Fplygl\DownloadExcuteService.cs" />
+    <Compile Include="Aisino\Fwkp\Fplygl\Form\WLSL_5\QueryConfirmCommon.cs" />
+    <Compile Include="Aisino\Fwkp\Fplygl\Form\WLSL_5\ApplyConfirm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fplygl\Form\FJFPGL_2\InvInfoReclaimMsg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fplygl\Entry\ShfjtpEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Fplygl\Form\FPKCGL_3\FpKuChunChaXunForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fplygl\Entry\FjfpfpEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Fplygl\Form\WSFTP_6\AllocateDownloadController.cs" />
+    <Compile Include="Aisino\Fwkp\Fplygl\GeneralStructure\AllocateInfo.cs" />
+    <Compile Include="Aisino\Fwkp\Fplygl\Entry\WebModualEntry\Apply_SuccessRevokeEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Fplygl\Common\ShareMethods.cs" />
+    <Compile Include="Aisino\Fwkp\Fplygl\Common\GetTaxMode.cs" />
+    <Compile Include="Aisino\Fwkp\Fplygl\Form\WLSL_5\ApplyCommon.cs" />
+    <Compile Include="Aisino\Fwkp\Fplygl\Entry\ShfjgpEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Fplygl\Entry\FpkccxEntry.cs" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fplygl.Form.WSFTP_6.AllocateDownload.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fplygl.Form.AbsForms.InvInfoMsg.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fplygl.Form.FJFPGL_2.XfkpjfpfpForm.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fplygl.Form.FJFPGL_2.AllocateSuccess.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fplygl.Form.WSFTP_6.AllocateQueryList.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fplygl.Form.WSFTP_6.AllocateQueryCondition.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fplygl.Form.WSFTP_6.AllocateInput.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fplygl.Form.AbsForms.SetFormat.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fplygl.Form.WLGP_4.SingleVolumn.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fplygl.Form.FPLYGL_1.InvErrMsg.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fplygl.Form.FJFPGL_2.ChooseRevokeMedium.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fplygl.Form.AbsForms.ChooseMedium.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fplygl.Form.FPLYGL_1.DrxgfpFromCard.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fplygl.Form.WLGP_4.DownloadQueryCondition.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fplygl.Form.AbsForms.ApplySuccessParent.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fplygl.Form.WLSL_5.ApplyConfirm.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fplygl.Form.AbsForms.ParentForm.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fplygl.Form.WLSL_5.CheckApply.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fplygl.Form.WLSL_5.ApplyLegalNotice.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fplygl.Form.WLGP_4.DownloadQueryList.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fplygl.Form.WLSL_5.ApplyAddressList.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fplygl.Form.WLGP_4.ListDown.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fplygl.Form.WLSL_5.DetailList.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fplygl.Form.WLSL_5.ApplyVolume.resources" />
+  </ItemGroup>
+</Project>

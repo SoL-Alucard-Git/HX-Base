@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<PlugIn id="Aisino.Fwkp.Yccb" name="上报汇总" description="上报汇总插件">
+  <Runtime>
+    <Import assembly="..\Aisino.Fwkp.Yccb.dll"/>
+  </Runtime>
+  <Auto>
+    <Class id="Aisino.Fwkp.Yccb.YCCBByAuto" class="Aisino.Fwkp.Yccb.YCCBByAuto" lable="上报汇总" alwaysPermit="true"></Class>
+    <Class id="Aisino.Fwkp.Yccb.AuotQkCommand" class="Aisino.Fwkp.Yccb.AuotQkCommand" insertAfter="Aisino.Fwkp.Yccb.YCCBByAuto" lable="远程清卡" alwaysPermit="true"></Class>
+    <Class id="Aisino.Fwkp.Yccb.PubService" class="Aisino.Fwkp.Yccb.PubService" lable="上传汇总清卡接口" alwaysPermit="true"></Class>
+  </Auto>
+  <Menu>
+    <MenuItem id="Menu.Bsgl" type="Menu"  label="报税管理" insertAfter="Menu.Hzfp">
+      <MenuItem id="Menu.Bsgl.YCCommand" type="Menu" class="Aisino.Fwkp.Yccb.MenuControl" label="上报汇总管理" icon="上报汇总管理_上报汇总管理">
+        <MenuItem id="Menu.Bsgl.YccbCommand" type="Command" class="Aisino.Fwkp.Yccb.YccbCommand" label="上报汇总" icon="上报汇总_上传抄税数据"/>
+        <MenuItem id="Menu.Bsgl.JgcxCommand" type="Command" class="Aisino.Fwkp.Yccb.JgcxCommand" label="远程清卡" icon="上报汇总_远程清卡"/>      
+      </MenuItem>
+    </MenuItem>
+  </Menu>
+  <Tree>
+    <TreeNode id="Menu.Bsgl" type="Menu" label="报税管理" insertAfter="Menu.Hzfp" icon="报税管理_Tree">
+      <TreeNode id="Menu.Bsgl.YCCommand" type="Menu" label="上报汇总管理" icon="上报汇总管理_上报汇总管理">
+        <TreeNode id="Menu.Bsgl.YccbCommand" type="Command" class="Aisino.Fwkp.Yccb.YccbCommand" label="上报汇总" icon="上报汇总_上传抄税数据"/>
+        <TreeNode id="Menu.Bsgl.JgcxCommand" type="Command" class="Aisino.Fwkp.Yccb.JgcxCommand" label="远程清卡" icon="上报汇总_远程清卡"/>
+      </TreeNode>
+    </TreeNode>
+  </Tree>
+</PlugIn>

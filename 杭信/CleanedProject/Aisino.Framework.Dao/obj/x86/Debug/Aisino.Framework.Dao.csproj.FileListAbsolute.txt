@@ -1,0 +1,5 @@
+E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Output\Bin\Aisino.Framework.Dao.dll
+E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Output\Bin\Aisino.Framework.Dao.pdb
+E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Aisino.Framework.Dao\obj\x86\Debug\Aisino.Framework.Dao.csprojResolveAssemblyReference.cache
+E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Aisino.Framework.Dao\obj\x86\Debug\Aisino.Framework.Dao.dll
+E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Aisino.Framework.Dao\obj\x86\Debug\Aisino.Framework.Dao.pdb

@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <ProjectType>local</ProjectType>
+    <ProjectVersion>7.10.377</ProjectVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{BA7B847C-A8E6-4B7F-9499-051E3B75AD7F}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <AssemblyName>Aisino.Fwkp.Sjbf</AssemblyName>
+    <OutputType>Library</OutputType>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Output\Bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System" />
+    <Reference Include="log4net" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="ICSharpCode.SharpZipLib" />
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Global.cs" />
+    <Compile Include="Aisino\Fwkp\Sjbf\Froms\CsSetForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Sjbf\Common\ZhiFuChuan.cs" />
+    <Compile Include="Aisino\Fwkp\Sjbf\Froms\TipsLackSpaceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Sjbf\Common\FileSort.cs" />
+    <Compile Include="Aisino\Fwkp\Sjbf\Common\FileOrder.cs" />
+    <Compile Include="Aisino\Fwkp\Sjbf\Common\FileAsc.cs" />
+    <Compile Include="Aisino\Fwkp\Sjbf\Froms\RecoveryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Sjbf\Entry\CsSetFormEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Sjbf\Resource.cs" />
+    <Compile Include="Aisino\Fwkp\Sjbf\ShareMethodEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Sjbf\Common\AES_Crypt_File.cs" />
+    <Compile Include="Aisino\Fwkp\Sjbf\Entry\Recovery_ExecutionEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Sjbf\Common\SjbfShareMethods.cs" />
+    <Compile Include="Aisino\Fwkp\Sjbf\Entry\RunCopy_ExecutionEntry.cs" />
+    <EmbeddedResource Include="Aisino.Fwkp.Sjbf.Resource.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Sjbf.Froms.TipsLackSpaceForm.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Sjbf.Froms.RecoveryForm.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Sjbf.Froms.CsSetForm.resources" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Aisino.Framework.Dao\Aisino.Framework.Dao.csproj">
+      <Project>{ef96d157-73ba-410c-a2bd-698b4986fd18}</Project>
+      <Name>Aisino.Framework.Dao</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Aisino.Framework.MainForm\Aisino.Framework.MainForm.csproj">
+      <Project>{6ca5bc40-07b1-45fc-8927-58356e838a77}</Project>
+      <Name>Aisino.Framework.MainForm</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Aisino.Framework.Plugin.Core\Aisino.Framework.Plugin.Core.csproj">
+      <Project>{b65bb74a-99d3-4854-8151-a6bd4d4a489a}</Project>
+      <Name>Aisino.Framework.Plugin.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Aisino.FTaxBase\Aisino.FTaxBase.csproj">
+      <Project>{a9935674-60e2-44e1-8785-d391586d31f8}</Project>
+      <Name>Aisino.FTaxBase</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

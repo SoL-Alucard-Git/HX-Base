@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <ProjectType>local</ProjectType>
+    <ProjectVersion>7.10.377</ProjectVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{BB76B997-52E4-4E5E-B62F-DC34070AC6F7}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <AssemblyName>Aisino.Fwkp.Fpzpz</AssemblyName>
+    <OutputType>Library</OutputType>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Output\Bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Reference Include="Aisino.Framework.Plugin.Core">
+      <HintPath>..\Aisino.Framework.Plugin.Core\bin\Debug\Aisino.Framework.Plugin.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System" />
+    <Reference Include="log4net" />
+    <Reference Include="Aisino.Framework.Dao" />
+    <Reference Include="Aisino.Fwkp.BusinessObject">
+      <HintPath>..\..\脱壳后文件\Bin\Aisino.Fwkp.BusinessObject.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="Aisino.FTaxBase">
+      <HintPath>..\Aisino.FTaxBase\bin\Debug\Aisino.FTaxBase.dll</HintPath>
+    </Reference>
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Global.cs" />
+    <Compile Include="Aisino\Fwkp\Fpzpz\Model\KHBMModal.cs" />
+    <Compile Include="Aisino\Fwkp\Fpzpz\IDAL\IKHBM.cs" />
+    <Compile Include="Aisino\Fwkp\Fpzpz\Form\PingZhengFindTiaoJian.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fpzpz\Entry\ShareMethodClass.cs" />
+    <Compile Include="Aisino\Fwkp\Fpzpz\IBLL\IXZQYBM.cs" />
+    <Compile Include="Aisino\Fwkp\Fpzpz\Form\FPZPZSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fpzpz\IDAL\ISPBM.cs" />
+    <Compile Include="Aisino\Fwkp\Fpzpz\DAL\SPBM.cs" />
+    <Compile Include="Aisino\Fwkp\Fpzpz\IBLL\IKHBM.cs" />
+    <Compile Include="Aisino\Fwkp\Fpzpz\BLL\KHBM.cs" />
+    <Compile Include="Aisino\Fwkp\Fpzpz\Form\PingZhengMsg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fpzpz\Form\KeMuMsgSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fpzpz\Entry\ChanShuSet.cs" />
+    <Compile Include="Aisino\Fwkp\Fpzpz\Model\PZFLBModal.cs" />
+    <Compile Include="Aisino\Fwkp\Fpzpz\Form\FaPiaoZhuanPingZhengFind.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fpzpz\Form\FaPiaoZhuanPingZheng.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fpzpz\Form\FaPiaoFindTiaoJian.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fpzpz\DAL\KHBM.cs" />
+    <Compile Include="Aisino\Fwkp\Fpzpz\BLL\XZQYBM.cs" />
+    <Compile Include="Aisino\Fwkp\Fpzpz\Form\QiYeGuanLiRuanJianMsgSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fpzpz\Entry\ZhiDanFangShiSet.cs" />
+    <Compile Include="Aisino\Fwkp\Fpzpz\IBLL\IPZFLB.cs" />
+    <Compile Include="Aisino\Fwkp\Fpzpz\Model\XZQYBMModal.cs" />
+    <Compile Include="Aisino\Fwkp\Fpzpz\IDAL\IKMProperty.cs" />
+    <Compile Include="Aisino\Fwkp\Fpzpz\Form\ZhiDanFangShiSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fpzpz\IDAL\IXZQYBM.cs" />
+    <Compile Include="Aisino\Fwkp\Fpzpz\IBLL\IXXFP.cs" />
+    <Compile Include="Aisino\Fwkp\Fpzpz\IBLL\IKMProperty.cs" />
+    <Compile Include="Aisino\Fwkp\Fpzpz\Entry\PzMsgSetEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Fpzpz\Entry\FpzpzEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Fpzpz\BLL\PZFLB.cs" />
+    <Compile Include="Aisino\Fwkp\Fpzpz\Properties\Resources.cs" />
+    <Compile Include="Aisino\Fwkp\Fpzpz\IDAL\IXXFP.cs" />
+    <Compile Include="Aisino\Fwkp\Fpzpz\Form\KeMuSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fpzpz\Entry\FaPiaoZhuanPingZheng.cs" />
+    <Compile Include="Aisino\Fwkp\Fpzpz\Common\Tool.cs" />
+    <Compile Include="Aisino\Fwkp\Fpzpz\Model\SPBMModal.cs" />
+    <Compile Include="Aisino\Fwkp\Fpzpz\Entry\KeMuSet.cs" />
+    <Compile Include="Aisino\Fwkp\Fpzpz\IDAL\IPZFLB.cs" />
+    <Compile Include="Aisino\Fwkp\Fpzpz\DAL\PZFLB.cs" />
+    <Compile Include="Aisino\Fwkp\Fpzpz\IBLL\ISPBM.cs" />
+    <Compile Include="Aisino\Fwkp\Fpzpz\DAL\KMProperty.cs" />
+    <Compile Include="Aisino\Fwkp\Fpzpz\Common\DingYiZhiFuChuan.cs" />
+    <Compile Include="Aisino\Fwkp\Fpzpz\BLL\XXFP.cs" />
+    <Compile Include="Aisino\Fwkp\Fpzpz\Entry\InsertDQBM_To_KHBM.cs" />
+    <Compile Include="Aisino\Fwkp\Fpzpz\Entry\FPZPZSet.cs" />
+    <Compile Include="Aisino\Fwkp\Fpzpz\Entry\FaPiaoZhuanPingZhengFind.cs" />
+    <Compile Include="Aisino\Fwkp\Fpzpz\DAL\XZQYBM.cs" />
+    <Compile Include="Aisino\Fwkp\Fpzpz\Model\TPZEntry_InfoModal.cs" />
+    <Compile Include="Aisino\Fwkp\Fpzpz\DAL\XXFP.cs" />
+    <Compile Include="Aisino\Fwkp\Fpzpz\BLL\SPBM.cs" />
+    <Compile Include="Aisino\Fwkp\Fpzpz\BLL\KMProperty.cs" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fpzpz.Form.FaPiaoZhuanPingZhengFind.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fpzpz.Form.KeMuMsgSet.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fpzpz.Properties.Resources.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fpzpz.Form.FPZPZSet.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fpzpz.Form.QiYeGuanLiRuanJianMsgSet.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fpzpz.Form.PingZhengMsg.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fpzpz.Form.ZhiDanFangShiSet.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fpzpz.Form.PingZhengFindTiaoJian.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fpzpz.Form.FaPiaoZhuanPingZheng.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fpzpz.Form.KeMuSet.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fpzpz.Form.FaPiaoFindTiaoJian.resources" />
+  </ItemGroup>
+</Project>

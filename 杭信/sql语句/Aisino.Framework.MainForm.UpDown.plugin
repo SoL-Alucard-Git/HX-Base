@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<PlugIn id="Aisino.Framework.MainForm.UpDown" name="发票上传下载线程" description="发票上传下载线程">
+  <Runtime>
+    <SqlLib file="Aisino.Framework.MainForm.UpDown.Sql.xml"/>  
+  </Runtime>
+</PlugIn>

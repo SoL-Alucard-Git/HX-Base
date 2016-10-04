@@ -1,0 +1,5 @@
+E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Output\Bin\InternetWare.Lodging.Data.dll
+E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Output\Bin\InternetWare.Lodging.Data.pdb
+E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\InternetWare.Lodging.Data\obj\Debug\InternetWare.Lodging.Data.csprojResolveAssemblyReference.cache
+E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\InternetWare.Lodging.Data\obj\Debug\InternetWare.Lodging.Data.dll
+E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\InternetWare.Lodging.Data\obj\Debug\InternetWare.Lodging.Data.pdb

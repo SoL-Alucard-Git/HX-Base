@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <ProjectType>local</ProjectType>
+    <ProjectVersion>7.10.377</ProjectVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{688820AE-67C1-4843-BA73-61E6562B22C8}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <AssemblyName>Aisino.Fwkp.DataMigrationTool</AssemblyName>
+    <OutputType>Library</OutputType>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Output\Bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Reference Include="Aisino.Framework.Plugin.Core">
+      <HintPath>..\Aisino.Framework.Plugin.Core\bin\Debug\Aisino.Framework.Plugin.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System" />
+    <Reference Include="Aisino.FTaxBase">
+      <HintPath>..\Aisino.FTaxBase\bin\Debug\Aisino.FTaxBase.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Data.SQLite" />
+    <Reference Include="System.Xml" />
+    <Reference Include="ChnCharInfo" />
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Global.cs" />
+    <Compile Include="Aisino\Fwkp\DataMigrationTool\Entry\DataMigrationToolEntry.cs" />
+    <Compile Include="Aisino\Fwkp\DataMigrationTool\Form\TaxcodeChangeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\DataMigrationTool\Form\DataMigrationToolForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\DataMigrationTool\Common\ParadoxHelperNoStatic.cs" />
+    <Compile Include="Aisino\Fwkp\DataMigrationTool\Common\DingYiZhiFuChuan.cs" />
+    <Compile Include="Aisino\Fwkp\DataMigrationTool\Common\ShareMethodClass.cs" />
+    <Compile Include="Aisino\Fwkp\DataMigrationTool\Common\ParadoxHelper.cs" />
+    <Compile Include="Aisino\Fwkp\DataMigrationTool\Entry\TaxcodeChangeEntry.cs" />
+    <Compile Include="Aisino\Fwkp\DataMigrationTool\Common\Data_Operator_XML.cs" />
+    <Compile Include="Aisino\Fwkp\DataMigrationTool\Common\DataMigrationToolShareMethods.cs" />
+    <Compile Include="Aisino\Fwkp\DataMigrationTool\Properties\Resources.cs" />
+    <Compile Include="Aisino\Fwkp\DataMigrationTool\Common\ShareMethod.cs" />
+    <Compile Include="Aisino\Fwkp\DataMigrationTool\Model\XXFP_HXM.cs" />
+    <Compile Include="Aisino\Fwkp\DataMigrationTool\Common\SQLiteHelper.cs" />
+    <Compile Include="Aisino\Fwkp\DataMigrationTool\Common\StringUtils.cs" />
+    <EmbeddedResource Include="Aisino.Fwkp.DataMigrationTool.Form.DataMigrationToolForm.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.DataMigrationTool.Properties.Resources.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.DataMigrationTool.Form.TaxcodeChangeForm.resources" />
+  </ItemGroup>
+</Project>

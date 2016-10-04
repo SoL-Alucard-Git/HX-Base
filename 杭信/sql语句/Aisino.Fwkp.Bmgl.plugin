@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--根节点为PlugIn，可以设置插件ID、name、author、description等属性-->
+<PlugIn id="_Bmgl" name= "编码管理" author= "sgjpj" description = "客户管理插件" hidden="true">
+  <!--插件运行时信息-->
+  <Runtime>
+    <!--指定插件程序集，采用相对路径-->
+    <Import assembly = "..\Aisino.Fwkp.Bmgl.dll" resource="Aisino.Fwkp.Bmgl.Resources"/>
+    <SqlLib file="Aisino.Fwkp.Bmgl.Sql.xml"/>
+  </Runtime>
+
+  <Auto>
+    <Class id="Aisino.Fwkp.Bmgl.method" alwaysPermit="true"  class="Aisino.Fwkp.Bmgl.ShareMethodClass" label="ShareMethodClass"/>
+  </Auto>
+
+  <!--新建菜单资源-->
+  <Menu>
+    <!--新建菜单项目，type="Menu"表示包含下级项目的菜单，lable表示菜单显示文字-->
+    <MenuItem id="Menu.Xtsz.Bmgl" type="Menu" label="编码管理" insertAfter="Menu.Xtsz">
+        <MenuItem id = "_BMKHManager" type = "Command" class = "Aisino.Fwkp.Bmgl.BMKHManagerEntry" label = "客户管理" icon="系统设置_客户管理"/>
+        <MenuItem id = "_BMSPManager" type = "Command" class = "Aisino.Fwkp.Bmgl.BMSPManagerEntry" label = "商品管理" icon="系统设置_商品管理"/>
+        <MenuItem id = "_BMSFHRManager" type = "Command" class = "Aisino.Fwkp.Bmgl.BMSFHRManagerEntry" label = "收/发货人编码" icon="系统设置_收_发货人编码管理"/>
+        <MenuItem id = "_BMFYXMManager" type = "Command" class = "Aisino.Fwkp.Bmgl.BMFYXMManagerEntry" label = "费用项目编码" icon="系统设置_费用项目管理"/>
+        <MenuItem id = "_BMGHDWManager" type = "Command" class = "Aisino.Fwkp.Bmgl.BMGHDWManagerEntry" label = "购货单位编码" icon="系统设置_购货单位管理"/>
+        <MenuItem id = "_BMCLManager" type = "Command" class = "Aisino.Fwkp.Bmgl.BMCLManagerEntry" label = "车辆编码" icon="系统设置_车辆编码管理"/>
+        <MenuItem id = "_BMXHDWManager" type = "Command" class = "Aisino.Fwkp.Bmgl.BMXHDWManagerEntry" label = "销货单位编码" icon="系统设置_销货单位编码管理"/>
+        <MenuItem id = "_BMSMManager" type = "Command" class = "Aisino.Fwkp.Bmgl.BMSPSMManagerEntry" label = "税目编码" icon="系统设置_商品税目管理"/>
+        <MenuItem id = "_BMXZQYManager" type = "Command" class = "Aisino.Fwkp.Bmgl.BMXZQYManagerEntry" label = "行政区域编码" icon="系统设置_行政区域管理"/>
+        <MenuItem id = "_BMSPFLManager" type = "Command" class = "Aisino.Fwkp.Bmgl.BMSPFLManagerEntry" label = "商品和服务税收分类编码"/>
+    </MenuItem>
+  </Menu>
+	<Tree>
+		<!--新建菜单项目，type="Menu"表示包含下级项目的菜单，lable表示菜单显示文字-->
+		<TreeNode id="Menu.Xtsz" type="Menu" label="系统设置" isFirst="true" icon="系统设置_Tree">
+      <TreeNode id="Menu.Xtsz.EncodeCodeManager" type="Menu" label="编码管理" insertAfter="Menu.Xtsz.ParasSet" icon="系统设置_编码管理">
+        <TreeNode id = "_BMKHManager" type = "Command" class = "Aisino.Fwkp.Bmgl.BMKHManagerEntry" label = "客户管理" icon="系统设置_客户管理"/>
+        <TreeNode id = "_BMSPManager" type = "Command" class = "Aisino.Fwkp.Bmgl.BMSPManagerEntry" label = "商品管理" icon="系统设置_商品管理"/>
+        <TreeNode id = "_BMSFHRManager" type = "Command" class = "Aisino.Fwkp.Bmgl.BMSFHRManagerEntry" label = "收/发货人编码" icon="系统设置_收_发货人编码管理"/>
+        <TreeNode id = "_BMFYXMManager" type = "Command" class = "Aisino.Fwkp.Bmgl.BMFYXMManagerEntry" label = "费用项目编码" icon="系统设置_费用项目管理"/>
+        <TreeNode id = "_BMGHDWManager" type = "Command" class = "Aisino.Fwkp.Bmgl.BMGHDWManagerEntry" label = "购货单位编码" icon="系统设置_购货单位管理"/>
+        <TreeNode id = "_BMCLManager" type = "Command" class = "Aisino.Fwkp.Bmgl.BMCLManagerEntry" label = "车辆编码" icon="系统设置_车辆编码管理"/>
+        <TreeNode id = "_BMXHDWManager" type = "Command" class = "Aisino.Fwkp.Bmgl.BMXHDWManagerEntry" label = "销货单位编码" icon="系统设置_销货单位编码管理"/>
+        <TreeNode id = "_BMSMManager" type = "Command" class = "Aisino.Fwkp.Bmgl.BMSPSMManagerEntry" label = "税目编码" icon="系统设置_商品税目管理"/>
+        <TreeNode id = "_BMXZQYManager" type = "Command" class = "Aisino.Fwkp.Bmgl.BMXZQYManagerEntry" label = "行政区域编码" icon="系统设置_行政区域管理"/>
+			</TreeNode>
+		</TreeNode>
+	</Tree>
+</PlugIn>
+

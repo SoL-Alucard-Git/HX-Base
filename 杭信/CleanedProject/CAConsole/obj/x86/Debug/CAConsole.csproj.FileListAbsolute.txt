@@ -1,0 +1,4 @@
+E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Output\Bin\CAConsole.exe
+E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Output\Bin\CAConsole.pdb
+E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\CAConsole\obj\x86\Debug\CAConsole.exe
+E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\CAConsole\obj\x86\Debug\CAConsole.pdb

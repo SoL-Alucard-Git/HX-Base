@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<PlugIn id="Aisino.Fwkp.Xtgl" name="系统管理" description="系统管理插件">
+  <Runtime>
+    <Import assembly="..\Aisino.Fwkp.Xtgl.dll" resource="Aisino.Fwkp.Xtgl.Properties.Resources"/>
+    <SqlLib file="Aisino.Fwkp.Xtgl.Sql.xml"/>
+  </Runtime>
+  <Auto>
+    <Class id="Aisino.Fwkp.Xtgl.XtglShareMethods" class="Aisino.Fwkp.Xtgl.XtglShareMethods" lable="用户权限管理公共接口" alwaysPermit="true"></Class>
+  </Auto>
+  <Menu>
+    <MenuItem id="Menu.Xtsz" type="Menu" label="系统设置" isFirst="true" icon="系统设置_抄报税管理">
+      <MenuItem id="Menu.Xtgl.Xtzc" type="Command" class="Aisino.Fwkp.Xtgl.SysRegCommand" label="系统注册" isFirst="true" icon="系统管理_系统注册"/>
+    </MenuItem>
+    <MenuItem id = "Menu.Xtwh" type = "Menu" label = "系统维护"  insertAfter="Menu.Bsgl.InvData" icon="系统维护_系统维护">
+  	 	<MenuItem id="Menu.Xtgl.Qxsz" type="Menu" label="用户权限设置" icon="系统管理_权限设置">
+        <MenuItem id="Menu.Xtgl.Qxsz.Jsgl" type="Command" class="Aisino.Fwkp.Xtgl.RoleManageCommand" label="角色管理" icon="系统管理_角色管理"/>
+        <MenuItem id="Menu.Xtgl.Qxsz.Yhgl" type="Command" class="Aisino.Fwkp.Xtgl.UserManageCommand" label="用户管理" icon="系统管理_用户管理"/>
+      </MenuItem>
+    </MenuItem>
+    <MenuItem id = "Menu.Xtwh" type = "Menu" label = "系统维护"  insertAfter="Menu.Bsgl.InvData" icon="系统维护_系统维护">
+      <MenuItem id="Menu.Xtgl.Qxsz.xgmm" type="Command" class="Aisino.Fwkp.Xtgl.UserInfoManageCommand" label="用户名密码修改" icon="系统管理_修改密码" alwaysPermit="true"/>
+    </MenuItem>
+  </Menu>
+	<Tree>
+    <TreeNode id="Menu.Xtsz" type="Menu" label="系统设置" isFirst="true" icon="系统设置_Tree">
+      <TreeNode id="Menu.Xtgl.Xtzc" type="Command" class="Aisino.Fwkp.Xtgl.SysRegCommand" label="系统注册" isFirst="true" icon="系统管理_系统注册"/>
+    </TreeNode>
+    <TreeNode id = "Menu.Xtwh" type = "Menu" label = "系统维护" icon="系统维护_系统维护">
+      <TreeNode id="Menu.Xtgl.Qxsz" type="Menu" label="用户权限设置" icon="系统管理_权限设置">
+        <TreeNode id="Menu.Xtgl.Qxsz.Jsgl" type="Command" class="Aisino.Fwkp.Xtgl.RoleManageCommand" label="角色管理" icon="系统管理_角色管理"/>
+        <TreeNode id="Menu.Xtgl.Qxsz.Yhgl" type="Command" class="Aisino.Fwkp.Xtgl.UserManageCommand" label="用户管理" icon="系统管理_用户管理"/>
+      </TreeNode>
+    </TreeNode>
+    <TreeNode id = "Menu.Xtwh" type = "Menu" label = "系统维护" icon="系统维护_系统维护">
+      <TreeNode id="Menu.Xtgl.Qxsz.xgmm" type="Command" class="Aisino.Fwkp.Xtgl.UserInfoManageCommand" label="用户名密码修改"   insertAfter="Menu.Xtgl.Qxsz" icon="系统管理_修改密码"/>
+    </TreeNode>
+	</Tree>
+</PlugIn>

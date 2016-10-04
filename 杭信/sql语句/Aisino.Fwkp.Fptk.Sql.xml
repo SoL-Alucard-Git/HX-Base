@@ -1,0 +1,442 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SQLLIB>
+
+  <!--添加销项发票-->
+  <SQL id="aisino.fwkp.fptk.AddXXFP">
+    <value>
+      INSERT INTO XXFP
+      (FPZL,FPDM,FPHM,KPJH,XSDJBH,GFMC,GFSH,GFDZDH,GFYHZH,XFMC,XFSH,XFDZDH,XFYHZH,JMBBH,MW,KPRQ,HJJE,SLV,HJSE,ZYSPMC,SPSM,BZ,KPR,FHR,SKR,DYBZ,QDBZ,ZFBZ,BSBZ,XFBZ,JYM,BSQ,HXM,SSYF,HZTZDH,YYSBZ,BSZT,SIGN,ZFRQ, WSPZHM, PZRQ, LZDMHM, DZSYH,KPSXH,JQBH,BMBBBH)
+      values
+      (@FPZL,@FPDM,@FPHM,@KPJH,@XSDJBH,@GFMC,@GFSH,@GFDZDH,@GFYHZH,@XFMC,@XFSH,@XFDZDH,@XFYHZH,@JMBBH,@MW,@KPRQ,@HJJE,@SLV,@HJSE,@ZYSPMC,@SPSM,@BZ,@KPR,@FHR,@SKR,@DYBZ,@QDBZ,@ZFBZ,@BSBZ,@XFBZ,@JYM,@BSQ,@HXM,@SSYF,@HZTZDH,@YYSBZ,@BSZT,@SIGN,@ZFRQ, @WSPZHM, @PZRQ, @LZDMHM, @DZSYH, @KPSXH, @JQBH,@BMBBBH)
+    </value>
+    <type>Text</type>
+    <param name="FPZL" type="AnsiString"></param>
+    <param name="FPDM" type="AnsiString"></param>
+    <param name="FPHM" type="Int32"></param>
+    <param name="KPJH" type="Int32"></param>
+    <param name="XSDJBH" type="AnsiString"></param>
+    <param name="GFMC" type="AnsiString"></param>
+    <param name="GFSH" type="AnsiString"></param>
+    <param name="GFDZDH" type="AnsiString"></param>
+    <param name="GFYHZH" type="AnsiString"></param>
+    <param name="XFMC" type="AnsiString"></param>
+    <param name="XFSH" type="AnsiString"></param>
+    <param name="XFDZDH" type="AnsiString"></param>
+    <param name="XFYHZH" type="AnsiString"></param>
+    <param name="JMBBH" type="AnsiString"></param>
+    <param name="MW" type="AnsiString"></param>
+    <param name="KPRQ" type="DateTime"></param>
+    <param name="HJJE" type="Decimal"></param>
+    <param name="SLV" type="Single"></param>
+    <param name="HJSE" type="Decimal"></param>
+    <param name="ZYSPMC" type="AnsiString"></param>
+    <param name="SPSM" type="AnsiString"></param>
+    <param name="BZ" type="AnsiString"></param>
+    <param name="KPR" type="AnsiString"></param>
+    <param name="FHR" type="AnsiString"></param>
+    <param name="SKR" type="AnsiString"></param>
+    <param name="DYBZ" type="Boolean"></param>
+    <param name="QDBZ" type="Boolean"></param>
+    <param name="ZFBZ" type="Boolean"></param>
+    <param name="BSBZ" type="Boolean"></param>
+    <param name="XFBZ" type="Boolean"></param>
+    <param name="JYM" type="AnsiString"></param>
+    <param name="BSQ" type="Int32"></param>
+    <param name="HXM" type="AnsiString"></param>
+    <param name="SSYF" type="Int32"></param>
+    <param name="HZTZDH" type="AnsiString"></param>
+    <param name="YYSBZ" type="AnsiString"></param>
+
+    <param name="BSZT" type="Int32"></param>
+    <param name="SIGN" type="AnsiString"></param>
+    <param name="ZFRQ" type="AnsiString"></param>
+    <param name="WSPZHM" type="AnsiString"></param>
+    <param name="PZRQ" type="DateTime"></param>
+    <param name="LZDMHM" type="AnsiString"></param>
+
+    <param name="DZSYH" type="AnsiString"></param>
+    <param name="KPSXH" type="AnsiString"></param>
+    <param name="JQBH" type="AnsiString"></param>
+    <param name="BMBBBH" type="AnsiString"></param>
+  </SQL>
+
+  <!--添加销项发票-->
+  <SQL id="aisino.fwkp.fptk.AddXXFP_HWYS_JDC">
+    <value>
+      INSERT into XXFP
+      (FPZL,FPDM,FPHM,KPJH,XSDJBH,GFMC,GFSH,GFDZDH,GFYHZH,XFMC,XFSH,XFDZDH,XFYHZH,JMBBH,MW,KPRQ,HJJE,SLV,HJSE,ZYSPMC,SPSM,BZ,KPR,FHR,SKR,DYBZ,QDBZ,ZFBZ,BSBZ,XFBZ,JYM,BSQ,HXM,SSYF,HZTZDH,YYSBZ,XSBM, CM,KHYHMC,KHYHZH,TYDH,QYD,ZHD,XHD,MDD,YYZZH,HYBM,XFDZ,XFDH,JQBH, SCCJMC,YSHWXX,BSZT,SIGN,ZFRQ, WSPZHM, PZRQ, LZDMHM, DZSYH,KPSXH,BMBBBH,SPSM_BM)
+      values
+      (@FPZL,@FPDM,@FPHM,@KPJH,@XSDJBH,@GFMC,@GFSH,@GFDZDH,@GFYHZH,@XFMC,@XFSH,@XFDZDH,@XFYHZH,@JMBBH,@MW,@KPRQ,@HJJE,@SLV,@HJSE,@ZYSPMC,@SPSM,@BZ,@KPR,@FHR,@SKR,@DYBZ,@QDBZ,@ZFBZ,@BSBZ,@XFBZ,@JYM,@BSQ,@HXM,@SSYF,@HZTZDH,@YYSBZ,@XSBM,@CM, @KHYHMC, @KHYHZH, @TYDH, @QYD, @ZHD, @XHD, @MDD, @YYZZH, @HYBM, @XFDZ, @XFDH,@JQBH, @SCCJMC,@YSHWXX,@BSZT,@SIGN,@ZFRQ, @WSPZHM, @PZRQ, @LZDMHM, @DZSYH,@KPSXH,@BMBBBH,@SPSM_BM)
+    </value>
+    <type>Text</type>
+    <param name="FPZL" type="AnsiString"></param>
+    <param name="FPDM" type="AnsiString"></param>
+    <param name="FPHM" type="Int32"></param>
+    <param name="KPJH" type="Int32"></param>
+    <param name="XSDJBH" type="AnsiString"></param>
+    <param name="GFMC" type="AnsiString"></param>
+    <param name="GFSH" type="AnsiString"></param>
+    <param name="GFDZDH" type="AnsiString"></param>
+    <param name="GFYHZH" type="AnsiString"></param>
+    <param name="XFMC" type="AnsiString"></param>
+    <param name="XFSH" type="AnsiString"></param>
+    <param name="XFDZDH" type="AnsiString"></param>
+    <param name="XFYHZH" type="AnsiString"></param>
+    <param name="JMBBH" type="AnsiString"></param>
+    <param name="MW" type="AnsiString"></param>
+    <param name="KPRQ" type="DateTime"></param>
+    <param name="HJJE" type="Decimal"></param>
+    <param name="SLV" type="Single"></param>
+    <param name="HJSE" type="Decimal"></param>
+    <param name="ZYSPMC" type="AnsiString"></param>
+    <param name="SPSM" type="AnsiString"></param>
+    <param name="BZ" type="AnsiString"></param>
+    <param name="KPR" type="AnsiString"></param>
+    <param name="FHR" type="AnsiString"></param>
+    <param name="SKR" type="AnsiString"></param>
+    <param name="DYBZ" type="Boolean"></param>
+    <param name="QDBZ" type="Boolean"></param>
+    <param name="ZFBZ" type="Boolean"></param>
+    <param name="BSBZ" type="Boolean"></param>
+    <param name="XFBZ" type="Boolean"></param>
+    <param name="JYM" type="AnsiString"></param>
+    <param name="BSQ" type="Int32"></param>
+    <param name="HXM" type="AnsiString"></param>
+    <param name="SSYF" type="Int32"></param>
+    <param name="HZTZDH" type="AnsiString"></param>
+    <param name="YYSBZ" type="AnsiString"></param>
+
+    <param name="XSBM" type="AnsiString"></param>
+    <param name="CM" type="AnsiString"></param>
+    <param name="KHYHMC" type="AnsiString"></param>
+    <param name="KHYHZH" type="AnsiString"></param>
+    <param name="TYDH" type="AnsiString"></param>
+    <param name="QYD" type="AnsiString"></param>
+    <param name="ZHD" type="AnsiString"></param>
+    <param name="XHD" type="AnsiString"></param>
+    <param name="MDD" type="AnsiString"></param>
+    <param name="YYZZH" type="AnsiString"></param>
+    <param name="HYBM" type="AnsiString"></param>
+    <param name="XFDZ" type="AnsiString"></param>
+    <param name="XFDH" type="AnsiString"></param>
+    <param name="JQBH" type="AnsiString"></param>
+    <param name="SCCJMC" type="AnsiString"></param>
+    <param name="YSHWXX" type="AnsiString"></param>
+    <param name="BSZT" type="Int32"></param>
+    <param name="SIGN" type="AnsiString"></param>
+    <param name="ZFRQ" type="AnsiString"></param>
+    <param name="WSPZHM" type="AnsiString"></param>
+    <param name="PZRQ" type="DateTime"></param>
+    <param name="LZDMHM" type="AnsiString"></param>
+
+    <param name="DZSYH" type="AnsiString"></param>
+    <param name="KPSXH" type="AnsiString"></param>
+    <param name="BMBBBH" type="AnsiString"></param>
+    <param name="SPSM_BM" type="AnsiString"></param>
+  </SQL>
+
+  <!--添加销项发票明细-->
+  <SQL id="aisino.fwkp.fptk.FPMX">
+    <value>
+      INSERT INTO XXFP_MX
+      (FPZL,FPDM,FPHM,FPMXXH,XSDJBH,FPHXZ,JE,SLV,SE ,SPMC,SPSM,GGXH,JLDW,SL,DJ,HSJBZ,SPBH,DJMXXH,FLBM,XSYH,YHSM,LSLVBS)
+      VALUES
+      (@FPZL,@FPDM,@FPHM,@FPMXXH,@XSDJBH,@FPHXZ,@JE,@SLV,@SE ,@SPMC,@SPSM,@GGXH,@JLDW,@SL,@DJ,@HSJBZ,@SPBH,@DJMXXH,@FLBM,@XSYH,@YHSM,@LSLVBS)
+    </value>
+    <type>Text</type>
+    <param name="FPZL" type="AnsiString"></param>
+    <param name="FPDM" type="AnsiString"></param>
+    <param name="FPHM" type="AnsiString"></param>
+    <param name="FPMXXH" type="Double"></param>
+    <param name="XSDJBH" type="AnsiString"></param>
+    <param name="FPHXZ" type="Int32"></param>
+    <param name="JE" type="Decimal"></param>
+    <param name="SLV" type="Decimal"></param>
+    <param name="SE" type="Decimal"></param>
+    <param name="SPMC" type="AnsiString"></param>
+    <param name="SPSM" type="AnsiString"></param>
+    <param name="GGXH" type="AnsiString"></param>
+    <param name="JLDW" type="AnsiString"></param>
+    <param name="SL" type="AnsiString"></param>
+    <param name="DJ" type="AnsiString"></param>
+    <param name="HSJBZ" type="Boolean"></param>
+    <param name="SPBH" type="AnsiString"></param>
+    <param name="DJMXXH" type="Int32"></param>
+    <param name="FLBM" type="AnsiString"></param>
+    <param name="XSYH" type="Int32"></param>
+    <param name="YHSM" type="AnsiString"></param>
+    <param name="LSLVBS" type="AnsiString"></param>
+  </SQL>
+
+
+  <!--获得车辆信息-->
+  <SQL id="aisino.fwkp.fptk.GeClxx">
+    <value>
+      select MC,CPXH,CD,SCCJMC,BM,SPFL,YHZC,WJ,KJM,YHZCMC
+      from BM_CL
+      where MC = @MC and CPXH =@CPXH and CD = @CD and SCCJMC = @SCCJMC and SPFL is not null Limit 1
+    </value>
+    <type>Text</type>
+    <param name="MC" type="AnsiString"></param>
+    <param name="CPXH" type="AnsiString"></param>
+    <param name="CD" type="AnsiString"></param>
+    <param name="SCCJMC" type="AnsiString"></param>
+  </SQL>
+  
+  
+
+  <!--添加销货清单-->
+  <SQL id="aisino.fwkp.fptk.FPQD">
+    <value>
+      INSERT INTO XXFP_XHQD
+      (FPZL,FPDM,FPHM,FPMXXH,XSDJBH,FPHXZ,JE,SLV,SE,SPMC,SPSM,GGXH,JLDW,SL,DJ,HSJBZ,SPBH,DJMXXH,FLBM,XSYH,YHSM,LSLVBS)
+      VALUES
+      (@FPZL,@FPDM,@FPHM,@FPMXXH,@XSDJBH,@FPHXZ,@JE,@SLV,@SE ,@SPMC,@SPSM,@GGXH,@JLDW,@SL,@DJ,@HSJBZ,@SPBH,@DJMXXH,@FLBM,@XSYH,@YHSM,@LSLVBS)
+    </value>
+    <type>Text</type>
+    <param name="FPZL" type="AnsiString"></param>
+    <param name="FPDM" type="AnsiString"></param>
+    <param name="FPHM" type="AnsiString"></param>
+    <param name="FPMXXH" type="Double"></param>
+    <param name="XSDJBH" type="AnsiString"></param>
+    <param name="FPHXZ" type="Int32"></param>
+    <param name="JE" type="Decimal"></param>
+    <param name="SLV" type="Decimal"></param>
+    <param name="SE" type="Decimal"></param>
+    <param name="SPMC" type="AnsiString"></param>
+    <param name="SPSM" type="AnsiString"></param>
+    <param name="GGXH" type="AnsiString"></param>
+    <param name="JLDW" type="AnsiString"></param>
+    <param name="SL" type="AnsiString"></param>
+    <param name="DJ" type="AnsiString"></param>
+    <param name="HSJBZ" type="Boolean"></param>
+    <param name="SPBH" type="AnsiString"></param>
+    <param name="DJMXXH" type="Int32"></param>
+    <param name="FLBM" type="AnsiString"></param>
+    <param name="XSYH" type="Int32"></param>
+    <param name="YHSM" type="AnsiString"></param>
+    <param name="LSLVBS" type="AnsiString"></param>
+  </SQL>
+
+  <!--查询一条销项发票信息-->
+  <SQL id="aisino.fwkp.fptk.SelectXXFP">
+    <value>
+      select  FPZL,FPDM,FPHM,KPJH,XSDJBH,GFMC,GFSH,GFDZDH,GFYHZH,XFMC,XFSH,XFDZDH,XFYHZH,JMBBH,MW,KPRQ,HJJE,SLV,HJSE,ZYSPMC,SPSM,BZ,KPR,FHR,SKR,DYBZ,QDBZ,ZFBZ,BSBZ,XFBZ,JYM,BSQ,HXM,HZTZDH,SBBZ,YYSBZ,SYH,XSBM, SSYF,CM,DLGRQ,KHYHMC,KHYHZH,TYDH,QYD,ZHD,XHD,MDD,YYZZH,HYBM,XFDZ,XFDH,JQBH,SCCJMC,YSHWXX,BSZT, SIGN,ZFRQ, WSPZHM,BMBBBH,SPSM_BM
+      from XXFP
+      where FPZL=@FPZL and FPDM=@FPDM and FPHM=@FPHM
+    </value>
+    <type>Text</type>
+    <param name="FPZL" type="AnsiString"></param>
+    <param name="FPDM" type="AnsiString"></param>
+    <param name="FPHM" type="Int32"></param>
+  </SQL>
+  <!--查询卷票打印模板-->
+  <SQL id="aisino.fwkp.fptk.SelectDYMB">
+    <value>
+      select  JQSH,JZZH,JPGG
+      from LYGL_JPXX
+      where LBDM=@LBDM
+    </value>
+    <type>Text</type>
+    <param name="LBDM" type="AnsiString"></param>
+  </SQL>
+  <!--查询销项发票明细-->
+  <SQL id="aisino.fwkp.fptk.SelectFPMX">
+    <value>
+      select FPZL,FPDM,FPHM,FPMXXH,XSDJBH,FPHXZ,JE,SLV,SE ,SPMC,SPSM,GGXH,JLDW,SL,DJ,HSJBZ,SPBH,DJMXXH,FLBM,XSYH,YHSM,LSLVBS
+      from XXFP_MX
+      where FPZL=@FPZL and FPDM=@FPDM and FPHM=@FPHM order by FPMXXH
+    </value>
+    <type>Text</type>
+    <param name="FPZL" type="AnsiString"></param>
+    <param name="FPDM" type="AnsiString"></param>
+    <param name="FPHM" type="Int32"></param>
+  </SQL>
+  <!--查询销货清单-->
+  <SQL id="aisino.fwkp.fptk.SelectFPQD">
+    <value>
+      select FPZL,FPDM,FPHM,FPMXXH,XSDJBH,FPHXZ,JE,SLV,SE,SPMC,SPSM,GGXH,JLDW,SL,DJ,HSJBZ,SPBH,DJMXXH,FLBM,XSYH,YHSM,LSLVBS
+      from XXFP_XHQD
+      where FPZL=@FPZL and FPDM=@FPDM and FPHM=@FPHM order by FPMXXH
+    </value>
+    <type>Text</type>
+    <param name="FPZL" type="AnsiString"></param>
+    <param name="FPDM" type="AnsiString"></param>
+    <param name="FPHM" type="Int32"></param>
+  </SQL>
+
+  <!--获得稀土哈希-->
+  <SQL id="aisino.fwkp.fptk.selectXThash">
+    <value>
+      select  MC  from BM_SP  where MC=@MC AND XTHASH &lt;&gt; '' AND XTHASH IS NOT NULL
+
+    </value>
+    <type>Text</type>
+    <param name="MC" type="AnsiString"></param>
+  </SQL>
+
+  <!--查询红字通知单对应的发票信息-->
+  <SQL id="aisino.fwkp.fptk.CheckRedNum">
+    <value>
+      select FPHM
+      from XXFP
+      where HZTZDH=@TZD and ZFBZ="0"
+    </value>
+    <type>Text</type>
+    <param name="TZD" type="AnsiString"></param>
+  </SQL>
+
+  <!--查询车架号对应的发票信息-->
+  <SQL id="aisino.fwkp.fptk.CheckCJH">
+    <value>
+      select FPHM
+      from XXFP
+      where XHD=@XHD and HJJE > 0 and ZFBZ="0"
+    </value>
+    <type>Text</type>
+    <param name="XHD" type="AnsiString"></param>
+  </SQL>
+
+  <!--查询地区编码-->
+  <SQL id="aisino.fwkp.fptk.QueryXzqy">
+    <value>
+      select MC
+      from BM_XZQY
+      where BM like @BM
+    </value>
+    <type>Text</type>
+    <param name="BM" type="AnsiString"></param>
+  </SQL>
+
+  <!--查询红字反蓝存在的发票信息-->
+  <SQL id="aisino.fwkp.fptk.ExistRevBlue">
+    <value>
+      select FPZL, FPDM, FPHM, GFMC, GFSH, XFMC, XFSH, HJJE, HJSE, KPRQ, BZ
+      from XXFP
+      where HZTZDH = @TZD and HJJE > 0 and GFSH = '000000123456789' and GFMC = '见红字发票购方名称' and ZFBZ = "0"
+    </value>
+    <type>Text</type>
+    <param name="TZD" type="AnsiString"></param>
+  </SQL>
+
+  <!--查询反蓝后红字通知单重开的发票信息-->
+  <SQL id="aisino.fwkp.fptk.SelectFphmByRedNum">
+    <value>
+      <![CDATA[select FPHM
+      from XXFP
+      where HZTZDH=@TZD and HJJE < 0 and KPRQ > @KPRQ and ZFBZ = "0" ]]>
+    </value>
+    <type>Text</type>
+    <param name="TZD" type="AnsiString"></param>
+    <param name="KPRQ" type="DateTime"></param>
+  </SQL>
+
+  <!--查询普通发票已开红字发票总金额-->
+  <SQL id="aisino.fwkp.fptk.SelectTotalRedJe">
+    <value>
+      <![CDATA[select sum(hjje) HZHJJE
+      from XXFP
+      where LZDMHM = @LzfpDmHm and HJJE < 0 and ZFBZ = "0" ]]>
+    </value>
+    <type>Text</type>
+    <param name="LzfpDmHm" type="AnsiString"></param>
+  </SQL>
+
+  <!--查询已开单据-->
+  <SQL id="aisino.fwkp.fptk.QueryYkdj">
+    <value>
+      select FILE, DJH
+      from YKDJ
+      where FILE = @FILES
+    </value>
+    <type>Text</type>
+    <param name="FILES" type="AnsiString"></param>
+  </SQL>
+
+  <!--插入已开单据-->
+  <SQL id="aisino.fwkp.fptk.InsertYkdj">
+    <value>
+      INSERT INTO YKDJ (FILE, DJH) VALUES (@FILE, @DJH)
+    </value>
+    <type>Text</type>
+    <param name="FILE" type="AnsiString"></param>
+    <param name="DJH" type="AnsiString"></param>   
+  </SQL>
+  <!--获得优惠税率字典-->
+  <SQL id ="aisino.fwkp.fptk.SelectYhzcs">
+    <value>
+      SELECT YHZCMC,SLV FROM BM_YHZC
+      <type>Text</type>
+    </value>
+  </SQL>
+
+  <!--获得所有适用税率-->
+  <SQL id ="aisino.fwkp.fptk.SelectSYSLV">
+    <value>
+      SELECT distinct SLV
+      FROM BM_SPFL
+      WHERE SLV is not null
+      <type>Text</type>
+    </value>
+  </SQL>
+  
+  <!--获得分类编码对应的商品优惠政策-->
+  <SQL id ="aisino.fwkp.fptk.SelectYHZCS">
+    <value>
+      SELECT ZZSTSGL  
+      FROM BM_SPFL
+      WHERE BM = @BM
+      <type>Text</type>
+    <param name="BM" type="AnsiString"></param>
+    </value>
+  </SQL>
+  <!--更新商品库-->
+    <SQL id="aisino.fwkp.fptk.UpdataBM_SP">
+    <value>
+      UPDATE BM_SP SET YHZC = @YHZC,YHZCMC = @YHZCMC,LSLVBS = @LSLVBS
+      WHERE BM= @BM AND MC = @MC
+    </value>
+    <type>Text</type>
+    <param name="YHZC" type="AnsiString"></param>
+    <param name="YHZCMC" type="AnsiString"></param>
+    <param name ="LSLVBS" type="AnsiString"></param>
+    <param name="BM" type="AnsiString"></param>
+    <param name="MC" type="AnsiString"></param>
+  </SQL>
+   <!--更新车辆库-->
+    <SQL id="aisino.fwkp.fptk.UpdataBM_CL">
+    <value>
+      UPDATE BM_CL SET YHZC = @YHZC,YHZCMC = @YHZCMC
+      WHERE BM= @BM AND MC = @MC
+    </value>
+    <type>Text</type>
+    <param name="YHZC" type="AnsiString"></param>
+    <param name="YHZCMC" type="AnsiString"></param>
+    <param name="BM" type="AnsiString"></param>
+    <param name="MC" type="AnsiString"></param>
+  </SQL>
+   <!--更新费用项目库-->
+    <SQL id="aisino.fwkp.fptk.UpdataBM_FYXM">
+    <value>
+      UPDATE BM_FYXM SET YHZC = @YHZC,YHZCMC = @YHZCMC
+      WHERE BM= @BM AND MC = @MC
+    </value>
+    <type>Text</type>
+    <param name="YHZC" type="AnsiString"></param>
+    <param name="YHZCMC" type="AnsiString"></param>
+    <param name="BM" type="AnsiString"></param>
+    <param name="MC" type="AnsiString"></param>
+  </SQL>
+  <!--修改税务代开发票上传状态-->
+  <!--<SQL id="aisino.fwkp.fptk.UpdateFpDksczt">
+    <value>
+      UPDATE XXFP SET DKSCZT = @DKSCZT
+      WHERE FPZL = @FPZL AND FPDM = @FPDM AND FPHM = @FPHM
+    </value>
+    <type>Text</type>
+    <param name="DKSCZT" type="Int32"></param>
+    <param name="FPZL" type="AnsiString"></param>
+    <param name="FPDM" type="AnsiString"></param>
+    <param name="FPHM" type="Int32"></param>
+  </SQL>-->
+</SQLLIB>

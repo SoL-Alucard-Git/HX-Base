@@ -1,0 +1,241 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <ProjectType>local</ProjectType>
+    <ProjectVersion>7.10.377</ProjectVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{BDA7DC4F-AFD7-4286-B925-997570604EF1}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <AssemblyName>Aisino.Fwkp.Fpkj</AssemblyName>
+    <OutputType>Library</OutputType>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Output\Bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System" />
+    <Reference Include="log4net">
+      <HintPath>..\..\脱壳后文件\Bin\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="NPOI">
+      <HintPath>..\Output\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Compile Include="Aisino\Fwkp\Fpkj\Common\AESLib.cs" />
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Global.cs" />
+    <Compile Include="Aisino\Fwkp\Fpkj\Form\FPZF\FaPiaoZuoFei_WeiKai.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fpkj\Form\FPCX\FaPiaoChaXun.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fpkj\Form\FPCX\FaPiaoChaXunShow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fpkj\ZuoFeiWeiKai.cs" />
+    <Compile Include="Aisino\Fwkp\Fpkj\Form\DKFP\DiKouFaPiaoXiaZai.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fpkj\ZuoFeiWeiKai_J.cs" />
+    <Compile Include="Aisino\Fwkp\Fpkj\Common\DaiKaiXml.cs" />
+    <Compile Include="Aisino\Fwkp\Fpkj\Common\Tool.cs" />
+    <Compile Include="Aisino\Fwkp\Fpkj\Form\FPZF\FaPiaoZuoFei_YiKai.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fpkj\Form\DKFP\SelectTime.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fpkj\FaPiaoXiuFu.cs" />
+    <Compile Include="Aisino\Fwkp\Fpkj\Common\FPXiuFuShareMethods.cs" />
+    <Compile Include="Aisino\Fwkp\Fpkj\Common\FPPrecisionShareMethod.cs" />
+    <Compile Include="Aisino\Fwkp\Fpkj\Common\FPDYShareMethod.cs" />
+    <Compile Include="Aisino\Fwkp\Fpkj\Form\FPFZ\FaPiaoChaXun_FPFZ.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fpkj\Form\FPCX\ShowMessage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fpkj\Form\DKFP\SelectSSQ.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fpkj\Form\DKFP\ChaXunTiaoJian.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fpkj\DKFPPLXZ\Json.cs" />
+    <Compile Include="Aisino\Fwkp\Fpkj\DKFPPLXZ\Project.cs" />
+    <Compile Include="Aisino\Fwkp\Fpkj\Common\PopShareMethods.cs" />
+    <Compile Include="Aisino\Fwkp\Fpkj\Form\FPXF\FPProgressBar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fpkj\Form\FPXF\RepairReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fpkj\Form\Dy\DyQueRen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fpkj\Model\UserMsg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fpkj\Form\SendFP\EmailOutFilePrompt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fpkj\ZuoFeiWeiKai_F.cs" />
+    <Compile Include="Aisino\Fwkp\Fpkj\Common\GetTaxMode.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fpkj\ZuoFeiYiKaiFaPiao.cs" />
+    <Compile Include="Aisino\Fwkp\Fpkj\Form\FPCX\SelectMonth.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fpkj\Form\FPCX\MonthChangeEventArgs.cs" />
+    <Compile Include="Aisino\Fwkp\Fpkj\Form\SendFP\SendFaPiao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fpkj\Form\Dy\DyPrompt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fpkj\Entry\FaPiaoWebChaXun.cs" />
+    <Compile Include="Aisino\Fwkp\Fpkj\DKFPPLXZ\FormSaveFile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fpkj\DKFPPLXZ\Entry.cs" />
+    <Compile Include="Aisino\Fwkp\Fpkj\Common\FPYiKaiZuoFeiWenBenJieKouShareMethods.cs" />
+    <Compile Include="Aisino\Fwkp\Fpkj\IDAL\IDKFP.cs" />
+    <Compile Include="Aisino\Fwkp\Fpkj\Form\FPCX\SelectTime.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fpkj\ZuoFeiWeiKai_C.cs" />
+    <Compile Include="Aisino\Fwkp\Fpkj\Properties\Settings.cs" />
+    <Compile Include="Aisino\Fwkp\Fpkj\Form\FPCX\HeDui.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fpkj\Form\FPCX\FPZJDaoChu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fpkj\Form\DKFP\DiKouFaPiao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fpkj\FaPiaoChaXun.cs" />
+    <Compile Include="Aisino\Fwkp\Fpkj\Common\FPChanXunWenBenJieKouShareMethods.cs" />
+    <Compile Include="Aisino\Fwkp\Fpkj\Common\FPChanXunPageShareMethods.cs" />
+    <Compile Include="Aisino\Fwkp\Fpkj\Common\EmailManager.cs" />
+    <Compile Include="Aisino\Fwkp\Fpkj\ZuoFeiWeiKai_S.cs" />
+    <Compile Include="Aisino\Fwkp\Fpkj\Form\FPCX\ChaXunTiaoJian.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fpkj\Common\EmailSetShareMethods.cs" />
+    <Compile Include="Aisino\Fwkp\Fpkj\Form\FPXF\FPXFStyle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fpkj\FpglMain.cs" />
+    <Compile Include="Aisino\Fwkp\Fpkj\Common\DingYiZhiFuChuan1.cs" />
+    <Compile Include="Aisino\Fwkp\Fpkj\Form\FPXF\FpxfMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fpkj\Form\FPXF\DeleteQueRen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fpkj\ZuoFeiWeiKai_Q.cs" />
+    <Compile Include="Aisino\Fwkp\Fpkj\Common\FPFZMethods.cs" />
+    <Compile Include="Aisino\Fwkp\Fpkj\ShareMethodClass.cs" />
+    <Compile Include="Aisino\Fwkp\Fpkj\Common\FPXiuFuSingleShareMethods.cs" />
+    <Compile Include="Aisino\Fwkp\Fpkj\Common\EmailSendFPTK.cs" />
+    <Compile Include="Aisino\Fwkp\Fpkj\Common\EmailOutFileShareMethods.cs" />
+    <Compile Include="Aisino\Fwkp\Fpkj\DKFPPLXZ\PLXZ.cs" />
+    <Compile Include="Aisino\Fwkp\Fpkj\Common\FPALLDYShareMethods.cs" />
+    <Compile Include="Aisino\Fwkp\Fpkj\Entry\ZDCSEntry\ZDCSEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Fpkj\DKFPPLXZ\PLXZBLL.cs" />
+    <Compile Include="Aisino\Fwkp\Fpkj\DiKouFaPiao.cs" />
+    <Compile Include="Aisino\Fwkp\Fpkj\DKFPPLXZ\ConfigProperty.cs" />
+    <Compile Include="Aisino\Fwkp\Fpkj\Resource1.cs" />
+    <Compile Include="Aisino\Fwkp\Fpkj\Properties\Resources.cs" />
+    <Compile Include="Aisino\Fwkp\Fpkj\Model\DKFP.cs" />
+    <Compile Include="Aisino\Fwkp\Fpkj\DAL\DKFP.cs" />
+    <Compile Include="Aisino\Fwkp\Fpkj\Common\XMLOperation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fpkj\DAL\XXFP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fpkj\Common\XxfpOutUtils.cs" />
+    <Compile Include="Aisino\Fwkp\Fpkj\Common\ShareMethods.cs" />
+    <Compile Include="Aisino\Fwkp\Fpkj\Common\Crc32.cs" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fpkj.Form.FPZF.FaPiaoZuoFei_WeiKai.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fpkj.Form.DKFP.SelectSSQ.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fpkj.DKFPPLXZ.FormSaveFile.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fpkj.Form.FPCX.HeDui.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fpkj.Form.SendFP.EmailOutFilePrompt.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fpkj.Form.DKFP.ChaXunTiaoJian.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fpkj.Form.DKFP.DiKouFaPiao.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fpkj.Form.FPCX.ShowMessage.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fpkj.Form.FPZF.FaPiaoZuoFei_YiKai.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fpkj.Form.FPXF.FPProgressBar.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fpkj.Form.FPXF.FpxfMain.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fpkj.Form.SendFP.SendFaPiao.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fpkj.Form.Dy.DyQueRen.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fpkj.Resource1.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fpkj.Properties.Resources.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fpkj.Form.FPXF.FPXFStyle.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fpkj.Form.FPCX.FaPiaoChaXun.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fpkj.Form.FPXF.RepairReport.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fpkj.Form.FPFZ.FaPiaoChaXun_FPFZ.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fpkj.Form.Dy.DyPrompt.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fpkj.Form.DKFP.SelectTime.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fpkj.Form.FPCX.FPZJDaoChu.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fpkj.Form.FPCX.SelectTime.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fpkj.Form.FPCX.SelectMonth.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fpkj.Form.FPXF.DeleteQueRen.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fpkj.Form.DKFP.DiKouFaPiaoXiaZai.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fpkj.Form.FPCX.ChaXunTiaoJian.resources" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Aisino.Framework.Dao\Aisino.Framework.Dao.csproj">
+      <Project>{ef96d157-73ba-410c-a2bd-698b4986fd18}</Project>
+      <Name>Aisino.Framework.Dao</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Aisino.Framework.MainForm\Aisino.Framework.MainForm.csproj">
+      <Project>{6ca5bc40-07b1-45fc-8927-58356e838a77}</Project>
+      <Name>Aisino.Framework.MainForm</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Aisino.Framework.Plugin.Core\Aisino.Framework.Plugin.Core.csproj">
+      <Project>{b65bb74a-99d3-4854-8151-a6bd4d4a489a}</Project>
+      <Name>Aisino.Framework.Plugin.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Aisino.FTaxBase\Aisino.FTaxBase.csproj">
+      <Project>{a9935674-60e2-44e1-8785-d391586d31f8}</Project>
+      <Name>Aisino.FTaxBase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Aisino.Fwkp.BusinessObject\Aisino.Fwkp.BusinessObject.csproj">
+      <Project>{75c5c3bc-cb11-4429-b042-46f1baab2fff}</Project>
+      <Name>Aisino.Fwkp.BusinessObject</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Aisino.Fwkp.Print\Aisino.Fwkp.Print.csproj">
+      <Project>{1e1ed23b-b53d-4fbc-9677-cff0e926080f}</Project>
+      <Name>Aisino.Fwkp.Print</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

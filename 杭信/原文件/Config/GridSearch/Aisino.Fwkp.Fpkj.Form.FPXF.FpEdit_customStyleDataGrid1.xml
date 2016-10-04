@@ -1,0 +1,8 @@
+<Conditions>
+  <Condition>
+    <Name>购方信息空缺</Name>
+    <Field>购方名称</Field>
+    <Operator>等于</Operator>
+    <Value ValueType="String">|空值|</Value>
+  </Condition>
+</Conditions>

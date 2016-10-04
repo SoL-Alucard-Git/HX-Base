@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<PlugIn id="Aisino.Fwkp.Fpzpz" name="发票转凭证" description="发票转凭证插件">
+  <Runtime>
+    <Import assembly="..\Aisino.Fwkp.Fpzpz.dll" resource="Aisino.Fwkp.Fpzpz.Properties.Resources"/>
+    <SqlLib file="Aisino.Fwkp.Fpzpz.Sql.xml"/>
+  </Runtime>
+
+  <Auto>
+    <Class id="Aisino.Fwkp.Fpzpz.Method" class="Aisino.Fwkp.Fpzpz.Entry.ShareMethodClass" label="ShareMethodClass"/>
+  </Auto>
+  
+  <Menu>
+
+    <MenuItem id="Menu.Xtsz" type="Menu" label="系统设置" isFirst="true" icon="系统设置_抄报税管理">
+      <MenuItem id="Menu.Xtsz.ParasSet" type="Menu" label="系统参数设置"  insertAfter="Menu.Xtgl.Qxsz"  icon="发票转凭证_基本参数设置">
+        <MenuItem id="Menu.JbMsgSet.FPZPZSet" type="Command" class="Aisino.Fwkp.Fpzpz.Entry.FPZPZSet" label="发票转凭证设置" icon="发票转凭证_基本参数设置"/>
+      </MenuItem>
+	<MenuItem id="Menu.Fpzpz" type="Menu" class="Aisino.Fwkp.Fpzpz.Entry.FpzpzEntry" label="发票转凭证" insertAfter="Menu.Xtsz.TaxPanRegister" icon="发票转凭证">
+      	<MenuItem id="Menu.Fpzpz.FaPiaoZhuanPingZheng" type="Command" class="Aisino.Fwkp.Fpzpz.Entry.FaPiaoZhuanPingZheng" label="发票转凭证" icon="发票转凭证_发票转凭证"/>
+      	<MenuItem id="Menu.Fpzpz.FaPiaoZhuanPingZhengFind" type="Command" class="Aisino.Fwkp.Fpzpz.Entry.FaPiaoZhuanPingZhengFind" label="发票转凭证查询" icon="发票转凭证_发票转凭证查询"/>
+    </MenuItem>
+    </MenuItem>
+    
+    
+    
+  </Menu>
+	<Tree>
+    <TreeNode id="Menu.Xtsz" type="Menu" label="系统设置" isFirst="true" icon="系统设置_Tree">
+<TreeNode id="Menu.Fpzpz" type="Menu" class="Aisino.Fwkp.Fpzpz.Entry.FpzpzEntry" label="发票转凭证" insertAfter="Menu.Xtsz.TaxPanRegister" icon="发票转凭证_Tree">
+
+			<TreeNode id="Menu.Fpzpz.FaPiaoZhuanPingZheng" type="Command" class="Aisino.Fwkp.Fpzpz.Entry.FaPiaoZhuanPingZheng" label="发票转凭证" icon="发票转凭证_发票转凭证"/>
+			<TreeNode id="Menu.Fpzpz.FaPiaoZhuanPingZhengFind" type="Command" class="Aisino.Fwkp.Fpzpz.Entry.FaPiaoZhuanPingZhengFind" label="发票转凭证查询" icon="发票转凭证_发票转凭证查询"/>
+
+		</TreeNode>
+    </TreeNode>
+    
+    
+		
+	</Tree>
+</PlugIn>

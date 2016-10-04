@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<PlugIn id="Aisino.Fwkp.Resources" name="资源库" description="系统资源库">
+  <Runtime>
+    <Import assembly="..\Aisino.Fwkp.Resources.dll" resource="Aisino.Fwkp.Resources.Resource"/>
+  </Runtime>
+  <Auto>
+    <Class id="Aisino.Fwkp.Resources.Entry" class="Aisino.Fwkp.Resources.Entry"></Class>
+  </Auto>
+</PlugIn>

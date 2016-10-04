@@ -1,0 +1,247 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SQLLIB>
+  <SQL id="Aisino.Fwkp.Xtgl.SelectRegistFileName">
+    <value>
+      select BBZL, DM, BBBS, MC, SM, ZCWJ, DCBZ from XTBBXX
+    </value>
+    <type>Text</type>
+  </SQL>
+
+  <SQL id="Aisino.Fwkp.Xtgl.UpdateRegistFileName">
+    <value>
+      update XTBBXX set ZCWJ = @ZCWJ where BBBS = @BBBS
+    </value>
+    <param name="ZCWJ" type="AnsiString"></param>
+    <param name="BBBS" type="AnsiString"></param>
+    <type>Text</type>
+  </SQL>
+
+  <SQL id="Aisino.Fwkp.Xtgl.ExistRoleName">
+    <value>
+      select 1 from QX_JSXX where MC = @MC
+    </value>
+    <param name="MC" type="AnsiString"></param>
+    <type>Text</type>
+  </SQL>
+  
+  <!--select DM, MC, BZ, CJSJ, CJYH
+      from QX_JSXX
+      where CJYH = @CJYH-->
+  
+  <SQL id="Aisino.Fwkp.Xtgl.SelectRole">
+    <value>
+      select distinct R.DM, R.MC, R.BZ, R.CJSJ, R.CJYH
+      from QX_JSXX R, QX_YHXX_JSXX UR
+      where (R.DM = UR.JSXX_DM and UR.YHXX_DM = @CJYH) or R.CJYH = @CJYH
+    </value>
+    <param name="CJYH" type="AnsiString"></param>
+    <type>Text</type>
+  </SQL>
+
+  <SQL id="Aisino.Fwkp.Xtgl.SelectRoleFuncs">
+    <value>
+      select JSXX_DM, GNXX_DM
+      from QX_JSXX_GNXX
+    </value>
+    <type>Text</type>
+  </SQL>
+
+  <SQL id="Aisino.Fwkp.Xtgl.ExistUserName">
+    <value>
+      select 1 from QX_YHXX where ZSXM = @ZSXM
+    </value>
+    <param name="ZSXM" type="AnsiString"></param>
+    <type>Text</type>
+  </SQL>
+
+  <SQL id="Aisino.Fwkp.Xtgl.SelectPwdByName">
+    <value>
+      select MM from QX_YHXX where ZSXM = @ZSXM
+    </value>
+    <param name="ZSXM" type="AnsiString"></param>
+    <type>Text</type>
+  </SQL>
+
+  <SQL id="Aisino.Fwkp.Xtgl.SelectAllUser">
+    <value>
+      select ZSXM from QX_YHXX
+    </value>
+    <type>Text</type>
+  </SQL>
+
+  <SQL id="Aisino.Fwkp.Xtgl.SelectUserByDM">
+    <value>
+      select * from QX_YHXX
+      where DM = @DM
+    </value>
+    <param name="DM" type="AnsiString"></param>
+    <type>Text</type>
+  </SQL>
+
+  <SQL id="Aisino.Fwkp.Xtgl.SelectUser">
+    <value>
+      select DM, MM, ZSXM, LXDH, BZ, CJSJ, CJYH, ISADMIN
+      from QX_YHXX
+      where DM = @CJYH or CJYH = @CJYH
+    </value>
+    <param name="CJYH" type="AnsiString"></param>
+    <type>Text</type>
+  </SQL>
+
+  <SQL id="Aisino.Fwkp.Xtgl.SelectUserRoles">
+    <value>
+      select UR.YHXX_DM, UR.JSXX_DM, R.MC, R.BZ, R.CJSJ, R.CJYH
+      from QX_YHXX_JSXX UR, QX_JSXX R
+      where UR.JSXX_DM = R.DM
+    </value>
+    <type>Text</type>
+  </SQL>
+
+  <SQL id="Aisino.Fwkp.Xtgl.InsertRole">
+    <value>
+      insert into QX_JSXX (DM, MC, BZ, CJSJ, CJYH) values ( @DM, @MC, @BZ, @CJSJ, @CJYH )
+    </value>
+    <param name="DM" type="AnsiString"></param>
+    <param name="MC" type="AnsiString"></param>
+    <param name="BZ" type="AnsiString"></param>
+    <param name="CJSJ" type="DateTime"></param>
+    <param name="CJYH" type="AnsiString"></param>
+    <type>Text</type>
+  </SQL>
+
+  <SQL id="Aisino.Fwkp.Xtgl.InsertRoleFunc">
+    <value>
+      insert into QX_JSXX_GNXX (JSXX_DM, GNXX_DM, CJSJ, CJYH) values ( @JSXX_DM, @GNXX_DM, @CJSJ, @CJYH )
+    </value>
+    <param name="JSXX_DM" type="AnsiString"></param>
+    <param name="GNXX_DM" type="AnsiString"></param>
+    <param name="CJSJ" type="DateTime"></param>
+    <param name="CJYH" type="AnsiString"></param>
+    <type>Text</type>
+  </SQL>
+
+  <SQL id="Aisino.Fwkp.Xtgl.InsertUser">
+    <value>
+      insert into QX_YHXX (DM, MM, ZSXM, LXDH, BZ, CJSJ, CJYH, ISADMIN) values ( @DM, @MM, @ZSXM, @LXDH, @BZ, @CJSJ, @CJYH, @ISADMIN )
+    </value>
+    <param name="DM" type="AnsiString"></param>
+    <param name="MM" type="AnsiString"></param>
+    <param name="ZSXM" type="AnsiString"></param>
+    <param name="LXDH" type="AnsiString"></param>
+    <param name="BZ" type="AnsiString"></param>
+    <param name="CJSJ" type="DateTime"></param>
+    <param name="CJYH" type="AnsiString"></param>
+    <param name="ISADMIN" type="Boolean"></param>
+    <type>Text</type>
+  </SQL>
+
+  <SQL id="Aisino.Fwkp.Xtgl.InsertUserRole">
+    <value>
+      insert into QX_YHXX_JSXX (YHXX_DM, JSXX_DM, CJSJ, CJYH) values (@YHXX_DM, @JSXX_DM, @CJSJ, @CJYH )
+    </value>
+    <param name="YHXX_DM" type="AnsiString"></param>
+    <param name="JSXX_DM" type="AnsiString"></param>
+    <param name="CJSJ" type="DateTime"></param>
+    <param name="CJYH" type="AnsiString"></param>
+    <type>Text</type>
+  </SQL>
+
+  <SQL id="Aisino.Fwkp.Xtgl.UpdateRole">
+    <value>
+      update QX_JSXX set MC = @MC, BZ= @BZ where DM = @DM
+    </value>
+    <param name="MC" type="AnsiString"></param>
+    <param name="BZ" type="AnsiString"></param>
+    <param name="DM" type="AnsiString"></param>
+    <type>Text</type>
+  </SQL>
+
+  <SQL id="Aisino.Fwkp.Xtgl.UpdateUserPwd">
+    <value>
+      update QX_YHXX set MM = @MM where DM = @DM
+    </value>
+    <param name="MM" type="AnsiString"></param>
+    <param name="DM" type="AnsiString"></param>
+    <type>Text</type>
+  </SQL>
+
+  <SQL id="Aisino.Fwkp.Xtgl.UpdateUserNamePwd">
+    <value>
+      update QX_YHXX set MM = @MM,ZSXM = @ZSXM where DM = @DM
+    </value>
+    <param name="MM" type="AnsiString"></param>
+    <param name="ZSXM" type="AnsiString"></param>
+    <param name="DM" type="AnsiString"></param>
+    <type>Text</type>
+  </SQL>
+
+
+  <SQL id="Aisino.Fwkp.Xtgl.UpdateUser">
+    <value>
+      update QX_YHXX set ISADMIN = @ISADMIN, ZSXM =@ZSXM, LXDH=@LXDH, BZ= @BZ where DM = @DM
+    </value>
+    <param name="ISADMIN" type="Boolean"></param>
+    <param name="ZSXM" type="AnsiString"></param>
+    <param name="LXDH" type="AnsiString"></param>
+    <param name="BZ" type="AnsiString"></param>
+    <param name="DM" type="AnsiString"></param>
+    <type>Text</type>
+  </SQL>
+
+  <SQL id="Aisino.Fwkp.Xtgl.DeleteRoleFuncByGNDM">
+    <value>
+      delete from QX_JSXX_GNXX where GNXX_DM = @GNXX_DM
+    </value>
+    <param name="GNXX_DM" type="AnsiString"></param>
+    <type>Text</type>
+  </SQL>
+
+  <SQL id="Aisino.Fwkp.Xtgl.DeleteRoleFuncByJSDM">
+    <value>
+      delete from QX_JSXX_GNXX where JSXX_DM = @DM
+    </value>
+    <param name="DM" type="AnsiString"></param>
+    <type>Text</type>
+  </SQL>
+
+  <SQL id="Aisino.Fwkp.Xtgl.DeleteUserRoleByJSDM">
+    <value>
+      delete from QX_YHXX_JSXX where JSXX_DM = @JSXX_DM
+    </value>
+    <param name="JSXX_DM" type="AnsiString"></param>
+    <type>Text</type>
+  </SQL>
+
+  <SQL id="Aisino.Fwkp.Xtgl.DeleteUserRoleByYHDM">
+    <value>
+      delete from QX_YHXX_JSXX where YHXX_DM = @DM
+    </value>
+    <param name="DM" type="AnsiString"></param>
+    <type>Text</type>
+  </SQL>
+
+  <SQL id="Aisino.Fwkp.Xtgl.DeleteRole">
+    <value>
+      delete from QX_JSXX where DM = @DM
+    </value>
+    <param name="DM" type="AnsiString"></param>
+    <type>Text</type>
+  </SQL>
+
+  <SQL id="Aisino.Fwkp.Xtgl.DeleteUser">
+    <value>
+      delete from QX_YHXX where DM = @DM
+    </value>
+    <param name="DM" type="AnsiString"></param>
+    <type>Text</type>
+  </SQL>
+
+  <SQL id="Aisino.Fwkp.Xtgl.QueryUsersBelongRole">
+    <value>
+      select * from  QX_YHXX_JSXX where JSXX_DM = @JSXX_DM
+    </value>
+    <param name="JSXX_DM" type="AnsiString"></param>
+    <type>Text</type>
+  </SQL>
+
+</SQLLIB>

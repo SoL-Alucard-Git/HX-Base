@@ -1,0 +1,5 @@
+E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Output\Bin\Aisino.Framework.PubClient.dll
+E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Output\Bin\Aisino.Framework.PubClient.pdb
+E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Aisino.Framework.PubClient\obj\x86\Debug\Aisino.Framework.PubClient.csprojResolveAssemblyReference.cache
+E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Aisino.Framework.PubClient\obj\x86\Debug\Aisino.Framework.PubClient.dll
+E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Aisino.Framework.PubClient\obj\x86\Debug\Aisino.Framework.PubClient.pdb

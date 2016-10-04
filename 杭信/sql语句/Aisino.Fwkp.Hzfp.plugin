@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<PlugIn id="Aisino.Fwkp.Hzfp" name="红字发票申请单" description="红字发票申请单插件">
+  <Runtime>
+    <Import assembly="..\Aisino.Fwkp.Hzfp.dll" resource="Aisino.Fwkp.Hzfp.Properties.Resources"/>
+    <SqlLib file="Aisino.Fwkp.Hzfp.Sql.xml"/>
+  </Runtime>
+
+  <Auto>
+    <Class id="Aisino.Fwkp.Hzfp.Entry.ShareMethodEntry" alwaysPermit="true"  class="Aisino.Fwkp.Hzfp.ShareMethodEntry" lable="申请单查询共享方法"></Class>
+  </Auto>
+
+  <Menu>
+    <MenuItem id="Menu.Hzfp" type="Menu" label="红字发票信息表" insertAfter="Menu.Fpgl" icon="红字发票信息表_红字发票信息表">
+      <MenuItem id="Menu.Hzfp.TianKai" type="Command" class="Aisino.Fwkp.Hzfp.TianKai" label="红字增值税专用发票信息表填开" icon="红字发票申请单_申请单填开"/>
+      <MenuItem id="Menu.Hzfp.DaoChu" type="Command" class="Aisino.Fwkp.Hzfp.DaoChu" label="红字增值税专用发票信息表查询导出" icon="红字发票申请单_申请单查询导出"/>
+      <!--<MenuItem id="Menu.Hzfp.Select" type="Command" class="Aisino.Fwkp.Hzfp.Select" label="红字增值税专用发票信息表选择" icon="红字发票申请单_申请单选择"/>-->
+      <MenuItem id="Menu.Hzfp.1" type="Separator" />
+    </MenuItem>
+  </Menu>
+
+  <!--<Tree>
+    <TreeNode id="Menu.Hzfp" type="Menu" label="红字发票信息表" insertAfter="Menu.Fpgl" icon="红字发票申请单_Tree">
+      <TreeNode id="Menu.Hzfp.TianKai" type="Command" class="Aisino.Fwkp.Hzfp.TianKai" label="红字增值税专用发票信息表填开" icon="红字发票申请单_申请单填开"/>
+      <TreeNode id="Menu.Hzfp.DaoChu" type="Command" class="Aisino.Fwkp.Hzfp.DaoChu" label="红字增值税专用发票信息表查询导出" icon="红字发票申请单_申请单查询导出"/>
+    </TreeNode>
+  </Tree>-->
+</PlugIn>

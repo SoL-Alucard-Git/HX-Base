@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <ProjectType>local</ProjectType>
+    <ProjectVersion>7.10.377</ProjectVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{45B8F832-8E33-4207-A0F0-37F45F0CF6C7}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <AssemblyName>Aisino.Fwkp.Fptk</AssemblyName>
+    <OutputType>Library</OutputType>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Output\Bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Reference Include="log4net">
+      <HintPath>..\..\脱壳后文件\Bin\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Data" />
+    <Compile Include="Aisino\Fwkp\VehCert.cs" />
+    <Compile Include="Aisino\Fwkp\VCertificateI.cs" />
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Global.cs" />
+    <Compile Include="Aisino\Fwkp\Fptk\Crc32.cs" />
+    <Compile Include="Aisino\Fwkp\Fptk\FLBM_lock.cs" />
+    <Compile Include="Aisino\Fwkp\Fptk\FPDJHelper.cs" />
+    <Compile Include="Aisino\Fwkp\Fptk\FpManager.cs" />
+    <Compile Include="Aisino\Fwkp\Fptk\HzfpHelper.cs" />
+    <Compile Include="Aisino\Fwkp\Fptk\IFpManager.cs" />
+    <Compile Include="Aisino\Fwkp\Fptk\XmlProcessor.cs" />
+    <Compile Include="Aisino\Fwkp\Fptk\InvoiceHelper.cs" />
+    <Compile Include="Aisino\Fwkp\Fptk\Properties\Resources.cs" />
+    <Compile Include="Aisino\Fwkp\Fptk\Form\Add_SPFLBM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fptk\Form\SPNode.cs" />
+    <Compile Include="Aisino\Fwkp\Fptk\Form\DigitalEnvelop.cs" />
+    <Compile Include="Aisino\Fwkp\Fptk\Form\AutoImport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fptk\Form\Djfp.cs" />
+    <Compile Include="Aisino\Fwkp\Fptk\Form\HYInvoiceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fptk\Form\HZFPTK.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fptk\Form\HZFPTK_PP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fptk\Form\ManualImport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fptk\Form\ImportSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fptk\Form\InvoiceForm_ZZS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fptk\Form\InvoiceShowForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fptk\Form\JDCInvoiceForm_new.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fptk\Form\JDCInvoiceForm_old.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fptk\Form\JDCVersion.cs" />
+    <Compile Include="Aisino\Fwkp\Fptk\Form\JDCVersionSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fptk\Form\JSFPJSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fptk\Form\QiangSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fptk\Form\QingDanTianKai.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fptk\Form\StartConfirmForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fptk\Form\ArgsSetForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fptk\Form\WSPZCXForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fptk\Form\SwdkFpxx.cs" />
+    <Compile Include="Aisino\Fwkp\Fptk\Form\YkfpDmHm.cs" />
+    <Compile Include="Aisino\Fwkp\Fptk\Form\InvDkTypeSetForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fptk\Form\HZFPTK_PP_SWDK.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fptk\Form\InvoiceForm_DZ.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fptk\Form\InvoiceShowForm_DZ.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fptk\Form\InvoiceForm_JS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fptk\Form\InvoiceShowForm_JS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Fptk\Entry\CargoInvEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Fptk\Entry\CommonInvEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Fptk\Entry\InvEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Fptk\Entry\NCPSGInvEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Fptk\Entry\NCPXSInvEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Fptk\Entry\ShareCommonEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Fptk\Entry\_QueryFPMXService.cs" />
+    <Compile Include="Aisino\Fwkp\Fptk\Entry\_QueryFPXXService.cs" />
+    <Compile Include="Aisino\Fwkp\Fptk\Entry\_InvoiceService.cs" />
+    <Compile Include="Aisino\Fwkp\Fptk\Entry\_SaveFPXXService.cs" />
+    <Compile Include="Aisino\Fwkp\Fptk\Entry\_QueryTRedJEService.cs" />
+    <Compile Include="Aisino\Fwkp\Fptk\Entry\UploadSWDKFPService.cs" />
+    <Compile Include="Aisino\Fwkp\Fptk\Entry\CheckHZXXBBHPService.cs" />
+    <Compile Include="Aisino\Fwkp\Fptk\Entry\SELECTJSFPService.cs" />
+    <Compile Include="Aisino\Fwkp\Fptk\Entry\SNYInvEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Fptk\Entry\SpecialInvEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Fptk\Entry\VehicleInvEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Fptk\Entry\WSPZCXEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Fptk\Entry\InvDkTypeSetEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Fptk\Entry\ElectronInvEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Fptk\Entry\RollInvEntry.cs" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fptk.Form.Add_SPFLBM.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fptk.Form.AutoImport.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fptk.Form.ManualImport.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fptk.Form.ImportSet.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fptk.Form.HYInvoiceForm.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fptk.Form.HZFPTK.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fptk.Form.HZFPTK_PP.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fptk.Form.InvoiceShowForm.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fptk.Form.JDCInvoiceForm_new.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fptk.Form.JDCInvoiceForm_old.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fptk.Form.JDCVersionSet.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fptk.Form.JSFPJSelect.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fptk.Form.QiangSet.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fptk.Form.QingDanTianKai.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fptk.Form.StartConfirmForm.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fptk.Form.ArgsSetForm.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fptk.Form.WSPZCXForm.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fptk.Form.InvDkTypeSetForm.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fptk.Form.HZFPTK_PP_SWDK.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fptk.Form.InvoiceShowForm_DZ.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fptk.Form.InvoiceShowForm_JS.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Fptk.Properties.Resources.resources" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Aisino.Framework.Dao\Aisino.Framework.Dao.csproj">
+      <Project>{ef96d157-73ba-410c-a2bd-698b4986fd18}</Project>
+      <Name>Aisino.Framework.Dao</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Aisino.Framework.MainForm\Aisino.Framework.MainForm.csproj">
+      <Project>{6ca5bc40-07b1-45fc-8927-58356e838a77}</Project>
+      <Name>Aisino.Framework.MainForm</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Aisino.Framework.Plugin.Core\Aisino.Framework.Plugin.Core.csproj">
+      <Project>{b65bb74a-99d3-4854-8151-a6bd4d4a489a}</Project>
+      <Name>Aisino.Framework.Plugin.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Aisino.FTaxBase\Aisino.FTaxBase.csproj">
+      <Project>{a9935674-60e2-44e1-8785-d391586d31f8}</Project>
+      <Name>Aisino.FTaxBase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Aisino.Fwkp.BusinessObject\Aisino.Fwkp.BusinessObject.csproj">
+      <Project>{75c5c3bc-cb11-4429-b042-46f1baab2fff}</Project>
+      <Name>Aisino.Fwkp.BusinessObject</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Aisino.Fwkp.CommonLibrary\Aisino.Fwkp.CommonLibrary.csproj">
+      <Project>{413f30c7-87a1-4418-9234-be436af12264}</Project>
+      <Name>Aisino.Fwkp.CommonLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Aisino.Fwkp.Fptk.Common\Aisino.Fwkp.Fptk.Common.csproj">
+      <Project>{28f427e2-da73-4ec6-855a-fbfce6cd9a70}</Project>
+      <Name>Aisino.Fwkp.Fptk.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Aisino.Fwkp.Print\Aisino.Fwkp.Print.csproj">
+      <Project>{1e1ed23b-b53d-4fbc-9677-cff0e926080f}</Project>
+      <Name>Aisino.Fwkp.Print</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

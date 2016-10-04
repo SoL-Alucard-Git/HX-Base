@@ -1,0 +1,24 @@
+﻿<SQLLIB>
+  <SQL id="pubSave">
+    <value>
+      insert into GG_LSXX (XH,BT,NR,JSSJ,LX) values(@XH,@BT,@NR,datetime('now','localtime'),@LX)
+    </value>
+    <param name="XH" type="AnsiString" /> 
+    <param name="BT" type="AnsiString" /> 
+    <param name="NR" type="AnsiString" /> 
+    <param name="LX" type="AnsiString" /> 
+  </SQL>
+  <SQL id="pubQuery">
+    <value>
+      select count(XH) from GG_LSXX where JSSJ>=@START and JSSJ&lt;@END;select XH,BT,NR,JSSJ,LX from GG_LSXX where JSSJ>=@START and JSSJ&lt;@END order by JSSJ desc Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+    </value>
+    <param name="START" type="AnsiString" /> 
+    <param name="END" type="AnsiString" />  
+  </SQL>
+  <SQL id="pubQueryOne">
+    <value>
+      select XH,BT,NR,JSSJ,LX from GG_LSXX where XH=@XH
+    </value>
+    <param name="XH" type="AnsiString" /> 
+  </SQL>
+</SQLLIB>

@@ -1,0 +1,22 @@
+﻿<PlugIn id="_publish" name = "公告管理" author = "saxitao" hidden = "false" description = "提供公告信息接收和管理功能">
+  <!--<Runtime>
+    <Import assembly = "..\Aisino.Fwkp.Publish.dll" resource="Aisino.Fwkp.Publish.Resources"/>
+    <SqlLib file="Aisino.Fwkp.Publish.sql"/>
+  </Runtime>
+  <Auto>
+    <Class id="auto_publish" class="Aisino.Fwkp.Publish.Entry.PubEntry" alwaysPermit="true"/>
+  </Auto>
+  <Menu>
+    <MenuItem id = "_PUBMNG" type = "Menu" label = "公告管理" isFirst="false" isShow="false" alwaysPermit="true">
+      --><!--MenuItem id = "_PUBLOGIN" label = "登录公告服务器"  type = "Command" class = "Aisino.Fwkp.Publish.Entry.PubLoginEntry"/--><!--
+      <MenuItem id = "_PUBQUERY" label = "查询公告信息" type = "Command" class = "Aisino.Fwkp.Publish.Entry.PubQueryEntry" isShow="false" alwaysPermit="true"/>
+      --><!--MenuItem id = "_PUBLOGOUT" label = "退出公告服务器"  type = "Command" class = "Aisino.Fwkp.Publish.Entry.PubLogoutEntry"/--><!--
+    </MenuItem>
+  </Menu>
+	<Tree>
+		<TreeNode id = "_PUBMNG" type = "Menu" label = "公告管理" isFirst="false" icon="公告管理_Tree" isShow="false" alwaysPermit="true">
+			<TreeNode id = "_PUBQUERY" label = "查询公告信息" type = "Command" class = "Aisino.Fwkp.Publish.Entry.PubQueryEntry" isShow="false" alwaysPermit="true"/>
+		</TreeNode>
+	</Tree>-->
+
+</PlugIn>

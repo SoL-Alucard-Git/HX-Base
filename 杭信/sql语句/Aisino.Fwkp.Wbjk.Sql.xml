@@ -1,0 +1,3125 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SQLLIB>
+  <!--查询指定销售单据是否存在-->
+  <SQL id="aisino.Fwkp.Wbjk.XSDJExist">
+    <value>SELECT COUNT(BH) FROM XSDJ WHERE BH=@bh</value>
+    <type>Text</type>
+    <param name="bh" type="String"></param>
+  </SQL>
+
+  <!--查询指定销售单据编号是否在销售单据还原表中存在-->
+  <SQL id="aisino.Fwkp.Wbjk.XSDJHYExist">
+    <value>SELECT COUNT(BH) FROM XSDJ_HY WHERE BH=@bh</value>
+    <type>Text</type>
+    <param name="bh" type="String"></param>
+  </SQL>
+
+
+  <!--查询销售单据还原表中指定的销售单据的原始编号-->
+  <SQL id="aisino.Fwkp.Wbjk.XSDJHY_YSBH">
+    <value>SELECT YSBH FROM XSDJ_HY WHERE BH=@bh</value>
+    <type>Text</type>
+    <param name="bh" type="String"></param>
+  </SQL>
+
+  <!--查询销售单据表中指定的销售单据的开票状态-->
+  <SQL id="aisino.Fwkp.Wbjk.XSDJKPState">
+    <value>SELECT KPZT FROM XSDJ WHERE BH=@bh</value>
+    <type>Text</type>
+    <param name="bh" type="String"></param>
+  </SQL>
+
+  <!--直接删除销售单据，同时删除其下的明细-->
+  <SQL id="aisino.Fwkp.Wbjk.XSDJDeleteFast">
+    <value>
+      DELETE FROM XSDJ WHERE BH=@bh;
+      DELETE FROM XSDJ_MX WHERE XSDJBH=@bh;
+    </value>
+    <type>Text</type>
+    <param name="bh" type="String"></param>
+  </SQL>
+
+  <!--返回的datatable含bh，djzt-->
+  <SQL id="aisino.Fwkp.Wbjk.XSDJGetDanJus">
+    <var name="condition" value="KPZT &lt;>'A' and  DJYF=case when(@DJYF=0) then DJYF else @DJYF end and Case When(@DJZL='a') then (DJZL='c' or DJZL='s') else (DJZL=@DJZL) end"/>
+    <value>SELECT BH,DJZT FROM XSDJ WHERE  #condition#</value>
+    <type>Text</type>
+    <param name="DJYF" type="Int32"></param>
+    <param name="DJZL" type="String"></param>
+  </SQL>
+
+
+  <!--增加销售单据xsdj-->
+  <SQL id="aisino.Fwkp.Wbjk.XSDJAdds">
+    <value>
+      INSERT INTO [XSDJ](
+      [BH],[GFMC],[GFSH],[GFDZDH],[GFYHZH],[XSBM],[YDXS],[JEHJ],[DJRQ],[DJYF],[DJZT],[KPZT],[BZ],[FHR],[SKR],[QDHSPMC],[XFYHZH],[XFDZDH],[CFHB],[DJZL],[SFZJY],[HYSY],
+      [CM],[DLGRQ],[KHYHMC],[KHYHZH],[TYDH],[QYD],[ZHD],[XHD],[MDD],[XFDZ],[XFDH],[YSHWXX],[SCCJMC],[SLV],[DW],[FLBM],[XSYH],[FLMC],[XSYHSM],[CLBM],[LSLVBS],[JZ_50_15]
+      )VALUES(
+      @BH,@GFMC,@GFSH,@GFDZDH,@GFYHZH,@XSBM,@YDXS,@JEHJ,@DJRQ,@DJYF,@DJZT,@KPZT,@BZ,@FHR,@SKR,@QDHSPMC,@XFYHZH,@XFDZDH,@CFHB,@DJZL,@SFZJY,@HYSY,
+      @CM,@DLGRQ,@KHYHMC,@KHYHZH,@TYDH,@QYD,@ZHD,@XHD,@MDD,@XFDZ,@XFDH,@YSHWXX,@SCCJMC,@SLV,@DW,@FLBM,@XSYH,@FLMC,@XSYHSM,@CLBM,@LSLVBS,@JZ_50_15
+      )
+    </value>
+    <type>Text</type>
+    <param name="BH" type="String"></param>
+    <param name="GFMC" type="String"></param>
+    <param name="GFSH" type="String"></param>
+    <param name="GFDZDH" type="String"></param>
+    <param name="GFYHZH" type="String"></param>
+    <param name="XSBM" type="String"></param>
+    <param name="YDXS" type="Boolean"></param>
+    <param name="JEHJ"  type="Double"></param>
+    <param name="DJRQ"   type="DateTime"></param>
+    <param name="DJYF"  type="Int32"></param>
+    <param name="DJZT" type="String"></param>
+    <param name="KPZT" type="String"></param>
+    <param name="BZ" type="String"></param>
+    <param name="FHR" type="String"></param>
+    <param name="SKR"  type="String"></param>
+    <param name="QDHSPMC"   type="String"></param>
+    <param name="XFYHZH"  type="String"></param>
+    <param name="XFDZDH"  type="String"></param>
+    <param name="CFHB"  type="Boolean"></param>
+    <param name="DJZL" type="String"></param>
+    <param name="SFZJY" type="Boolean"></param>
+    <param name="HYSY" type="Boolean"></param>
+    <param name="CM" type="String"></param>
+    <param name="DLGRQ"   type="DateTime"></param>
+    <param name="KHYHMC" type="String"></param>
+    <param name="KHYHZH" type="String"></param>
+    <param name="TYDH" type="String"></param>
+    <param name="QYD" type="String"></param>
+    <param name="ZHD" type="String"></param>
+    <param name="XHD" type="String"></param>
+    <param name="MDD" type="String"></param>
+    <param name="XFDZ" type="String"></param>
+    <param name="XFDH" type="String"></param>
+    <param name="YSHWXX" type="String"></param>
+    <param name="SCCJMC" type="String"></param>
+    <param name="SLV" type="Double"></param>
+    <param name="DW" type="String"></param>
+    
+    <param name="FLBM" type="String"></param>
+    <param name="XSYH" type="Boolean"></param>
+    <param name="FLMC" type="String"></param>
+    <param name="XSYHSM" type="String"></param>
+    <param name="CLBM" type="String"></param>
+    <param name="LSLVBS" type="String"></param>
+    <param name="JZ_50_15" type="Boolean"></param>
+    
+    
+  </SQL>
+
+
+  <!--修改销售单据-->
+  <SQL id="aisino.Fwkp.Wbjk.XSDJModify">
+    <value>
+      UPDATE [XSDJ] SET
+      [GFMC] = @GFMC,[GFSH] = @GFSH,[GFDZDH] = @GFDZDH,[GFYHZH] = @GFYHZH,[XSBM] = @XSBM,[YDXS] = @YDXS,[DJRQ] = @DJRQ,[DJYF] = @DJYF,[BZ] = @BZ,[FHR] = @FHR,[SKR] = @SKR,[QDHSPMC] = @QDHSPMC,
+      [XFYHZH] = @XFYHZH,[XFDZDH] = @XFDZDH,[CFHB] = @CFHB,[DJZL] = @DJZL,[JEHJ] = @JEHJ,[SFZJY] = @SFZJY,[HYSY]=@HYSY,[CM]=@CM,[DLGRQ]=@DLGRQ,[KHYHMC]=@KHYHMC,[KHYHZH]=@KHYHZH,[TYDH]=@TYDH,
+      [QYD]=@QYD,[ZHD]=@ZHD,[XHD]=@XHD,[MDD]=@MDD,[XFDZ]=@XFDZ,[XFDH]=@XFDH,[YSHWXX]=@YSHWXX,[SCCJMC]=@SCCJMC,[SLV]=@SLV,[DW]=@DW,[KPZT]=@KPZT,FLBM=@FLBM,XSYH=@XSYH,FLMC=@FLMC,XSYHSM=@XSYHSM,CLBM=@CLBM,LSLVBS=@LSLVBS,JZ_50_15=@JZ_50_15
+      WHERE BH=@BH
+    </value>
+    <type>Text</type>
+    <param name="BH" type="String"></param>
+    <param name="GFMC" type="String"></param>
+    <param name="GFSH" type="String"></param>
+    <param name="GFDZDH" type="String"></param>
+    <param name="GFYHZH" type="String"></param>
+    <param name="XSBM" type="String"></param>
+    <param name="YDXS" type="Boolean"></param>
+    <param name="DJRQ"   type="DateTime"></param>
+    <param name="DJYF"  type="Int32"></param>
+    <param name="BZ" type="String"></param>
+    <param name="FHR" type="String"></param>
+    <param name="SKR"  type="String"></param>
+    <param name="QDHSPMC"   type="String"></param>
+    <param name="XFYHZH"  type="String"></param>
+    <param name="XFDZDH"  type="String"></param>
+    <param name="CFHB"  type="Boolean"></param>
+    <param name="DJZL" type="String"></param>
+    <param name="JEHJ" type="Double"></param>
+    <param name="SFZJY" type="Boolean"></param>
+    <param name="HYSY" type="Boolean"></param>
+    <param name="CM" type="String"></param>
+    <param name="DLGRQ" type="DateTime"></param>
+    <param name="KHYHMC" type="String"></param>
+    <param name="KHYHZH" type="String"></param>
+    <param name="TYDH" type="String"></param>
+    <param name="QYD" type="String"></param>
+    <param name="ZHD" type="String"></param>
+    <param name="XHD" type="String"></param>
+    <param name="MDD" type="String"></param>
+    <param name="XFDZ" type="String"></param>
+    <param name="XFDH" type="String"></param>
+    <param name="YSHWXX" type="String"></param>
+    <param name="SCCJMC" type="String"></param>
+    <param name="SLV" type="Double"></param>
+    <param name="DW" type="String"></param>
+    <param name="KPZT" type="String"></param>
+
+    <param name="FLBM" type="String"></param>
+    <param name="XSYH" type="Boolean"></param>
+    <param name="FLMC" type="String"></param>
+    <param name="XSYHSM" type="String"></param>
+    <param name="CLBM" type="String"></param>
+    <param name="LSLVBS" type="String"></param>
+    <param name="JZ_50_15" type="Boolean"></param>
+  </SQL>
+
+  <!--查询单据还原表单据编号-->
+  <SQL id="aisino.Fwkp.Wbjk.XSDJ_HY_BH">
+    <var name="condition" value="BH=@BH"/>
+    <value>
+      SELECT BH FROM XSDJ_HY where #condition#;
+    </value>
+    <type>Text</type>
+    <param name="BH" type="String"></param>
+  </SQL>
+
+  <!--查询单据表单据编号-->
+  <SQL id="aisino.Fwkp.Wbjk.CX_XSDJ_BH">
+    <var name="condition" value="BH=@BH"/>
+    <value>
+      SELECT BH FROM XSDJ where #condition#;
+    </value>
+    <type>Text</type>
+    <param name="BH" type="String"></param>
+  </SQL>
+  
+  <!--获取单据的所有月份-->
+  <SQL id="aisino.Fwkp.Wbjk.XSDJGetMonth">
+    <value>
+      select DISTINCT [DJYF] as YF from [XSDJ] order by YF asc
+    </value>
+    <type>Text</type>
+  </SQL>
+
+  <!--获取单据的所有年份-月份 因为月份可能包含不同的年，gsk 2016-03-24修改 bug2650-->
+  <SQL id="aisino.Fwkp.Wbjk.XSDJGetYearMonth">
+    <value>
+      select DISTINCT strftime('%Y',DJRQ)||'-'||DJYF AS NF from [XSDJ]
+      WHERE DJZL like '%'||@DJZL1||'%' OR DJZL like '%'||@DJZL2||'%'
+      ORDER BY strftime('%Y',DJRQ) DESC
+    </value>
+    <type>Text</type>
+    <param name="DJZL1" type="String"></param>
+    <param name="DJZL2" type="String"></param>
+  </SQL>
+
+  <!--得到一个对象实体销售单据-->
+  <SQL id="aisino.Fwkp.Wbjk.XSDJGetModel">
+    <value>
+      SELECT
+      BH,GFMC,GFSH,GFDZDH,GFYHZH,XSBM,YDXS,JEHJ,DJRQ,DJYF,DJZT,KPZT,BZ,FHR,SKR,QDHSPMC,XFYHZH,XFDZDH,CFHB,DJZL,SFZJY,HYSY,
+      CM,DLGRQ,KHYHMC,KHYHZH,TYDH,QYD,ZHD,XHD,MDD,XFDZ,XFDH,YSHWXX,SCCJMC,SLV,DW,FLBM,XSYH,FLMC,XSYHSM,LSLVBS,CLBM,JZ_50_15
+      FROM [XSDJ]  WHERE BH=@BH
+    </value>   
+    <type>Text</type>
+    <param name="BH" type="String"></param>
+  </SQL>
+
+  <!--查询销售单据-->
+  <SQL id="aisino.Fwkp.Wbjk.XSDJFenYe">
+    <var name="condition" value="DJYF= @DJYF  and Case When(@DJZL='a') then (DJZL='c' or DJZL='s') else (DJZL=@DJZL) end"/>
+    <value>
+      SELECT COUNT(BH) FROM XSDJ where #condition#;
+
+      SELECT  BH,GFMC,GFSH,GFDZDH,GFYHZH,YDXS,JEHJ,
+      case strftime('%Y-%m-%d',DJRQ) when '1970-1-1' then ''
+      else strftime('%Y-%m-%d',DJRQ)
+      end DJRQ,
+      DJYF,
+      case DJZT when 'Y' then '' when 'W' then 'W:已作废' when 'N' then 'N:数据错误'
+      else DJZT
+      end DJZT,
+      case KPZT when 'N' then 'N:未开票' when 'A' then 'A:已开票' when 'P' then 'P:部分开票'
+      else KPZT
+      end KPZT,
+      case DJZL when 'c' then '增值税普通发票' when 's' then '增值税专用发票' when 'f' then '货物运输业增值税专用发票' when 'j' then '机动车销售统一发票'
+      else DJZL
+      end DJZL,
+      BZ,FHR,SKR,QDHSPMC,XFYHZH,XFDZDH,CFHB,
+      case when SFZJY=1 then '是'
+      else '否'
+      end SFZJY,
+      case when HYSY=1 then '是'
+      else '否'
+      end HYSY,
+      CM, DLGRQ, KHYHMC, KHYHZH,
+      TYDH, QYD, ZHD, XHD, MDD, XFDZ, XFDH, YSHWXX, SCCJMC, SLV, DW FROM  XSDJ
+      where  #condition#
+      ORDER BY BH   Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+    </value>
+    <type>Text</type>
+    <param name="DJYF" type="Int32"></param>
+    <param name="DJZL" type="String"></param>
+  </SQL>
+
+  <!--查询销售单据 分类编码 2016-03-14 gsk-->
+  <SQL id="aisino.Fwkp.Wbjk.XSDJFenYe_FLBM">
+    <var name="condition" value="DJYF= @DJYF  and Case When(@DJZL='a') then (DJZL='c' or DJZL='s') else (DJZL=@DJZL) end"/>
+    <value>
+      SELECT COUNT(BH) FROM XSDJ where #condition#;
+
+      SELECT  BH,GFMC,GFSH,GFDZDH,GFYHZH,YDXS,JEHJ,
+      case strftime('%Y-%m-%d',DJRQ) when '1970-1-1' then ''
+      else strftime('%Y-%m-%d',DJRQ)
+      end DJRQ,
+      DJYF,
+      case DJZT when 'Y' then '' when 'W' then 'W:已作废' when 'N' then 'N:数据错误'
+      else DJZT
+      end DJZT,
+      case KPZT when 'N' then 'N:未开票' when 'A' then 'A:已开票' when 'P' then 'P:部分开票'
+      else KPZT
+      end KPZT,
+      case DJZL when 'c' then '增值税普通发票' when 's' then '增值税专用发票' when 'f' then '货物运输业增值税专用发票' when 'j' then '机动车销售统一发票'
+      else DJZL
+      end DJZL,
+      BZ,FHR,SKR,QDHSPMC,XFYHZH,XFDZDH,CFHB,
+      case when SFZJY=1 then '是'
+      else '否'
+      end SFZJY,
+      case when HYSY=1 then '是'
+      else '否'
+      end HYSY,
+      CM, DLGRQ, KHYHMC, KHYHZH,
+      TYDH, QYD, ZHD, XHD, MDD, XFDZ, XFDH, YSHWXX, SCCJMC,
+      CASE SLV WHEN '0.0' THEN (case LSLVBS when '' then '0%' when '0' then '出口零税' when '1' then '免税' when '2' then '不征税' when '' then '0%' end ) else lower(SLV) end SLV,
+      DW FROM  XSDJ
+      where  #condition#
+      ORDER BY BH   Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+    </value>
+    <type>Text</type>
+    <param name="DJYF" type="Int32"></param>
+    <param name="DJZL" type="String"></param>
+  </SQL>
+  
+  <!--销售单据查询按照年月查询 2016-03-24 gsk-->
+  <!--查询销售单据 2016-03-24 gsk-->
+  <SQL id="aisino.Fwkp.Wbjk.XSDJFenYeNY">
+    <var name="condition" value="strftime('%Y',DJRQ) like '%'||@DJNF||'%' and DJYF= @DJYF and Case When(@DJZL='a') then (DJZL='c' or DJZL='s') else (DJZL=@DJZL) end"/>
+    <value>
+      SELECT COUNT(BH) FROM XSDJ where #condition#;
+
+      SELECT  BH,GFMC,GFSH,GFDZDH,GFYHZH,YDXS,JEHJ,
+      case strftime('%Y-%m-%d',DJRQ) when '1970-1-1' then ''
+      else strftime('%Y-%m-%d',DJRQ)
+      end DJRQ,
+      DJYF,
+      case DJZT when 'Y' then '' when 'W' then 'W:已作废' when 'N' then 'N:数据错误'
+      else DJZT
+      end DJZT,
+      case KPZT when 'N' then 'N:未开票' when 'A' then 'A:已开票' when 'P' then 'P:部分开票'
+      else KPZT
+      end KPZT,
+      case DJZL when 'c' then '增值税普通发票' when 's' then '增值税专用发票' when 'f' then '货物运输业增值税专用发票' when 'j' then '机动车销售统一发票'
+      else DJZL
+      end DJZL,
+      BZ,FHR,SKR,QDHSPMC,XFYHZH,XFDZDH,CFHB,
+      case when SFZJY=1 then '是'
+      else '否'
+      end SFZJY,
+      case when HYSY=1 then '是'
+      else '否'
+      end HYSY,
+      CM, DLGRQ, KHYHMC, KHYHZH,
+      TYDH, QYD, ZHD, XHD, MDD, XFDZ, XFDH, YSHWXX, SCCJMC, SLV, DW FROM  XSDJ
+      where  #condition#
+      ORDER BY BH   Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+    </value>
+    <type>Text</type>
+    <param name="DJYF" type="Int32"></param>
+    <param name="DJZL" type="String"></param>
+    <param name="DJNF" type="String"></param>
+  </SQL>
+
+  <!--查询销售单据 分类编码 2016-03-24 gsk-->
+  <SQL id="aisino.Fwkp.Wbjk.XSDJFenYeNY_FLBM">
+    <var name="condition" value="strftime('%Y',DJRQ) like '%'||@DJNF||'%' and DJYF= @DJYF and Case When(@DJZL='a') then (DJZL='c' or DJZL='s') else (DJZL=@DJZL) end"/>
+    <value>
+      SELECT COUNT(BH) FROM XSDJ where #condition#;
+
+      SELECT  BH,GFMC,GFSH,GFDZDH,GFYHZH,YDXS,JEHJ,
+      case strftime('%Y-%m-%d',DJRQ) when '1970-1-1' then ''
+      else strftime('%Y-%m-%d',DJRQ)
+      end DJRQ,
+      DJYF,
+      case DJZT when 'Y' then '' when 'W' then 'W:已作废' when 'N' then 'N:数据错误'
+      else DJZT
+      end DJZT,
+      case KPZT when 'N' then 'N:未开票' when 'A' then 'A:已开票' when 'P' then 'P:部分开票'
+      else KPZT
+      end KPZT,
+      case DJZL when 'c' then '增值税普通发票' when 's' then '增值税专用发票' when 'f' then '货物运输业增值税专用发票' when 'j' then '机动车销售统一发票'
+      else DJZL
+      end DJZL,
+      BZ,FHR,SKR,QDHSPMC,XFYHZH,XFDZDH,CFHB,
+      case when SFZJY=1 then '是'
+      else '否'
+      end SFZJY,
+      case when HYSY=1 then '是'
+      else '否'
+      end HYSY,
+      CM, DLGRQ, KHYHMC, KHYHZH,
+      TYDH, QYD, ZHD, XHD, MDD, XFDZ, XFDH, YSHWXX, SCCJMC,
+      CASE SLV WHEN '0.0' THEN (case LSLVBS when '' then '0%' when '0' then '出口零税' when '1' then '免税' when '2' then '不征税' when '' then '0%' end ) else lower(SLV) end SLV,
+      DW FROM  XSDJ
+      where  #condition#
+      ORDER BY BH   Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+    </value>
+    <type>Text</type>
+    <param name="DJYF" type="Int32"></param>
+    <param name="DJZL" type="String"></param>
+    <param name="DJNF" type="String"></param>
+  </SQL>
+  
+
+  <!--清理销售单据-->
+  <SQL id="aisino.Fwkp.Wbjk.XSDJClearByDate">
+    <var name="condition" value="strftime('%Y-%m-%d',DJRQ) &gt;= @BeginTime AND strftime('%Y-%m-%d',DJRQ) &lt;= @EndTime AND ((case @commSpec when 1 then (DJZL='c' or DJZL='s') else 0=1 end) or (case @Trans when 1 then DJZL='f' else 0=1 end) or (case @Vech when 1 then DJZL='j' else 0=1 end))"/>
+    <value>
+      DELETE FROM XSDJ_MX WHERE XSDJBH IN (SELECT BH FROM XSDJ WHERE #condition#);
+      DELETE FROM XSDJ WHERE #condition#;
+      DELETE FROM XSDJ_MX_HY WHERE XSDJBH IN (SELECT BH FROM XSDJ_HY WHERE #condition#);
+      DELETE FROM XSDJ_HY WHERE #condition#;
+      DELETE FROM XSDJ_MXYL WHERE XSDJBH IN (SELECT BH FROM XSDJ_YL WHERE #condition#);
+      DELETE FROM XSDJ_YL WHERE #condition#;
+    </value>
+    <type>Text</type>
+    <param name="BeginTime" type="String"></param>
+    <param name="EndTime" type="String"></param>
+    <param name="CommSpec" type="Boolean"></param>
+    <param name="Trans" type="Boolean"></param>
+    <param name="Vech" type="Boolean"></param>
+  </SQL>
+
+<!--查询销售单据-->
+  <SQL id="aisino.Fwkp.Wbjk.XSDJGetAllMonth">
+    <var name="condition" value="(KPZT = 'N' or KPZT = 'P') and  Case When(@DJZL='a') then (DJZL='c' or DJZL='s') else  (DJZL=@DJZL) end  "/>
+    <value>
+      SELECT COUNT(BH) FROM XSDJ where #condition#;
+
+      SELECT  BH,GFMC,GFSH,GFDZDH,GFYHZH,YDXS, JEHJ,
+      case strftime('%Y-%m-%d',DJRQ) when '1970-1-1' then '' 
+      else strftime('%Y-%m-%d',DJRQ)
+      end DJRQ,
+      DJYF,
+      case DJZT when 'Y' then '' when 'W' then 'W:已作废' when 'N' then 'N:数据错误'
+      else DJZT
+      end DJZT,
+      case KPZT when 'N' then 'N:未开票' when 'A' then 'A:已开票' when 'P' then 'P:部分开票'
+      else KPZT
+      end KPZT,
+      case DJZL when 'c' then '增值税普通发票' when 's' then '增值税专用发票' when 'f' then '货物运输业增值税专用发票' when 'j' then '机动车销售统一发票'
+      else DJZL
+      end DJZL,
+      BZ,FHR,SKR,QDHSPMC,XFYHZH,XFDZDH,CFHB,
+      case when SFZJY=1 then '是'
+      else '否'
+      end SFZJY,
+      case when HYSY=1 then '是'
+      else '否'
+      end HYSY,
+      CM, DLGRQ, KHYHMC, KHYHZH,
+      TYDH, QYD, ZHD, XHD, MDD, XFDZ, XFDH, YSHWXX, SCCJMC,
+      CASE  SLV
+      WHEN '0.0' THEN '免税'
+      else lower(SLV)
+      end SLV,
+      DW FROM  XSDJ
+      where #condition#
+      ORDER BY BH   Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+
+    </value>
+    <type>Text</type>
+    <param name="DJYF" type="Int32"></param>
+    <param name="DJZL" type="String"></param>
+  </SQL>
+
+  <!--分类编码销售单据查询页面sql  2016-03-14 gsk-->
+  <SQL id="aisino.Fwkp.Wbjk.XSDJGetAllMonth_FLBM">
+    <var name="condition" value="(KPZT = 'N' or KPZT = 'P') and  Case When(@DJZL='a') then (DJZL='c' or DJZL='s') else  (DJZL=@DJZL) end  "/>
+    <value>
+      SELECT COUNT(BH) FROM XSDJ where #condition#;
+
+      SELECT  BH,GFMC,GFSH,GFDZDH,GFYHZH,YDXS, JEHJ,
+      case strftime('%Y-%m-%d',DJRQ) when '1970-1-1' then ''
+      else strftime('%Y-%m-%d',DJRQ)
+      end DJRQ,
+      DJYF,
+      case DJZT when 'Y' then '' when 'W' then 'W:已作废' when 'N' then 'N:数据错误'
+      else DJZT
+      end DJZT,
+      case KPZT when 'N' then 'N:未开票' when 'A' then 'A:已开票' when 'P' then 'P:部分开票'
+      else KPZT
+      end KPZT,
+      case DJZL when 'c' then '增值税普通发票' when 's' then '增值税专用发票' when 'f' then '货物运输业增值税专用发票' when 'j' then '机动车销售统一发票'
+      else DJZL
+      end DJZL,
+      BZ,FHR,SKR,QDHSPMC,XFYHZH,XFDZDH,CFHB,
+      case when SFZJY=1 then '是'
+      else '否'
+      end SFZJY,
+      case when HYSY=1 then '是'
+      else '否'
+      end HYSY,
+      CM, DLGRQ, KHYHMC, KHYHZH,
+      TYDH, QYD, ZHD, XHD, MDD, XFDZ, XFDH, YSHWXX, SCCJMC,
+      CASE SLV WHEN '0.0' THEN (case LSLVBS when '' then '0%' when '0' then '0%' when '1' then '免税' when '2' then '不征税' when '3' then '0%' end ) else lower(SLV) end SLV,
+      DW FROM  XSDJ
+      where #condition#
+      ORDER BY BH   Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+
+    </value>
+    <type>Text</type>
+    <param name="DJYF" type="Int32"></param>
+    <param name="DJZL" type="String"></param>
+  </SQL>  
+
+  <!--删除销售单据，同时删除其下的明细-->
+  <SQL id="aisino.Fwkp.Wbjk.XSDJDelete">
+    <value>
+      --INSERT INTO  XSDJ_YL  SELECT *  FROM XSDJ  WHERE BH=@BH;
+      --INSERT INTO  XSDJ_MXYL  SELECT *  FROM  XSDJ_MX WHERE XSDJBH=@BH;
+      DELETE FROM XSDJ WHERE BH=@BH;
+      DELETE FROM XSDJ_MX WHERE XSDJBH=@BH;
+    </value>
+    <type>Text</type>
+    <param name="BH" type="String"></param>
+  </SQL>
+
+  <!--销售单据表 单据状态改 发票作废之后还原单据状态-->
+  <SQL id="aisino.Fwkp.Wbjk.WasteFPXSDJYLupdateDJZT">
+    <value>
+      UPDATE XSDJ SET DJZT=@DJZT,KPZT=@KPZT WHERE BH=@BH;
+      UPDATE XSDJ_MX SET FPDM=@FPDM,FPHM=@FPHM WHERE XSDJBH=@BH
+    </value>
+    <type>Text</type>
+    <param name="DJZT" type="String"></param>
+    <param name="KPZT" type="String"></param>
+    <param name="FPDM" type="String"></param>
+    <param name="FPHM" type="String"></param>
+    <param name="BH" type="String"></param>    
+  </SQL>
+
+
+  <!--销售单据表 单据状态改-->
+  <SQL id="aisino.Fwkp.Wbjk.XSDJYLupdateDJZT">
+    <value>
+      UPDATE XSDJ SET DJZT=@DJZT WHERE BH=@BH
+    </value>
+    <type>Text</type>
+    <param name="DJZT" type="String"></param>
+    <param name="BH" type="String"></param>
+  </SQL>
+  
+  <!--销售单据表 查单据状态-->
+  <SQL id="aisino.Fwkp.Wbjk.XSDJYLselectDJZT">
+    <value>
+      SELECT   DJZT  FROM XSDJ WHERE BH=@BH
+    </value>
+    <type>Text</type>
+    <param name="BH" type="String"></param>
+  </SQL>
+
+  <!--**************************************************************************************-->
+  <!--****************销售单据及明细  预览表    XSDJ_MXYL；XSDJ_YL***********************-->
+  <!--**************************************************************************************-->
+  <!--销售单据预览表存在-->
+  <SQL id="aisino.Fwkp.Wbjk.XSDJYLexist">
+    <value>
+      SELECT  count(BH)  FROM XSDJ_YL  WHERE BH=@BH
+    </value>
+    <type>Text</type>
+    <param name="BH" type="String"></param>
+  </SQL>
+  <!--销售单据预览表插入-->
+  <SQL id="aisino.Fwkp.Wbjk.XSDJYLinsert">
+    <value>
+      INSERT INTO  XSDJ_YL  SELECT *  FROM XSDJ  WHERE BH=@BH
+    </value>
+    <type>Text</type>
+    <param name="BH" type="String"></param>
+  </SQL>
+  <!--销售单据明细 预览表   XSDJ_MX插入XSDJ_MXYL-->
+  <SQL id="aisino.Fwkp.Wbjk.XSDJ_MXYLinsert">
+    <value>
+      INSERT INTO  XSDJ_MXYL  SELECT *  FROM XSDJ_MX  WHERE XSDJBH=@BH
+    </value>
+    <type>Text</type>
+    <param name="BH" type="String"></param>
+  </SQL>
+
+  <!--销售单据明细 预览表   XSDJ_MX插入XSDJ_MXYL-->
+  <SQL id="aisino.Fwkp.Wbjk.XSDJ_MXYLcountBH">
+    <value>
+      SELECT COUNT(XSDJBH) FROM XSDJ_MXYL  WHERE XSDJBH=@BH
+    </value>
+    <type>Text</type>
+    <param name="BH" type="String"></param>
+  </SQL>
+
+
+
+  <!--**************************************************************************************-->
+  <!--**************************销售单据明细   XSDJ_MX************************************-->
+  <!--**************************************************************************************-->
+
+  <!--获取一行单据的明细数据用以检查该行是否有数据错误-->
+  <SQL id="aisino.Fwkp.Wbjk.XSDJXGGetMX">
+    <value>
+      SELECT * FROM XSDJ_MX WHERE XSDJBH=@XSDJBH
+    </value>
+    <type>Text</type>
+    <param name="XSDJBH" type="String"></param>
+  </SQL>  
+
+  <!--获取一行单据的明细数据-->
+  <SQL id="aisino.Fwkp.Wbjk.XSDJMXOrderbySLV">
+    <value>
+      select * from XSDJ_MX where XSDJBH=@XSDJBH order by SLV
+    </value>
+    <type>Text</type>
+    <param name="XSDJBH" type="String"></param>
+  </SQL>
+
+  <!--仅删除一条单据的所有明细-->
+  <SQL id="aisino.Fwkp.Wbjk.XSDJMXDeleteMX">
+    <value>
+      DELETE FROM [XSDJ_MX] WHERE XSDJBH=@BH;
+    </value>
+    <type>Text</type>
+    <param name="BH" type="String"></param>
+  </SQL>
+
+  <!--增加单据明细，导入添加-->
+  <!-- 2015-12-14 gsk 新增:FLBM,XSYH,FLMC,XSYHSM,SPBM-->
+  <SQL id="aisino.Fwkp.Wbjk.XSDJMXAdd">
+    <value>
+      INSERT INTO [XSDJ_MX](
+      [XSDJBH],[XH],[SL],[DJ],[JE],[SLV],[SE],[SPMC],[SPSM],[GGXH],[JLDW],[HSJBZ],[DJHXZ],[FPZL],[FPDM],[FPHM],[SCFPXH],[FLBM],[XSYH],[FLMC],[XSYHSM],[SPBM],[LSLVBS],[KCE]
+      )VALUES(
+      @XSDJBH,@XH,@SL,@DJ,@JE,@SLV,@SE,@SPMC,@SPSM,@GGXH,@JLDW,@HSJBZ,@DJHXZ,@FPZL,@FPDM,@FPHM,@SCFPXH,@FLBM,@XSYH,@FLMC,@XSYHSM,@SPBM,@LSLVBS,@KCE
+      )
+    </value>
+    <type>Text</type>
+    <param name="XSDJBH" type="String"></param>
+    <param name="XH" type="Int32"></param>
+    <param name="SL" type="Double"></param>
+    <param name="DJ" type="Double"></param>
+    <param name="JE" type="Double"></param>
+    <param name="SLV" type="Double"></param>
+    <param name="SE" type="Double"></param>
+    <param name="SPMC" type="String"></param>
+    <param name="SPSM" type="String"></param>
+    <param name="GGXH" type="String"></param>
+    <param name="JLDW" type="String"></param>
+    <param name="HSJBZ" type="Boolean"></param>
+    <param name="DJHXZ" type="Int64"></param>
+    <param name="FPZL" type="String"></param>
+    <param name="FPDM" type="String"></param>
+    <param name="FPHM" type="Int64"></param>
+    <param name="SCFPXH" type="Int64"></param>    
+    <param name="FLBM" type="String"></param>
+    <param name="XSYH" type="Boolean"></param>
+    <param name="FLMC" type="String"></param>
+    <param name="XSYHSM" type="String"></param>
+    <param name="SPBM" type="String"></param>
+    <param name="LSLVBS" type="String"></param>
+    <param name="KCE" type="Double"></param>
+  </SQL>
+
+  <!--增加单据明细到YL表-->
+  <SQL id="aisino.Fwkp.Wbjk.XSDJMXAddYL">
+    <value>
+      INSERT INTO [XSDJ_MXYL](
+      [XSDJBH],[XH],[SL],[DJ],[JE],[SLV],[SE],[SPMC],[SPSM],[GGXH],[JLDW],[HSJBZ],[DJHXZ]
+      )VALUES(
+      @XSDJBH,@XH,@SL,@DJ,@JE,@SLV,@SE,@SPMC,@SPSM,@GGXH,@JLDW,@HSJBZ,@DJHXZ
+      )
+    </value>
+    <type>Text</type>
+    <param name="XSDJBH" type="String"></param>
+    <param name="XH" type="Int32"></param>
+    <param name="SL" type="Double"></param>
+    <param name="DJ" type="Double"></param>
+    <param name="JE" type="Double"></param>
+    <param name="SLV" type="Double"></param>
+    <param name="SE" type="Double"></param>
+    <param name="SPMC" type="String"></param>
+    <param name="SPSM" type="String"></param>
+    <param name="GGXH" type="String"></param>
+    <param name="JLDW" type="String"></param>
+    <param name="HSJBZ" type="Boolean"></param>
+    <param name="DJHXZ" type="Int64"></param>
+  </SQL>
+
+
+  <!--修改单据明细-->
+  <!-- 2015-12-14 gsk 新增:FLBM,XSYH,FLMC,XSYHSM,SPBM-->
+  <SQL id="aisino.Fwkp.Wbjk.XSDJMXModify">
+    <value>
+      UPDATE [XSDJ_MX] SET
+      [SL] = @SL,[DJ] = @DJ,[JE] = @JE,[SLV] = @SLV,[SE] = @SE,[SPMC] = @SPMC,[SPSM] = @SPSM,[GGXH] = @GGXH,[JLDW] = @JLDW,[HSJBZ] = @HSJBZ,[DJHXZ] = @DJHXZ,[FLBM] = @FLBM,[XSYH] = @XSYH,[FLMC] = @FLMC,[XSYHSM] = @XSYHSM,[SPBM] = @SPBM
+      WHERE XSDJBH=@XSDJBH and XH=@XH;
+    </value>
+    <type>Text</type>
+    <param name="XSDJBH" type="String"></param>
+    <param name="XH" type="Int32"></param>
+    <param name="SL" type="Double"></param>
+    <param name="DJ" type="Double"></param>
+    <param name="JE" type="Double"></param>
+    <param name="SLV" type="Double"></param>
+    <param name="SE" type="Double"></param>
+    <param name="SPMC" type="String"></param>
+    <param name="SPSM" type="String"></param>
+    <param name="GGXH" type="String"></param>
+    <param name="JLDW" type="String"></param>
+    <param name="HSJBZ" type="Boolean"></param>
+    <param name="DJHXZ" type="Int64"></param>
+    <param name="FLBM" type="String"></param>
+    <param name="XSYH" type="Boolean"></param>
+    <param name="FLMC" type="String"></param>
+    <param name="XSYHSM" type="String"></param>
+    <param name="SPBM" type="String"></param>
+  </SQL>
+
+  <!--获得一条单据明细-->
+  <!-- 2015-12-14 gsk 新增:FLBM,XSYH,FLMC,XSYHSM,SPBM-->
+  <SQL id="aisino.Fwkp.Wbjk.XSDJMXGetModel">
+    <value>
+      SELECT
+      XSDJBH,XH,SL,DJ,JE,SLV,SE,SPMC,SPSM,GGXH,JLDW,HSJBZ,DJHXZ,FPZL,FPDM,FPHM,SCFPXH,FLBM,XSYH,FLMC,XSYHSM,SPBM
+      FROM [XSDJ_MX]
+      WHERE XSDJBH=@XSDJBH and XH=@XH
+    </value>
+    <type>Text</type>
+    <param name="XSDJBH" type="String"></param>
+    <param name="XH" type="String"></param>
+  </SQL>
+
+
+  <!--**************************************************************************************-->
+  <!--************销售单据及明细  还原表  存在 保存  XSDJ_MX_HY；XSDJ_HY***************-->
+  <!--**************************************************************************************-->
+  <!--销售单据 还原表 存在-->
+  <SQL id="aisino.Fwkp.Wbjk.XSDJ_HYcountBH">
+    <value>
+      SELECT  count(BH)  FROM XSDJ_HY  WHERE BH=@BH
+    </value>
+    <type>Text</type>
+    <param name="BH" type="String"></param>
+  </SQL>
+  <!--销售单据 还原表 插入-->
+  <SQL id="aisino.Fwkp.Wbjk.XSDJ_HYinsert">
+    <value>
+      INSERT INTO  XSDJ_HY  SELECT *,BH   FROM  XSDJ  WHERE BH=@BH
+    </value>
+    <type>Text</type>
+    <param name="BH" type="String"></param>
+  </SQL>
+  <!--销售单据明细 还原表   XSDJ_MX插入XSDJ_MXYL-->
+  <SQL id="aisino.Fwkp.Wbjk.XSDJ_MX_HYinsert">
+    <value>
+      INSERT INTO  XSDJ_MX_HY  SELECT *  FROM XSDJ_MX  WHERE XSDJBH=@BH
+    </value>
+    <type>Text</type>
+    <param name="BH" type="String"></param>
+  </SQL>
+
+  <!--销售单据明细 还原表   XSDJ_MX插入XSDJ_MXYL-->
+  <SQL id="aisino.Fwkp.Wbjk.XSDJ_MX_HYcountBH">
+    <value>
+      SELECT COUNT(XSDJBH) FROM XSDJ_MX_HY  WHERE XSDJBH=@BH
+    </value>
+    <type>Text</type>
+    <param name="BH" type="String"></param>
+  </SQL>
+
+
+
+  <!--**************************************************************************************-->
+  <!--********************************单据  拆分  ****************************************-->
+  <!--**************************************************************************************-->
+
+  <!--查询销售单据拆分中XSDJ 所有单据-->
+
+  <SQL id="aisino.Fwkp.Wbjk.CFQueryXSDJAll">
+    <var name="condition" value="DJZT&lt;>'W' and JEHJ>0 and  KPZT='N' and DJYF=case when(@DJYF=0) then DJYF else @DJYF end and Case When(@DJZL='a') then (DJZL='c' or DJZL='s') else (DJZL=@DJZL) end and DJZT in ('Y','N') and CFHB =0 and BH like  @key "/>
+    <value>
+      SELECT COUNT(BH) FROM [XSDJ] where #condition#;
+      SELECT  BH,DJZL,DJZT,GFMC,GFSH,JEHJ,DJRQ,BZ
+      FROM [XSDJ]  where #condition#
+      ORDER BY BH   Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+    </value>
+    <type>Text</type>
+    <param name="key" type="String"></param>
+    <param name="DJYF" type="Int32"></param>
+    <param name="DJZL" type="String"></param>
+    <param name="JYGZ" type="String"></param>
+  </SQL>
+
+
+  <!--查询销售单据拆分中XSDJ 超过开票限额-->
+  <SQL id="aisino.Fwkp.Wbjk.CFQueryXSDJEx">
+    <var name="condition" value="DJZT&lt;>'W' and JEHJ>0 and  KPZT='N'  and JEHJ >@ZDJE and DJYF=case when(@DJYF=0) then DJYF else @DJYF end and Case When(@DJZL='a') then (DJZL='c' or DJZL='s') else (DJZL=@DJZL) end and  DJZT in ('Y','N') and CFHB =0 and BH like  @key "/>
+    <value>
+      SELECT COUNT(BH) FROM [XSDJ] where #condition#;
+      SELECT  BH,DJZL,DJZT,GFMC,GFSH,JEHJ,DJRQ,BZ
+      FROM [XSDJ]  where #condition#
+      ORDER BY BH   Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+    </value>
+    <type>Text</type>
+    <param name="key" type="String"></param>
+    <param name="DJYF" type="Int32"></param>
+    <param name="DJZL" type="String"></param>
+    <param name="JYGZ" type="String"></param>
+    <param name="ZDJE" type="Double"></param>
+  </SQL>
+
+  <!--查询销售单据拆分中XSDJ 包含多税率-->
+  <SQL id="aisino.Fwkp.Wbjk.CFQueryXSDJMutiSlv">
+    <var name="condition" value="DJZT&lt;>'W' and JEHJ>0 and  KPZT='N'  and BH in( select XSDJBH from
+     (select XSDJBH,count(distinct(SLV)) as SLVnum from XSDJ_MX  group by  XSDJBH) as tp  where  SLVnum >1 )  
+     and DJYF=case when(@DJYF=0) then DJYF else @DJYF end and Case When(@DJZL='a') then (DJZL='c' or DJZL='s') else (DJZL=@DJZL) end and DJZT in ('Y','N') and  CFHB =0 and BH like  @key "/>
+    <value>
+      SELECT COUNT(BH) FROM [XSDJ] where #condition#;
+      SELECT  BH,DJZL,DJZT,GFMC,GFSH,JEHJ,DJRQ,BZ
+      FROM [XSDJ]  where #condition#
+      ORDER BY BH   Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+    </value>
+    <type>Text</type>
+    <param name="key" type="String"></param>
+    <param name="DJYF" type="Int32"></param>
+    <param name="DJZL" type="String"></param>
+    <param name="JYGZ" type="String"></param>
+  </SQL>
+
+  <!--老卡 ：查询销售单据拆分中XSDJ 超过开票精度误差-->
+  <SQL id="aisino.Fwkp.Wbjk.CFQueryXSDJPrecisionOld">
+    <var name="condition" value="DJZT&lt;>'W' and JEHJ>0 and  KPZT='N'  and  BH in(
+select XSDJBH  from (select XSDJBH,SLV,abs(sum(JE)*SLV-sum(SE)) as Preci  from XSDJ_MX group by XSDJBH,SLV) as BhSlv group by XSDJBH having sum(Preci) >0.06
+)
+     and DJYF=case when(@DJYF=0) then DJYF else @DJYF end and Case When(@DJZL='a') then (DJZL='c' or DJZL='s') else (DJZL=@DJZL) end and DJZT in ('Y','N') and  CFHB =0 and BH like  @key "/>
+    <value>
+      SELECT COUNT(BH) FROM [XSDJ] where #condition#;
+      SELECT  BH,DJZL,DJZT,GFMC,GFSH,JEHJ,DJRQ,BZ
+      FROM [XSDJ]   where #condition#
+      ORDER BY BH   Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+    </value>
+    <type>Text</type>
+    <param name="key" type="String"></param>
+    <param name="DJYF" type="Int32"></param>
+    <param name="DJZL" type="String"></param>
+    <param name="JYGZ" type="String"></param>
+  </SQL>
+
+  <!--新卡 ：查询销售单据拆分中XSDJ 超过开票精度误差-->
+  <SQL id="aisino.Fwkp.Wbjk.CFQueryXSDJPrecisionNew">
+    <var name="condition" value="DJZT&lt;>'W' and JEHJ>0 and  KPZT='N'  and  BH in(
+      select XSDJBH  from XSDJ_MX group by XSDJBH,SLV having (abs(sum(JE)*SLV-sum(SE)))>1.27)
+     and DJYF=case when(@DJYF=0) then DJYF else @DJYF end and Case When(@DJZL='a') then (DJZL='c' or DJZL='s') else (DJZL=@DJZL) end and DJZT in ('Y','N') and  CFHB =0 and BH like  @key "/>
+    <value>
+      SELECT COUNT(BH) FROM [XSDJ] where #condition#;
+      SELECT  BH,DJZL,DJZT,GFMC,GFSH,JEHJ,DJRQ,BZ
+      FROM [XSDJ]  where #condition#
+      ORDER BY BH   Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+    </value>
+    <type>Text</type>
+    <param name="key" type="String"></param>
+    <param name="DJYF" type="Int32"></param>
+    <param name="DJZL" type="String"></param>
+    <param name="JYGZ" type="String"></param>
+  </SQL>
+
+
+  <!--查询一条销售单据下的明细-->
+  <SQL id="aisino.Fwkp.Wbjk.CFXSDJMXGet">
+    <var name="condition" value="
+         and XSDJ_MX.XSDJBH =@XSDJBH
+         and XSDJ_MX.XSDJBH=XSDJ.BH"/>
+    <value>
+      select COUNT(XSDJ_MX.XSDJBH) from XSDJ_MX,XSDJ where 1=1
+      and XSDJ_MX.XSDJBH =@XSDJBH
+      and XSDJ_MX.XSDJBH=XSDJ.BH;
+
+      select  XSDJ_MX.XH,XSDJ_MX.SL,XSDJ_MX.DJ,XSDJ_MX.JE,
+      case  lower(XSDJ.HYSY || XSDJ.DJZL || XSDJ_MX.SLV)
+      WHEN '1s0.05' THEN '中外合作油气田'
+      else lower(XSDJ_MX.SLV)
+      end SLV,
+      XSDJ_MX.SE,XSDJ_MX.SPMC,XSDJ_MX.GGXH,XSDJ_MX.JLDW,case when XSDJ_MX.HSJBZ=1 then '是' else '否' end as HSJBZ,XSDJ_MX.DJHXZ
+      from XSDJ_MX,XSDJ where 1=1
+      and XSDJ_MX.XSDJBH =@XSDJBH
+      and XSDJ_MX.XSDJBH=XSDJ.BH
+
+      ORDER BY XSDJ_MX.XH   Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+    </value>
+    <type>Text</type>
+    <param name="XSDJBH" type="String"></param>
+  </SQL>
+
+
+  <!--自动拆分，slv不同的明细拆分到不同的单据，显示-->
+  <SQL id="aisino.Fwkp.Wbjk.CFDitinctslv">
+    <value>
+      select  Total(JE) as JE,SLV   from XSDJ_MX  where  XSDJBH=@XSDJBH  group by SLV
+    </value>
+    <type>Text</type>
+    <param name="XSDJBH" type="String"></param>
+  </SQL>
+
+  <!--判断是否含有多重税率, 自动拆分， 判断是否需要拆分使用，折扣汇总也使用-->
+  <SQL id="aisino.Fwkp.Wbjk.CFNeed">
+    <value>
+      SELECT  Count(distinct SLV) from XSDJ_MX where  XSDJBH=@XSDJBH
+    </value>
+    <type>Text</type>
+    <param name="XSDJBH" type="String"></param>
+  </SQL>
+
+
+
+
+
+  <!--拆分后删除原来的销售单据 和明细 ;  删除拆分前的销售单据-->
+  <SQL id="aisino.Fwkp.Wbjk.CFDeleteBeforeCFXSDJ">
+    <value>
+      delete from XSDJ where BH=@BH ;
+      delete from XSDJ_MX where XSDJBH=@BH;
+    </value>
+    <type>Text</type>
+    <param name="BH" type="String"></param>
+  </SQL>
+
+
+
+  <!--清除XSDJ_MXYL和XSDJ_YL表内容-->
+  <SQL id="aisino.Fwkp.Wbjk.CFclearYL">
+    <value>
+      DELETE FROM XSDJ_MXYL ;
+      DELETE FROM XSDJ_YL;
+    </value>
+    <type>Text</type>
+  </SQL>
+
+  <!--增加销售单据xsdj-->
+  <SQL id="aisino.Fwkp.Wbjk.XSDJAddYL">
+    <value>
+      INSERT INTO [XSDJ_YL](
+      [BH],[GFMC],[GFSH],[GFDZDH],[GFYHZH],[XSBM],[YDXS],[JEHJ],[DJRQ],[DJYF],[DJZT],[KPZT],[BZ],[FHR],[SKR],[QDHSPMC],[XFYHZH],[XFDZDH],[CFHB],[DJZL],[SFZJY],[HYSY],
+      [CM],[DLGRQ],[KHYHMC],[KHYHZH],[TYDH],[QYD],[ZHD],[XHD],[MDD],[XFDZ],[XFDH],[YSHWXX],[SCCJMC],[SLV],[DW],[JZ_50_15]
+      )VALUES(
+      @BH,@GFMC,@GFSH,@GFDZDH,@GFYHZH,@XSBM,@YDXS,@JEHJ,@DJRQ,@DJYF,@DJZT,@KPZT,@BZ,@FHR,@SKR,@QDHSPMC,@XFYHZH,@XFDZDH,@CFHB,@DJZL,@SFZJY,@HYSY,
+      "",@DJRQ,"","","","","","","","","","","",0.0,"",@JZ_50_15
+      )
+    </value>
+    <type>Text</type>
+    <param name="BH" type="String"></param>
+    <param name="GFMC" type="String"></param>
+    <param name="GFSH" type="String"></param>
+    <param name="GFDZDH" type="String"></param>
+    <param name="GFYHZH" type="String"></param>
+    <param name="XSBM" type="String"></param>
+    <param name="YDXS" type="Boolean"></param>
+    <param name="JEHJ"  type="Double"></param>
+    <param name="DJRQ"   type="DateTime"></param>
+    <param name="DJYF"  type="Int32"></param>
+    <param name="DJZT" type="String"></param>
+    <param name="KPZT" type="String"></param>
+    <param name="BZ" type="String"></param>
+    <param name="FHR" type="String"></param>
+    <param name="SKR"  type="String"></param>
+    <param name="QDHSPMC"   type="String"></param>
+    <param name="XFYHZH"  type="String"></param>
+    <param name="XFDZDH"  type="String"></param>
+    <param name="CFHB"  type="Boolean"></param>
+    <param name="DJZL" type="String"></param>
+    <param name="SFZJY" type="Boolean"></param>
+    <param name="HYSY" type="Boolean"></param>
+    <param name="JZ_50_15" type="Boolean"></param>
+  </SQL>
+
+
+
+  <!--自动拆分后显示的单据头的 XSDJ_YL  -->
+  <SQL id="aisino.Fwkp.Wbjk.CFGetCFHDanJu">
+    <value>
+      SELECT
+      BH,GFMC,GFSH,GFDZDH,GFYHZH,XSBM,YDXS,JEHJ,DJRQ,DJYF,DJZT,KPZT,BZ,FHR,SKR,
+      QDHSPMC,XFYHZH,XFDZDH,CFHB, DJZL,
+      cast(replace(BH,@BHT,'') as int) as ff  from  XSDJ_YL  order by  ff
+    </value>
+    <type>Text</type>
+    <param name="BHT" type="String"></param>
+  </SQL>
+
+  <!--自动拆分后  显示单据明细的 XSDJ_MXYL-->
+  <SQL id="aisino.Fwkp.Wbjk.CFGetCFHMX">
+    <value>
+      SELECT
+      XSDJBH,XH,SL,DJ,JE,SLV,SE,SPMC,SPSM,GGXH,JLDW,
+      HSJBZ,DJHXZ,FPZL,FPDM,FPHM,SCFPXH  from XSDJ_MXYL
+      where XSDJBH=@XSDJBH
+    </value>
+    <type>Text</type>
+    <param name="XSDJBH" type="String"></param>
+  </SQL>
+
+  
+  
+  <!--自动拆分保存自动拆分结果-->
+  <SQL id="aisino.Fwkp.Wbjk.CFSaveAutoCF">
+    <value>
+      insert into XSDJ
+      SELECT   BH,GFMC,GFSH,GFDZDH,GFYHZH,XSBM,YDXS,JEHJ,DJRQ,DJYF,DJZT,
+      KPZT,BZ,FHR,SKR,QDHSPMC,XFYHZH,XFDZDH,1,DJZL,SFZJY,HYSY,"",DJRQ,"","","","","","","","","","","",
+      0.0,"","","",0,"",1,"","","","",JZ_50_15
+      from  XSDJ_YL;
+
+      insert into XSDJ_HY
+      SELECT   BH,GFMC,GFSH,GFDZDH,GFYHZH,XSBM,YDXS,JEHJ,DJRQ,DJYF,DJZT, KPZT,BZ,FHR,SKR,QDHSPMC,XFYHZH,XFDZDH,CFHB,DJZL,SFZJY,HYSY,
+      "",DJRQ,"","","","","","","","","","","",
+      0.0,"",@BH,"","",0,JZ_50_15
+      from  XSDJ where BH=@BH;
+
+      DELETE FROM XSDJ where BH=@BH;
+
+      insert into XSDJ_MX
+      SELECT XSDJBH,XH,SL,DJ,JE,SLV,SE,SPMC,SPSM,GGXH,JLDW,HSJBZ, DJHXZ,FPZL,FPDM,FPHM,SCFPXH,FLBM,XSYH,FLMC,XSYHSM,SPBM,LSLVBS,KCE
+      FROM XSDJ_MXYL;
+
+      insert into XSDJ_MX_HY
+      SELECT   XSDJBH,XH,SL,DJ,JE,SLV,SE,SPMC,SPSM,GGXH,JLDW,HSJBZ, DJHXZ,FPZL,FPDM,FPHM,SCFPXH,FLBM,XSYH,FLMC,XSYHSM,SPBM,LSLVBS,KCE
+      from   XSDJ_MX where XSDJBH=@BH;
+
+      DELETE  FROM XSDJ_MX where XSDJBH=@BH;
+    </value>
+    <type>Text</type>
+    <param name="BH" type="String"></param>
+  </SQL>
+  
+  
+  <!--************************************************************************************-->
+  <!--********************************单据  合并  **************************************-->
+  <!--************************************************************************************-->
+  <!--查询销售单据合并 中XSDJ-->
+  <SQL id="aisino.Fwkp.Wbjk.HBShowXSDJ">
+    <var name="condition" value="KPZT='N' and  GFMC like @GFMC and GFSH like @GFSH and
+         DJYF=case when(@DJYF=0) then DJYF else @DJYF end and 
+         Case When(@DJZL='a') then (DJZL='c' or DJZL='s') else (DJZL=@DJZL) end and CFHB =0 
+         and JEHJ > 0 and DJZT != 'W'"/>
+    <value>
+      SELECT COUNT(BH) FROM [XSDJ] where #condition# ;
+      SELECT  BH, DJZL,GFMC,GFSH,JEHJ,DJRQ,BZ,HYSY
+      FROM  [XSDJ] where #condition#
+      ORDER BY BH   Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+    </value>
+    <type>Text</type>
+    <param name="DJYF" type="Int32"></param>
+    <param name="DJZL" type="String"></param>
+    <param name="GFMC" type="String"></param>
+    <param name="GFSH" type="String"></param>
+  </SQL>
+
+
+  <!--合并中查询一条销售单据下的明细-->
+  <SQL id="aisino.Fwkp.Wbjk.HBXSDJMXGet">
+    <var name="condition" value="XSDJBH =@XSDJBH "/>
+    <value>
+      SELECT COUNT(XSDJ_MX.XSDJBH) FROM XSDJ_MX,XSDJ where 1=1
+      and XSDJ_MX.XSDJBH = @XSDJBH
+      and XSDJ_MX.XSDJBH = XSDJ.BH;
+
+      select  XSDJ_MX.XH,XSDJ_MX.SL,XSDJ_MX.DJ,XSDJ_MX.JE,
+      case  lower(XSDJ.HYSY || XSDJ.DJZL || XSDJ_MX.SLV)
+      WHEN '1s0.05' THEN '中外合作油气田'
+      else lower(XSDJ_MX.SLV)
+      end SLV,
+      XSDJ_MX.SE,XSDJ_MX.SPMC,XSDJ_MX.GGXH,XSDJ_MX.JLDW,case XSDJ_MX.HSJBZ when 1 then '是' else '否' end as HSJBZ,XSDJ_MX.DJHXZ
+      FROM XSDJ_MX,XSDJ where 1=1
+      and XSDJ_MX.XSDJBH = @XSDJBH
+      and XSDJ_MX.XSDJBH = XSDJ.BH
+
+      ORDER BY XSDJ_MX.XH   Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+    </value>
+    <type>Text</type>
+    <param name="XSDJBH" type="String"></param>
+  </SQL>
+
+  <!--合并,折扣汇总中获取单据合并后的明细-->
+  <SQL id="aisino.Fwkp.Wbjk.HBGetMingXiHBH">
+    <value>
+      SELECT COUNT(XSDJ_MXYL.XSDJBH) FROM  XSDJ_MXYL,XSDJ_YL WHERE 1=1
+      AND XSDJ_MXYL.XSDJBH = XSDJ_YL.BH;
+
+      SELECT  XSDJ_MXYL.XH,XSDJ_MXYL.SPMC,XSDJ_MXYL.GGXH,XSDJ_MXYL.SL,XSDJ_MXYL.DJ,XSDJ_MXYL.JE,
+      case  lower(XSDJ_YL.HYSY || XSDJ_YL.DJZL || XSDJ_MXYL.SLV)
+      WHEN '1s0.05' THEN '中外合作油气田'
+      else lower(XSDJ_MXYL.SLV)
+      end SLV,
+      XSDJ_MXYL.SE,XSDJ_MXYL.JLDW,XSDJ_MXYL.SPSM,case XSDJ_MXYL.HSJBZ when 1 then '是' else '否' end as HSJBZ,XSDJ_MXYL.DJHXZ
+      FROM  XSDJ_MXYL,XSDJ_YL
+
+      ORDER BY XSDJ_MXYL.XH   Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+    </value>
+    <type>Text</type>
+  </SQL>
+  
+ 
+
+  <!--合并中 查询一条单据合计金额、合计税额-->
+  <SQL id="aisino.Fwkp.Wbjk.HBGetHjjeAndHjse">
+    <value>
+      SELECT sum(JE),sum(SE) from XSDJ_MX where XSDJBH=@BH
+    </value>
+    <type>Text</type>
+    <param name="BH" type="String"></param>
+  </SQL>
+
+
+  <!--合并中 查询一条单据含有的税率-->
+  <SQL id="aisino.Fwkp.Wbjk.HBGetDistinctSlv">
+    <value>
+      SELECT    distinct SLV  from XSDJ_MX  where   XSDJBH =@BH
+    </value>
+    <type>Text</type>
+    <param name="BH" type="String"></param>
+  </SQL>
+
+  <!--合并中 查询一条单据含有的商品数-->
+  <SQL id="aisino.Fwkp.Wbjk.HBGetSps">
+    <value>
+      select SPMC from XSDJ_MX where XSDJBH in(@BH) and (DJHXZ=0 or DJHXZ=3) group by SPMC,GGXH,JLDW,DJ,SPSM 
+    </value>
+    <type>Text</type>
+    <param name="BH" type="String"></param>
+  </SQL>
+
+  <!--合并中 查询一条单据含有的折扣数-->
+  <SQL id="aisino.Fwkp.Wbjk.HBGetZks">
+    <value>
+      select count(*) from XSDJ_MX where XSDJBH in(@BH) and DJHXZ=4
+    </value>
+    <type>Text</type>
+    <param name="BH" type="String"></param>
+  </SQL>
+
+  <!--合并中 查询一条单据含有的总商品行数-->
+  <SQL id="aisino.Fwkp.Wbjk.HBGetZsphs">
+    <value>
+      select count(*) from XSDJ_MX where XSDJBH in(@BH) and (DJHXZ=0 or DJHXZ=3)
+    </value>
+    <type>Text</type>
+    <param name="BH" type="String"></param>
+  </SQL>
+
+  <!--合并中 查询多条单据的所有明细  BH 必须是List<object>-->
+  <SQL id="aisino.Fwkp.Wbjk.HBGetMXForMerge">
+    <value>
+     SELECT  * from XSDJ_MX  where  XSDJBH  in(@BH)
+    </value>
+    <type>Text</type>
+    <param name="BH" type="String"></param>
+  </SQL>
+  
+ 
+
+  
+  
+  <!--销售单据明细 预览表  清空数据XSDJ_MXYL-->
+  <SQL id="aisino.Fwkp.Wbjk.XSDJ_MXYLdelete">
+    <value>
+      DELETE FROM XSDJ_MXYL
+    </value>
+    <type>Text</type>
+  </SQL>
+
+  <!--销售单据 明细 预览表中增加一条记录-->
+  <SQL id="aisino.Fwkp.Wbjk.HBSaveInMX_YL">
+    <value>
+      INSERT INTO [XSDJ_MXYL](
+      [XSDJBH],[XH],[SL],[DJ],[JE],[SLV],[SE],[SPMC],[SPSM],[GGXH],[JLDW],[HSJBZ],[DJHXZ],[FPZL],[FPDM],[FPHM],[SCFPXH],[FLBM],[XSYH],[FLMC],[XSYHSM],[SPBM],[LSLVBS],[KCE]
+      )VALUES(
+      @XSDJBH,@XH,@SL,@DJ,@JE,@SLV,@SE,@SPMC,@SPSM,@GGXH,@JLDW,@HSJBZ,@DJHXZ,@FPZL,@FPDM,@FPHM,@SCFPXH,@FLBM,@XSYH,@FLMC,@XSYHSM,@SPBM,@LSLVBS,@KCE
+      )
+    </value>
+    <type>Text</type>
+    <param name="XSDJBH" type="String"></param>
+    <param name="XH" type="Int32"></param>
+    <param name="SL" type="Double"></param>
+    <param name="DJ" type="Double"></param>
+    <param name="JE" type="Double"></param>
+    <param name="SLV" type="Double"></param>
+    <param name="SE" type="Double"></param>
+    <param name="SPMC" type="String"></param>
+    <param name="SPSM" type="String"></param>
+    <param name="GGXH" type="String"></param>
+    <param name="JLDW" type="String"></param>
+    <param name="HSJBZ" type="Boolean"></param>
+    <param name="DJHXZ" type="Int32"></param>
+    <param name="FPZL" type="String"></param>
+    <param name="FPDM" type="String"></param>
+    <param name="FPHM" type="Int32"></param>
+    <param name="SCFPXH" type="Int32"></param>
+    <param name="FLBM" type="String"></param>
+    <param name="XSYH" type="Boolean"></param>
+    <param name="FLMC" type="String"></param>
+    <param name="XSYHSM" type="String"></param>
+    <param name="SPBM" type="String"></param>
+    <param name="LSLVBS" type="String"></param>
+    <param name="KCE" type="Double"></param>
+  </SQL>
+
+
+
+  <!--保存到正式库中-->
+  <SQL id="aisino.Fwkp.Wbjk.YLtoRealTable">
+    <value>
+      insert into [XSDJ_MX]      --添加合并后销售单据的明细
+      select  XSDJBH,XH,SL,DJ,JE,SLV,SE,SPMC,SPSM,GGXH,JLDW,HSJBZ,DJHXZ,FPZL,FPDM,FPHM,SCFPXH,FLBM,XSYH,FLMC,XSYHSM,SPBM,LSLVBS,KCE
+      from XSDJ_MXYL    ;
+
+      insert into [XSDJ]
+      select   [BH],[GFMC],[GFSH],[GFDZDH],[GFYHZH],[XSBM],[YDXS],[JEHJ],[DJRQ],[DJYF],[DJZT],[KPZT],[BZ],
+      [FHR],[SKR],[QDHSPMC],[XFYHZH],[XFDZDH],1,[DJZL],[SFZJY],[HYSY],"",[DJRQ],"","","","","","","","","","","",
+      0.0,"","","",0,"",1,"","","","",[JZ_50_15]
+      from  [XSDJ_YL] ;
+      <!--CFHB =1 -->
+    </value>
+    <type>Text</type>
+  </SQL>
+
+  <!--合并时将原xsdj及xsdj_MX 转存入 还原表-->
+  <SQL id="aisino.Fwkp.Wbjk.SaveToHyTable">
+    <value>
+      insert into XSDJ_HY
+      select   BH,GFMC,GFSH,GFDZDH,GFYHZH,XSBM,YDXS,JEHJ,DJRQ,DJYF,DJZT, KPZT,BZ,FHR,SKR,QDHSPMC,XFYHZH,XFDZDH,CFHB,DJZL,SFZJY,HYSY,
+      "",DJRQ,"","","","","","","","","","","",
+      0.0,"",@NewBH,"","",0,JZ_50_15
+      from  [XSDJ] where BH=@BH;
+
+      insert into XSDJ_MX_HY
+      select   XSDJBH,XH,SL,DJ,JE,SLV,SE,SPMC,SPSM,GGXH,JLDW,HSJBZ, DJHXZ,FPZL,FPDM,FPHM,SCFPXH,FLBM,XSYH,FLMC,XSYHSM,SPBM,LSLVBS,KCE
+      from   [XSDJ_MX] where XSDJBH=@BH;
+
+      delete from [XSDJ_MX] where XSDJBH=@BH;
+      delete from [XSDJ] where BH =@BH;
+
+    </value>
+    <type>Text</type>
+    <param name="BH" type="String"></param>
+    <param name="NewBH" type="String"></param>  <!--原始编号写入内容-->
+  </SQL>
+  
+  
+  
+  
+  
+  
+  
+  <!--保存合并-->
+  <SQL id="aisino.Fwkp.Wbjk.HBSaveMerged">
+    <value>
+      Insert into XSDJ_MX      --添加合并后销售单据的明细
+      SELECT @NewBH as XSDJBH,XH,SL,DJ,JE,SLV,SE,SPMC,SPSM,GGXH,JLDW,HSJBZ,DJHXZ,FPZL,FPDM,FPHM,SCFPXH
+      FROM XSDJ_MXYL    ;
+
+      INSERT INTO [XSDJ]
+      SELECT   @NewBH,[GFMC],[GFSH],[GFDZDH],[GFYHZH],[XSBM],[YDXS],@JEHJ,[DJRQ],[DJYF],[DJZT],[KPZT],@BZ,
+      [FHR],[SKR],[QDHSPMC],[XFYHZH],[XFDZDH],1,[DJZL],[SFZJY],[HYSY]   FROM  [XSDJ] where BH=@YBH;
+
+    </value>
+    <type>Text</type>
+    <param name="YBH" type="String"></param>
+    <param name="NewBH" type="String"></param>
+    <param name="JEHJ" type="Double"></param>
+    <param name="BZ" type="String"></param>
+  </SQL>
+
+
+  <!--合并时将原xsdj及xsdj_MX 转存入 还原表-->
+  <SQL id="aisino.Fwkp.Wbjk.HBSaveToHYtable">
+    <value>
+      INSERT INTO XSDJ_HY
+      SELECT   BH,GFMC,GFSH,GFDZDH,GFYHZH,XSBM,YDXS,JEHJ,DJRQ,DJYF,DJZT, KPZT,BZ,FHR,SKR,QDHSPMC,XFYHZH,XFDZDH,CFHB,DJZL,SFZJY,HYSY,@NewBH
+      FROM  [XSDJ] where BH=@BH;
+
+      INSERT INTO XSDJ_MX_HY
+      SELECT   XSDJBH,XH,SL,DJ,JE,SLV,SE,SPMC,SPSM,GGXH,JLDW,HSJBZ, DJHXZ,FPZL,FPDM,FPHM,SCFPXH
+      FROM   [XSDJ_MX] where XSDJBH=@BH;
+
+      delete from [XSDJ_MX] where XSDJBH=@BH;
+      delete from [XSDJ] where BH =@BH;
+
+    </value>
+    <type>Text</type>
+    <param name="BH" type="String"></param>
+    <param name="NewBH" type="String"></param>
+  </SQL>
+
+
+  <!--**************************************************************************************-->
+  <!--********************************单据  折扣汇总  ************************************-->
+  <!--**************************************************************************************-->
+  <!--查询一条单据下的 明细-->
+  <SQL id="aisino.Fwkp.Wbjk.ZKHZMXGet">
+    <var name="condition" value="XSDJBH =@XSDJBH "/>
+    <value>
+      SELECT COUNT(XSDJ_MX.XSDJBH) FROM XSDJ_MX,XSDJ where 1=1
+      and XSDJ_MX.XSDJBH = @XSDJBH
+      and XSDJ_MX.XSDJBH = XSDJ.BH;
+
+      SELECT  XSDJ_MX.XH,XSDJ_MX.SL,XSDJ_MX.DJ,XSDJ_MX.JE,
+      case  lower(XSDJ.HYSY || XSDJ.DJZL || XSDJ_MX.SLV)
+      WHEN '1s0.05' THEN '中外合作油气田'
+      else lower(XSDJ_MX.SLV)
+      end SLV,
+      XSDJ_MX.SE,XSDJ_MX.SPMC,XSDJ_MX.SPSM,XSDJ_MX.GGXH,XSDJ_MX.JLDW, case when XSDJ_MX.HSJBZ=1 then '是' else '否' end as HSJBZ,XSDJ_MX.DJHXZ
+      FROM XSDJ_MX,XSDJ where 1=1
+      and XSDJ_MX.XSDJBH = @XSDJBH
+      and XSDJ_MX.XSDJBH = XSDJ.BH
+
+      ORDER BY XSDJ_MX.XH   Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+    </value>
+    <type>Text</type>
+    <param name="XSDJBH" type="String"></param>
+  </SQL>
+
+  <!--筛选可以单据折扣汇总的XSDJ,  BH not in(select distinct XSDJBH from XSDJ_MX where DJHXZ =0)"/>-->
+  <!--and BH in ( select distinct XSDJBH from XSDJ_MX where DJHXZ=4 group by XSDJBH having count(SLV)=1 )-->
+  <!--and BH not in ( select distinct XSDJBH as t from XSDJ_MX where DJHXZ=4 group by t having ( count(t)=1 and ( select count(XSDJBH) from XSDJ_MX where XSDJBH=t and DJHXZ=0 )=0 ) )-->
+
+  <SQL id="aisino.Fwkp.Wbjk.ZKHZXSDJ_BH">
+    <var name="condition" value="KPZT='N' and DJZT != 'W' and  DJYF=case when(@DJYF=0) then DJYF else @DJYF end 
+and Case When(@DJZL='a') then (DJZL='c' or DJZL='s') else (DJZL=@DJZL) end and BH in(@BH)"/>    
+    <value>
+      SELECT COUNT(BH) FROM [XSDJ] where #condition# ;  
+      SELECT  BH,GFMC,GFSH,JEHJ,DJRQ,BZ,case DJZL when 'c' then '普通发票' when 's' then '专用发票' else '' end as DJZL
+      FROM  [XSDJ]   where  #condition#
+      ORDER BY BH   Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+    </value>
+    <type>Text</type>
+    <param name="DJYF" type="Int32"></param>
+    <param name="DJZL" type="String"></param>
+    <param name="Key" type="String"></param>
+    <param name="BH" type="String"></param>
+  </SQL>
+
+  <SQL id="aisino.Fwkp.Wbjk.ZKHZXSDJ_GFMC">
+    <var name="condition" value="KPZT='N' and DJZT != 'W' and  DJYF=case when(@DJYF=0) then DJYF else @DJYF end 
+and Case When(@DJZL='a') then (DJZL='c' or DJZL='s') else (DJZL=@DJZL) end and BH in(@BH) and (GFMC like @Key)  "/>
+    <value>
+      SELECT COUNT(BH) FROM [XSDJ] where #condition# ;
+      SELECT  BH,GFMC,GFSH,JEHJ,DJRQ,BZ,case DJZL when 'c' then '普通发票' when 's' then '专用发票' else '' end as DJZL
+      FROM  [XSDJ]   where  #condition#
+      ORDER BY BH   Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+    </value>
+    <type>Text</type>
+    <param name="DJYF" type="Int32"></param>
+    <param name="DJZL" type="String"></param>
+    <param name="Key" type="String"></param>
+    <param name="BH" type="String"></param>
+  </SQL>
+
+  <SQL id="aisino.Fwkp.Wbjk.ZKHZXSDJ_GFSH">
+    <var name="condition" value="KPZT='N' and DJZT != 'W' and  DJYF=case when(@DJYF=0) then DJYF else @DJYF end 
+and Case When(@DJZL='a') then (DJZL='c' or DJZL='s') else (DJZL=@DJZL) end and BH in(@BH) and (GFSH like @Key)  "/>
+    <value>
+      SELECT COUNT(BH) FROM [XSDJ] where #condition# ;
+      SELECT  BH,GFMC,GFSH,JEHJ,DJRQ,BZ,case DJZL when 'c' then '普通发票' when 's' then '专用发票' else '' end as DJZL
+      FROM  [XSDJ]   where  #condition#
+      ORDER BY BH   Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+    </value>
+    <type>Text</type>
+    <param name="DJYF" type="Int32"></param>
+    <param name="DJZL" type="String"></param>
+    <param name="Key" type="String"></param>
+    <param name="BH" type="String"></param>
+  </SQL>
+  
+  <!--折扣汇总 获取编号-->
+  <SQL id="aisino.Fwkp.Wbjk.ZKHZGetBH">
+    <var name="condition"  />
+    <value>
+      select  distinct XSDJBH  from XSDJ_MX where DJHXZ=4  and XSDJBH in
+      ( select  BH  from  [XSDJ]   where   KPZT='N' and DJZT != 'W')
+    </value>
+    <type>Text</type>
+  </SQL>
+
+  
+  <SQL id="aisino.Fwkp.Wbjk.ZKHZGetCountDJHXZ3">
+    <var name="condition"  />
+    <value>
+      select Count(*) from XSDJ_MX where XSDJBH=@XSDJBH  and  DJHXZ=3
+    </value>
+    <type>Text</type>
+    <param name="XSDJBH" type="String"></param>
+  </SQL>
+ 
+  <SQL id="aisino.Fwkp.Wbjk.ZKHZGetCount">
+    <var name="condition"  />
+    <value>
+      select Count(*) from XSDJ_MX where XSDJBH=@XSDJBH
+    </value>
+    <type>Text</type>
+    <param name="XSDJBH" type="String"></param>
+  </SQL>
+  
+  
+  
+
+
+  <!--保存确认汇总折扣，折扣后是不可还原的，不用存入还原表，将预览存入数据库，删除原有表中的数据-->
+  <SQL id="aisino.Fwkp.Wbjk.ZKHZSaveHZ">
+    <value>
+      delete  from XSDJ_MX where XSDJBH=@BH;
+      insert into XSDJ_MX
+      SELECT @BH,XH,SL,DJ,JE,SLV,SE,SPMC,SPSM,GGXH,JLDW,HSJBZ,DJHXZ,FPZL,FPDM,FPHM,SCFPXH,FLBM,XSYH,FLMC,XSYHSM,SPBM,LSLVBS,KCE
+      FROM XSDJ_MXYL;
+    </value>
+    <type>Text</type>
+    <param name="BH" type="String"></param>
+  </SQL>
+
+
+  <!--**************************************************************************************-->
+  <!--*********************************   单据  还原  ************************************-->
+  <!--**************************************************************************************-->
+
+  <!--查询  拆分合并 过的单据-->
+  <SQL id="aisino.Fwkp.Wbjk.HYQueryXSDJ">
+    <var name="condition" value=" CFHB =1 and KPZT='N' and (GFMC like @Key  or GFSH like  @Key) "/>
+    <value>
+      SELECT COUNT(BH) FROM [XSDJ] where #condition# ;
+      SELECT  BH,case DJZL when 'c' then '普通发票' when 's' then '专用发票' else '' end as DJZL,GFMC,GFSH,JEHJ,DJRQ,BZ 
+      FROM [XSDJ]  where  #condition#
+      ORDER BY BH   Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+    </value>
+    <type>Text</type>
+    <param name="Key" type="String"></param>
+  </SQL>
+
+  <!--  单据下的明细-->
+  <SQL id="aisino.Fwkp.Wbjk.HYXSDJMXGet">
+    <var name="condition" value="XSDJBH =@XSDJBH "/>
+    <value>
+      SELECT COUNT(XSDJ_MX.XSDJBH) FROM XSDJ_MX,XSDJ where 1=1
+      and XSDJ_MX.XSDJBH = @XSDJBH
+      and XSDJ_MX.XSDJBH = XSDJ.BH;
+
+      SELECT  XSDJ_MX.XSDJBH,XSDJ_MX.XH,XSDJ_MX.SL,XSDJ_MX.DJ,XSDJ_MX.JE,
+      case  lower(XSDJ.HYSY || XSDJ.DJZL || XSDJ_MX.SLV)
+      WHEN '1s0.05' THEN '中外合作油气田'
+      else lower(XSDJ_MX.SLV)
+      end SLV,
+      XSDJ_MX.SE,XSDJ_MX.SPMC,case when XSDJ_MX.HSJBZ=1 then '是' else '否' end as HSJBZ,XSDJ_MX.DJHXZ
+      FROM XSDJ_MX,XSDJ  where 1=1
+      and XSDJ_MX.XSDJBH = @XSDJBH
+      and XSDJ_MX.XSDJBH = XSDJ.BH
+
+      ORDER BY XSDJ_MX.XH   Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+    </value>
+    <type>Text</type>
+    <param name="XSDJBH" type="String"></param>
+  </SQL>
+  <!--原始单据 拆分 而来的-->
+  <SQL id="aisino.Fwkp.Wbjk.HYGetYSDJFromCF">
+    <var name="condition" value="BH =@BH"/>
+    <value>
+      SELECT COUNT(BH) FROM XSDJ_HY where #condition#;
+      SELECT  BH,YSBH,GFMC,GFSH,JEHJ,DJRQ,BZ,case DJZL when 'c' then '普通发票' when 's' then '专用发票' else '' end as DJZL
+      FROM XSDJ_HY  where  #condition#
+      ORDER BY BH   Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+    </value>
+    <type>Text</type>
+    <param name="BH" type="String"></param>
+  </SQL>
+
+  <!--原始单据 合并 而来的-->
+  <SQL id="aisino.Fwkp.Wbjk.HYGetYSDJFromHB">
+    <var name="condition" value="YSBH =@BH"/>
+    <value>
+      SELECT COUNT(BH) FROM XSDJ_HY where #condition#;
+      SELECT  BH,YSBH,GFMC,GFSH,JEHJ,DJRQ,BZ,case DJZL when 'c' then '普通发票' when 's' then '专用发票' else '' end as DJZL
+      FROM XSDJ_HY  where  #condition#
+      ORDER BY BH   Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+    </value>
+    <type>Text</type>
+    <param name="BH" type="String"></param>
+  </SQL>
+
+
+
+  <!--原始单据的 明细-->
+  <SQL id="aisino.Fwkp.Wbjk.HYGetYSDJMX">
+    <var name="condition" value="XSDJBH =@YSBH"/>
+    <value>
+      SELECT COUNT(XSDJ_MX_HY.XSDJBH) FROM XSDJ_MX_HY,XSDJ_HY where 1=1
+      and XSDJ_MX_HY.XSDJBH =@YSBH
+      and XSDJ_MX_HY.XSDJBH = XSDJ_HY.BH;
+
+      SELECT  XSDJ_MX_HY.XSDJBH,XSDJ_MX_HY.XH,XSDJ_MX_HY.SL,XSDJ_MX_HY.DJ,XSDJ_MX_HY.JE,
+      case  lower(XSDJ_HY.HYSY || XSDJ_HY.DJZL || XSDJ_MX_HY.SLV)
+      WHEN '1s0.05' THEN '中外合作油气田'
+      else lower(XSDJ_MX_HY.SLV)
+      end SLV,
+      XSDJ_MX_HY.SE,XSDJ_MX_HY.SPMC,XSDJ_MX_HY.GGXH,XSDJ_MX_HY.JLDW,case when XSDJ_MX_HY.HSJBZ=1 then '是' else '否' end as HSJBZ,XSDJ_MX_HY.DJHXZ  FROM XSDJ_MX_HY,XSDJ_HY
+      where 1=1
+      and XSDJ_MX_HY.XSDJBH =@YSBH
+      and XSDJ_MX_HY.XSDJBH = XSDJ_HY.BH
+
+      ORDER BY XSDJ_MX_HY.XH   Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+    </value>
+    <type>Text</type>
+    <param name="YSBH" type="String"></param>
+  </SQL>
+
+
+  <!-- 获取拆分出来相关的多条单据的单据号，用于提示这些单据都会被一并还原 @BH类似'3411231_0'-->
+  <SQL id="aisino.Fwkp.Wbjk.HYGetReferDanJu">
+    <value>
+      SELECT BH from XSDJ where BH like  @DJBH and BH &lt;> @BH
+    </value>
+    <type>Text</type>
+    <param name="BH" type="String"></param>
+    <param name="DJBH" type="String"></param>
+  </SQL>
+
+
+  <!-- 还原 拆分而来的单据 -->
+  <SQL id="aisino.Fwkp.Wbjk.HYFromChaiFen">
+    <value>
+      INSERT INTO [XSDJ] SELECT
+      [YSBH],[GFMC],[GFSH],[GFDZDH],[GFYHZH],[XSBM],[YDXS],[JEHJ],[DJRQ],[DJYF],
+      [DJZT],[KPZT],[BZ],[FHR],[SKR],[QDHSPMC],[XFYHZH],[XFDZDH],[CFHB],[DJZL]
+      FROM XSDJ_HY where BH =@BH ;
+
+      Insert into XSDJ_MX
+      SELECT   *   FROM XSDJ_MX_HY where XSDJBH in(select YSBH from XSDJ_HY where BH =@BH);
+
+      delete  FROM  XSDJ  where BH like @BHlike;
+      delete  FROM  XSDJ_MX  where XSDJBH like @BHlike;
+
+      delete FROM XSDJ_MX_HY where XSDJBH in(select YSBH from XSDJ_HY where BH =@BH);
+      delete FROM XSDJ_HY where BH =@BH;
+    </value>
+    <type>Text</type>
+    <param name="BH" type="String"></param>
+    <param name="BHlike" type="String"></param>
+  </SQL>
+
+  <!--还原拆分而来的单据new-->
+  <SQL id="aisino.Fwkp.Wbjk.HYFromChaiFen_new">
+    <value>
+      INSERT INTO [XSDJ] SELECT
+      [BH],[GFMC],[GFSH],[GFDZDH],[GFYHZH],[XSBM],[YDXS],[JEHJ],[DJRQ],[DJYF],
+      [DJZT],[KPZT],[BZ],[FHR],[SKR],[QDHSPMC],[XFYHZH],[XFDZDH],[CFHB],[DJZL],[SFZJY],[HYSY],
+      [CM],[DLGRQ],[KHYHMC],[KHYHZH],[TYDH],[QYD],[ZHD],[XHD],[MDD],[XFDZ],[XFDH],[YSHWXX],[SCCJMC],[SLV],[DW],[FPZL],
+      [FPDM],[FPHM],"",1,"","","","",[JZ_50_15]
+      FROM XSDJ_HY where BH =@BH ;
+
+      Insert into XSDJ_MX
+      SELECT   *   FROM XSDJ_MX_HY where XSDJBH =@BH;
+
+      delete  FROM  XSDJ  where BH like @BHlike;
+      delete  FROM  XSDJ_MX  where XSDJBH like @BHlike;
+
+      delete FROM XSDJ_MX_HY where XSDJBH =@BH;
+      delete FROM XSDJ_HY where BH =@BH;
+    </value>
+    <type>Text</type>
+    <param name="BH" type="String"></param>
+    <param name="BHlike" type="String"></param>
+  </SQL>
+
+  <!--还原合并而来的单据SQL_1-->
+  <SQL id="aisino.Fwkp.Wbjk.HYFromHeBing1">
+    <value>
+      SELECT distinct BH from XSDJ_HY where YSBH =@BH
+    </value>
+    <type>Text</type>
+    <param name="BH" type="String"></param>
+  </SQL>
+
+  <!--还原合并而来的单据SQL_2-->
+  <SQL id="aisino.Fwkp.Wbjk.HYFromHeBing2">
+    <value>
+      INSERT INTO [XSDJ] SELECT
+      [BH],[GFMC],[GFSH],[GFDZDH],[GFYHZH],[XSBM],[YDXS],[JEHJ],[DJRQ],[DJYF],
+      [DJZT],[KPZT],[BZ],[FHR],[SKR],[QDHSPMC],[XFYHZH],[XFDZDH],[CFHB],[DJZL],[SFZJY],[HYSY],
+      [CM],[DLGRQ],[KHYHMC],[KHYHZH],[TYDH],[QYD],[ZHD],[XHD],[MDD],[XFDZ],[XFDH],[YSHWXX],[SCCJMC],[SLV],[DW],[FPZL],
+      [FPDM],[FPHM],"",1,"","","","",[JZ_50_15]
+      FROM XSDJ_HY where YSBH =@BH ;
+
+      Insert into XSDJ_MX
+      SELECT   *   FROM XSDJ_MX_HY where XSDJBH in (SELECT distinct BH from XSDJ_HY where YSBH =@BH);
+
+      delete  FROM  XSDJ  where BH =@BH;
+      delete  FROM  XSDJ_MX  where XSDJBH =@BH;
+
+      delete FROM XSDJ_MX_HY where XSDJBH in (SELECT distinct BH from XSDJ_HY where YSBH =@BH);
+      delete FROM XSDJ_HY where YSBH =@BH;
+    </value>
+    <type>Text</type>
+    <param name="BH" type="String"></param>
+  </SQL>
+
+  <!--拆分前的单据号是否已开票SQL_1-->
+  <SQL id="aisino.Fwkp.Wbjk.CFHYCheck1">
+    <value>
+      SELECT BH from XSDJ where BH=@BH and KPZT='N'
+    </value>
+    <type>Text</type>
+    <param name="BH" type="String"></param>
+  </SQL>
+
+  <!--拆分前的单据号是否已开票SQL_2-->
+  <SQL id="aisino.Fwkp.Wbjk.CFHYCheck2">
+    <value>
+      SELECT BH from XSDJ where BH like @BHlike and (KPZT &lt;&gt; 'N' or CFHB = 0)
+    </value>
+    <type>Text</type>
+    <param name="BHlike" type="String"></param>
+  </SQL>
+
+  <!--拆分前的单据号是否已开票SQL_3-->
+  <SQL id="aisino.Fwkp.Wbjk.CFHYCheck3">
+    <value>
+      SELECT BH from XSDJ where BH like @BHlike and CFHB = 1
+    </value>
+    <type>Text</type>
+    <param name="BHlike" type="String"></param>
+  </SQL>
+
+  <!--合并前的单据号是否已开票SQL_1-->
+  <SQL id="aisino.Fwkp.Wbjk.HBHYCheck1">
+    <value>
+      SELECT BH from XSDJ_HY where YSBH=@BH
+    </value>
+    <type>Text</type>
+    <param name="BH" type="String"></param>
+  </SQL>
+
+  <!--合并前的单据号是否已开票SQL_2-->
+  <SQL id="aisino.Fwkp.Wbjk.HBHYCheck2">
+    <value>
+      SELECT BH from XSDJ where BH=@BH
+    </value>
+    <type>Text</type>
+    <param name="BH" type="String"></param>
+  </SQL>
+
+
+
+  <!--**************************************************************************************-->
+  <!--*********************************   单据  作废  ************************************-->
+  <!--**************************************************************************************-->
+  <!--查询单据状态-->
+  <SQL id="aisino.Fwkp.Wbjk.RecordIsExistXSDJ">
+    <value>
+      SELECT count(BH) FROM XSDJ WHERE [BH] = @BH
+    </value>
+    <type>Text</type>
+    <param name="BH" type="String"></param>
+  </SQL>
+
+  <!--查询开票状态-->
+  <SQL id="aisino.Fwkp.Wbjk.QueryStateXSDJ">
+    <value>
+      SELECT [DJZT], [KPZT] FROM XSDJ WHERE [BH] = @BH
+    </value>
+    <type>Text</type>
+    <param name="BH" type="String"></param>
+  </SQL>
+
+  <!--更新单据状态-->
+  <SQL id="aisino.Fwkp.Wbjk.UpdateStateXSDJ">
+    <value>
+      UPDATE XSDJ SET [DJZT] = 'W' WHERE [BH] = @BH
+    </value>
+    <type>Text</type>
+    <param name="BH" type="String"></param>
+  </SQL>
+
+
+
+  <!--**************************************************************************************-->
+  <!--*********************************  发票传出      ************************************-->
+  <!--**************************************************************************************-->
+  <!--选择发票-->
+  <SQL id="aisino.Fwkp.Wbjk.FPCCSelect">
+    <var name="condition" value="Case When(@FPZL='a') then (FPZL='c' or FPZL='s') else (FPZL=@FPZL) end and (KPRQ between @QSRQ and @JZRQ)"/>
+    <value>
+      SELECT COUNT(*) FROM XXFP where #condition#;
+      SELECT
+      XSDJBH, FPZL, FPDM, FPHM,ZFBZ, QDBZ,
+      case  lower( substr([YYSBZ], 9, 1) ||lower(FPZL)|| ifnull(SLV, '2'))
+      when  '1s2' then '多税率'
+      when  '1s0.0' then '免税'
+      when '0s0.05' then '中外合作油气田'
+      when  '0s2' then '多税率'
+      when  '0s0.0' then '免税'
+      when  '1c2' then '多税率'
+      when  '1c0.0' then '免税'
+      when  '0c2' then '多税率'
+      when  '0c0.0' then '免税'
+      else  lower(SLV)
+      end SLV,
+      HJJE, KPRQ
+      FROM XXFP
+      WHERE #condition#
+      Limit @endNO-@beginNO+1 Offset @beginNO-1
+    </value>
+    <type>Text</type>
+    <param name="QSRQ" type="DateTime"></param>
+    <param name="JZRQ" type="DateTime"></param>
+    <param name="FPZL" type="String"></param>
+  </SQL>
+
+
+
+  <!--获得发票，用于传出-->
+  <SQL id="aisino.Fwkp.Wbjk.FPCCGetFaPiao">
+    <var name="condition" value="Case When(@FPZL='a') then (FPZL='c' or FPZL='s') else (FPZL=@FPZL) end and KPRQ  between @QSRQ and  @JZRQ"/>
+    <value>
+      SELECT
+      case FPZL when 's' then '0' when 'c' then '2' else '' end as FPZLD,
+      FPZL,FPDM,FPHM,KPJH,XSDJBH,GFMC,GFSH,GFDZDH,GFYHZH,XFMC,XFSH,XFDZDH,XFYHZH,
+      JMBBH,MW,KPRQ,HJJE,SLV,HJSE,ZYSPMC,SPSM,BZ,KPR,FHR,SKR,DYBZ,QDBZ,ZFBZ,BSBZ,XFBZ,
+      JYM,BSQ,XZBZ,PZLB,PZHM,PZYWH,PZZT,PZRQ,HXM
+      FROM [XXFP]
+      where #condition#;
+    </value>
+    <type>Text</type>
+    <param name="QSRQ" type="DateTime"></param>
+    <param name="JZRQ" type="DateTime"></param>
+    <param name="FPZL" type="String"></param>
+  </SQL>
+
+  <!--获得一张发票的明细，用于传出-->
+  <SQL id="aisino.Fwkp.Wbjk.FPCCGetFaPiaoMX">
+    <value>
+      SELECT
+      FPZL,FPDM,FPHM,FPMXXH,XSDJBH,FPHXZ,
+      case when(JE='') then 0 else JE end as JE,
+      SLV,
+      case when(SE='') then 0 else SE end as SE,
+      SPMC,SPSM,GGXH,JLDW,
+      case when(SL='') then 0 else SL end as SL,
+      case when(DJ='') then 0 else DJ end as DJ,
+      HSJBZ,SPBH,DJMXXH,FLBM,XSYH,YHSM,LSLVBS
+      FROM [XXFP_MX]  where FPZL = @FPZL and FPDM = @FPDM and FPHM = @FPHM
+    </value>
+    <type>Text</type>
+    <param name="FPZL" type="String"></param>
+    <param name="FPDM" type="String"></param>
+    <param name="FPHM" type="String"></param>
+  </SQL>
+
+
+  <!--获得一张发票的明细，用于传出--><!--
+  <SQL id="aisino.Fwkp.Wbjk.FPCCGetFaPiaoMX">
+    <value>
+      SELECT  *
+      FROM [XXFP_MX]  where FPZL = @FPZL and FPDM = @FPDM and FPHM = @FPHM
+    </value>
+    <type>Text</type>
+    <param name="FPZL" type="String"></param>
+    <param name="FPDM" type="String"></param>
+    <param name="FPHM" type="String"></param>
+  </SQL>-->
+
+  <!--获得一张发票的清单，用于传出-->
+  <SQL id="aisino.Fwkp.Wbjk.FPCCGetFaPiaoQD">
+    <value>
+      SELECT
+      FPZL,FPDM,FPHM,FPMXXH,XSDJBH,FPHXZ,
+      case when(JE='') then 0 else JE end as JE,
+      SLV,
+      case when(SE='') then 0 else SE end as SE,
+      SPMC,SPSM,GGXH,JLDW,
+      case when(SL='') then 0 else SL end as SL,
+      case when(DJ='') then 0 else DJ end as DJ,
+      HSJBZ,SPBH,DJMXXH,FLBM,XSYH,YHSM,LSLVBS
+      FROM [XXFP_XHQD]  where FPZL = @FPZL and FPDM = @FPDM and FPHM = @FPHM
+    </value>
+    <type>Text</type>
+    <param name="FPZL" type="String"></param>
+    <param name="FPDM" type="String"></param>
+    <param name="FPHM" type="String"></param>
+  </SQL>
+  <!--**************************************************************************************-->
+  <!--*********************************  已开发票  作废      ****************************-->
+  <!--**************************************************************************************-->
+  <!--作废发票-->
+  <SQL id="aisino.Fwkp.Wbjk.FPZFZuoFeiFP">
+    <value>
+      update XXFP set ZFBZ=1 where  FPDM=@FPDM and FPHM=@FPHM and FPZL=@FPZL
+    </value>
+    <type>Text</type>
+    <param name="FPZL" type="String"></param>
+    <param name="FPDM" type="String"></param>
+    <param name="FPHM" type="String"></param>
+  </SQL>
+
+  <!--回滚作废发票-->
+  <SQL id="aisino.Fwkp.Wbjk.RollBackXXFP">
+    <value>
+      UPDATE XXFP SET ZFBZ=0 WHERE  FPDM=@FPDM and FPHM=@FPHM and FPZL=@FPZL
+    </value>
+    <type>Text</type>
+    <param name="FPZL" type="String"></param>
+    <param name="FPDM" type="String"></param>
+    <param name="FPHM" type="String"></param>
+  </SQL>
+
+  <!--查询已开发票的销售单据:已经开票且DJZT='W'  -->
+  <SQL id="aisino.Fwkp.Wbjk.FPZFGetXSDJ">
+    <value>
+      SELECT COUNT(*) FROM XSDJ, XXFP WHERE XSDJ.BH=XXFP.XSDJBH AND ZFBZ=0 AND DJZT='W' AND LOWER(KPZT)='a';
+      SELECT
+      CASE lower(a.FPZL || substr(a.YYSBZ, 6, 1)) WHEN 'c' THEN '普通发票'
+      WHEN 's' THEN '专用发票'
+      WHEN 'f' THEN '货物运输业增值税专用发票'
+      WHEN 'j' THEN '机动车销售统一发票'
+      WHEN 'c1' THEN '农产品销售发票'
+      WHEN 'c2' THEN '收购发票'
+      WHEN 'c0' THEN '普通发票'
+      WHEN 's0' THEN '专用发票'
+      WHEN 'j0' THEN '机动车销售统一发票'
+      WHEN 'f0' THEN '货物运输业增值税专用发票'
+      ELSE '未知类型'
+      END AS FPZL,
+      a.FPDM, a.FPHM,
+      CASE ZFBZ WHEN 0 THEN '未作废' ELSE '已作废' END AS ZFBZ,
+      CASE KPZT WHEN 'A' THEN '已开票' WHEN 'P' THEN '部分开票' ELSE '未开票' END AS KPZT,
+      CASE DJZT WHEN 'W' THEN '已作废' ELSE '未作废' END AS DJZT,
+      CASE TRIM(BH) WHEN '' THEN '0' ELSE BH END AS BH
+      FROM XXFP a,XSDJ b
+      WHERE a.XSDJBH=b.BH AND a.ZFBZ=0 AND (b.KPZT='A' or b.KPZT='P') AND b.DJZT='W'
+      AND case when(@ISADMIN=1) then 1=1 else a.KPR=@KPRMC end 
+      AND strftime('%m',a.KPRQ)=strftime('%m',@DATE)
+      AND strftime('%Y',a.KPRQ)=strftime('%Y',@DATE)
+      ORDER BY BH, a.FPHM
+      Limit  @endNO-@beginNO+1  Offset @beginNO-1
+    </value>
+    <type>Text</type>
+    <param name="ISADMIN" type="Int32"></param>
+    <param name="KPRMC" type="String"></param>
+    <param name="DATE" type="DateTime"></param>
+  </SQL>
+  
+
+  <SQL id="aisino.Fwkp.Wbjk.FPZFGetXSDJ">
+    <value>
+      SELECT COUNT(*) FROM XSDJ, XXFP WHERE XSDJ.BH=XXFP.XSDJBH AND ZFBZ=0  AND LOWER(KPZT)='a';
+      SELECT
+      CASE lower(a.FPZL || substr(a.YYSBZ, 6, 1)) WHEN 'c' THEN '普通发票'
+      WHEN 's' THEN '专用发票'
+      WHEN 'f' THEN '货物运输业增值税专用发票'
+      WHEN 'j' THEN '机动车销售统一发票'
+      WHEN 'c1' THEN '农产品销售发票'
+      WHEN 'c2' THEN '收购发票'
+      WHEN 'c0' THEN '普通发票'
+      WHEN 's0' THEN '专用发票'
+      WHEN 'j0' THEN '机动车销售统一发票'
+      WHEN 'f0' THEN '货物运输业增值税专用发票'
+      ELSE '未知类型'
+      END AS FPZL,
+      a.FPDM, a.FPHM,
+      CASE ZFBZ WHEN 0 THEN '未作废' ELSE '已作废' END AS ZFBZ,
+      CASE KPZT WHEN 'A' THEN '已开票' WHEN 'P' THEN '部分开票' ELSE '未开票' END AS KPZT,
+      CASE DJZT WHEN 'W' THEN '已作废' ELSE '未作废' END AS DJZT,
+      CASE TRIM(BH) WHEN '' THEN '0' ELSE BH END AS BH
+      FROM XXFP a,XSDJ b
+      WHERE a.XSDJBH=b.BH AND a.ZFBZ=0 AND (b.KPZT='A' or b.KPZT='P')
+      AND case when(@ISADMIN=1) then 1=1 else a.KPR=@KPRMC end
+      AND strftime('%m',a.KPRQ)=strftime('%m',@DATE)
+      AND strftime('%Y',a.KPRQ)=strftime('%Y',@DATE)
+      ORDER BY BH, a.FPHM
+      Limit  @endNO-@beginNO+1  Offset @beginNO-1
+    </value>
+    <type>Text</type>
+    <param name="ISADMIN" type="Int32"></param>
+    <param name="KPRMC" type="String"></param>
+    <param name="DATE" type="DateTime"></param>
+  </SQL>
+
+
+
+
+
+  <!--查询指定记录信息-->
+  <SQL id="aisino.Fwkp.Wbjk.GetInfoXXFP">
+    <value>
+      SELECT  * FROM XXFP WHERE FPZL=@FPZL AND FPDM=@FPDM AND FPHM=@FPHM;
+    </value>
+    <type>Text</type>
+    <param name="FPZL" type="String"></param>
+    <param name="FPDM" type="String"></param>
+    <param name="FPHM" type="String"></param>
+  </SQL>
+
+
+  <!--**************************************************************************************-->
+  <!--*********************************    商品查询   *************************************-->
+  <!--**************************************************************************************-->
+  <!--选择商品名称-->
+  <SQL id="aisino.Fwkp.Wbjk.SelectBM_SP">
+    <value>
+      SELECT DISTINCT(MC) FROM BM_SP 
+    </value>
+    <type>Text</type>
+  </SQL>
+
+  <!--选择客户名称-->
+  <SQL id="aisino.Fwkp.Wbjk.SelectBM_KH">
+    <value>
+      SELECT DISTINCT(MC) FROM BM_KH 
+    </value>
+    <type>Text</type>
+  </SQL>
+
+  <!--选择收货人名称-->
+  <SQL id="aisino.Fwkp.Wbjk.SelectBM_SFHR">
+    <value>
+      SELECT DISTINCT(MC) FROM BM_SFHR 
+    </value>
+    <type>Text</type>
+  </SQL>
+
+  <!--选择购货单位-->
+  <SQL id="aisino.Fwkp.Wbjk.SelectBM_GHDW">
+    <value>
+      SELECT DISTINCT(MC) FROM BM_GHDW 
+    </value>
+    <type>Text</type>
+  </SQL>
+
+  <!--商品查询,所有日期-->
+  <SQL id="aisino.Fwkp.Wbjk.GoodsQueryAllDate">
+    <var name="condition" value=" AND b.FPZL=CASE WHEN(@FPZL='a') THEN b.FPZL ELSE @FPZL END 
+         AND ZFBZ=Case When(@ZFBZ='both') THEN ZFBZ else @ZFBZ END 
+         AND GFSH like(@GFSH)  
+         AND GFMC like(@GFMC)   
+         AND GGXH like(@GGXH)   
+         AND SPMC like(@SPMC)   
+         AND a.FPDM like(@FPDM) 
+         AND a.FPHM like(@FPHM)
+         AND a.FPDM=b.FPDM and a.FPHM=b.FPHM and a.FPZL=b.FPZL
+         AND a.FPHXZ!=1 and a.FPHXZ!=5 and a.FPHXZ!=6"/>
+    <value>
+      SELECT COUNT(*) FROM
+      (SELECT XXFP.XSDJBH as XSDJBH, XXFP_MX.SPMC as SPMC, XXFP_MX.GGXH as GGXH, XXFP_MX.JLDW as JLDW,
+      case when(XXFP_MX.DJ='') then 0 else XXFP_MX.DJ end as DJ,
+      case when(XXFP_MX.SL='') then 0 else XXFP_MX.SL end as SL,
+      lower (XXFP_MX.JE) as JE, XXFP_MX.SLV as SLV, XXFP_MX.SE as SE,XXFP_MX.FPMXXH as FPMXXH,
+      case XXFP_MX.FPZL when 'c' then '普通发票' when 's' then '专用发票' else '未知类型' end as FPZL,
+      XXFP_MX.FPDM as FPDM, XXFP_MX.FPHM as FPHM, XXFP_MX.SPSM as SPSM, XXFP.GFMC as GFMC, XXFP.GFSH as GFSH, XXFP.KPRQ as KPRQ,
+      case XXFP.ZFBZ when 1 then '是' else '否' end as ZFBZ,
+      XXFP.KPJH as KPJH FROM XXFP_MX, XXFP where 1=1
+      AND CASE WHEN(@FPZL='a') THEN (XXFP.FPZL='c' or XXFP.FPZL='s') ELSE XXFP.FPZL=@FPZL END
+      AND ZFBZ=Case When(@ZFBZ='both') THEN ZFBZ else @ZFBZ END
+      AND GFSH like(@GFSH)
+      AND GFMC like(@GFMC)
+      AND GGXH like(@GGXH)
+      AND SPMC like(@SPMC)
+      AND XXFP.FPDM like(@FPDM)
+      AND XXFP.FPHM like(@FPHM)
+      AND XXFP_MX.FPDM=XXFP.FPDM and XXFP_MX.FPHM=XXFP.FPHM and XXFP_MX.FPZL=XXFP.FPZL
+      AND XXFP_MX.FPHXZ!=1 and XXFP_MX.FPHXZ!=5
+      union
+      SELECT XXFP.XSDJBH, XXFP_XHQD.SPMC, XXFP_XHQD.GGXH, XXFP_XHQD.JLDW,
+      case when(XXFP_XHQD.DJ='') then 0 else XXFP_XHQD.DJ end as DJ,
+      case when(XXFP_XHQD.SL='') then 0 else XXFP_XHQD.SL end as SL,
+      lower(XXFP_XHQD.JE), XXFP_XHQD.SLV, lower(XXFP_XHQD.SE),XXFP_XHQD.FPMXXH as FPMXXH,
+      case XXFP_XHQD.FPZL when 'c' then '普通发票' when 's' then '专用发票' else '未知类型' end as FPZL,
+      XXFP_XHQD.FPDM, XXFP_XHQD.FPHM, XXFP_XHQD.SPSM, XXFP.GFMC, XXFP.GFSH, XXFP.KPRQ,
+      case XXFP.ZFBZ when 1 then '是' else '否' end as ZFBZ,
+      XXFP.KPJH  FROM (XXFP_XHQD), XXFP where 1=1
+      AND CASE WHEN(@FPZL='a') THEN (XXFP.FPZL='c' or XXFP.FPZL='s') ELSE XXFP.FPZL=@FPZL END
+      AND ZFBZ=Case When(@ZFBZ='both') THEN ZFBZ else @ZFBZ END
+      AND GFSH like(@GFSH)
+      AND GFMC like(@GFMC)
+      AND GGXH like(@GGXH)
+      AND SPMC like(@SPMC)
+      AND XXFP.FPDM like(@FPDM)
+      AND XXFP.FPHM like(@FPHM)
+      AND XXFP_XHQD.FPDM=XXFP.FPDM and XXFP_XHQD.FPHM=XXFP.FPHM and XXFP_XHQD.FPZL=XXFP.FPZL
+      AND XXFP_XHQD.FPHXZ!=5) WHERE 1=1;
+
+      SELECT XXFP.XSDJBH as XSDJBH, XXFP_MX.SPMC as SPMC, XXFP_MX.GGXH as GGXH, XXFP_MX.JLDW as JLDW,XXFP_MX.FPMXXH as FPMXXH,
+      case when(XXFP_MX.DJ='') then 0 else XXFP_MX.DJ end as DJ,
+      case when(XXFP_MX.SL='') then 0 else XXFP_MX.SL end as SL,
+      lower (XXFP_MX.JE) as JE,
+      case  lower( ifnull(XXFP_MX.SLV, '2'))
+      WHEN  '2' THEN '多税率' 
+      else  lower(XXFP_MX.SLV)
+      end AS SLV,
+      lower(XXFP_MX.SE )as SE,
+      CASE lower(XXFP.FPZL || substr(XXFP.YYSBZ, 6, 1)) WHEN 'c' THEN '普通发票'
+      WHEN 's' THEN '专用发票'
+      WHEN 'f' THEN '货物运输业增值税专用发票'
+      WHEN 'j' THEN '机动车销售统一发票'
+      WHEN 'c1' THEN '农产品销售发票'
+      WHEN 'c2' THEN '收购发票'
+      WHEN 'c0' THEN '普通发票'
+      WHEN 's0' THEN '专用发票'
+      WHEN 'j0' THEN '机动车销售统一发票'
+      WHEN 'f0' THEN '货物运输业增值税专用发票'
+      ELSE '未知类型'
+      END AS FPZL,
+      XXFP_MX.FPDM as FPDM,
+      case length(XXFP_MX.FPHM) when 1 then '0000000'||XXFP_MX.FPHM
+      when 2 then '000000'||XXFP_MX.FPHM
+      when 3 then '00000'||XXFP_MX.FPHM
+      when 4 then '0000'||XXFP_MX.FPHM
+      when 5 then '000'||XXFP_MX.FPHM
+      when 6 then '00'||XXFP_MX.FPHM
+      when 7 then '0'||XXFP_MX.FPHM
+      else lower(XXFP_MX.FPHM)
+      end as FPHM,
+      XXFP_MX.SPSM as SPSM, XXFP.GFMC as GFMC, XXFP.GFSH as GFSH, XXFP.KPRQ as KPRQ,
+      case XXFP.ZFBZ when 1 then '是' else '否' end as ZFBZ,
+      XXFP.KPJH as KPJH,XXFP.YYSBZ as YYSBZ,LSLVBS,XXFP.SLV FROM XXFP_MX, XXFP where 1=1
+      AND CASE WHEN(@FPZL='a') THEN (XXFP.FPZL='c' or XXFP.FPZL='s') ELSE XXFP.FPZL=@FPZL END
+      AND ZFBZ=Case When(@ZFBZ='both') THEN ZFBZ else @ZFBZ END
+      AND GFSH like(@GFSH)
+      AND GFMC like(@GFMC)
+      AND GGXH like(@GGXH)
+      AND SPMC like(@SPMC)
+      AND XXFP.FPDM like(@FPDM)
+      AND XXFP.FPHM like(@FPHM)
+      AND XXFP_MX.FPDM=XXFP.FPDM and XXFP_MX.FPHM=XXFP.FPHM and XXFP_MX.FPZL=XXFP.FPZL
+      AND XXFP_MX.FPHXZ!=1 and XXFP_MX.FPHXZ!=5
+      union
+      SELECT XXFP.XSDJBH, XXFP_XHQD.SPMC, XXFP_XHQD.GGXH, XXFP_XHQD.JLDW,XXFP_XHQD.FPMXXH as FPMXXH,
+      case when(XXFP_XHQD.DJ='') then 0 else XXFP_XHQD.DJ end as DJ,
+      case when(XXFP_XHQD.SL='') then 0 else XXFP_XHQD.SL end as SL,
+      lower(XXFP_XHQD.JE),
+      case  lower(ifnull(XXFP_XHQD.SLV, '2'))
+      WHEN  '2' THEN '多税率'
+      else  lower(XXFP_XHQD.SLV)
+      end AS SLV,
+      lower(XXFP_XHQD.SE),
+      CASE lower(XXFP.FPZL || substr(XXFP.YYSBZ, 6, 1)) WHEN 'c' THEN '普通发票'
+      WHEN 's' THEN '专用发票'
+      WHEN 'f' THEN '货物运输业增值税专用发票'
+      WHEN 'j' THEN '机动车销售统一发票'
+      WHEN 'c1' THEN '农产品销售发票'
+      WHEN 'c2' THEN '收购发票'
+      WHEN 'c0' THEN '普通发票'
+      WHEN 's0' THEN '专用发票'
+      WHEN 'j0' THEN '机动车销售统一发票'
+      WHEN 'f0' THEN '货物运输业增值税专用发票'
+      ELSE '未知类型'
+      END AS FPZL,
+      XXFP_XHQD.FPDM,
+      case length(XXFP_XHQD.FPHM) when 1 then '0000000'||XXFP_XHQD.FPHM
+      when 2 then '000000'||XXFP_XHQD.FPHM
+      when 3 then '00000'||XXFP_XHQD.FPHM
+      when 4 then '0000'||XXFP_XHQD.FPHM
+      when 5 then '000'||XXFP_XHQD.FPHM
+      when 6 then '00'||XXFP_XHQD.FPHM
+      when 7 then '0'||XXFP_XHQD.FPHM
+      else lower(XXFP_XHQD.FPHM)
+      end as FPHM,
+      XXFP_XHQD.SPSM, XXFP.GFMC, XXFP.GFSH, XXFP.KPRQ,
+      case XXFP.ZFBZ when 1 then '是' else '否' end as ZFBZ,
+      XXFP.KPJH,XXFP.YYSBZ as YYSBZ,LSLVBS,XXFP.SLV FROM (XXFP_XHQD), XXFP where 1=1
+      AND CASE WHEN(@FPZL='a') THEN (XXFP.FPZL='c' or XXFP.FPZL='s') ELSE XXFP.FPZL=@FPZL END
+      AND ZFBZ=Case When(@ZFBZ='both') THEN ZFBZ else @ZFBZ END
+      AND GFSH like(@GFSH)
+      AND GFMC like(@GFMC)
+      AND GGXH like(@GGXH)
+      AND SPMC like(@SPMC)
+      AND XXFP.FPDM like(@FPDM)
+      AND XXFP.FPHM like(@FPHM)
+      AND XXFP_XHQD.FPDM=XXFP.FPDM and XXFP_XHQD.FPHM=XXFP.FPHM and XXFP_XHQD.FPZL=XXFP.FPZL
+      AND XXFP_XHQD.FPHXZ!=5
+      ORDER BY FPHM,FPMXXH
+      Limit @endNO-@beginNO+1 Offset @beginNO-1
+    </value>
+    <param name="FPZL" type="String"></param>
+    <param name="FPDM" type="String"></param>
+    <param name="FPHM" type="String"></param>
+    <param name="GFMC" type="String"></param>
+    <param name="GFSH" type="String"></param>
+    <param name="GGXH" type="String"></param>
+    <param name="SPMC" type="String"></param>
+    <param name="ZFBZ" type="String"></param>
+    <type>Text</type>
+  </SQL>
+
+  <!--商品查询,指定日期-->
+  <SQL id="aisino.Fwkp.Wbjk.GoodsQueryTheDate">
+    <var name="condition" value="AND b.FPZL=Case When(@FPZL='a') then b.FPZL else @FPZL end 
+         AND ZFBZ=Case When(@ZFBZ='both') then ZFBZ else @ZFBZ end 
+         AND GFSH like(@GFSH)  
+         AND GFMC like(@GFMC)   
+         AND GGXH like(@GGXH)   
+         AND SPMC like(@SPMC)   
+         AND a.FPDM like(@FPDM) 
+         AND a.FPHM like(@FPHM)
+         AND (KPRQ between @QSRQ and @JZRQ)
+         AND a.FPDM=b.FPDM and a.FPHM=b.FPHM and a.FPZL=b.FPZL "/>
+    <value>
+      SELECT COUNT(*) FROM
+      (SELECT XXFP.XSDJBH as XSDJBH, XXFP_MX.SPMC as SPMC, XXFP_MX.GGXH as GGXH, XXFP_MX.JLDW as JLDW,
+      case when(XXFP_MX.DJ='') then 0 else XXFP_MX.DJ end as DJ,
+      case when(XXFP_MX.SL='') then 0 else XXFP_MX.SL end as SL,
+      XXFP_MX.JE as JE, XXFP_MX.SLV as SLV, XXFP_MX.SE as SE,XXFP_MX.FPMXXH as FPMXXH,
+      case XXFP_MX.FPZL when 'c' then '普通发票' when 's' then '专用发票' else '未知类型' end as FPZL,
+      XXFP_MX.FPDM as FPDM, XXFP_MX.FPHM as FPHM, XXFP_MX.SPSM as SPSM, XXFP.GFMC as GFMC, XXFP.GFSH as GFSH, XXFP.KPRQ as KPRQ,
+      case XXFP.ZFBZ when 1 then '是' else '否' end as ZFBZ,
+      XXFP.KPJH as KPJH FROM XXFP_MX, XXFP where 1=1
+      AND CASE WHEN(@FPZL='a') THEN (XXFP.FPZL='c' or XXFP.FPZL='s') ELSE XXFP.FPZL=@FPZL END
+      AND ZFBZ=Case When(@ZFBZ='both') THEN ZFBZ else @ZFBZ END
+      AND GFSH like(@GFSH)
+      AND GFMC like(@GFMC)
+      AND GGXH like(@GGXH)
+      AND SPMC like(@SPMC)
+      AND XXFP.FPDM like(@FPDM)
+      AND XXFP.FPHM like(@FPHM)
+      AND (KPRQ between @QSRQ and @JZRQ)
+      AND XXFP_MX.FPDM=XXFP.FPDM and XXFP_MX.FPHM=XXFP.FPHM and XXFP_MX.FPZL=XXFP.FPZL
+      AND XXFP_MX.FPHXZ!=1 and XXFP_MX.FPHXZ!=5
+      union
+      SELECT XXFP.XSDJBH, XXFP_XHQD.SPMC, XXFP_XHQD.GGXH, XXFP_XHQD.JLDW,
+      case when(XXFP_XHQD.DJ='') then 0 else XXFP_XHQD.DJ end as DJ,
+      case when(XXFP_XHQD.SL='') then 0 else XXFP_XHQD.SL end as SL,
+      XXFP_XHQD.JE, XXFP_XHQD.SLV, XXFP_XHQD.SE,XXFP_XHQD.FPMXXH as FPMXXH,
+      case XXFP_XHQD.FPZL when 'c' then '普通发票' when 's' then '专用发票' else '未知类型' end as FPZL,
+      XXFP_XHQD.FPDM, XXFP_XHQD.FPHM, XXFP_XHQD.SPSM, XXFP.GFMC, XXFP.GFSH, XXFP.KPRQ,
+      case XXFP.ZFBZ when 1 then '是' else '否' end as ZFBZ,
+      XXFP.KPJH FROM (XXFP_XHQD), XXFP where 1=1
+      AND CASE WHEN(@FPZL='a') THEN (XXFP.FPZL='c' or XXFP.FPZL='s') ELSE XXFP.FPZL=@FPZL END
+      AND ZFBZ=Case When(@ZFBZ='both') THEN ZFBZ else @ZFBZ END
+      AND GFSH like(@GFSH)
+      AND GFMC like(@GFMC)
+      AND GGXH like(@GGXH)
+      AND SPMC like(@SPMC)
+      AND XXFP.FPDM like(@FPDM)
+      AND XXFP.FPHM like(@FPHM)
+      AND (KPRQ between @QSRQ and @JZRQ)
+      AND XXFP_XHQD.FPDM=XXFP.FPDM and XXFP_XHQD.FPHM=XXFP.FPHM and XXFP_XHQD.FPZL=XXFP.FPZL
+      AND XXFP_XHQD.FPHXZ!=5) WHERE 1=1;
+
+      SELECT XXFP.XSDJBH as XSDJBH, XXFP_MX.SPMC as SPMC, XXFP_MX.GGXH as GGXH, XXFP_MX.JLDW as JLDW,XXFP_MX.FPMXXH as FPMXXH,
+      case when(XXFP_MX.DJ='') then 0 else XXFP_MX.DJ end as DJ,
+      case when(XXFP_MX.SL='') then 0 else XXFP_MX.SL end as SL,
+      lower(XXFP_MX.JE) as JE,
+      case  lower(ifnull(XXFP_MX.SLV, '2'))
+      WHEN  '2' THEN '多税率'
+      else  lower(XXFP_MX.SLV)
+      end AS SLV,
+      lower(XXFP_MX.SE) as SE,
+      CASE lower(XXFP.FPZL || substr(XXFP.YYSBZ, 6, 1)) WHEN 'c' THEN '普通发票'
+      WHEN 's' THEN '专用发票'
+      WHEN 'f' THEN '货物运输业增值税专用发票'
+      WHEN 'j' THEN '机动车销售统一发票'
+      WHEN 'c1' THEN '农产品销售发票'
+      WHEN 'c2' THEN '收购发票'
+      WHEN 'c0' THEN '普通发票'
+      WHEN 's0' THEN '专用发票'
+      WHEN 'j0' THEN '机动车销售统一发票'
+      WHEN 'f0' THEN '货物运输业增值税专用发票'
+      ELSE '未知类型'
+      END AS FPZL,
+      XXFP_MX.FPDM as FPDM,
+      case length(XXFP_MX.FPHM) when 1 then '0000000'||XXFP_MX.FPHM
+      when 2 then '000000'||XXFP_MX.FPHM
+      when 3 then '00000'||XXFP_MX.FPHM
+      when 4 then '0000'||XXFP_MX.FPHM
+      when 5 then '000'||XXFP_MX.FPHM
+      when 6 then '00'||XXFP_MX.FPHM
+      when 7 then '0'||XXFP_MX.FPHM
+      else lower(XXFP_MX.FPHM)
+      end as FPHM,
+      XXFP_MX.SPSM as SPSM, XXFP.GFMC as GFMC, XXFP.GFSH as GFSH, XXFP.KPRQ as KPRQ,
+      case XXFP.ZFBZ when 1 then '是' else '否' end as ZFBZ,
+      XXFP.KPJH as KPJH, XXFP.YYSBZ as YYSBZ,LSLVBS,XXFP.SLV FROM XXFP_MX, XXFP where 1=1
+      AND CASE WHEN(@FPZL='a') THEN (XXFP.FPZL='c' or XXFP.FPZL='s') ELSE XXFP.FPZL=@FPZL END
+      AND ZFBZ=Case When(@ZFBZ='both') THEN ZFBZ else @ZFBZ END
+      AND GFSH like(@GFSH)
+      AND GFMC like(@GFMC)
+      AND GGXH like(@GGXH)
+      AND SPMC like(@SPMC)
+      AND XXFP.FPDM like(@FPDM)
+      AND XXFP.FPHM like(@FPHM)
+      AND (KPRQ between @QSRQ and @JZRQ)
+      AND XXFP_MX.FPDM=XXFP.FPDM and XXFP_MX.FPHM=XXFP.FPHM and XXFP_MX.FPZL=XXFP.FPZL
+      AND XXFP_MX.FPHXZ!=1 and XXFP_MX.FPHXZ!=5
+      union
+      SELECT XXFP.XSDJBH, XXFP_XHQD.SPMC, XXFP_XHQD.GGXH, XXFP_XHQD.JLDW,XXFP_XHQD.FPMXXH as FPMXXH,
+      case when(XXFP_XHQD.DJ='') then 0 else XXFP_XHQD.DJ end as DJ,
+      case when(XXFP_XHQD.SL='') then 0 else XXFP_XHQD.SL end as SL,
+      lower(XXFP_XHQD.JE),
+      case  lower(ifnull(XXFP_XHQD.SLV, '2'))
+      WHEN  '2' THEN '多税率'
+      else lower(XXFP_XHQD.SLV)
+      end AS SLV,
+      lower(XXFP_XHQD.SE),
+      CASE lower(XXFP.FPZL || substr(XXFP.YYSBZ, 6, 1)) WHEN 'c' THEN '普通发票'
+      WHEN 's' THEN '专用发票'
+      WHEN 'f' THEN '货物运输业增值税专用发票'
+      WHEN 'j' THEN '机动车销售统一发票'
+      WHEN 'c1' THEN '农产品销售发票'
+      WHEN 'c2' THEN '收购发票'
+      WHEN 'c0' THEN '普通发票'
+      WHEN 's0' THEN '专用发票'
+      WHEN 'j0' THEN '机动车销售统一发票'
+      WHEN 'f0' THEN '货物运输业增值税专用发票'
+      ELSE '未知类型'
+      END AS FPZL,
+      XXFP_XHQD.FPDM,
+      case length(XXFP_XHQD.FPHM) when 1 then '0000000'||XXFP_XHQD.FPHM
+      when 2 then '000000'||XXFP_XHQD.FPHM
+      when 3 then '00000'||XXFP_XHQD.FPHM
+      when 4 then '0000'||XXFP_XHQD.FPHM
+      when 5 then '000'||XXFP_XHQD.FPHM
+      when 6 then '00'||XXFP_XHQD.FPHM
+      when 7 then '0'||XXFP_XHQD.FPHM
+      else lower(XXFP_XHQD.FPHM)
+      end as FPHM,
+      XXFP_XHQD.SPSM, XXFP.GFMC, XXFP.GFSH, XXFP.KPRQ,
+      case XXFP.ZFBZ when 1 then '是' else '否' end as ZFBZ,
+      XXFP.KPJH,XXFP.YYSBZ as YYSBZ,LSLVBS,XXFP.SLV FROM (XXFP_XHQD), XXFP where 1=1
+      AND CASE WHEN(@FPZL='a') THEN (XXFP.FPZL='c' or XXFP.FPZL='s') ELSE XXFP.FPZL=@FPZL END
+      AND ZFBZ=Case When(@ZFBZ='both') THEN ZFBZ else @ZFBZ END
+      AND GFSH like(@GFSH)
+      AND GFMC like(@GFMC)
+      AND GGXH like(@GGXH)
+      AND SPMC like(@SPMC)
+      AND XXFP.FPDM like(@FPDM)
+      AND XXFP.FPHM like(@FPHM)
+      AND (KPRQ between @QSRQ and @JZRQ)
+      AND XXFP_XHQD.FPDM=XXFP.FPDM and XXFP_XHQD.FPHM=XXFP.FPHM and XXFP_XHQD.FPZL=XXFP.FPZL
+      AND XXFP_XHQD.FPHXZ!=5
+      ORDER BY FPHM,FPMXXH
+      Limit @endNO-@beginNO+1 Offset @beginNO-1
+    </value>
+    <param name="FPZL" type="String"></param>
+    <param name="FPDM" type="String"></param>
+    <param name="FPHM" type="String"></param>
+    <param name="QSRQ" type="DateTime"></param>
+    <param name="JZRQ" type="DateTime"></param>
+    <param name="GFMC" type="String"></param>
+    <param name="GFSH" type="String"></param>
+    <param name="GGXH" type="String"></param>
+    <param name="SPMC" type="String"></param>
+    <param name="ZFBZ" type="String"></param>
+    <type>Text</type>
+  </SQL>
+  
+  <!--商品查询,所有日期,用于导出-->
+  <SQL id="aisino.Fwkp.Wbjk.GoodsQueryAllDateExport">
+    <value>
+      SELECT XXFP.XSDJBH as XSDJBH, XXFP_MX.SPMC as SPMC, XXFP_MX.GGXH as GGXH, XXFP_MX.JLDW as JLDW,
+      case when(XXFP_MX.DJ='') then 0 else XXFP_MX.DJ end as DJ,
+      case when(XXFP_MX.SL='') then 0 else XXFP_MX.SL end as SL,
+      lower(XXFP_MX.JE) as JE, lower(XXFP_MX.SLV) as SLV, lower(XXFP_MX.SE) as SE,
+      CASE lower(XXFP.FPZL || substr(XXFP.YYSBZ, 6, 1)) WHEN 'c' THEN '普通发票'
+      WHEN 's' THEN '专用发票'
+      WHEN 'f' THEN '货物运输业增值税专用发票'
+      WHEN 'j' THEN '机动车销售统一发票'
+      WHEN 'c1' THEN '农产品销售发票'
+      WHEN 'c2' THEN '收购发票'
+      WHEN 'c0' THEN '普通发票'
+      WHEN 's0' THEN '专用发票'
+      WHEN 'j0' THEN '机动车销售统一发票'
+      WHEN 'f0' THEN '货物运输业增值税专用发票'
+      ELSE '未知类型'
+      END AS FPZL,
+      XXFP_MX.FPDM as FPDM, XXFP_MX.FPHM as FPHM, XXFP_MX.SPSM as SPSM, XXFP.GFMC as GFMC, XXFP.GFSH as GFSH, XXFP.KPRQ as KPRQ,
+      case XXFP.ZFBZ when 1 then '是' else '否' end as ZFBZ,
+      XXFP.KPJH as KPJH, XXFP_MX.FPMXXH as FPMXXH FROM XXFP_MX, XXFP where 1=1
+      AND CASE WHEN(@FPZL='a') THEN (XXFP.FPZL='c' or XXFP.FPZL='s') ELSE XXFP.FPZL=@FPZL END
+      AND ZFBZ=Case When(@ZFBZ='both') THEN ZFBZ else @ZFBZ END
+      AND GFSH like(@GFSH)
+      AND GFMC like(@GFMC)
+      AND GGXH like(@GGXH)
+      AND SPMC like(@SPMC)
+      AND XXFP.FPDM like(@FPDM)
+      AND XXFP.FPHM like(@FPHM)
+      AND XXFP_MX.FPDM=XXFP.FPDM and XXFP_MX.FPHM=XXFP.FPHM and XXFP_MX.FPZL=XXFP.FPZL
+      AND XXFP_MX.FPHXZ!=1 and XXFP_MX.FPHXZ!=5
+      union
+      SELECT XXFP.XSDJBH, XXFP_XHQD.SPMC, XXFP_XHQD.GGXH, XXFP_XHQD.JLDW,
+      case when(XXFP_XHQD.DJ='') then 0 else XXFP_XHQD.DJ end as DJ,
+      case when(XXFP_XHQD.SL='') then 0 else XXFP_XHQD.SL end as SL,
+      lower(XXFP_XHQD.JE), lower(XXFP_XHQD.SLV), lower(XXFP_XHQD.SE),
+      CASE lower(XXFP.FPZL || substr(XXFP.YYSBZ, 6, 1)) WHEN 'c' THEN '普通发票'
+      WHEN 's' THEN '专用发票'
+      WHEN 'f' THEN '货物运输业增值税专用发票'
+      WHEN 'j' THEN '机动车销售统一发票'
+      WHEN 'c1' THEN '农产品销售发票'
+      WHEN 'c2' THEN '收购发票'
+      WHEN 'c0' THEN '普通发票'
+      WHEN 's0' THEN '专用发票'
+      WHEN 'j0' THEN '机动车销售统一发票'
+      WHEN 'f0' THEN '货物运输业增值税专用发票'
+      ELSE '未知类型'
+      END AS FPZL,
+      XXFP_XHQD.FPDM, XXFP_XHQD.FPHM, XXFP_XHQD.SPSM, XXFP.GFMC, XXFP.GFSH, XXFP.KPRQ,
+      case XXFP.ZFBZ when 1 then '是' else '否' end as ZFBZ,
+      XXFP.KPJH, XXFP_XHQD.FPMXXH FROM (XXFP_XHQD), XXFP where 1=1
+      AND CASE WHEN(@FPZL='a') THEN (XXFP.FPZL='c' or XXFP.FPZL='s') ELSE XXFP.FPZL=@FPZL END
+      AND ZFBZ=Case When(@ZFBZ='both') THEN ZFBZ else @ZFBZ END
+      AND GFSH like(@GFSH)
+      AND GFMC like(@GFMC)
+      AND GGXH like(@GGXH)
+      AND SPMC like(@SPMC)
+      AND XXFP.FPDM like(@FPDM)
+      AND XXFP.FPHM like(@FPHM)
+      AND XXFP_XHQD.FPDM=XXFP.FPDM and XXFP_XHQD.FPHM=XXFP.FPHM and XXFP_XHQD.FPZL=XXFP.FPZL
+      AND XXFP_XHQD.FPHXZ!=5
+	  ORDER BY FPHM,FPMXXH
+    </value>
+    <param name="FPZL" type="String"></param>
+    <param name="FPDM" type="String"></param>
+    <param name="FPHM" type="String"></param>
+    <param name="QSRQ" type="DateTime"></param>
+    <param name="JZRQ" type="DateTime"></param>
+    <param name="GFMC" type="String"></param>
+    <param name="GFSH" type="String"></param>
+    <param name="GGXH" type="String"></param>
+    <param name="SPMC" type="String"></param>
+    <param name="ZFBZ" type="String"></param>
+    <type>Text</type>
+  </SQL>
+
+  <!--商品查询,指定日期,用于导出-->
+  <SQL id="aisino.Fwkp.Wbjk.GoodsQueryTheDateExport">
+    <value>
+      SELECT XXFP.XSDJBH as XSDJBH, XXFP_MX.SPMC as SPMC, XXFP_MX.GGXH as GGXH, XXFP_MX.JLDW as JLDW,
+      case when(XXFP_MX.DJ='') then 0 else XXFP_MX.DJ end as DJ,
+      case when(XXFP_MX.SL='') then 0 else XXFP_MX.SL end as SL,
+      lower(XXFP_MX.JE) as JE, lower(XXFP_MX.SLV) as SLV, lower(XXFP_MX.SE) as SE,
+      CASE lower(XXFP.FPZL || substr(XXFP.YYSBZ, 6, 1)) WHEN 'c' THEN '普通发票'
+      WHEN 's' THEN '专用发票'
+      WHEN 'f' THEN '货物运输业增值税专用发票'
+      WHEN 'j' THEN '机动车销售统一发票'
+      WHEN 'c1' THEN '农产品销售发票'
+      WHEN 'c2' THEN '收购发票'
+      WHEN 'c0' THEN '普通发票'
+      WHEN 's0' THEN '专用发票'
+      WHEN 'j0' THEN '机动车销售统一发票'
+      WHEN 'f0' THEN '货物运输业增值税专用发票'
+      ELSE '未知类型'
+      END AS FPZL,
+      XXFP_MX.FPDM as FPDM, XXFP_MX.FPHM as FPHM, XXFP_MX.SPSM as SPSM, XXFP.GFMC as GFMC, XXFP.GFSH as GFSH, XXFP.KPRQ as KPRQ,
+      case XXFP.ZFBZ when 1 then '是' else '否' end as ZFBZ,
+      XXFP.KPJH as KPJH, XXFP_MX.FPMXXH as FPMXXH FROM XXFP_MX, XXFP where 1=1
+      AND CASE WHEN(@FPZL='a') THEN (XXFP.FPZL='c' or XXFP.FPZL='s') ELSE XXFP.FPZL=@FPZL END
+      AND ZFBZ=Case When(@ZFBZ='both') THEN ZFBZ else @ZFBZ END
+      AND GFSH like(@GFSH)
+      AND GFMC like(@GFMC)
+      AND GGXH like(@GGXH)
+      AND SPMC like(@SPMC)
+      AND XXFP.FPDM like(@FPDM)
+      AND XXFP.FPHM like(@FPHM)
+      AND (KPRQ between @QSRQ and @JZRQ)
+      AND XXFP_MX.FPDM=XXFP.FPDM and XXFP_MX.FPHM=XXFP.FPHM and XXFP_MX.FPZL=XXFP.FPZL
+      AND XXFP_MX.FPHXZ!=1 and XXFP_MX.FPHXZ!=5
+      union
+      SELECT XXFP.XSDJBH, XXFP_XHQD.SPMC, XXFP_XHQD.GGXH, XXFP_XHQD.JLDW,
+      case when(XXFP_XHQD.DJ='') then 0 else XXFP_XHQD.DJ end as DJ,
+      case when(XXFP_XHQD.SL='') then 0 else XXFP_XHQD.SL end as SL,
+      lower(XXFP_XHQD.JE), lower(XXFP_XHQD.SLV), lower(XXFP_XHQD.SE),
+      CASE lower(XXFP.FPZL || substr(XXFP.YYSBZ, 6, 1)) WHEN 'c' THEN '普通发票'
+      WHEN 's' THEN '专用发票'
+      WHEN 'f' THEN '货物运输业增值税专用发票'
+      WHEN 'j' THEN '机动车销售统一发票'
+      WHEN 'c1' THEN '农产品销售发票'
+      WHEN 'c2' THEN '收购发票'
+      WHEN 'c0' THEN '普通发票'
+      WHEN 's0' THEN '专用发票'
+      WHEN 'j0' THEN '机动车销售统一发票'
+      WHEN 'f0' THEN '货物运输业增值税专用发票'
+      ELSE '未知类型'
+      END AS FPZL,
+      XXFP_XHQD.FPDM, XXFP_XHQD.FPHM, XXFP_XHQD.SPSM, XXFP.GFMC, XXFP.GFSH, XXFP.KPRQ,
+      case XXFP.ZFBZ when 1 then '是' else '否' end as ZFBZ,
+      XXFP.KPJH, XXFP_XHQD.FPMXXH FROM (XXFP_XHQD), XXFP where 1=1
+      AND CASE WHEN(@FPZL='a') THEN (XXFP.FPZL='c' or XXFP.FPZL='s') ELSE XXFP.FPZL=@FPZL END
+      AND ZFBZ=Case When(@ZFBZ='both') THEN ZFBZ else @ZFBZ END
+      AND GFSH like(@GFSH)
+      AND GFMC like(@GFMC)
+      AND GGXH like(@GGXH)
+      AND SPMC like(@SPMC)
+      AND XXFP.FPDM like(@FPDM)
+      AND XXFP.FPHM like(@FPHM)
+      AND (KPRQ between @QSRQ and @JZRQ)
+      AND XXFP_XHQD.FPDM=XXFP.FPDM and XXFP_XHQD.FPHM=XXFP.FPHM and XXFP_XHQD.FPZL=XXFP.FPZL
+      AND XXFP_XHQD.FPHXZ!=5
+	  ORDER BY FPHM,FPMXXH
+    </value>
+    <param name="FPZL" type="String"></param>
+    <param name="FPDM" type="String"></param>
+    <param name="FPHM" type="String"></param>
+    <param name="QSRQ" type="DateTime"></param>
+    <param name="JZRQ" type="DateTime"></param>
+    <param name="GFMC" type="String"></param>
+    <param name="GFSH" type="String"></param>
+    <param name="GGXH" type="String"></param>
+    <param name="SPMC" type="String"></param>
+    <param name="ZFBZ" type="String"></param>
+    <type>Text</type>
+  </SQL>
+
+  <!--商品查询 全部数据 导出-->
+  <SQL id="aisino.Fwkp.Wbjk.SPCXQueryGetAllDate">
+    <var name="condition" value="b.FPZL=Case When(@FPZL='a') then b.FPZL else @FPZL end 
+         and ZFBZ=Case When(@ZFBZ='both') then ZFBZ else @ZFBZ end 
+         and  GFSH like  @GFSH 
+         and  GFMC like  @GFMC 
+         and  GGXH like  @GGXH 
+         and  SPMC like  @SPMC 
+         and  a.FPDM like  @FPDM 
+         and  a.FPHM like  @FPHM  "/>
+    <value>
+      SELECT
+      b.[XSDJBH],a.[SPMC],a.[GGXH],a.[JLDW],a.[DJ],a.[SL],a.[JE],a.[SLV],a.[SE],
+      case a.[FPZL]  when 'c' then '普通发票' when 's' then '专用发票' else '未知类型' end as [FPZL],
+      a.[FPDM],a.[FPHM],--XXFP_MX
+      b.[GFMC],b.[GFSH],b.[KPRQ],case b.[ZFBZ] when 1 then '是' else '否' end as [ZFBZ],b.[KPJH]    --XXFP
+      from (select * from XXFP_MX union Select * from XXFP_XHQD) as a inner join XXFP as b
+      on a.FPDM=b.FPDM
+      where  #condition#
+    </value>
+    <param name="FPZL" type="String"></param>
+    <param name="FPDM" type="String"></param>
+    <param name="FPHM" type="String"></param>
+    <param name="QSRQ" type="DateTime"></param>
+    <param name="JZRQ" type="DateTime"></param>
+    <param name="GFMC" type="String"></param>
+    <param name="GFSH" type="String"></param>
+    <param name="GGXH" type="String"></param>
+    <param name="SPMC" type="String"></param>
+    <param name="ZFBZ" type="String"></param>
+    <type>Text</type>
+  </SQL>
+
+  <!--商品查询 全部数据 导出-->
+  <SQL id="aisino.Fwkp.Wbjk.SPCXQueryGet">
+    <var name="condition" value="b.FPZL=Case When(@FPZL='a') then b.FPZL else @FPZL end 
+         and ZFBZ=Case When(@ZFBZ='both') then ZFBZ else @ZFBZ end 
+         and  GFSH like  @GFSH 
+         and  GFMC like  @GFMC 
+         and  GGXH like  @GGXH 
+         and  SPMC like  @SPMC 
+         and  a.FPDM like  @FPDM 
+         and  a.FPHM like  @FPHM 
+         and  KPRQ  between @QSRQ and  @JZRQ "/>
+    <value>
+      SELECT
+      b.[XSDJBH],a.[SPMC],a.[GGXH],a.[JLDW],a.[DJ],a.[SL],a.[JE],a.[SLV],a.[SE],
+      case a.[FPZL]  when 'c' then '普通发票' when 's' then '专用发票' else '未知类型' end as [FPZL],a.[FPDM],a.[FPHM],--XXFP_MX
+      b.[GFMC],b.[GFSH],b.[KPRQ],case b.[ZFBZ] when 1 then '是' else '否' end as [ZFBZ],b.[KPJH]    --XXFP
+      from (select * from XXFP_MX union Select * from XXFP_XHQD) as a inner join XXFP as b
+      on a.FPDM=b.FPDM
+      where  #condition#
+    </value>
+    <param name="FPZL" type="String"></param>
+    <param name="FPDM" type="String"></param>
+    <param name="FPHM" type="String"></param>
+    <param name="QSRQ" type="DateTime"></param>
+    <param name="JZRQ" type="DateTime"></param>
+    <param name="GFMC" type="String"></param>
+    <param name="GFSH" type="String"></param>
+    <param name="GGXH" type="String"></param>
+    <param name="SPMC" type="String"></param>
+    <param name="ZFBZ" type="String"></param>
+    <type>Text</type>
+  </SQL>
+
+  <!--**************************************************************************************-->
+  <!--*********************************   发票生成   *************************************-->
+  <!--**************************************************************************************-->
+  <!-- 查询单据 用于生成-->
+  <SQL id="aisino.Fwkp.Wbjk.FPSCGetXSDJ">
+    <var name="condition" value=" DJZL= @DJZL  and KPZT &lt;> 'A' and DJZT='Y'"/>
+    <value>
+      SELECT COUNT(BH) from  XSDJ where #condition# ;
+
+      SELECT  [DJZT], [KPZT], BH,GFMC,GFSH,GFDZDH,GFYHZH,JEHJ,SLV,BZ
+      from XSDJ  where  #condition#
+      ORDER BY DJRQ DESC Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+    </value>
+    <type>Text</type>
+    <param name="DJZL" type="String"></param>
+  </SQL>
+
+ 
+
+  <!-- 生成发票成功后更新对应销售单据明细中的发票代码和号码字段-->
+  <SQL id="aisino.Fwkp.Wbjk.FPSC_UpdateXSDJMX">
+    <value>
+      update XSDJ_MX set FPDM=@FPDM,FPHM=@FPHM,FPZL=@FPZL,SCFPXH=@SCFPXH   where XSDJBH=@XSDJBH and XH=@XH
+    </value>
+    <type>Text</type>
+    <param name="XSDJBH" type="String"></param>
+    <param name="XH" type="Int32"></param>
+    <param name="FPZL" type="String"></param>
+    <param name="FPDM" type="String"></param>
+    <param name="FPHM" type="Int32"></param>
+    <param name="SCFPXH" type="Int32"></param>
+  </SQL>
+
+
+
+  <!-- 生成发票成功后更新对应销售单据的开票状态-->
+  <SQL id="aisino.Fwkp.Wbjk.FPSC_UpdateXSDJ">
+    <value>
+      update XSDJ set KPZT=@KPZT where BH=@BH
+    </value>
+    <type>Text</type>
+    <param name="BH" type="String"></param>
+    <param name="KPZT" type="String"></param>
+  </SQL>
+
+
+
+
+  <!--**************************************************************************************-->
+  <!--*********************************    发票查询   *************************************-->
+  <!--**************************************************************************************-->
+  <!--发票查询:所有日期-->
+  <SQL id="aisino.Fwkp.Wbjk.InvQueryAllDateXXFP">
+    <var name="condition" value="  
+      AND (CASE WHEN(@FPZL='a') THEN (FPZL='c' or FPZL='s' or FPZL='f' or FPZL='j') ELSE (FPZL=@FPZL) END) 
+      AND ZFBZ=(CASE WHEN(@ZFBZ='both') THEN ZFBZ ELSE @ZFBZ END)
+      AND GFSH like(@GFSH) 
+      AND GFMC like(@GFMC) 
+      AND FPDM like(@FPDM) 
+      AND FPHM like(@FPHM) 
+      AND XSDJBH like(@XSDJBH) "/>
+    <value>
+      SELECT COUNT(*) FROM XXFP WHERE 1=1 #condition#;
+      SELECT
+      [XSDJBH],
+      CASE lower([FPZL] || substr([YYSBZ], 6, 1)) WHEN 'c' THEN '普通发票'
+      WHEN 's' THEN '专用发票'
+      WHEN 'f' THEN '货物运输业增值税专用发票'
+      WHEN 'j' THEN '机动车销售统一发票'
+      WHEN 'c1' THEN '农产品销售发票'
+      WHEN 'c2' THEN '收购发票'
+      WHEN 'c0' THEN '普通发票'
+      WHEN 's0' THEN '专用发票'
+      WHEN 'j0' THEN '机动车销售统一发票'
+      WHEN 'f0' THEN '货物运输业增值税专用发票'
+      ELSE '未知类型'
+      END AS [FPZL],
+      [FPDM],
+      case length([FPHM]) when 1 then '0000000'||[FPHM]
+      when 2 then '000000'||[FPHM]
+      when 3 then '00000'||[FPHM]
+      when 4 then '0000'||[FPHM]
+      when 5 then '000'||[FPHM]
+      when 6 then '00'||[FPHM]
+      when 7 then '0'||[FPHM]
+      else lower([FPHM])
+      end [FPHM],
+      [KPJH], [GFMC], [GFSH], [GFDZDH], [GFYHZH], [XSBM], [KPRQ], [HJJE],
+      case  lower( substr(YYSBZ, 9, 1) || lower(FPZL) || ifnull([SLV], '2'))	  
+      WHEN  '0s2' THEN '多税率'
+      WHEN '0s0.05' THEN '中外合作油气田'
+      WHEN  '1s2' THEN '多税率'  
+      WHEN  '0c2' THEN '多税率'
+      WHEN  '1c2' THEN '多税率' 
+	  
+      else  lower([SLV])
+      end [SLV],
+      [HJSE], [ZYSPMC], [SPSM], [BZ], [KPR], [FHR], [SKR],
+      CASE [ZFBZ] WHEN 1 THEN '是' ELSE '否' END AS [ZFBZ],
+      CASE [QDBZ] WHEN 1 THEN '是' ELSE '否' END AS [QDBZ],
+      [XFMC], [XFSH], [XFDZDH], [XFYHZH],
+      case [BSZT] when 0 then '未报送' when 1 then '已报送' when 2 then '报送失败' when 3 then '报送中' when 4 then '验签失败' end [BSZT],
+      [ZFRQ], [YYSBZ]
+      FROM XXFP
+      WHERE 1=1 #condition#
+      ORDER BY FPHM
+      Limit @endNO-@beginNO+1 Offset @beginNO-1
+    </value>
+    <type>Text</type>
+    <param name="FPZL" type="String"></param>
+    <param name="ZFBZ" type="String"></param>
+    <param name="GFSH" type="String"></param>
+    <param name="GFMC" type="String"></param>
+    <param name="FPDM" type="String"></param>
+    <param name="FPHM" type="String"></param>
+    <param name="XSDJBH" type="String"></param>
+  </SQL>
+
+  <!--发票查询:指定日期-->
+  <SQL id="aisino.Fwkp.Wbjk.InvQueryTheDateXXFP">
+    <var name="condition" value="  
+      AND (CASE WHEN(@FPZL='a') THEN (FPZL='c' or FPZL='s' or FPZL='f' or FPZL='j') ELSE (FPZL=@FPZL) END) 
+      AND ZFBZ=(CASE WHEN(@ZFBZ='both') THEN ZFBZ ELSE @ZFBZ END)
+      AND GFSH like(@GFSH)
+      AND GFMC like(@GFMC)
+      AND FPDM like(@FPDM)
+      AND FPHM like(@FPHM)
+      AND XSDJBH like(@XSDJBH)
+      AND (KPRQ BETWEEN @BEGINDATE AND @ENDDATE) "/>
+    <value>
+      SELECT COUNT(*) FROM  XXFP WHERE 1=1 #condition#;
+      SELECT
+      [XSDJBH],
+      CASE lower([FPZL] || substr([YYSBZ], 6, 1)) WHEN 'c' THEN '普通发票'
+      WHEN 's' THEN '专用发票'
+      WHEN 'f' THEN '货物运输业增值税专用发票'
+      WHEN 'j' THEN '机动车销售统一发票'
+      WHEN 'c1' THEN '农产品销售发票'
+      WHEN 'c2' THEN '收购发票'
+      WHEN 'c0' THEN '普通发票'
+      WHEN 's0' THEN '专用发票'
+      WHEN 'j0' THEN '机动车销售统一发票'
+      WHEN 'f0' THEN '货物运输业增值税专用发票'
+      ELSE '未知类型'
+      END AS [FPZL],
+      [FPDM],
+      case length([FPHM]) when 1 then '0000000'||[FPHM]
+      when 2 then '000000'||[FPHM]
+      when 3 then '00000'||[FPHM]
+      when 4 then '0000'||[FPHM]
+      when 5 then '000'||[FPHM]
+      when 6 then '00'||[FPHM]
+      when 7 then '0'||[FPHM]
+      else lower([FPHM])
+      end [FPHM],
+      [KPJH], [GFMC], [GFSH], [GFDZDH], [GFYHZH], [XSBM], [KPRQ], [HJJE],
+      case  lower(substr([YYSBZ], 9, 1)||lower(FPZL) ||ifnull([SLV], '2'))
+      WHEN  '0s2' THEN '多税率'
+      WHEN '0s0.05' THEN '中外合作油气田'
+      WHEN  '1s2' THEN '多税率'  
+      WHEN  '0c2' THEN '多税率'
+      WHEN  '1c2' THEN '多税率' 
+      else  lower([SLV])
+      end [SLV],
+      [HJSE], [ZYSPMC], [SPSM], [BZ], [KPR], [FHR], [SKR],
+      CASE [ZFBZ] WHEN 1 THEN '是' ELSE '否' END AS [ZFBZ],
+      CASE [QDBZ] WHEN 1 THEN '是' ELSE '否' END AS [QDBZ],
+      [XFMC], [XFSH], [XFDZDH], [XFYHZH],
+      case [BSZT] when 0 then '未报送' when 1 then '已报送' when 2 then '报送失败' when 3 then '报送中' when 4 then '验签失败' end [BSZT],
+      [ZFRQ], [YYSBZ]
+      FROM XXFP
+      WHERE 1=1 #condition#
+      ORDER BY FPHM
+      Limit @endNO-@beginNO+1 Offset @beginNO-1
+    </value>
+    <type>Text</type>
+    <param name="FPZL" type="String"></param>
+    <param name="ZFBZ" type="String"></param>
+    <param name="GFSH" type="String"></param>
+    <param name="GFMC" type="String"></param>
+    <param name="FPDM" type="String"></param>
+    <param name="FPHM" type="String"></param>
+    <param name="XSDJBH" type="String"></param>
+    <param name="BEGINDATE" type="DateTime"></param>
+    <param name="ENDDATE" type="DateTime"></param>
+  </SQL>
+
+  <!--发票查询:所有日期,用于导出Excel-->
+  <SQL id="aisino.Fwkp.Wbjk.InvQueryAllDateExportXXFP">
+    <var name="condition" value="  
+      AND (CASE WHEN(@FPZL='a') THEN (FPZL='c' or FPZL='s' or FPZL='f' or FPZL='j') ELSE (FPZL=@FPZL) END) 
+      AND ZFBZ=(CASE WHEN(@ZFBZ='both') THEN ZFBZ ELSE @ZFBZ END)
+      AND GFSH like(@GFSH) 
+      AND GFMC like(@GFMC) 
+      AND FPDM like(@FPDM) 
+      AND FPHM like(@FPHM) 
+      AND XSDJBH like(@XSDJBH) "/>
+    <value>
+      SELECT
+      [XSDJBH],
+      CASE lower([FPZL] || substr([YYSBZ], 6, 1)) WHEN 'c' THEN '普通发票'
+      WHEN 's' THEN '专用发票'
+      WHEN 'f' THEN '货物运输业增值税专用发票'
+      WHEN 'j' THEN '机动车销售统一发票'
+      WHEN 'c1' THEN '农产品销售发票'
+      WHEN 'c2' THEN '收购发票'
+      WHEN 'c0' THEN '普通发票'
+      WHEN 's0' THEN '专用发票'
+      WHEN 'j0' THEN '机动车销售统一发票'
+      WHEN 'f0' THEN '货物运输业增值税专用发票'
+      ELSE '未知类型'
+      END AS [FPZL],
+      [FPDM], [FPHM], [KPJH], [GFMC], [GFSH], [GFDZDH], [GFYHZH], [XSBM], [KPRQ], lower([HJJE]),
+	  CASE lower(ifnull(SLV, '2'))
+      when '2' then '多税率'
+      else  lower(SLV)
+	  END AS [SLV],
+      lower([HJSE]), [ZYSPMC], [SPSM], [BZ], [KPR], [FHR], [SKR],
+      CASE [ZFBZ] WHEN 1 THEN '是' ELSE '否' END AS [ZFBZ],
+      CASE [QDBZ] WHEN 1 THEN '是' ELSE '否' END AS [QDBZ],
+      [XFMC], [XFSH], [XFDZDH], [XFYHZH],
+      case [BSZT] when 0 then '未报送' when 1 then '已报送' when 2 then '报送失败' when 3 then '报送中' when 4 then '验签失败' end [BSZT],
+      [ZFRQ],[YYSBZ]
+      FROM XXFP
+      WHERE 1=1 #condition#
+      ORDER BY FPHM
+    </value>
+    <type>Text</type>
+    <param name="FPZL" type="String"></param>
+    <param name="ZFBZ" type="String"></param>
+    <param name="GFSH" type="String"></param>
+    <param name="GFMC" type="String"></param>
+    <param name="FPDM" type="String"></param>
+    <param name="FPHM" type="String"></param>
+    <param name="XSDJBH" type="String"></param>
+  </SQL>
+
+  <!--发票查询:指定日期,用于导出Excel-->
+  <SQL id="aisino.Fwkp.Wbjk.InvQueryTheDateExportXXFP">
+    <var name="condition" value="  
+      AND (CASE WHEN(@FPZL='a') THEN (FPZL='c' or FPZL='s' or FPZL='f' or FPZL='j') ELSE (FPZL=@FPZL) END) 
+      AND ZFBZ=(CASE WHEN(@ZFBZ='both') THEN ZFBZ ELSE @ZFBZ END)
+      AND GFSH like(@GFSH)
+      AND GFMC like(@GFMC)
+      AND FPDM like(@FPDM)
+      AND FPHM like(@FPHM)
+      AND XSDJBH like(@XSDJBH)
+      AND (KPRQ BETWEEN @BEGINDATE AND @ENDDATE) "/>
+    <value>
+      SELECT
+      [XSDJBH],
+      CASE lower([FPZL] || substr([YYSBZ], 6, 1)) WHEN 'c' THEN '普通发票'
+      WHEN 's' THEN '专用发票'
+      WHEN 'f' THEN '货物运输业增值税专用发票'
+      WHEN 'j' THEN '机动车销售统一发票'
+      WHEN 'c1' THEN '农产品销售发票'
+      WHEN 'c2' THEN '收购发票'
+      WHEN 'c0' THEN '普通发票'
+      WHEN 's0' THEN '专用发票'
+      WHEN 'j0' THEN '机动车销售统一发票'
+      WHEN 'f0' THEN '货物运输业增值税专用发票'
+      ELSE '未知类型'
+      END AS [FPZL],
+      [FPDM], [FPHM], [KPJH], [GFMC], [GFSH], [GFDZDH], [GFYHZH], [XSBM], [KPRQ], lower([HJJE]),
+	  CASE lower(ifnull(SLV, '2'))
+      when '2' then '多税率'
+      else  lower(SLV)
+	  END AS [SLV],
+      lower([HJSE]), [ZYSPMC], [SPSM], [BZ], [KPR], [FHR], [SKR],
+      CASE [ZFBZ] WHEN 1 THEN '是' ELSE '否' END AS [ZFBZ],
+      CASE [QDBZ] WHEN 1 THEN '是' ELSE '否' END AS [QDBZ],
+      [XFMC], [XFSH], [XFDZDH], [XFYHZH],
+      case [BSZT] when 0 then '未报送' when 1 then '已报送' when 2 then '报送失败' when 3 then '报送中' when 4 then '验签失败' end [BSZT],
+      [ZFRQ],[YYSBZ]
+      FROM XXFP
+      WHERE 1=1 #condition#
+      ORDER BY FPHM
+    </value>
+    <type>Text</type>
+    <param name="FPZL" type="String"></param>
+    <param name="ZFBZ" type="String"></param>
+    <param name="GFSH" type="String"></param>
+    <param name="GFMC" type="String"></param>
+    <param name="FPDM" type="String"></param>
+    <param name="FPHM" type="String"></param>
+    <param name="XSDJBH" type="String"></param>
+    <param name="BEGINDATE" type="DateTime"></param>
+    <param name="ENDDATE" type="DateTime"></param>
+  </SQL>
+  
+  <!--获取全部数据用于导出XML-->
+  <!--发票查询:不查询日期(全部日期),导出XML-->
+  <SQL id="aisino.Fwkp.Wbjk.InvQueryAllDateToXML">
+    <var name="condition" value="
+         AND Case When(@FPZL='a') then (FPZL='c' or FPZL='s' or FPZL='f' or FPZL='j') else (FPZL=@FPZL) end 
+         AND ZFBZ=Case When(@ZFBZ='both') then ZFBZ else @ZFBZ end 
+         AND GFSH like(@GFSH) 
+         AND GFMC like(@GFMC) 
+         AND FPDM like(@FPDM)
+         AND FPHM like(@FPHM)
+         AND XSDJBH like(@XSDJBH) "/>
+    <value>
+      SELECT
+      [XSDJBH], [FPZL], [FPDM], [FPHM], [GFMC], [GFSH], [KPRQ], [ZFBZ],
+      [GFDZDH], [CM], [XFDZDH], [TYDH], [HJJE], [SLV], [XFYHZH], [QYD],
+      [YYZZH], [YSHWXX], [BZ], [KPR], [SKR], [FHR], [XSBM], [HJSE], [XFDZ],
+      [KHYHMC], [SCCJMC], [ZHD], [XHD], [XFDH], [KHYHZH], [MDD] from XXFP where 1=1 #condition#
+    </value>
+    <type>Text</type>
+    <param name="FPZL" type="String"></param>
+    <param name="FPDM" type="String"></param>
+    <param name="FPHM" type="String"></param>
+    <param name="GFMC" type="String"></param>
+    <param name="GFSH" type="String"></param>
+    <param name="ZFBZ" type="String"></param>
+    <param name="XSDJBH" type="String"></param>
+  </SQL>
+
+  <!--发票查询:包含查询日期,导出XML-->
+  <SQL id="aisino.Fwkp.Wbjk.InvQueryTheDateToXML">
+    <var name="condition" value="
+         AND Case When(@FPZL='a') then (FPZL='c' or FPZL='s' or FPZL='f' or FPZL='j') else (FPZL=@FPZL) end 
+         AND ZFBZ=Case When(@ZFBZ='both') then ZFBZ else @ZFBZ end 
+         AND GFSH like(@GFSH)
+         AND GFMC like(@GFMC)
+         AND FPDM like(@FPDM)
+         AND FPHM like(@FPHM)
+         AND XSDJBH like(@XSDJBH) 
+         AND (KPRQ between @QSRQ and @JZRQ)"/>
+    <value>
+      SELECT
+      [XSDJBH], [FPZL], [FPDM], [FPHM], [GFMC], [GFSH], [KPRQ], [ZFBZ],
+      [GFDZDH], [CM], [XFDZDH], [TYDH], [HJJE], [SLV], [XFYHZH], [QYD],
+      [YYZZH], [YSHWXX], [BZ], [KPR], [SKR], [FHR], [XSBM], [HJSE], [XFDZ],
+      [KHYHMC], [SCCJMC], [ZHD], [XHD], [XFDH], [KHYHZH], [MDD] from XXFP where 1=1 #condition#
+    </value>
+    <type>Text</type>
+    <param name="FPZL" type="String"></param>
+    <param name="FPDM" type="String"></param>
+    <param name="FPHM" type="String"></param>
+    <param name="QSRQ" type="DateTime"></param>
+    <param name="JZRQ" type="DateTime"></param>
+    <param name="GFMC" type="String"></param>
+    <param name="GFSH" type="String"></param>
+    <param name="ZFBZ" type="String"></param>
+    <param name="XSDJBH" type="String"></param>
+  </SQL>
+  
+  <!--SQLite 发票查询  不查询日期（全部日期） '-->
+  <SQL id="aisino.Fwkp.Wbjk.FPCXQueryAllDate">
+    <var name="condition" value=" Case When(@FPZL='a') then (FPZL='c' or FPZL='s') else (FPZL=@FPZL) end 
+         and ZFBZ=Case When(@ZFBZ='both') then ZFBZ else @ZFBZ end 
+         and  GFSH like @GFSH 
+         and  GFMC like @GFMC 
+         and  FPDM like @FPDM 
+         and  FPHM like @FPHM
+         and  XSDJBH like @DJBH "/>
+    <value>
+      SELECT COUNT(*) from  XXFP where #condition#;
+      SELECT
+      [XSDJBH],
+      CASE [FPZL] WHEN 'c' THEN '普通发票' WHEN 's' THEN '专用发票' WHEN 'f' THEN '货运专用发票' WHEN 'j' THEN '机动车专用发票' ELSE '未知类型' END AS [FPZL],
+      [FPDM], [FPHM], [KPJH], [GFMC], [GFSH], [GFDZDH], [GFYHZH], [KPRQ], lower([HJJE]), [SLV],
+      lower([HJSE]), [ZYSPMC], [SPSM], [BZ], [KPR], [FHR], [SKR],
+      CASE [ZFBZ] WHEN 1 THEN '是' ELSE '否' END AS [ZFBZ],
+      CASE [QDBZ] WHEN 1 THEN '是' ELSE '否' END AS [QDBZ], XFMC,XFSH,XFDZDH,XFYHZH
+      FROM XXFP
+      WHERE #condition#
+      ORDER BY FPHM
+      Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+    </value>
+    <type>Text</type>
+    <param name="FPZL" type="String"></param>
+    <param name="FPDM" type="String"></param>
+    <param name="FPHM" type="String"></param>
+    <param name="QSRQ" type="DateTime"></param>
+    <param name="JZRQ" type="DateTime"></param>
+    <param name="GFMC" type="String"></param>
+    <param name="GFSH" type="String"></param>
+    <param name="ZFBZ" type="String"></param>
+    <param name="DJBH" type="String"></param>
+  </SQL>
+  
+  <!--SQLite 发票查询  包含 查询日期 '-->
+  <SQL id="aisino.Fwkp.Wbjk.FPCXQuery">
+    <var name="condition" value=" Case When(@FPZL='a') then (FPZL='c' or FPZL='s') else (FPZL=@FPZL) end 
+         and ZFBZ=Case When(@ZFBZ='both') then ZFBZ else @ZFBZ end 
+         and  GFSH like @GFSH 
+         and  GFMC like @GFMC
+         and  FPDM like @FPDM
+         and  FPHM like @FPHM
+         and  XSDJBH like @DJBH 
+         and  KPRQ  between @QSRQ and  @JZRQ"/>
+    <value>
+      SELECT COUNT(FPHM) from  XXFP where #condition# ;
+
+      SELECT
+      [XSDJBH],case [FPZL] when 'c' then '普通发票' when 's' then '专用发票' when 'f' then '货运专用发票' when 'j' then '机动车专用发票' else '未知类型' end as [FPZL],[FPDM],[FPHM],[KPJH],[GFMC],[GFSH],[GFDZDH],[GFYHZH],[KPRQ],lower([HJJE]),[SLV],
+      lower([HJSE]),[ZYSPMC],[SPSM],[BZ],[KPR],[FHR],[SKR],case [QDBZ] when 1 then '是' else '否' end as [QDBZ]
+      , XFMC,XFSH,XFDZDH,XFYHZH
+      from XXFP
+      where  #condition#
+      ORDER BY FPHM     Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+    </value>
+    <type>Text</type>
+    <param name="FPZL" type="String"></param>
+    <param name="FPDM" type="String"></param>
+    <param name="FPHM" type="String"></param>
+    <param name="QSRQ" type="DateTime"></param>
+    <param name="JZRQ" type="DateTime"></param>
+    <param name="GFMC" type="String"></param>
+    <param name="GFSH" type="String"></param>
+    <param name="ZFBZ" type="String"></param>
+    <param name="DJBH" type="String"></param>
+  </SQL>
+
+  <!-- 获取全部数据用于导出-->
+  <!-- 发票查询  不查询日期（全部日期） '-->
+  <SQL id="aisino.Fwkp.Wbjk.FPCXQueryGetAllDate">
+    <var name="condition" value=" Case When(@FPZL='a') then (FPZL='c' or FPZL='s') else (FPZL=@FPZL) end 
+         and ZFBZ=Case When(@ZFBZ='both') then ZFBZ else @ZFBZ end 
+         and  GFSH like @GFSH 
+         and  GFMC like @GFMC
+         and  FPDM like @FPDM
+         and  FPHM like @FPHM
+         and  XSDJBH like @DJBH "/>
+    <value>
+      SELECT
+      [XSDJBH],case [FPZL] when 'c' then '普通发票' when 's' then '专用发票' when 'f' then '货运专用发票' when 'j' then '机动车专用发票' else '未知类型' end as [FPZL],
+      [FPDM],[FPHM],[KPJH],[GFMC],[GFSH],[GFDZDH],[GFYHZH],[KPRQ],lower([HJJE]),[SLV],lower([HJSE]),[ZYSPMC],[SPSM],[BZ],
+      [KPR],[FHR],[SKR],case [QDBZ] when 1 then '是' else '否' end as [QDBZ]  from XXFP
+      where  #condition#
+    </value>
+    <type>Text</type>
+    <param name="FPZL" type="String"></param>
+    <param name="FPDM" type="String"></param>
+    <param name="FPHM" type="String"></param>
+    <param name="QSRQ" type="DateTime"></param>
+    <param name="JZRQ" type="DateTime"></param>
+    <param name="GFMC" type="String"></param>
+    <param name="GFSH" type="String"></param>
+    <param name="ZFBZ" type="String"></param>
+    <param name="DJBH" type="String"></param>
+  </SQL>
+
+  <!-- 发票查询  包含 查询日期 '-->
+  <SQL id="aisino.Fwkp.Wbjk.FPCXQueryGet">
+    <var name="condition" value=" Case When(@FPZL='a') then (FPZL='c' or FPZL='s') else (FPZL=@FPZL) end 
+         and ZFBZ=Case When(@ZFBZ='both') then ZFBZ else @ZFBZ end 
+         and  GFSH like @GFSH 
+         and  GFMC like @GFMC 
+         and  FPDM like @FPDM
+         and  FPHM like @FPHM
+         and  XSDJBH like @DJBH 
+         and  KPRQ  between @QSRQ and  @JZRQ"/>
+    <value>
+      SELECT
+      [XSDJBH],case [FPZL] when 'c' then '普通发票' when 's' then '专用发票' when 'f' then '货运专用发票' when 'j' then '机动车专用发票' else '未知类型' end as [FPZL],
+      [FPDM],[FPHM],[KPJH],[GFMC],[GFSH],[GFDZDH],[GFYHZH],[KPRQ],lower([HJJE]),[SLV],lower([HJSE]),[ZYSPMC],[SPSM],[BZ],
+      [KPR],[FHR],[SKR],case [QDBZ] when 1 then '是' else '否' end as [QDBZ]  from XXFP
+      where  #condition#
+    </value>
+    <type>Text</type>
+    <param name="FPZL" type="String"></param>
+    <param name="FPDM" type="String"></param>
+    <param name="FPHM" type="String"></param>
+    <param name="QSRQ" type="DateTime"></param>
+    <param name="JZRQ" type="DateTime"></param>
+    <param name="GFMC" type="String"></param>
+    <param name="GFSH" type="String"></param>
+    <param name="ZFBZ" type="String"></param>
+    <param name="DJBH" type="String"></param>
+  </SQL>
+
+  <!-- 获取全部数据用于导出XML-->
+  <!-- 发票查询  不查询日期（全部日期） '-->
+  <SQL id="aisino.Fwkp.Wbjk.FPCXQueryGetAllDateXML">
+    <var name="condition" value="AND Case When(@FPZL='a') then (FPZL='c' or FPZL='s') else (FPZL=@FPZL) end 
+         AND ZFBZ=Case When(@ZFBZ='both') then ZFBZ else @ZFBZ end 
+         AND  GFSH like(@GFSH) 
+         AND  GFMC like(@GFMC) 
+         AND  FPDM like(@FPDM)
+         AND  FPHM like(@FPHM)
+         AND  XSDJBH like(@DJBH) "/>
+    <value>
+      SELECT
+      [XSDJBH],[FPZL],[FPDM],[FPHM],[GFMC],[GFSH],[KPRQ],[ZFBZ] from XXFP where 1=1 #condition#
+    </value>
+    <type>Text</type>
+    <param name="FPZL" type="String"></param>
+    <param name="FPDM" type="String"></param>
+    <param name="FPHM" type="String"></param>
+    <param name="GFMC" type="String"></param>
+    <param name="GFSH" type="String"></param>
+    <param name="ZFBZ" type="String"></param>
+    <param name="DJBH" type="String"></param>
+  </SQL>
+
+  <!-- 发票查询  包含 查询日期 '-->
+  <SQL id="aisino.Fwkp.Wbjk.FPCXQueryGetXML">
+    <var name="condition" value="AND Case When(@FPZL='a') then (FPZL='c' or FPZL='s') else (FPZL=@FPZL) end 
+         AND ZFBZ=Case When(@ZFBZ='both') then ZFBZ else @ZFBZ end 
+         AND GFSH like(@GFSH)
+         AND GFMC like(@GFMC)
+         AND FPDM like(@FPDM)
+         AND FPHM like(@FPHM)
+         AND XSDJBH like(@DJBH) 
+         AND (KPRQ between @QSRQ and @JZRQ)"/>
+    <value>
+      SELECT
+      [XSDJBH],[FPZL],[FPDM],[FPHM],[GFMC],[GFSH],[KPRQ],[ZFBZ] from XXFP where 1=1 #condition#
+    </value>
+    <type>Text</type>
+    <param name="FPZL" type="String"></param>
+    <param name="FPDM" type="String"></param>
+    <param name="FPHM" type="String"></param>
+    <param name="QSRQ" type="DateTime"></param>
+    <param name="JZRQ" type="DateTime"></param>
+    <param name="GFMC" type="String"></param>
+    <param name="GFSH" type="String"></param>
+    <param name="ZFBZ" type="String"></param>
+    <param name="DJBH" type="String"></param>
+  </SQL>
+
+  <!-- 2015-12-15 根据商品名称，获取：分类编码，是否享受优惠政策，商品编码
+  <SQL id="aisino.Fwkp.Wbjk.GetSPbySPMC">
+    <value>
+      select BM_SP.BM,BM_SP.SPFL,BM_SP.YHZC,BM_SPFL.MC as SPFLMC from BM_SP
+      left join BM_SPFL on BM_SP.SPFL=BM_SPFL.BM
+      where BM_SP.MC=@SPMC
+    </value>
+    <type>Text</type>
+    <param name="SPMC" type="String"></param>
+  </SQL>
+  -->
+
+  <!--**************************************************************************************-->
+  <!--********************************商品分类编码相关***************************************-->
+  <!--**************************************************************************************-->
+  
+  <!--根据名称 获取一条商品信息 2016-03-14 gsk ZZSTSGL从SM_SP获取-->
+  <SQL id="aisino.Fwkp.Wbjk.XSDJ_FLBM_GetSPByName">
+    <value>
+      SELECT BM_SP.BM,BM_SP.MC,BM_SP.SPFL,BM_SP.YHZC,BM_SP.YHZCMC AS SPFL_ZZSTSGL,BM_SPFL.MC AS FLMC,HYSY
+      FROM BM_SP
+      LEFT JOIN BM_SPFL ON BM_SP.SPFL=BM_SPFL.BM AND BM_SPFL.KYZT='Y' AND BM_SPFL.HZX='N'
+      WHERE BM_SP.MC=@MC AND BM_SP.WJ=1
+    </value>
+    <type>Text</type>
+    <param name="MC" type="String"></param>
+  </SQL>
+  
+  <!--根据名称 获取一条费用项目信息 2016-03-14 gsk ZZSTSGL从BM_FYXM获取-->
+  <SQL id="aisino.Fwkp.Wbjk.XSDJ_FLBM_GetFYXMByName">
+    <value>
+      SELECT BM_FYXM.BM,BM_FYXM.MC,BM_FYXM.SPFL,BM_FYXM.YHZC,BM_FYXM.YHZCMC AS SPFL_ZZSTSGL,BM_SPFL.MC AS FLMC
+      FROM BM_FYXM
+      LEFT JOIN BM_SPFL ON BM_FYXM.SPFL=BM_SPFL.BM AND BM_SPFL.KYZT='Y' AND BM_SPFL.HZX='N'
+      WHERE BM_FYXM.MC=@MC AND BM_FYXM.WJ=1
+    </value>
+    <type>Text</type>
+    <param name="MC" type="String"></param>
+  </SQL>
+
+  <!--根据名称 获取一条车辆信息 2016-03-14 gsk  ZZSTSGL从BM_CL获取-->
+  <SQL id="aisino.Fwkp.Wbjk.XSDJ_FLBM_GetCLByName">
+    <value>
+      SELECT BM_CL.BM,BM_CL.MC,BM_CL.SPFL,BM_CL.YHZC,BM_CL.YHZCMC AS SPFL_ZZSTSGL,BM_SPFL.MC AS FLMC,BM_CL.[CPXH],BM_CL.[CD],BM_CL.[SCCJMC]
+      FROM BM_CL
+      LEFT JOIN BM_SPFL ON BM_CL.SPFL=BM_SPFL.BM AND BM_SPFL.KYZT='Y' AND BM_SPFL.HZX='N'
+      WHERE BM_CL.MC=@MC AND BM_CL.WJ=1
+    </value>
+    <type>Text</type>
+    <param name="MC" type="String"></param>
+  </SQL>
+
+  <!--根据产品型号 获取一条车辆信息 2016-03-14 gsk ZZSTSGL从BM_CL获取-->
+  <SQL id="aisino.Fwkp.Wbjk.XSDJ_FLBM_GetCLByCPXH">
+    <value>
+      SELECT BM_CL.BM,BM_CL.MC,BM_CL.SPFL,BM_CL.YHZC,BM_CL.YHZCMC AS SPFL_ZZSTSGL,BM_SPFL.MC AS FLMC,BM_CL.[CPXH],BM_CL.[CD],BM_CL.[SCCJMC]
+      FROM BM_CL
+      LEFT JOIN BM_SPFL ON BM_CL.SPFL=BM_SPFL.BM AND BM_SPFL.KYZT='Y' AND BM_SPFL.HZX='N'
+      WHERE BM_CL.MC=@MC AND BM_CL.CPXH=@CPXH AND BM_CL.WJ=1
+    </value>
+    <type>Text</type>
+    <param name="MC" type="String"></param>
+    <param name="CPXH" type="String"></param>
+  </SQL>  
+  
+  
+  <!--根据编码 获取一条商品信息 2016-03-08 gsk-->
+  <SQL id="aisino.Fwkp.Wbjk.XSDJ_FLBM_GetSPByBM">
+    <value>
+      SELECT BM_SP.BM,BM_SP.MC,BM_SP.SPFL,BM_SP.YHZC,BM_SP.YHZCMC AS SPFL_ZZSTSGL,BM_SPFL.MC AS FLMC,BM_SPFL.[SLV] AS SYSLV
+      FROM BM_SP
+      LEFT JOIN BM_SPFL ON BM_SP.SPFL=BM_SPFL.BM AND BM_SPFL.KYZT='Y' AND BM_SPFL.HZX='N'
+      WHERE BM_SP.BM=@BM AND BM_SP.WJ=1
+    </value>
+    <type>Text</type>
+    <param name="BM" type="String"></param>
+  </SQL>
+
+  <!--根据编码 获取一条车辆信息 2016-03-08 gsk-->
+  <SQL id="aisino.Fwkp.Wbjk.XSDJ_FLBM_GetCLByBM">
+    <value>
+      SELECT BM_CL.BM,BM_CL.MC,BM_CL.SPFL,BM_CL.YHZC,BM_CL.YHZCMC AS SPFL_ZZSTSGL,BM_SPFL.MC AS FLMC,BM_CL.[CPXH],BM_CL.[CD],BM_CL.[SCCJMC],BM_SPFL.[SLV] AS SYSLV
+      FROM BM_CL
+      LEFT JOIN BM_SPFL ON BM_CL.SPFL=BM_SPFL.BM AND BM_SPFL.KYZT='Y' AND BM_SPFL.HZX='N'
+      WHERE BM_CL.BM=@BM AND BM_CL.WJ=1
+    </value>
+    <type>Text</type>
+    <param name="BM" type="String"></param>
+  </SQL>
+
+  <!--根据编码 获取一条费用项目信息 2016-03-08 gsk-->
+  <SQL id="aisino.Fwkp.Wbjk.XSDJ_FLBM_GetFYXMByBM">
+    <value>
+      SELECT BM_FYXM.BM,BM_FYXM.MC,BM_FYXM.SPFL,BM_FYXM.YHZC,BM_FYXM.YHZCMC AS SPFL_ZZSTSGL,BM_SPFL.MC AS FLMC,BM_SPFL.[SLV] AS SYSLV
+      FROM BM_FYXM
+      LEFT JOIN BM_SPFL ON BM_FYXM.SPFL=BM_SPFL.BM AND BM_SPFL.KYZT='Y' AND BM_SPFL.HZX='N'
+      WHERE BM_FYXM.BM=@BM AND BM_FYXM.WJ=1
+    </value>
+    <type>Text</type>
+    <param name="BM" type="String"></param>
+  </SQL> 
+  
+  
+  <!-- 2016-03-03 获取分类编码 -->
+  <SQL id="aisino.Fwkp.Wbjk.XSDJ_FLBM_GetFLBM">
+    <value>
+      Select BM_SPFL.KYZT,BM_SPFL.MC,BM_SPFL.SLV,BM_SPFL.[ZZSTSGL],BM_SPFL.HZX
+      From BM_SPFL
+      WHERE BM_SPFL.BM=@FLBM
+    </value>
+    <type>Text</type>
+    <param name="FLBM" type="String"></param>
+  </SQL>
+
+  <!-- 2016-03-28 获取商品信息 -->
+  <SQL id="aisino.Fwkp.Wbjk.XSDJ_SP_GetSP">
+    <value>
+      Select BM,MC,XTHASH 
+      From BM_SP
+      WHERE BM=@BM
+    </value>
+    <type>Text</type>
+    <param name="BM" type="String"></param>
+  </SQL>
+
+  <!-- 2016-03-03 根据优惠政策名称，获取优惠政策税率 -->
+  <SQL id="aisino.Fwkp.Wbjk.XSDJ_FLBM_GetYHZCSLV">
+    <value>
+      select SLV from BM_YHZC where YHZCMC=@YHZCMC
+    </value>
+    <type>Text</type>
+    <param name="YHZCMC" type="String"></param>
+  </SQL>
+
+  <!-- 2016-03-08 获取优惠政策 -->
+  <SQL id="aisino.Fwkp.Wbjk.XSDJ_FLBM_GetYHZC">
+    <value>
+      select YHZCMC,SLV from BM_YHZC
+    </value>
+    <type>Text</type>
+  </SQL>
+
+  <!--获得优惠税率字典-->
+  <SQL id ="aisino.fwkp.Wbjk.SelectYhzcs">
+    <value>
+      SELECT YHZCMC,SLV FROM BM_YHZC
+      <type>Text</type>
+    </value>
+  </SQL>
+
+  <!--获得稀土哈希-->
+  <SQL id="aisino.fwkp.Wbjk.selectXThash">
+    <value>
+      select  MC  from BM_SP  where MC=@MC AND XTHASH &lt;&gt; '' AND XTHASH IS NOT NULL
+
+    </value>
+    <type>Text</type>
+    <param name="MC" type="AnsiString"></param>
+  </SQL>
+
+
+</SQLLIB>

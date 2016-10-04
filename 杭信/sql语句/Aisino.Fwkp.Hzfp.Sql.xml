@@ -1,0 +1,435 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SQLLIB>
+  <!--添加红字发票申请单-->
+  <SQL id="aisino.Fwkp.Hzfp.InsertSQD">
+    <value>
+      insert into HZFP_SQD
+      (FLBMBBBH,SQDH,FPZL,FPDM,FPHM,KPJH,GFMC,GFSH,XFMC,XFSH,TKRQ,SSYF,HJJE,SL,HJSE,JBR,SQXZ,SQLY,SQRDH,BBBZ,YYSBZ,REQNSRSBH,JSPH,XXBBH,XXBZT,XXBMS)
+      values (@FLBMBBBH,@SQDH,@FPZL,@FPDM,@FPHM,@KPJH,@GFMC,@GFSH,@XFMC,@XFSH,@TKRQ,@SSYF,@HJJE,@SL,@HJSE,@JBR,@SQXZ,@SQLY,@SQRDH,@BBBZ,@YYSBZ,@REQNSRSBH,@JSPH,@XXBBH,@XXBZT,@XXBMS)
+    </value>
+    <type>Text</type>
+    <param name="FLBMBBBH" type="AnsiString"></param>
+    <param name="SQDH" type="AnsiString"></param>
+    <param name="FPZL" type="AnsiString"></param>
+    <param name="FPDM" type="AnsiString"></param>
+    <param name="FPHM" type="Int32"></param>
+    <param name="KPJH" type="Int32"></param>
+    <param name="GFMC" type="AnsiString"></param>
+    <param name="GFSH" type="AnsiString"></param>
+    <param name="XFMC" type="AnsiString"></param>
+    <param name="XFSH" type="AnsiString"></param>
+    <param name="TKRQ" type="DateTime"></param>
+    <param name="SSYF" type="Int32"></param>
+    <param name="HJJE" type="Decimal"></param>
+    <param name="SL" type="Decimal"></param>
+    <param name="HJSE" type="Decimal"></param>
+    <param name="JBR" type="AnsiString"></param>
+    <param name="SQXZ" type="AnsiString"></param>
+    <param name="SQLY" type="AnsiString"></param>
+    <param name="SQRDH" type="AnsiString"></param>
+    <param name="BBBZ" type="AnsiString"></param>
+    <param name="YYSBZ" type="AnsiString"></param>
+    <param name="REQNSRSBH" type="AnsiString"></param>
+    <param name="JSPH" type="AnsiString"></param>
+    <param name="XXBBH" type="AnsiString"></param>
+    <param name="XXBZT" type="AnsiString"></param>
+    <param name="XXBMS" type="AnsiString"></param>
+  </SQL>
+
+  <!--修改红字发票申请单号-->
+  <SQL id="aisino.Fwkp.Hzfp.UpdateSQD">
+    <value>
+      update HZFP_SQD set
+      FLBMBBBH=@FLBMBBBH,
+      FPDM=@FPDM,
+      FPHM=@FPHM,
+      KPJH=@KPJH,
+      GFMC=@GFMC,
+      GFSH=@GFSH,
+      XFMC=@XFMC,
+      XFSH=@XFSH,
+      TKRQ=@TKRQ,
+      SSYF=@SSYF,
+      HJJE=@HJJE,
+      SL=@SL,
+      HJSE=@HJSE,
+      JBR=@JBR,
+      SQXZ=@SQXZ,
+      SQLY=@SQLY,
+      SQRDH=@SQRDH,
+      YYSBZ=@YYSBZ,
+      XXBBH=@XXBBH,
+      XXBZT=@XXBZT,
+      XXBMS=@XXBMS
+      where SQDH=@SQDH
+    </value>
+    <type>Text</type>
+    <param name="FLBMBBBH" type="AnsiString"></param>
+    <param name="SQDH" type="AnsiString"></param>
+    <param name="FPDM" type="AnsiString"></param>
+    <param name="FPHM" type="Int32"></param>
+    <param name="KPJH" type="Int32"></param>
+    <param name="GFMC" type="AnsiString"></param>
+    <param name="GFSH" type="AnsiString"></param>
+    <param name="XFMC" type="AnsiString"></param>
+    <param name="XFSH" type="AnsiString"></param>
+    <param name="TKRQ" type="DateTime"></param>
+    <param name="SSYF" type="Int32"></param>
+    <param name="HJJE" type="Decimal"></param>
+    <param name="SL" type="Decimal"></param>
+    <param name="HJSE" type="Decimal"></param>
+    <param name="JBR" type="AnsiString"></param>
+    <param name="SQXZ" type="AnsiString"></param>
+    <param name="SQLY" type="AnsiString"></param>
+    <param name="SQRDH" type="AnsiString"></param>
+    <param name="YYSBZ" type="AnsiString"></param>
+    <param name="XXBBH" type="AnsiString"></param>
+    <param name="XXBZT" type="AnsiString"></param>
+    <param name="XXBMS" type="AnsiString"></param>
+  </SQL>
+
+
+  <!--更新申请单状态-->
+  <SQL id="aisino.Fwkp.Hzfp.UpdateztSQD">
+    <value>
+      update HZFP_SQD set
+      XXBBH=@XXBBH,
+      XXBZT=@XXBZT,
+      XXBMS=@XXBMS
+      where SQDH=@SQDH
+    </value>
+    <type>Text</type>
+    <param name="SQDH" type="AnsiString"></param>
+    <param name="XXBBH" type="AnsiString"></param>
+    <param name="XXBZT" type="AnsiString"></param>
+    <param name="XXBMS" type="AnsiString"></param>
+  </SQL>
+
+  <!--删除红字发票申请单号-->
+  <SQL id="aisino.Fwkp.Hzfp.DeleteSQD">
+    <value>
+      delete from HZFP_SQD
+      where SQDH=@SQDH
+    </value>
+    <type>Text</type>
+    <param name="SQDH" type="AnsiString"></param>
+  </SQL>
+
+  <!--查询一条红字发票申请单-->
+  <SQL id="aisino.Fwkp.Hzfp.SelectSQD">
+    <value>
+      select SQDH,FPZL,FPDM,FPHM,KPJH,GFMC,GFSH,XFMC,XFSH,TKRQ,SSYF,HJJE,SL,HJSE,JBR,SQXZ,SQLY,SQRDH,BBBZ,YYSBZ,REQNSRSBH,JSPH,XXBBH,XXBZT,XXBMS,FLBMBBBH
+      from HZFP_SQD
+      where SQDH=@SQDH
+    </value>
+    <type>Text</type>
+    <param name="SQDH" type="AnsiString"></param>
+  </SQL>
+
+  <!--查询红字发票申请单分页列表-->
+  <SQL id="aisino.Fwkp.Hzfp.SelectSQDList">
+    <var name="condition" value="CASE  WHEN @MONbz=0 THEN 1=1  ELSE strftime('%m',TKRQ) = strftime('%m',@MON) END"/>
+    <value>
+      SELECT COUNT(SQDH) FROM HZFP_SQD WHERE #condition#;
+      SELECT FPZL,SQDH,FPDM,
+      case length(FPHM) when 1 then case lower(FPHM) when '0' then '' else '0000000'||FPHM end
+      when 2 then '000000'||FPHM
+      when 3 then '00000'||FPHM
+      when 4 then '0000'||FPHM
+      when 5 then '000'||FPHM
+      when 6 then '00'||FPHM
+      when 7 then '0'||FPHM
+      else lower(FPHM)
+      end FPHM,
+      KPJH,GFMC,GFSH,XFMC,XFSH,TKRQ,SSYF,HJJE,
+      case lower(ifnull(SL,'9'))
+      when '9' then '多税率'
+      when '0.0' then '免税'
+      else  lower(SL)
+      end SL,
+      HJSE,JBR,SQXZ,SQLY,SQRDH,BBBZ,REQNSRSBH,JSPH,XXBBH,XXBZT,XXBMS,FLBMBBBH
+      FROM HZFP_SQD WHERE #condition#
+      ORDER BY TKRQ desc Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+    </value>
+    <type>Text</type>
+    <param name="MONbz" type="Int32"></param>
+    <param name="MON" type="AnsiString"></param>
+  </SQL>
+
+  <!--查询红字发票申请单分页列表 选择界面翻页-->
+  <SQL id="aisino.Fwkp.Hzfp.SelectSQDSelList">
+    <var name="condition" value="CASE  WHEN @MONbz=0 THEN 1=1  ELSE strftime('%m',TKRQ) = strftime('%m',@MON) END and ((XXBZT == 'TZD0000') or (XXBZT == 'TZD1000'))and [XFSH] like @xfsh"/>
+    <value>
+      SELECT COUNT(SQDH) FROM HZFP_SQD WHERE #condition#;
+      SELECT FPZL,SQDH,FPDM,
+      case length(FPHM) when 1 then case lower(FPHM) when '0' then '' else '0000000'||FPHM end
+      when 2 then '000000'||FPHM
+      when 3 then '00000'||FPHM
+      when 4 then '0000'||FPHM
+      when 5 then '000'||FPHM
+      when 6 then '00'||FPHM
+      when 7 then '0'||FPHM
+      else lower(FPHM)
+      end FPHM,
+      KPJH,GFMC,GFSH,XFMC,XFSH,TKRQ,SSYF,HJJE,
+      case lower(ifnull(SL,'9'))
+      when '9' then '多税率'
+      when '0.0' then '免税'
+      else  lower(SL)
+      end SL,
+      HJSE,JBR,
+      CASE length(SQXZ) WHEN 11 THEN substr(SQXZ,1,10) END SQXZ,
+      BBBZ,REQNSRSBH,JSPH,XXBBH,XXBZT,XXBMS,FLBMBBBH
+      FROM HZFP_SQD WHERE #condition#
+      ORDER BY TKRQ desc Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+    </value>
+    <type>Text</type>
+    <param name="MONbz" type="Int32"></param>
+    <param name="MON" type="AnsiString"></param>
+    <param name="xfsh" type="AnsiString"></param>
+  </SQL>
+
+  <!--查询红字发票申请单分页列表 用于自动查询、手动查询、翻页显示，用于逾期和非逾期-->
+  <SQL id="aisino.Fwkp.Hzfp.SelectSqdlist">
+    <var name="condition" value="[SQDH] like @sqdh and [TKRQ] > strftime('%Y-%m-%d',@ksrq) and [TKRQ] &lt; strftime('%Y-%m-%d',@jsrq) 
+      and [GFMC] like @gfmc and [GFSH] like @gfsh and [XFMC] like @xfmc and [XFSH] like @xfsh and [BBBZ] like @bbbz 
+      and (([REQNSRSBH] like @reqnsrsbh)or([REQNSRSBH] like @oldreqnsrsbh))
+      and (CASE  WHEN (@xxbzt = 'all') THEN 1=1 
+                 WHEN (@xxbzt = 'TZD0500') THEN XXBZT = 'TZD0500'
+                 WHEN (@xxbzt = 'TZD0000') THEN ((XXBZT = 'TZD0000') or (XXBZT ='TZD0061'))
+                 WHEN (@xxbzt = 'TZD1500') THEN XXBZT = 'TZD1500'
+                 WHEN (@xxbzt = 'TZD1000') THEN XXBZT = 'TZD1000'
+                 WHEN (@xxbzt = 'TZD1002') THEN XXBZT = 'TZD1002'
+                 WHEN (@xxbzt = 'fail') THEN (XXBZT !='TZD0500' and XXBZT !='TZD0000' and XXBZT !='TZD0061' and XXBZT !='TZD1500' and XXBZT !='TZD1000')
+                 WHEN (@xxbzt = 'yhx') THEN ((XXBZT = 'TZD0072') or (XXBZT = 'TZD0073') or (XXBZT = 'TZD0074') or (XXBZT = 'TZD0075') or (XXBZT = 'TZD0076') or (XXBZT = 'TZD0077') or (XXBZT = 'TZD1072') or (XXBZT = 'TZD1073') or (XXBZT = 'TZD1074') or (XXBZT = 'TZD1075') or (XXBZT = 'TZD1076') or (XXBZT = 'TZD1077'))
+                 WHEN (@xxbzt = 'other') THEN ((XXBZT = 'TZD0071') or (XXBZT = 'TZD0078') or (XXBZT = 'TZD0079') or (XXBZT = 'TZD0080') or (XXBZT = 'TZD0081') or (XXBZT = 'TZD0082') or (XXBZT = 'TZD0083') or (XXBZT = 'TZD1071') or (XXBZT = 'TZD1078') or (XXBZT = 'TZD1079') or (XXBZT = 'TZD1080'))
+                 ELSE 1=1
+           END)
+      and ([SQDH] like @qquick or [GFMC] like @qquick or [GFSH] like @qquick or [XFMC] like @qquick or [XFSH] like @qquick)"/>
+    <value>
+      SELECT COUNT(SQDH) FROM HZFP_SQD WHERE #condition#;
+      SELECT  SQDH,FPZL,FPDM,
+      case length(FPHM) when 1 then case lower(FPHM) when '0' then '' else '0000000'||FPHM end
+      when 2 then '000000'||FPHM
+      when 3 then '00000'||FPHM
+      when 4 then '0000'||FPHM
+      when 5 then '000'||FPHM
+      when 6 then '00'||FPHM
+      when 7 then '0'||FPHM
+      else lower(FPHM)
+      end FPHM,
+      KPJH,GFMC,GFSH,XFMC,XFSH,TKRQ,SSYF,HJJE,
+      case lower(ifnull(SL,'9'))
+      when '9' then '多税率'
+      when '0.0' then '免税'
+      else  lower(SL)
+      end SL,
+      HJSE,JBR,
+      CASE length(SQXZ) WHEN 11 THEN substr(SQXZ,1,10) END SQXZ,
+      BBBZ,REQNSRSBH,JSPH,XXBBH,XXBZT,XXBMS,FLBMBBBH
+      FROM HZFP_SQD WHERE #condition#
+      ORDER BY TKRQ desc Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+    </value>
+    <type>Text</type>
+    <param name="sqdh" type="AnsiString"></param>
+    <param name="gfmc" type="AnsiString"></param>
+    <param name="gfsh" type="AnsiString"></param>
+    <param name="xfmc" type="AnsiString"></param>
+    <param name="xfsh" type="AnsiString"></param>
+    <param name="ksrq" type="AnsiString"></param>
+    <param name="jsrq" type="AnsiString"></param>
+    <param name="xxbzt" type="AnsiString"></param>
+    <param name="bbbz" type="AnsiString"></param>
+    <param name="reqnsrsbh" type="AnsiString"></param>
+    <param name="oldreqnsrsbh" type="AnsiString"></param>
+    <param name="qquick" type="AnsiString"></param>
+  </SQL>
+
+  <!--查询红字发票申请单用于开具红字发票时选择的分页列表-->
+  <SQL id="aisino.Fwkp.Hzfp.SelectSqdradlist">
+    <var name="condition" value="(([XFSH] like @xfsh)or([XFSH] like @oldxfsh)) and (([XXBZT] like @xxbzt) or ([XXBZT] like @xxbzt_yq))"/>
+    <value>
+      SELECT COUNT(SQDH) FROM HZFP_SQD WHERE #condition#;
+      SELECT  SQDH,FPZL,FPDM,
+      case length(FPHM) when 1 then case lower(FPHM) when '0' then '' else '0000000'||FPHM end
+      when 2 then '000000'||FPHM
+      when 3 then '00000'||FPHM
+      when 4 then '0000'||FPHM
+      when 5 then '000'||FPHM
+      when 6 then '00'||FPHM
+      when 7 then '0'||FPHM
+      else lower(FPHM)
+      end FPHM,
+      KPJH,GFMC,GFSH,XFMC,XFSH,TKRQ,SSYF,HJJE,
+      case lower(ifnull(SL,'9'))
+      when '9' then '多税率'
+      when '0.0' then '免税'
+      else  lower(SL)
+      end SL,
+      HJSE,JBR,
+      CASE length(SQXZ) WHEN 11 THEN substr(SQXZ,1,10) END SQXZ,
+      BBBZ,REQNSRSBH,JSPH,XXBBH,XXBZT,XXBMS,FLBMBBBH
+      FROM HZFP_SQD WHERE #condition#
+      ORDER BY TKRQ desc Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+    </value>
+    <type>Text</type>
+    <param name="xfsh" type="AnsiString"></param>
+    <param name="oldxfsh" type="AnsiString"></param>
+    <param name="xxbzt" type="AnsiString"></param>
+    <param name="xxbzt_yq" type="AnsiString"></param>
+  </SQL>
+
+  <!--添加一条红字发票申请单明细-->
+  <SQL id="aisino.Fwkp.Hzfp.InsertSQDMX">
+    <value>
+      insert into HZFP_SQD_MX(
+      SQDH,MXXH,JE,SLV,SE,SPMC,SPSM,GGXH,JLDW,SL,DJ,HSJBZ,SPBH,FPHXZ,XTHASH,FLBM,QYSPBM,SFXSYHZC,YHZCMC,LSLBS)
+      values (
+      @SQDH,@MXXH,@JE,@SLV,@SE,@SPMC,@SPSM,@GGXH,@JLDW,@SL,@DJ,@HSJBZ,@SPBH,@FPHXZ,@XTHASH,@FLBM,@QYSPBM,@SFXSYHZC,@YHZCMC,@LSLBS)
+    </value>
+    <type>Text</type>
+    <param name="SQDH" type="AnsiString"></param>
+    <param name="MXXH" type="Int32"></param>
+    <param name="JE" type="Decimal"></param>
+    <param name="SLV" type="Decimal"></param>
+    <param name="SE" type="Decimal"></param>
+    <param name="SPMC" type="AnsiString"></param>
+    <param name="SPSM" type="AnsiString"></param>
+    <param name="GGXH" type="AnsiString"></param>
+    <param name="JLDW" type="AnsiString"></param>
+    <param name="SL" type="Decimal"></param>
+    <param name="DJ" type="Decimal"></param>
+    <param name="HSJBZ" type="Boolean"></param>
+    <param name="SPBH" type="AnsiString"></param>
+    <param name="FPHXZ" type="Int32"></param>
+    <param name="XTHASH" type="AnsiString"></param>
+    <param name="FLBM" type="AnsiString"></param>
+    <param name="QYSPBM" type="AnsiString"></param>
+    <param name="SFXSYHZC" type="AnsiString"></param>
+    <param name="YHZCMC" type="AnsiString"></param>
+    <param name="LSLBS" type="AnsiString"></param>
+  </SQL>
+
+  <!--修改一条红字发票申请单明细-->
+  <SQL id="aisino.Fwkp.Hzfp.UpdateSQDMX">
+    <value>
+      update HZFP_SQD_MX set
+      JE=@JE,
+      SLV=@SLV,
+      SE=@SE,
+      SPMC=@SPMC,
+      SPSM=@SPSM,
+      GGXH=@GGXH,
+      JLDW=@JLDW,
+      SL=@SL,
+      DJ=@DJ,
+      HSJBZ=@HSJBZ,
+      FPHXZ=@FPHXZ,
+      SPBH=@SPBH,
+      XTHASH=@XTHASH,
+      FLBM=@FLBM,
+      QYSPBM=@QYSPBM,
+      SFXSYHZC=@SFXSYHZC,
+      YHZCMC=@YHZCMC,
+      LSLBS=@LSLBS
+      where SQDH=@SQDH and MXXH=@MXXH
+    </value>
+    <type>Text</type>
+    <param name="SQDH" type="AnsiString"></param>
+    <param name="MXXH" type="Int32"></param>
+    <param name="JE" type="Decimal"></param>
+    <param name="SLV" type="Decimal"></param>
+    <param name="SE" type="Decimal"></param>
+    <param name="SPMC" type="AnsiString"></param>
+    <param name="SPSM" type="AnsiString"></param>
+    <param name="GGXH" type="AnsiString"></param>
+    <param name="JLDW" type="AnsiString"></param>
+    <param name="SL" type="Decimal"></param>
+    <param name="DJ" type="Decimal"></param>
+    <param name="HSJBZ" type="Boolean"></param>
+    <param name="FPHXZ" type="Int32"></param>
+    <param name="SPBH" type="AnsiString"></param>
+    <param name="XTHASH" type="AnsiString"></param>
+    <param name="FLBM" type="AnsiString"></param>
+    <param name="QYSPBM" type="AnsiString"></param>
+    <param name="SFXSYHZC" type="AnsiString"></param>
+    <param name="YHZCMC" type="AnsiString"></param>
+    <param name="LSLBS" type="AnsiString"></param>
+  </SQL>
+
+  <SQL id="aisino.Fwkp.Hzfp.DeleteSQDMXList">
+    <value>
+      delete from HZFP_SQD_MX
+      where SQDH=@SQDH
+    </value>
+    <type>Text</type>
+    <param name="SQDH" type="AnsiString"></param>
+  </SQL>
+
+  <!--查询红字发票数据集-->
+  <SQL id="aisino.Fwkp.Hzfp.SelectSQDMXList">
+    <value>
+      select SQDH,MXXH,JE,SLV,SE,SPMC,SPSM,GGXH,JLDW,SL,DJ,HSJBZ,FPHXZ,SPBH,XTHASH,FLBM,QYSPBM,SFXSYHZC,YHZCMC,LSLBS from HZFP_SQD_MX
+      where SQDH=@SQDH  order by MXXH ASC
+    </value>
+    <type>Text</type>
+    <param name="SQDH" type="AnsiString"></param>
+  </SQL>
+
+  <!--获取存在红字发票月份列表-->
+  <SQL id="aisino.Fwkp.Hzfp.GetDataList">
+    <value>
+      select strftime('%m',TKRQ) mon from HZFP_SQD
+      WHERE strftime('%Y',TKRQ)=@YEAR group BY strftime('%m',TKRQ)
+    </value>
+    <type>Text</type>
+    <param name="YEAR" type="AnsiString"></param>
+  </SQL>
+  <!--获得优惠税率字典-->
+  <SQL id ="aisino.Fwkp.Hzfp.SelectYhzcs">
+    <value>
+      SELECT YHZCMC,SLV FROM BM_YHZC
+      <type>Text</type>
+    </value>
+  </SQL>
+  <!--获得分类编码对应的商品优惠政策-->
+  <SQL id ="aisino.Fwkp.Hzfp.SelectYHZCS">
+    <value>
+      SELECT ZZSTSGL
+      FROM BM_SPFL
+      WHERE BM = @BM
+      <type>Text</type>
+      <param name="BM" type="AnsiString"></param>
+    </value>
+  </SQL>
+  <!--获得分类编码对应的适用税率-->
+  <SQL id ="aisino.Fwkp.Hzfp.SelectSYSLV">
+    <value>
+      SELECT SLV
+      FROM BM_SPFL
+      WHERE HBBM = @HBBM
+      <type>Text</type>
+      <param name="HBBM" type="AnsiString"></param>
+    </value>
+  </SQL>
+  <!--获得分类编码对应的适用税率-->
+  <SQL id ="aisino.Fwkp.Hzfp.SelectYHSLV">
+    <value>
+      SELECT SLV
+      FROM BM_YHZC
+      WHERE YHZCMC = @YHZCMC
+      <type>Text</type>
+      <param name="YHZCMC" type="AnsiString"></param>
+    </value>
+  </SQL>
+  <!--获得稀土哈希-->
+  <SQL id="aisino.Fwkp.Hzfp.selectXThash">
+    <value>
+      select  MC  from BM_SP  where MC=@MC AND XTHASH &lt;&gt; '' AND XTHASH IS NOT NULL
+
+    </value>
+    <type>Text</type>
+    <param name="MC" type="AnsiString"></param>
+  </SQL>
+
+</SQLLIB>

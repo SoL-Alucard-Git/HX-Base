@@ -1,0 +1,362 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <ProjectType>local</ProjectType>
+    <ProjectVersion>7.10.377</ProjectVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{531295EE-04A0-4C49-A3F6-D097549BB567}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <AssemblyName>Aisino.Fwkp.Wbjk</AssemblyName>
+    <OutputType>Library</OutputType>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Output\Bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Reference Include="Aisino.Framework.Plugin.Core">
+      <HintPath>..\Aisino.Framework.Plugin.Core\bin\Debug\Aisino.Framework.Plugin.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="Aisino.Fwkp.BusinessObject">
+      <HintPath>..\..\脱壳后文件\Bin\Aisino.Fwkp.BusinessObject.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="log4net" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Aisino.FTaxBase">
+      <HintPath>..\Aisino.FTaxBase\bin\Debug\Aisino.FTaxBase.dll</HintPath>
+    </Reference>
+    <Reference Include="Aisino.Framework.Dao" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="Aisino.Fwkp.Fptk.Common" />
+    <Reference Include="NPOI" />
+    <Reference Include="Aisino.Framework.MainForm" />
+    <Reference Include="System.Core" />
+    <Reference Include="NPOI.OOXML" />
+    <Reference Include="System.Data.SQLite" />
+    <Reference Include="Aisino.Fwkp.CommonLibrary" />
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Global.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\Forms\DJHY.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Wbjk\Forms\DanJuExcelCR.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Wbjk\Forms\AddZKH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Wbjk\Model\ErrorResolver.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\Model\ImportErrorDetail.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\Model\DJZFImportResult.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\Forms\JDCXSDJEdite.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Wbjk\Forms\HYXSDJEdite.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Wbjk\Forms\ExcelSetPreviewForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Wbjk\ShangPinCXEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\Common\XmlRead.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\Common\FileName.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\PropValue.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\Common\GetSafeData.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\Forms\FaPiaoZFresult.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Wbjk\Forms\XSDJZuoFeiCR.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Wbjk\Forms\ExcelForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Wbjk\Forms\GenerateFP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Wbjk\Common\ExcelRead.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\Common\CreateIniFile.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\BLL\TaxCardValue.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\BLL\Resolver.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\BLL\ResolverExcel.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\DanJuHYEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\Model\TempXSDJ.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\Forms\FaPiaoZF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Wbjk\DanJuTxtCREntry.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\Forms\JSFPJSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Wbjk\Forms\ConfirmDJKPZT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Wbjk\DAL\SPCXdal.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\Common\ExportToExcel.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\BLL\DJHYbll.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\Forms\FaPiaoCC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Wbjk\Forms\XSDJEdite2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Wbjk\Forms\MannualSplit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Wbjk\Forms\AutoSplitView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Wbjk\DAL\DJCFdal.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\Common\ReadWriteXml.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\Common\ImgFilePath.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\Common\ConfigFile.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\Common\CreateFile.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\Common\readXMLSlv.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\Common\CbbXmlBind.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\BLL\SaleBillCtrl.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\Finacial.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\PARAMS.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\FaPiaoCCEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\Properties\Resources.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\Forms\DJHBYL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Wbjk\Forms\DJCWXXXX.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Wbjk\Forms\DJCF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Wbjk\DAL\SaleBillDAL.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\BLL\ResolverTxt.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\DanJuZuoFeiCREntry.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\Model\XSDJ.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\Model\strBiao.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\Model\strDanju.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\Model\strMingxi.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\Forms\DJHB.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Wbjk\Model\XSDJ_MXModel.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\Model\MXModelLogic.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\Forms\XSDJEdite.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Wbjk\Forms\GenerateInvSetForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Wbjk\WbjkEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\DAL\FPCXdal.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\Common\IniRead.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\Model\TempXSDJ_MX.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\Forms\SelectDanJuForFP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Wbjk\Forms\ExcelSetForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Wbjk\Forms\ExcelPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Wbjk\Forms\ClearDJ.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Wbjk\Forms\AddCodeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Wbjk\BLL\FatchSaleBill.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\DanJuEditEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\Forms\XSDJZKHuiZong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Wbjk\Forms\DJXG.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Wbjk\Forms\PresentinvMng.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\Forms\InvoiceBill.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\Forms\DanJuTxtCR.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Wbjk\FaPiaoZFEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\Forms\SPCX.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Wbjk\Forms\ChaE_Tax.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Wbjk\GenerateNCPSGPTFPEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\DanJuQLEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\Common\ExcelHelper.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\Forms\XSDJZuoFeiResult.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Wbjk\Forms\JDCFPtiankai_new_new.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Wbjk\DanJuXGEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\GenerateJDCFPNewEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\DAL\FPCCdal.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\BLL\SPCXbll.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\DanJuCFEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\Common\CommonTool.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\Common\ShowString.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\Model\XXFPModel.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\Forms\ResultForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Wbjk\Model\FaPiaoQueryArgs.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\Forms\HYFPtiankai_new.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Wbjk\Forms\ExcelToolTipForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Wbjk\BLL\DJZKHZbll.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\DanJuZKHZEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\Model\WenBenItem.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\Model\ExcelMappingItem.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\FaPiaoCXEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\CustomException.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\DanJuExcelCREntry.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\Forms\XSDJLR.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Wbjk\GenerateNCPXSPTFPEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\BLL\FPCXbll.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\Forms\DJCFAuto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Wbjk\Model\XSDJModel.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\Model\XSDJMXModel.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\Model\Goods.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\Model\SaleBill.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\Model\SaleBillInfo.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\Model\GoodsImportTemp.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\Model\SaleBillImportTemp.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\Model\GenerateInvoiceResult.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\GeneratePTFPEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\BLL\InvalidateSaleBill.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\BLL\FPZFbll.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\GenerateJDCFPEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\DAL\FPZFdal.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\DAL\DJZFCRdal.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\DAL\DJXGdal.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\DAL\DJHYdal.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\BLL\CheckResult.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\BLL\CheckResultR.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\BLL\SaleBillCheck.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\BLL\Constant.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\BLL\GenerateInvoice.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\BLL\InvSplitPara.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\DanJuHBEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\Forms\GenerateFPResult.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Wbjk\GenerateHYFPEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\DAL\FPTKdal.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\DAL\DJZKHZdal.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\DAL\DJHBdal.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\BLL\FPCCbll.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\Model\XXFP_MXModel.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\HandleException.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\JiaGeType.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\MergerRemarkType.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\SeparateType.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\MergerType.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\InvType.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\PriceType.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\Forms\FPCX.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\Fwkp\Wbjk\Service\GetXmlcfg.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\Service\CreateXmlFile.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\Service\CreateIniFile.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\Service\comboboxXMLcfg.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\Service\readXMLSlv.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\Service\ExcelCRConfig.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\Service\TxtCRConfig.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\Service\XmlConfig.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\Service\GetXMLConfig.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\Model\XXFPPaper.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\Model\FPGenerateResult.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\Model\FPGeneratePreview.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\Entry\ShareInterfaceEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\Entry\Wbjk_FPZFSuccess.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\GenerateZYFPEntry.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\GenerateSetSpecial.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\GenerateSetCommon.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\Common\InvoiceData.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\Common\InvoiceDataDetail.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\Common\CommFun.cs" />
+    <Compile Include="Aisino\Fwkp\Wbjk\Common\InvoiceQueryCondition.cs" />
+    <EmbeddedResource Include="Aisino.Fwkp.Wbjk.Forms.DJCWXXXX.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Wbjk.Forms.FaPiaoZFresult.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Wbjk.Forms.SPCX.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Wbjk.Forms.JSFPJSelect.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Wbjk.Forms.JDCXSDJEdite.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Wbjk.Properties.Resources.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Wbjk.Forms.GenerateFPResult.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Wbjk.Forms.XSDJLR.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Wbjk.Forms.DanJuTxtCR.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Wbjk.Forms.ChaE_Tax.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Wbjk.Forms.FaPiaoCC.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Wbjk.Forms.DJHBYL.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Wbjk.Forms.DJCF.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Wbjk.Forms.DanJuExcelCR.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Wbjk.Forms.ClearDJ.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Wbjk.Forms.DJCFAuto.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Wbjk.Forms.SelectDanJuForFP.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Wbjk.Forms.DJHY.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Wbjk.Forms.HYFPtiankai_new.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Wbjk.Forms.FPCX.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Wbjk.Forms.XSDJZuoFeiResult.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Wbjk.Forms.XSDJZuoFeiCR.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Wbjk.Forms.XSDJEdite.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Wbjk.Forms.MannualSplit.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Wbjk.Forms.ExcelToolTipForm.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Wbjk.Forms.ExcelSetForm.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Wbjk.Forms.ExcelSetPreviewForm.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Wbjk.Forms.ConfirmDJKPZT.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Wbjk.Forms.AddCodeForm.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Wbjk.Forms.AutoSplitView.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Wbjk.Forms.XSDJZKHuiZong.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Wbjk.Forms.ExcelForm.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Wbjk.Forms.AddZKH.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Wbjk.Forms.ResultForm.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Wbjk.Forms.FaPiaoZF.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Wbjk.Forms.DJXG.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Wbjk.Forms.XSDJEdite2.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Wbjk.Forms.JDCFPtiankai_new_new.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Wbjk.Forms.HYXSDJEdite.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Wbjk.Forms.GenerateFP.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Wbjk.Forms.ExcelPassword.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Wbjk.Forms.DJHB.resources" />
+    <EmbeddedResource Include="Aisino.Fwkp.Wbjk.Forms.GenerateInvSetForm.resources" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Aisino.Fwkp.Print\Aisino.Fwkp.Print.csproj">
+      <Project>{1e1ed23b-b53d-4fbc-9677-cff0e926080f}</Project>
+      <Name>Aisino.Fwkp.Print</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

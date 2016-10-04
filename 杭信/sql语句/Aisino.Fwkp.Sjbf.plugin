@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--根节点为PlugIn，可以设置插件ID、name、author、description等属性-->
+<PlugIn id="Aisino.Fwkp.Sjbf" name= "数据备份" author= "wtj" description = "数据备份插件" hidden="true">
+  <!--插件运行时信息-->
+  <Runtime>
+    <!--指定插件程序集，采用相对路径-->
+    <Import assembly = "..\Aisino.Fwkp.Sjbf.dll"/>
+  </Runtime>
+
+  <Auto>
+    <Class id="Aisino.Fwkp.Sjbf.method" alwaysPermit="true" class="Aisino.Fwkp.Sjbf.ShareMethodEntry" label="Sjbf"/>
+  </Auto>
+  
+  <!--新建菜单资源-->
+  <Menu>
+    <!--新建菜单项目，type="Menu"表示包含下级项目的菜单，lable表示菜单显示文字-->
+
+    <MenuItem id = "Menu.Xtwh" type = "Menu" label = "系统维护"  insertAfter="Menu.Bsgl.InvData" icon="系统维护_系统维护">
+      <MenuItem id = "Aisino.Fwkp.Sjbf.RunCopy_Execution" type = "Command" class = "Aisino.Fwkp.Sjbf.Entry.RunCopy_ExecutionEntry" label = "执行数据备份"/>
+      <MenuItem id="Aisino.Fwkp.Sjbf.CsSetForm" type="Command" class="Aisino.Fwkp.Sjbf.Entry.CsSetFormEntry" label="数据备份设置"/>
+      <MenuItem id = "Aisino.Fwkp.Sjbf.Recovery_Execution" type = "Command" class = "Aisino.Fwkp.Sjbf.Entry.Recovery_ExecutionEntry" label = "数据恢复工具"/>
+    </MenuItem>
+    
+  </Menu>
+
+  <Tree>
+    
+    <TreeNode id = "Aisino.Fwkp.Stwh" type = "Menu" label = "系统维护" icon="系统设置_Tree">
+      <TreeNode id = "Aisino.Fwkp.Sjbf.RunCopy_Execution" type = "Command" class = "Aisino.Fwkp.Sjbf.Entry.RunCopy_ExecutionEntry" label = "执行数据备份"/>
+      <TreeNode id="Aisino.Fwkp.Sjbf.CsSetForm" type="Command" class="Aisino.Fwkp.Sjbf.Entry.CsSetFormEntry" label="数据备份设置"/>
+      <TreeNode id = "Aisino.Fwkp.Sjbf.Recovery_Execution" type = "Command" class = "Aisino.Fwkp.Sjbf.Entry.Recovery_ExecutionEntry" label = "数据恢复工具"/>
+    </TreeNode>
+    
+  </Tree>
+  
+
+</PlugIn>
+

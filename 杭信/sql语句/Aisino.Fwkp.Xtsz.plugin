@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<PlugIn id="Aisino.Fwkp.Xtsz" name="系统设置" description="系统设置插件">
+  <Runtime>
+    <Import assembly="..\Aisino.Fwkp.Xtsz.dll"/>
+    <SqlLib file="Aisino.Fwkp.Xtsz.Sql.xml"/>
+  </Runtime>
+  <Auto>
+    <Class id="Aisino.Fwkp.Xtsz.ShareMethodEntry" class="Aisino.Fwkp.Xtsz.ShareMethodEntry" lable="用户权限管理公共接口" alwaysPermit="true"></Class>
+  </Auto>
+	<Menu>
+    <MenuItem id="Menu.Xtsz" type="Menu" label="系统设置" isFirst="true">
+      <MenuItem id="Menu.Xtsz.SystemSet" type="Command" class="Aisino.Fwkp.Xtsz.SystemSetEntry" label="系统初始化" insertAfter="Menu.Xtgl.Xtzc" icon="系统设置_系统初始化"/>
+      <MenuItem id="Menu.Xtsz.TaxPanRegister" type="Command" class="Aisino.Fwkp.Xtsz.TaxRegisterEntry" label="报税盘注册" insertAfter="Menu.Xtsz.SystemSet" icon="系统设置_抄报税管理"/>
+      <MenuItem id="Menu.Xtsz.ParasSet" type="Menu" label="系统参数设置" icon="系统设置_系统参数设置">
+        <MenuItem id="Menu.Xtsz.BaseParasSet" type="Command" class="Aisino.Fwkp.Xtsz.ParaSetEntry" label="基本参数设置" isFirst="true" icon="系统设置_基本参数设置"/>
+      </MenuItem>
+      <MenuItem id="Menu.XtszSet.PrintSet" type="Menu" label="打印模板参数设置" icon="系统设置_系统参数设置">
+        <MenuItem id="Menu.Xtsz.ZYFPPrintSetEntry" type="Command" class="Aisino.Fwkp.Xtsz.Entry.ZYFPPrintSetEntry" label="增值税专用发票模板设置" isFirst="true" icon="系统设置_基本参数设置"/>
+        <MenuItem id="Menu.Xtsz.PTFPPrintSetEntry" type="Command" class="Aisino.Fwkp.Xtsz.Entry.PTFPPrintSetEntry" label="增值税普通发票模板设置" isFirst="true" icon="系统设置_基本参数设置"/>
+        <MenuItem id="Menu.Xtsz.HYFPPrintSetEntry" type="Command" class="Aisino.Fwkp.Xtsz.Entry.HYFPPrintSetEntry" label="货物运输业增值税专用发票模板设置" isFirst="true" icon="系统设置_基本参数设置"/>
+        <MenuItem id="Menu.Xtsz.JDCOldPrintSetEntry" type="Command" class="Aisino.Fwkp.Xtsz.Entry.JDCOldPrintSetEntry" label="旧版机动车销售统一发票模板设置" isFirst="true" icon="系统设置_基本参数设置"/>
+        <MenuItem id="Menu.Xtsz.JDCNewPrintSetEntry" type="Command" class="Aisino.Fwkp.Xtsz.Entry.JDCNewPrintSetEntry" label="新版机动车销售统一发票模板设置" isFirst="true" icon="系统设置_基本参数设置"/>
+        <MenuItem id="Menu.Xtsz.QDPrintSetEntry" type="Command" class="Aisino.Fwkp.Xtsz.Entry.QDPrintSetEntry" label="发票清单模板设置" isFirst="true" icon="系统设置_基本参数设置"/>
+        <MenuItem id="Menu.Xtsz.ZYXXBPrintSetEntry" type="Command" class="Aisino.Fwkp.Xtsz.Entry.ZYXXBPrintSetEntry" label="红字增值税专用发票信息表模板设置" isFirst="true" icon="系统设置_基本参数设置"/>
+        <MenuItem id="Menu.Xtsz.HYXXBPrintEntry" type="Command" class="Aisino.Fwkp.Xtsz.Entry.HYXXBPrintEntry" label="红字货物运输业增值税专用发票信息表模板设置" isFirst="true" icon="系统设置_基本参数设置"/>
+        </MenuItem>
+    </MenuItem>
+  </Menu>
+	<Tree>
+	  <TreeNode id="Menu.Xtsz" type="Menu" label="系统设置" isFirst="true" icon="系统设置_Tree">
+      <TreeNode id="Menu.Xtsz.SystemSet" type="Command" class="Aisino.Fwkp.Xtsz.SystemSetEntry" label="系统初始化" insertAfter="Menu.Xtgl.Xtzc" icon="系统设置_系统初始化"/>
+		  <TreeNode id="Menu.Xtsz.TaxPanRegister" type="Command" class="Aisino.Fwkp.Xtsz.TaxRegisterEntry" label="报税盘注册" insertAfter="Menu.Xtsz.SystemSet" icon="系统设置_抄报税管理"/>
+	    <TreeNode id="Menu.Xtsz.ParasSet" type="Menu" label="系统参数设置" icon="系统设置_系统参数设置">
+		    <TreeNode id="Menu.Xtsz.BaseParasSet" type="Command" class="Aisino.Fwkp.Xtsz.ParaSetEntry" label="基本参数设置" isFirst="true" icon="系统设置_基本参数设置"/>
+	    </TreeNode>
+      <TreeNode id="Menu.XtszSet.PrintSet" type="Menu" label="打印模板参数设置" icon="系统设置_系统参数设置">
+        <TreeNode id="Menu.Xtsz.ZYFPPrintSetEntry" type="Command" class="Aisino.Fwkp.Xtsz.Entry.ZYFPPrintSetEntry" label="增值税专用发票模板设置" isFirst="true" icon="系统设置_基本参数设置"/>
+        <TreeNode id="Menu.Xtsz.PTFPPrintSetEntry" type="Command" class="Aisino.Fwkp.Xtsz.Entry.PTFPPrintSetEntry" label="增值税普通发票模板设置" isFirst="true" icon="系统设置_基本参数设置"/>
+        <TreeNode id="Menu.Xtsz.HYFPPrintSetEntry" type="Command" class="Aisino.Fwkp.Xtsz.Entry.HYFPPrintSetEntry" label="货物运输业增值税专用发票模板设置" isFirst="true" icon="系统设置_基本参数设置"/>
+        <TreeNode id="Menu.Xtsz.JDCOldPrintSetEntry" type="Command" class="Aisino.Fwkp.Xtsz.Entry.JDCOldPrintSetEntry" label="旧版机动车销售统一发票模板设置" isFirst="true" icon="系统设置_基本参数设置"/>
+        <TreeNode id="Menu.Xtsz.JDCNewPrintSetEntry" type="Command" class="Aisino.Fwkp.Xtsz.Entry.JDCNewPrintSetEntry" label="新版机动车销售统一发票模板设置" isFirst="true" icon="系统设置_基本参数设置"/>
+        <TreeNode id="Menu.Xtsz.QDPrintSetEntry" type="Command" class="Aisino.Fwkp.Xtsz.Entry.QDPrintSetEntry" label="发票清单模板设置" isFirst="true" icon="系统设置_基本参数设置"/>
+        <TreeNode id="Menu.Xtsz.ZYXXBPrintSetEntry" type="Command" class="Aisino.Fwkp.Xtsz.Entry.ZYXXBPrintSetEntry" label="红字增值税专用发票信息表模板设置" isFirst="true" icon="系统设置_基本参数设置"/>
+        <TreeNode id="Menu.Xtsz.HYXXBPrintEntry" type="Command" class="Aisino.Fwkp.Xtsz.Entry.HYXXBPrintEntry" label="红字货物运输业增值税专用发票信息表模板设置" isFirst="true" icon="系统设置_基本参数设置"/>
+      </TreeNode>
+	  </TreeNode>
+	</Tree>
+</PlugIn>

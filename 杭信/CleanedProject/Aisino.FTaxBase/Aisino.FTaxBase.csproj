@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <ProjectType>local</ProjectType>
+    <ProjectVersion>7.10.377</ProjectVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A9935674-60E2-44E1-8785-D391586D31F8}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <AssemblyName>Aisino.FTaxBase</AssemblyName>
+    <OutputType>Library</OutputType>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Output\Bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Global.cs" />
+    <Compile Include="Class15.cs" />
+    <Compile Include="Aisino\FTaxBase\FormBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ns2\InputPasswordForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ns2\Class16.cs" />
+    <Compile Include="ns2\Class17.cs" />
+    <Compile Include="ns2\Class19.cs" />
+    <Compile Include="Aisino\FTaxBase\TaxCodeUtil.cs" />
+    <Compile Include="Aisino\FTaxBase\MessageShow.cs" />
+    <Compile Include="Aisino\FTaxBase\MessageShowTT.cs" />
+    <Compile Include="Aisino\FTaxBase\DeviceType.cs" />
+    <Compile Include="ns2\Class20.cs" />
+    <Compile Include="ns2\Class21.cs" />
+    <Compile Include="Aisino\FTaxBase\InvDetail.cs" />
+    <Compile Include="Aisino\FTaxBase\InvSimpleDetail.cs" />
+    <Compile Include="Aisino\FTaxBase\InvVolumeFace.cs" />
+    <Compile Include="Aisino\FTaxBase\InvWasteResult.cs" />
+    <Compile Include="Aisino\FTaxBase\TaxStateInfo.cs" />
+    <Compile Include="Aisino\FTaxBase\TaxReportResult.cs" />
+    <Compile Include="Aisino\FTaxBase\InvTypeInfo.cs" />
+    <Compile Include="Aisino\FTaxBase\ClearCardInfo.cs" />
+    <Compile Include="Aisino\FTaxBase\InvCodeNum.cs" />
+    <Compile Include="Aisino\FTaxBase\TaxRateAuthorize.cs" />
+    <Compile Include="Aisino\FTaxBase\InvVolumeApp.cs" />
+    <Compile Include="ns2\Struct27.cs" />
+    <Compile Include="ns2\Struct28.cs" />
+    <Compile Include="Aisino\FTaxBase\TaxRepCommInfo.cs" />
+    <Compile Include="Aisino\FTaxBase\InvoiceResult.cs" />
+    <Compile Include="Aisino\FTaxBase\InvAmountTaxStati.cs" />
+    <Compile Include="Aisino\FTaxBase\TaxStatisData.cs" />
+    <Compile Include="Aisino\FTaxBase\AmountTax.cs" />
+    <Compile Include="Aisino\FTaxBase\InvVolume.cs" />
+    <Compile Include="Aisino\FTaxBase\PZSQType.cs" />
+    <Compile Include="Aisino\FTaxBase\TaxRateType.cs" />
+    <Compile Include="Aisino\FTaxBase\InvSQInfo.cs" />
+    <Compile Include="Aisino\FTaxBase\InvoiceAmountType.cs" />
+    <Compile Include="Aisino\FTaxBase\SQXXLIST.cs" />
+    <Compile Include="Aisino\FTaxBase\UpdateInvKeyValue.cs" />
+    <Compile Include="Aisino\FTaxBase\OfflineInvAmount.cs" />
+    <Compile Include="Aisino\FTaxBase\PrintTemplate.cs" />
+    <Compile Include="Aisino\FTaxBase\CTaxCardType.cs" />
+    <Compile Include="Aisino\FTaxBase\CTaxCardMode.cs" />
+    <Compile Include="Aisino\FTaxBase\DrvState.cs" />
+    <Compile Include="Aisino\FTaxBase\InvResult.cs" />
+    <Compile Include="Aisino\FTaxBase\RepResult.cs" />
+    <Compile Include="Aisino\FTaxBase\ECardType.cs" />
+    <Compile Include="Aisino\FTaxBase\SetPWResult.cs" />
+    <Compile Include="Aisino\FTaxBase\InvoiceType.cs" />
+    <Compile Include="Aisino\FTaxBase\RegResult.cs" />
+    <Compile Include="ns2\Class22.cs" />
+    <Compile Include="Aisino\FTaxBase\WebInvStockAPI.cs" />
+    <Compile Include="Aisino\FTaxBase\UnlockInvoice.cs" />
+    <Compile Include="ns2\Class23.cs" />
+    <Compile Include="Aisino\FTaxBase\CertInfo.cs" />
+    <Compile Include="Aisino\FTaxBase\DATE_TIME.cs" />
+    <Compile Include="Aisino\FTaxBase\ISignAPI.cs" />
+    <Compile Include="ns2\Class24.cs" />
+    <Compile Include="Aisino\FTaxBase\InvReadReValue.cs" />
+    <Compile Include="Aisino\FTaxBase\InvStockRepeat.cs" />
+    <Compile Include="Aisino\FTaxBase\NoReadInvStock.cs" />
+    <Compile Include="Aisino\FTaxBase\MessageBoxSys.cs" />
+    <Compile Include="Aisino\FTaxBase\MessageBoxST.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\FTaxBase\MsgBoxInfo.cs" />
+    <Compile Include="Aisino\FTaxBase\TaxCard.cs" />
+    <Compile Include="Aisino\FTaxBase\MsgForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aisino\FTaxBase\SignAPI.cs" />
+    <Compile Include="Aisino\FTaxBase\CommonTool.cs" />
+    <Compile Include="ns2\Class25.cs" />
+    <Compile Include="Aisino\FTaxBase\SignSvrAPI.cs" />
+    <Compile Include="Aisino\FTaxBase\Properties\Resources.cs" />
+    <Compile Include="ns2\Class26.cs" />
+    <Compile Include="Aisino\FTaxBase\IDEA.cs" />
+    <Compile Include="Aisino\FTaxBase\TestIdea.cs" />
+    <Compile Include="_Module_{C92415FA-3B62-43AE-81C2-C8DF8B5169D4}.cs" />
+    <Compile Include="Class27.cs" />
+    <Compile Include="Class31.cs" />
+    <EmbeddedResource Include="Aisino.FTaxBase.FormBase.resources" />
+    <EmbeddedResource Include="Aisino.FTaxBase.MsgForm.resources" />
+    <EmbeddedResource Include="ns2.InputPasswordForm.resources" />
+    <EmbeddedResource Include="Aisino.FTaxBase.MessageBoxST.resources" />
+    <EmbeddedResource Include="Aisino.FTaxBase.g.resources" />
+    <EmbeddedResource Include="aR3nbf8dQp2feLmk31.SplashForm.resources" />
+    <EmbeddedResource Include="aR3nbf8dQp2feLmk31.lSfgApatkdxsVcGcrktoFd.resources" />
+    <EmbeddedResource Include="Aisino.FTaxBase.Properties.Resources.resources" />
+  </ItemGroup>
+</Project>

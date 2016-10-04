@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<PlugIn id="Aisino.Fwkp.Fplygl" name="发票领用管理" description="发票领用管理插件">
+  <Runtime>
+    <Import assembly="..\Aisino.Fwkp.Fplygl.dll" />
+    <SqlLib file="Aisino.Fwkp.Fplygl.Sql.xml"/>
+  </Runtime>
+
+  <Auto>
+    <Class id="Aisino.Fwkp.Fplygl.Entry.ShareMethodEntry" alwaysPermit="true" class="Aisino.Fwkp.Fplygl.ShareMethodEntry" lable="领用管理共享方法"></Class>
+  </Auto>
+
+  <Menu>
+    <MenuItem id="Menu.Xtsz" type="Menu" label="系统设置" isFirst="true" icon="系统设置_抄报税管理">
+      <MenuItem id="Menu.Xtsz.ParasSet" type="Menu" label="系统参数设置" icon="系统设置_系统参数设置">
+        <MenuItem id="Menu.Fplygl.Lygl.Dklfpjs.Fplygl_EmailSetEntry" type="Command" class="Aisino.Fwkp.Fplygl.Entry.EmailSetEntry" label="邮件服务器设置"  insertAfter="Menu.Xtsz.BaseParasSet" icon="发票领用管理_邮件服务器设置"/>
+      </MenuItem>
+    </MenuItem>
+
+    <MenuItem id="Menu.Fplygl" type="Menu" class="Aisino.Fwkp.Fplygl.Entry.FplyglEntry" label="发票领用管理" insertBefore="Menu.Fpgl" icon="">
+      <!--<MenuItem id="Menu.Fplygl.Cszy" type="Command" class="Aisino.Fwkp.Fplygl.Entry.AccessToTest" label="测试专用（缓存）" icon="发票领用管理_测试专用菜单"/>-->
+      <MenuItem id="Menu.Fplygl.Fpkccx" type="Command" class="Aisino.Fwkp.Fplygl.Entry.FpkccxEntry" label="发票库存查询" icon="发票领用管理_发票库存查询"/>
+      <MenuItem id="Menu.Fplygl.SetFormat" type="Command" class="Aisino.Fwkp.Fplygl.Entry.SetFormatEntry" label="设置卷票规格" icon="发票领用管理_设置卷票规格"/>
+      <MenuItem id="Menu.Fplygl.Lygl.1" type="Separator" />
+      <!--<MenuItem id="Menu.Fplygl.Wssl" type="Menu" class="Aisino.Fwkp.Fplygl.Entry.WebModualEntry.ApplyMenuEntry" label="网上申领管理" icon="发票领用管理_网上申领管理">
+        <MenuItem id="Menu.Fplygl.Lygl.Drxgfp.Wsslqq" type="Command" class="Aisino.Fwkp.Fplygl.Entry.WebModualEntry.Apply_ApplyFormEntry" label="发票申领" icon="发票领用管理_发票申领"/>
+        <MenuItem id="Menu.Fplygl.Lygl.Drxgfp.Wsslzt" type="Command" class="Aisino.Fwkp.Fplygl.Entry.WebModualEntry.Apply_StatusQueryEntry" label="申领状态查询" icon="发票领用管理_申领状态查询"/>
+        <MenuItem id="Menu.Fplygl.Lygl.Drxgfp.Wsslqr" type="Command" class="Aisino.Fwkp.Fplygl.Entry.WebModualEntry.Apply_SuccessConfirmEntry" label="申领确认" icon="发票领用管理_申领确认"/>
+        <MenuItem id="Menu.Fplygl.Lygl.Drxgfp.Wsslcx" type="Command" class="Aisino.Fwkp.Fplygl.Entry.WebModualEntry.Apply_SuccessRevokeEntry" label="申领撤销" icon="发票领用管理_申领撤销"/>
+      </MenuItem>-->
+      <MenuItem id="Menu.Fplygl.Wslp" type="Menu" class="Aisino.Fwkp.Fplygl.Entry.WebModualEntry.DownloadMenuEntry" label="网上领票管理" icon="发票领用管理_网上领票管理">
+        <MenuItem id="Menu.Fplygl.Lygl.Drxgfp.Wlgp" type="Command" class="Aisino.Fwkp.Fplygl.Entry.WebModualEntry.Download_VolumeEntry" label="网上领票" icon="发票领用管理_网上领票"/>
+        <MenuItem id="Menu.Fplygl.Lygl.Drxgfp.WlgpCx" type="Command" class="Aisino.Fwkp.Fplygl.Entry.WebModualEntry.Download_QueryEntry" label="领用票量查询" icon="发票领用管理_领票查询"/>
+      </MenuItem>
+      <MenuItem id="Menu.Fplygl.Wsfp" type="Menu" class="Aisino.Fwkp.Fplygl.Entry.WebModualEntry.AllocateMenuEntry" label="网上分票管理" icon="发票领用管理_网上分票管理">
+        <MenuItem id="Menu.Fplygl.Lygl.Drxgfp.Zjwsfp" type="Command" class="Aisino.Fwkp.Fplygl.Entry.WebModualEntry.Allocate_VolumeEntry" label="主机网上分票" icon="发票领用管理_主机网上分票"/>
+        <MenuItem id="Menu.Fplygl.Lygl.Drxgfp.Lyztcx" type="Command" class="Aisino.Fwkp.Fplygl.Entry.WebModualEntry.Allocate_QueryEntry" label="领用状态查询" icon="发票领用管理_领用状态查询"/>
+        <MenuItem id="Menu.Fplygl.Lygl.Drxgfp.Xzzjfpfp" type="Command" class="Aisino.Fwkp.Fplygl.Entry.WebModualEntry.Allocate_DownloadEntry" label="下载主机分配发票" icon="发票领用管理_下载主机分配发票"/>
+      </MenuItem>
+      <MenuItem id="Menu.Fplygl.Lygl.2" type="Separator" class="Aisino.Fwkp.Fplygl.Entry.WebModualEntry.SeparatorEntry"/>
+      <MenuItem id="Menu.Fplygl.Lygl.Drxgfp.Drxgfpcard" type="Command" class="Aisino.Fwkp.Fplygl.Entry.DrxgfpFromCardEntry" label="读入新购发票" icon="发票领用管理_读入新购发票"/>
+      <MenuItem id="Menu.Fplygl.Lygl.Drxgfp.YgfpthCard" type="Command" class="Aisino.Fwkp.Fplygl.Entry.YgfpthFromCardEntry" label="已购发票退回" icon="发票领用管理_已购发票退回"/>
+      <MenuItem id="Menu.Fplygl.Fjfpgl" type="Menu" class="Aisino.Fwkp.Fplygl.Entry.FjfpfpEntry" label="分机发票管理" icon="发票领用管理_分机发票管理">
+        <MenuItem id="Menu.Fplygl.Lygl.Fjfpgl.Xfjfpfp" type="Command" class="Aisino.Fwkp.Fplygl.Entry.XfjfpfpEntry" label="向分机分配发票" icon="发票领用管理_向分机分配发票"/>
+        <MenuItem id="Menu.Fplygl.Lygl.Fjfpgl.Shfjsyfp" type="Command" class="Aisino.Fwkp.Fplygl.Entry.ShfjtpEntry" label="收回分机剩余发票" icon="发票领用管理_已购发票退回服务器"/>
+        <MenuItem id="Menu.Fplygl.Lygl.Fjfpgl.Shfjxgfp" type="Command" class="Aisino.Fwkp.Fplygl.Entry.ShfjgpEntry" label="收回分机新购发票" icon="发票领用管理_收回分机新购发票"/>
+      </MenuItem>
+    </MenuItem>
+    
+  </Menu>
+</PlugIn>

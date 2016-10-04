@@ -1,0 +1,5 @@
+E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Output\Bin\Aisino.Framework.QRCode.dll
+E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Output\Bin\Aisino.Framework.QRCode.pdb
+E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Aisino.Framework.QRCode\obj\x86\Debug\Aisino.Framework.QRCode.csprojResolveAssemblyReference.cache
+E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Aisino.Framework.QRCode\obj\x86\Debug\Aisino.Framework.QRCode.dll
+E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Aisino.Framework.QRCode\obj\x86\Debug\Aisino.Framework.QRCode.pdb

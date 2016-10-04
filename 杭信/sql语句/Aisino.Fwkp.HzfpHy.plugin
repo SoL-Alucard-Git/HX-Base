@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<PlugIn id="Aisino.Fwkp.HzfpHy" name="红字货运发票信息表" description="红字货运发票信息表插件">
+  <Runtime>
+    <Import assembly="..\Aisino.Fwkp.HzfpHy.dll" resource="Aisino.Fwkp.HzfpHy.Properties.Resources"/>
+    <SqlLib file="Aisino.Fwkp.HzfpHy.Sql.xml"/>
+  </Runtime>
+
+  <Auto>
+    <Class id="Aisino.Fwkp.HzfpHy.Entry.ShareMethodEntry" alwaysPermit="true" class="Aisino.Fwkp.HzfpHy.ShareMethodEntry" lable="红字货物运输业增值税专用发票信息表查询共享方法"></Class>
+  </Auto>
+
+  <Menu>
+    <MenuItem id="Menu.Hzfp" type="Menu" label="红字货运发票信息表" insertAfter="Menu.Fpgl" icon="红字发票申请单_Tree">
+      <MenuItem id="Menu.HzfpHy.HyTianKai" type="Command" class="Aisino.Fwkp.HzfpHy.HyTianKai" label="红字货物运输业增值税专用发票信息表填开" icon="红字发票申请单_申请单填开"/>
+      <MenuItem id="Menu.HzfpHy.HyDaoChu" type="Command" class="Aisino.Fwkp.HzfpHy.HyDaoChu" label="红字货物运输业增值税专用发票信息表查询导出" icon="红字发票申请单_申请单查询导出"/>
+    </MenuItem>
+  </Menu>
+
+  <!--<Tree>
+    <TreeNode id="Menu.Hzfp" type="Menu" label="红字货运发票信息表" insertAfter="Menu.Fpgl" icon="红字发票申请单_Tree">
+      <TreeNode id="Menu.HzfpHy.HyTianKai" type="Command" class="Aisino.Fwkp.HzfpHy.HyTianKai" label="红字货物运输业增值税专用发票信息表填开" icon="红字货运发票信息表_货运信息表填开"/>
+      <TreeNode id="Menu.HzfpHy.HyDaoChu" type="Command" class="Aisino.Fwkp.HzfpHy.HyDaoChu" label="红字货物运输业增值税专用发票信息表查询导出" icon="红字货运发票信息表_货运信息表查询导出"/>
+    </TreeNode>
+  </Tree>-->
+</PlugIn>

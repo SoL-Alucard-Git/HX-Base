@@ -1,0 +1,3683 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SQLLIB>
+
+  <!--&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&7-->
+  <!--&&&&&&&&&&——————————————客户管理
+    <!-查询添加的商品分类是否存在于商品分类表里的编码->7-->
+  <!--&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&7-->
+
+  <!--GetModel客户编码-->
+  <SQL id="aisino.Fwkp.Bmgl.BMKH.KHGetModel">
+    <value>
+      select  *  from BM_KH  where BM=@bm  Limit 1
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+  </SQL>
+  <!--增加客户-->
+  <SQL id="aisino.Fwkp.Bmgl.BMKH.KHAdd">
+    <value>
+      INSERT INTO [BM_KH](
+      [BM],[MC],[JM],[KJM],[SH],[DZDH],[YHZH],[YJDZ],[BZ],[YSKM],[DQBM],[DQMC],[DQKM],[SJBM],[WJ],[SFZJY]
+      )VALUES(
+      @BM,@MC,@JM,@KJM,@SH,@DZDH,@YHZH,@YJDZ,@BZ,@YSKM,@DQBM,@DQMC,@DQKM,@SJBM,@WJ,@SFZJY
+      )
+    </value>
+    <type>Text</type>
+    <param name="BM" type="AnsiString"></param>
+    <param name="MC" type="AnsiString"></param>
+    <param name="JM" type="AnsiString"></param>
+    <param name="KJM" type="AnsiString"></param>
+    <param name="SH" type="AnsiString"></param>
+    <param name="DZDH" type="AnsiString"></param>
+    <param name="YHZH" type="AnsiString"></param>
+    <param name="YJDZ" type="AnsiString"></param>
+    <param name="BZ" type="AnsiString"></param>
+    <param name="YSKM" type="AnsiString"></param>
+    <param name="DQBM" type="AnsiString"></param>
+    <param name="DQMC" type="AnsiString"></param>
+    <param name="DQKM" type="AnsiString"></param>
+    <param name="SJBM" type="AnsiString"></param>
+    <param name="WJ" type="Int64"></param>
+    <param name="SFZJY" type="Boolean"></param>
+  </SQL>
+  <!--修改客户-->
+  <SQL id="aisino.Fwkp.Bmgl.BMKH.KHModify">
+    <value>
+      UPDATE [BM_KH] SET
+      [BM] = @BM,[MC] = @MC,[JM] = @JM,[KJM] = @KJM,[SH] = @SH,[DZDH] = @DZDH,[YHZH] = @YHZH,[YJDZ] = @YJDZ,[BZ] = @BZ,[YSKM] = @YSKM,[DQBM] = @DQBM,[DQMC] = @DQMC,[DQKM] = @DQKM,[SJBM] = @SJBM,[SFZJY] = @SFZJY
+      WHERE BM=@oldBM
+    </value>
+    <type>Text</type>
+    <param name="oldBM" type="AnsiString"></param>
+    <param name="BM" type="AnsiString"></param>
+    <param name="MC" type="AnsiString"></param>
+    <param name="JM" type="AnsiString"></param>
+    <param name="KJM" type="AnsiString"></param>
+    <param name="SH" type="AnsiString"></param>
+    <param name="DZDH" type="AnsiString"></param>
+    <param name="YHZH" type="AnsiString"></param>
+    <param name="YJDZ" type="AnsiString"></param>
+    <param name="BZ" type="AnsiString"></param>
+    <param name="YSKM" type="AnsiString"></param>
+    <param name="DQBM" type="AnsiString"></param>
+    <param name="DQMC" type="AnsiString"></param>
+    <param name="DQKM" type="AnsiString"></param>
+    <param name="SJBM" type="AnsiString"></param>
+    <param name="SFZJY" type="Boolean"></param>
+  </SQL>
+  <!--删除分类的子节点-->
+  <SQL id="aisino.Fwkp.Bmgl.BMKH.KHDeleteSubNodes">
+    <value>
+      DELETE from [BM_KH]  WHERE  BM like  @bmLike and BM &lt;&gt; @bm
+    </value>
+    <type>Text</type>
+    <param name="bmLike" type="AnsiString"></param>
+  </SQL>
+  <!--获取删除的分类及其子节点-->
+  <SQL id="aisino.Fwkp.Bmgl.BMKH.KHDeleteFenLei">
+    <value>
+      DELETE from [BM_KH]  WHERE  BM like  @bm
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+  </SQL>
+  <!--删除一条记录-->
+  <SQL id="aisino.Fwkp.Bmgl.BMKH.KHDelete">
+    <value>
+      DELETE from [BM_KH]  WHERE  BM=@bm
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+  </SQL>
+  <!--查询指定客户编码是否存在-->
+  <SQL id="aisino.Fwkp.Bmgl.BMKH.KHExist">
+    <value>SELECT COUNT(BM) FROM BM_KH WHERE BM=@bm</value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+  </SQL>
+
+  <!--查询指定客户税号是否存在-->
+  <SQL id="aisino.Fwkp.Bmgl.BMKH.KHSHExist">
+    <value>SELECT COUNT(BM) FROM BM_KH WHERE SH=@SH and BM &lt;&gt; @BM</value>
+    <type>Text</type>
+    <param name="SH" type="AnsiString"></param>
+    <param name="BM" type="AnsiString"></param>
+  </SQL>
+
+  <!--查询指定客户名称是否存在-->
+  <SQL id="aisino.Fwkp.Bmgl.BMKH.KHMCExist">
+    <value>SELECT * FROM BM_KH WHERE MC=@MC and SJBM=@SJBM</value>
+    <type>Text</type>
+    <param name="MC" type="AnsiString"></param>
+    <param name="SJBM" type="AnsiString"></param>
+  </SQL>
+
+  <SQL id="aisino.Fwkp.Bmgl.BMKH.KHbmlike">
+    <var name="condition" value="BM like @key"/>
+    <value>
+      SELECT COUNT(BM) FROM BM_KH where #condition#;
+      select BM,MC,JM,KJM,SH,DZDH,YHZH,YJDZ,BZ,YSKM,DQBM,DQMC,DQKM,SJBM,WJ,SFZJY from BM_KH
+      where  #condition#
+      ORDER BY BM   Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+    </value>
+    <type>Text</type>
+    <param name="key" type="AnsiString"></param>
+  </SQL>
+  <!--Test绑定TreeView-->
+  <SQL id="aisino.Fwkp.Bmgl.BMKH.KHTreeView">
+    <var name="condition" value="SJBM=@sjbm and WJ=0"/>
+    <value>
+      SELECT BM,MC,SJBM,WJ FROM BM_KH where #condition#;
+    </value>
+    <type>Text</type>
+    <param name="sjbm" type="AnsiString"></param>
+  </SQL>
+
+  <!--BM_KH修改客户BM节点都需更改BM、SJBM-->
+  <SQL id="aisino.Fwkp.Bmgl.BMKH.KHBMModify">
+    <value>
+      UPDATE [BM_KH] SET
+      [BM] =  @afterbm,[MC] = @MC,[JM] = @JM,[KJM] = @KJM,[SH] = @SH,[DZDH] = @DZDH,[YHZH] = @YHZH,[YJDZ] = @YJDZ,[BZ] = @BZ,[YSKM] = @YSKM,[DQBM] = @DQBM,[DQMC] = @DQMC,[DQKM] = @DQKM,[SJBM] = @SJBM,[SFZJY] = @SFZJY
+      WHERE BM=@bm
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+    <param name="afterbm" type="AnsiString"></param>
+    <param name="MC" type="AnsiString"></param>
+    <param name="JM" type="AnsiString"></param>
+    <param name="KJM" type="AnsiString"></param>
+    <param name="SH" type="AnsiString"></param>
+    <param name="DZDH" type="AnsiString"></param>
+    <param name="YHZH" type="AnsiString"></param>
+    <param name="YJDZ" type="AnsiString"></param>
+    <param name="BZ" type="AnsiString"></param>
+    <param name="YSKM" type="AnsiString"></param>
+    <param name="DQBM" type="AnsiString"></param>
+    <param name="DQMC" type="AnsiString"></param>
+    <param name="DQKM" type="AnsiString"></param>
+    <param name="SJBM" type="AnsiString"></param>
+    <param name="SFZJY" type="Boolean"></param>
+  </SQL>
+
+
+
+  <!--BM_KH获得此节点下的所有子节点-->
+  <SQL id="aisino.Fwkp.Bmgl.BMKH.KHBMGetSubNode">
+    <value>
+      SELECT BM,SJBM FROM [BM_KH]  WHERE  BM&lt;&gt;@bm and BM like  @bmLike  and SJBM like  @bmLike
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+    <param name="bmLike" type="AnsiString"></param>
+  </SQL>
+
+
+  <!--BM_KH更改节点下的编码和上级编码-->
+  <SQL id="aisino.Fwkp.Bmgl.BMKH.KHBMUpdateSJBMandBM">
+    <value>
+      UPDATE BM_KH SET BM= @newBM ,SJBM= @newSJBM  WHERE BM=@bm
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+    <param name="newBM" type="AnsiString"></param>
+    <param name="newSJBM" type="AnsiString"></param>
+  </SQL>
+
+
+
+
+  <!--一个关键字查询多个字段的查询-->
+  <SQL id="aisino.Fwkp.Bmgl.BMKH.KHqueryKey">
+    <var name="condition" value="KJM like  @key  or MC like @key or SH like @key  or BM like @key or DZDH like @key or YHZH like @key"/>
+    <value>
+      SELECT COUNT(BM) FROM BM_KH where #condition#;
+      select BM,MC,JM,KJM,SH,DZDH,YHZH,YJDZ,BZ,YSKM,DQBM,DQMC,DQKM,SJBM,WJ,SFZJY from BM_KH
+      where  #condition#  ORDER BY BM   Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+    </value>
+    <type>Text</type>
+    <param name="key" type="AnsiString"></param>
+  </SQL>
+
+  <!--一个关键字查询多个字段的查询,返回前几条数据-->
+  <SQL id="aisino.Fwkp.Bmgl.BMKH.KHqueryKeyAppend">
+    <var name="condition" value="MC like @key or SH like @key  or BM like @key or KJM like  @key or JM  like @key  or DZDH like @key or YHZH like @key "/>
+    <value>
+      SELECT * from BM_KH  where  #condition#    Limit  @TopNo
+    </value>
+    <type>Text</type>
+    <param name="key" type="AnsiString"></param>
+    <param name="TopNo" type="AnsiString"></param>
+  </SQL>
+
+  <!--一个关键字查询多个字段的查询wj=1,返回前几条数据-->
+  <SQL id="aisino.Fwkp.Bmgl.BMKH.KHqueryKeyAppendWJ">
+    <var name="condition" value="WJ=1 and ( MC like @key or SH like @key  or BM like @key or KJM like  @key or JM  like @key  or DZDH like @key or YHZH like @key) "/>
+    <value>
+      SELECT * from BM_KH   where  #condition#    Limit  @TopNo
+    </value>
+    <type>Text</type>
+    <param name="key" type="AnsiString"></param>
+    <param name="TopNo" type="AnsiString"></param>
+  </SQL>
+
+  <!--精确配匹根据名称和税号字段的查询wj=1-->
+  <SQL id="aisino.Fwkp.Bmgl.BMKH.KHqueryKeyByMcAndShAppendWJ">
+    <var name="condition" value="WJ=1 and (MC = @keyWordMc and SH = @keyWordSh) "/>
+    <value>
+      SELECT * from BM_KH   where  #condition#
+    </value>
+    <type>Text</type>
+    <param name="keyWordMc" type="AnsiString"></param>
+    <param name="keyWordSh" type="AnsiString"></param>
+  </SQL>
+
+  <!--精确配匹根据名称字段的查询wj=1-->
+  <SQL id="aisino.Fwkp.Bmgl.BMKH.KHqueryKeyByMcAppendWJ">
+    <var name="condition" value="WJ=1 and (MC = @keyWordMc) "/>
+    <value>
+      SELECT * from BM_KH   where  #condition#
+    </value>
+    <type>Text</type>
+    <param name="keyWordMc" type="AnsiString"></param>
+  </SQL>
+
+  <!--精确配匹根据税号字段的查询wj=1-->
+  <SQL id="aisino.Fwkp.Bmgl.BMKH.KHqueryKeyByShAppendWJ">
+    <var name="condition" value="WJ=1 and (SH = @keyWordSh) "/>
+    <value>
+      SELECT * from BM_KH   where  #condition#
+    </value>
+    <type>Text</type>
+    <param name="keyWordSh" type="AnsiString"></param>
+  </SQL>
+
+  <!--根据税号查询-->
+  <SQL id="aisino.Fwkp.Bmgl.BMKH.KHquerySH">
+    <value>
+      SELECT * from BM_KH   where  SH =@SH    Limit  1
+    </value>
+    <type>Text</type>
+    <param name="SH" type="AnsiString"></param>
+  </SQL>
+
+  <!--根据名称和上级编码查询-->
+  <SQL id="aisino.Fwkp.Bmgl.BMKH.KHqueryMCAndSJBM">
+    <value>
+      SELECT * from BM_KH   where  MC=@MC and SJBM=@SJBM   Limit  1
+    </value>
+    <type>Text</type>
+    <param name="MC" type="AnsiString"></param>
+    <param name="SJBM" type="AnsiString"></param>
+  </SQL>
+
+  <!--根据名称和上级编码查询-->
+  <SQL id="aisino.Fwkp.Bmgl.BMKH.KHqueryMCAndSJBMAndSHEmpty">
+    <value>
+      SELECT * from BM_KH   where  MC=@MC and SJBM=@SJBM and (SH is null or SH="")  Limit  1
+    </value>
+    <type>Text</type>
+    <param name="MC" type="AnsiString"></param>
+    <param name="SJBM" type="AnsiString"></param>
+  </SQL>
+
+  <!--根据名称税号查询-->
+  <SQL id="aisino.Fwkp.Bmgl.BMKH.KHqueryMCAndSH">
+    <value>
+      SELECT * from BM_KH where  MC=@MC and SH=@SH
+    </value>
+    <type>Text</type>
+    <param name="MC" type="AnsiString"></param>
+    <param name="SH" type="AnsiString"></param>
+  </SQL>
+  
+  <!--根据税号和上级编码查询-->
+  <SQL id="aisino.Fwkp.Bmgl.BMKH.KHquerySHAndSJBM">
+    <value>
+      SELECT * from BM_KH where  SH=@SH and SJBM=@SJBM   Limit  1
+    </value>
+    <type>Text</type>
+    <param name="SH" type="AnsiString"></param>
+    <param name="SJBM" type="AnsiString"></param>
+  </SQL>
+
+  <!--增加客户的推荐编码-->
+  <SQL id="aisino.Fwkp.Bmgl.BMKH.KHRecommend">
+    <value>
+      select BM from BM_KH where SJBM=@bm 
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+
+  </SQL>
+
+
+  <!--判断分类编码下是否有下级编码-->
+  <SQL id="aisino.Fwkp.Bmgl.BMKH.KHHasChild">
+    <value>
+      select count(BM) as CountBM from BM_KH where SJBM = @bm
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+  </SQL>
+
+
+  <!--判断下级编码能否增位，当编码族中的最大编码长度>16时不能增位-->
+  <SQL id="aisino.Fwkp.Bmgl.BMKH.KHBmZWverify">
+    <value>
+      SELECT  max(length(BM))  AS BmLenth  FROM [BM_KH] WHERE BM like @bm
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+  </SQL>
+
+
+  <!--验证 是否可以减位 操作方法-->
+  <SQL id="aisino.Fwkp.Bmgl.BMKH.KHBmJWVerify">
+    <value>
+      SELECT substr(BM,length(@bm)+1,1) as JWvalue   FROM [BM_KH] WHERE  SJBM=@bm  order by JWvalue desc  limit 1
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+  </SQL>
+
+  <!--**导出中使用一个关键字查询多个字段的查询-->
+  <SQL id="aisino.Fwkp.Bmgl.BMKH.KHqueryKeyout">
+    <var name="condition" value="KJM like  @key or MC like @key or SH like @key or BM like @key or DZDH like @key or YHZH like @key"/>
+    <value>
+      SELECT  BM,MC,JM,KJM,SH,DZDH,YHZH,YJDZ,BZ,WJ,SFZJY,SJBM  FROM BM_KH where #condition# ORDER BY BM;
+    </value>
+    <type>Text</type>
+    <param name="key" type="AnsiString"></param>
+  </SQL>
+
+  <!--导出客户-->
+  <SQL id="aisino.Fwkp.Bmgl.BMKH.KHExportCustomer">
+    <value>
+      SELECT  BM,MC,JM,KJM,SH,DZDH,YHZH,YJDZ,BZ,YSKM,DQBM,DQMC,DQKM,SJBM,WJ,SFZJY    FROM BM_KH where #condition#;
+    </value>
+    <type>Text</type>
+  </SQL>
+
+  <!--获取该上级编码的下级编码-->
+  <SQL id="aisino.Fwkp.Bmgl.BMKH.GetXJBMBySJBM">
+    <value>
+      select BM from BM_KH where  SJBM = @SJBM
+    </value>
+    <type>Text</type>
+    <param name="SJBM" type="AnsiString"></param>
+  </SQL>
+
+  <!--判断分类编码下是否有下级编码-->
+  <SQL id="aisino.Fwkp.Bmgl.BMKH.KHChildDetermine">
+    <value>
+      select BM from BM_KH where SJBM = @sjbm
+    </value>
+    <type>Text</type>
+    <param name="sjbm" type="AnsiString"></param>
+  </SQL>
+
+
+  <!--&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&7-->
+  <!--&&&&&&&&&&——————————————商品管理—————————————————&&&&&&&&&&&&&&&&7-->
+  <!--&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&7-->
+
+  <!--GetModel一条记录-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSP.SPGetModel">
+    <value>
+      SELECT BM_SP.*,BM_SPFL.ZZSTSGL AS SPFL_ZZSTSGL,BM_YHZC.SLV AS YHZC_SLV
+      from (BM_SP left join BM_SPFL on BM_SP.SPFL = BM_SPFL.BM) left join BM_YHZC on BM_SPFL.ZZSTSGL like ('%'||BM_YHZC.YHZCMC||'%')
+      where BM_SP.BM=@bm 
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+  </SQL>
+
+  <!--增加-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSP.SPAdd">
+    <value>
+      INSERT INTO [BM_SP](
+      [BM],[MC],[JM],[KJM],[SJBM],[SLV],[SPSM],[GGXH],[JLDW],[DJ],[HSJBZ],[XSSRKM],[YJZZSKM],[XSTHKM],[HYSY],[WJ],[XTHASH],[ISHIDE],[XTCODE],[SPFL],[YHZC],[SPFLMC],[YHZCMC],[LSLVBS]
+      )VALUES(
+      @BM,@MC,@JM,@KJM,@SJBM,@SLV,@SPSM,@GGXH,@JLDW,@DJ,@HSJBZ,@XSSRKM,@YJZZSKM,@XSTHKM,@HYSY,@WJ,@XTHASH,@ISHIDE,@XTCODE,@SPFL,@YHZC,@SPFLMC,@YHZCMC,@LSLVBS
+      )
+    </value>
+    <type>Text</type>
+    <param name="BM" type="AnsiString"></param>
+    <param name="MC" type="AnsiString"></param>
+    <param name="JM" type="AnsiString"></param>
+    <param name="KJM" type="AnsiString"></param>
+    <param name="SJBM" type="AnsiString"></param>
+    <param name="SLV" type="Double"></param>
+    <param name="SPSM" type="AnsiString"></param>
+    <param name="GGXH" type="AnsiString"></param>
+    <param name="JLDW" type="AnsiString"></param>
+    <param name="DJ" type="Double"></param>
+    <param name="HSJBZ" type="Boolean"></param>
+    <param name="XSSRKM" type="AnsiString"></param>
+    <param name="YJZZSKM" type="AnsiString"></param>
+    <param name="XSTHKM" type="AnsiString"></param>
+    <param name="HYSY" type="Boolean"></param>
+    <param name="WJ" type="Int64"></param>
+    <param name="XTHASH" type="AnsiString"></param>
+    <param name="ISHIDE" type="AnsiString"></param>
+    <param name="XTCODE" type="AnsiString"></param>
+    <param name="SPFL" type="AnsiString"></param>
+    <param name="YHZC" type="AnsiString"></param>
+    <param name="SPFLMC" type="AnsiString"></param>
+    <param name="YHZCMC" type="AnsiString"></param>
+    <param name="LSLVBS" type="AnsiString"></param>
+  </SQL>
+  <!--修改-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSP.SPModify">
+    <value>
+      UPDATE [BM_SP] SET
+      [BM] = @BM,[MC] = @MC,[JM] = @JM,[KJM] = @KJM,[SJBM] = @SJBM,[SLV] = @SLV,[SPSM] = @SPSM,[GGXH] = @GGXH,[JLDW] = @JLDW,[DJ] = @DJ,[HSJBZ] = @HSJBZ,[XSSRKM] = @XSSRKM,[YJZZSKM] = @YJZZSKM,[XSTHKM] = @XSTHKM,[HYSY] = @HYSY,[ISHIDE] = @ISHIDE,[SPFL] = @SPFL,[YHZC] = @YHZC,[SPFLMC] = @SPFLMC,[YHZCMC] = @YHZCMC,[LSLVBS] = @LSLVBS
+      WHERE  BM=@oldBM
+    </value>
+    <type>Text</type>
+    <param name="oldBM" type="AnsiString"></param>
+    <param name="BM" type="AnsiString"></param>
+    <param name="MC" type="AnsiString"></param>
+    <param name="JM" type="AnsiString"></param>
+    <param name="KJM" type="AnsiString"></param>
+    <param name="SJBM" type="AnsiString"></param>
+    <param name="SLV" type="Double"></param>
+    <param name="SPSM" type="AnsiString"></param>
+    <param name="GGXH" type="AnsiString"></param>
+    <param name="JLDW" type="AnsiString"></param>
+    <param name="DJ" type="Double"></param>
+    <param name="HSJBZ" type="Boolean"></param>
+    <param name="XSSRKM" type="AnsiString"></param>
+    <param name="YJZZSKM" type="AnsiString"></param>
+    <param name="XSTHKM" type="AnsiString"></param>
+    <param name="HYSY" type="Boolean"></param>
+    <param name="ISHIDE" type="AnsiString"></param>
+    <param name="SPFL" type="AnsiString"></param>
+    <param name="YHZC" type="AnsiString"></param>
+    <param name="SPFLMC" type="AnsiString"></param>
+    <param name="YHZCMC" type="AnsiString"></param>
+    <param name="LSLVBS" type="AnsiString"></param>
+  </SQL>
+
+
+  <!--更新商品库-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSP.UpdataBM_SP">
+    <value>
+      UPDATE BM_SP SET SPFLMC=@SPFLMC,YHZC = @YHZC,YHZCMC = @YHZCMC,LSLVBS=@LSLVBS
+      WHERE BM= @BM AND MC = @MC 
+    </value>
+    <type>Text</type>
+    <param name="SPFLMC" type="AnsiString"></param>
+    <param name="YHZC" type="AnsiString"></param>
+    <param name="YHZCMC" type="AnsiString"></param>
+    <param name="BM" type="AnsiString"></param>
+    <param name="MC" type="AnsiString"></param>
+    <param name="LSLVBS" type="AnsiString"></param>
+  </SQL>
+  
+  
+  <!--修改-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSP.ModifyBMSPLSLVBSbyYHZCMC">
+    <value>
+      UPDATE [BM_SP] SET[LSLVBS] ="0" WHERE  YHZC="是" and YHZCMC="出口零税" and SLV=0;
+      UPDATE [BM_SP] SET[LSLVBS] ="1" WHERE  YHZC="是" and YHZCMC="免税" and SLV=0;
+      UPDATE [BM_SP] SET[LSLVBS] ="2" WHERE  YHZC="是" and YHZCMC="不征税" and SLV=0;
+      UPDATE [BM_SP] SET[LSLVBS] ="3" WHERE  YHZC="否" and SLV=0;
+    </value>
+    <type>Text</type>   
+  </SQL> 
+   
+  
+  <!--获取删除的子节点-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSP.SPDeleteSubNodes">
+    <value>
+      DELETE FROM [BM_SP]  WHERE  BM like  @bmLike and BM &lt;&gt; @bm
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+    <param name="bmLike" type="AnsiString"></param>
+  </SQL>
+  <!--删除一条记录-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSP.SPDelete">
+    <value>
+      DELETE FROM [BM_SP]   WHERE  BM=@bm
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+  </SQL>
+  <!--判断分类编码下是否有下级编码-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSP.SPHasChild">
+    <value>
+      select count(BM) as CountBM from BM_SP where SJBM = @bm
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+  </SQL>
+  <!--获取删除的分类及其子节点-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSP.SPDeleteFenLei">
+    <value>
+      DELETE FROM [BM_SP]  WHERE  BM like  @bm
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+  </SQL>
+
+  <!--查询指定客户是否存在-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSP.SPExist">
+    <value>SELECT COUNT(BM) FROM BM_SP WHERE BM=@bm</value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+  </SQL>
+
+  
+  <!--查询是否存在相同的商品名称和规格型号-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSP.MCXHExist">
+    <value>SELECT COUNT(*) FROM BM_SP WHERE MC=@MC AND GGXH=@GGXH AND BM &lt;&gt; @BM</value>
+    <type>Text</type>
+    <param name="BM" type="AnsiString"></param>
+    <param name="MC" type="AnsiString"></param>
+    <param name="GGXH" type="AnsiString"></param>
+  </SQL>
+
+  <!--分页查询-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSP.SPquery">
+    <value>
+      SELECT COUNT(BM) FROM BM_SP;
+      SELECT BM,MC,JM,KJM,SJBM,SLV,SPSM,GGXH,JLDW,DJ,HSJBZ,XSSRKM,YJZZSKM,XSTHKM,HYSY,WJ,XTHASH,ISHIDE,XTCODE  FROM [BM_SP]
+      ORDER BY BM   Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+    </value>
+    <type>Text</type>
+  </SQL>
+  <!--特定编码起头-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSP.SPbmlike">
+    <var name="condition" value="BM like @key"/>
+    <value>
+      SELECT COUNT(BM) FROM BM_SP WHERE #condition#;
+      SELECT *
+      FROM [BM_SP]  where  #condition#
+      ORDER BY BM   Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+    </value>
+    <type>Text</type>
+    <param name="key" type="AnsiString"></param>
+  </SQL>
+
+  <!--特定编码起头,按税率相同的选择-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSP.SPbmlikeAndSlv">
+    <var name="condition" value="BM like @BM and SLV in (0,@SLV)"/>
+    <value>
+      SELECT COUNT(BM) FROM BM_SP WHERE #condition#;
+      SELECT *
+      FROM [BM_SP]  where  #condition#
+      ORDER BY BM   Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+    </value>
+    <type>Text</type>
+    <param name="BM" type="AnsiString"></param>
+    <param name="SLV" type="Double"></param>
+  </SQL>
+
+
+  <!--一个关键字查询多个字段的查询-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSP.SPqueryKey">
+    <var name="condition" value="MC like  @key or  BM like  @key  or JM like  @key or KJM like @key or GGXH like @key"/>
+    <value>
+      SELECT  COUNT(BM) FROM BM_SP where #condition#;
+      SELECT  *
+      FROM [BM_SP] WHERE   #condition#
+      ORDER BY BM   Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+    </value>
+    <type>Text</type>
+    <param name="key" type="AnsiString"></param>
+  </SQL>
+
+
+  <!--一个关键字查询多个字段的查询 税率-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSP.SPqueryKeySlv">
+    <var name="condition" value="SLV=case when(@SLV=-1.0) then SLV else @SLV end  and WJ=case when(@WJ=-1) then WJ else @WJ end 
+         and( KJM like  @key or MC like  @key or  BM like  @key  or JM like  @key or KJM like @key or GGXH like @key) 
+         and (ISHIDE is null or ISHIDE like '0%' or (ISHIDE like '1%' and (XTHASH is null or XTHASH = '')))"/>
+    <value>
+      SELECT  *
+      FROM [BM_SP] WHERE   #condition#  Limit  @Top
+    </value>
+    <type>Text</type>
+    <param name="key" type="AnsiString"></param>
+    <param name="SLV" type="Double"></param>
+    <param name="WJ" type="Int32"></param>
+    <param name="Top" type="Int32"></param>
+  </SQL>
+
+
+  <!--bmSelect特定编码起头-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSP.SPbmlikeSEL">
+    <var name="condition" value="BM like @key"/>
+    <value>
+      SELECT COUNT(BM) FROM BM_SP WHERE (ISHIDE is null or ISHIDE like '0%' ) and #condition#;
+      SELECT *
+      FROM [BM_SP]  where (ISHIDE is null or ISHIDE like '0%' ) and #condition#
+      ORDER BY BM   Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+    </value>
+    <type>Text</type>
+    <param name="key" type="AnsiString"></param>
+  </SQL>
+
+  <!--bmSelect特定编码起头,按税率相同的选择-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSP.SPbmlikeAndSlvSEL">
+    <var name="condition" value=" (ISHIDE is null or ISHIDE like '0%' and (XTHASH is null or XTHASH = '')) 
+         and BM like @BM and SLV = @SLV 
+         and HYSY &lt;&gt; '1' and (XTHASH is null or XTHASH = '')"/>
+    <value>
+      SELECT COUNT(BM) FROM BM_SP WHERE #condition#;
+      SELECT *
+      FROM [BM_SP]  where  #condition#
+      ORDER BY BM   Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+    </value>
+    <type>Text</type>
+    <param name="BM" type="AnsiString"></param>
+    <param name="SLV" type="Double"></param>
+  </SQL>
+
+  <!--bmSelect特殊商品特殊过滤-中外合作油气田-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSP.SPbmlikeAndHYSYSEL">
+    <var name="condition" value=" (ISHIDE is null or ISHIDE like '0%'  and (XTHASH is null or XTHASH = '')) 
+         and BM like @BM and HYSY = '1'"/>
+    <value>
+      SELECT COUNT(BM) FROM BM_SP WHERE #condition#;
+      SELECT *
+      FROM [BM_SP]  where  #condition#
+      ORDER BY BM   Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+    </value>
+    <type>Text</type>
+    <param name="BM" type="AnsiString"></param>
+  </SQL>
+
+
+  <!--bmSelect特殊商品特殊过滤-1.5%-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSP.SPbmlikeAndOPFSEL">
+    <var name="condition" value=" (ISHIDE is null or ISHIDE like '0%'  and (XTHASH is null or XTHASH = '')) 
+         and BM like @BM and SLV = '0.015'"/>
+    <value>
+      SELECT COUNT(BM) FROM BM_SP WHERE #condition#;
+      SELECT *
+      FROM [BM_SP]  where  #condition#
+      ORDER BY BM   Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+    </value>
+    <type>Text</type>
+    <param name="BM" type="AnsiString"></param>
+  </SQL>
+  
+  
+  
+  <!--bmSelect特殊商品特殊过滤-除了中外合作油气田之外的其他商品-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSP.SPbmlikeAndExcept_HYSYSEL">
+    <var name="condition" value=" (ISHIDE is null or ISHIDE like '0%'  and (XTHASH is null or XTHASH = '')) 
+         and BM like @BM and HYSY &lt;&gt; '1'"/>
+    <value>
+      SELECT COUNT(BM) FROM BM_SP WHERE #condition#;
+      SELECT *
+      FROM [BM_SP]  where  #condition#
+      ORDER BY BM   Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+    </value>
+    <type>Text</type>
+    <param name="BM" type="AnsiString"></param>
+  </SQL>
+
+
+  <!--bmSelect特殊商品特殊过滤-稀土-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSP.SPbmlikeAndXTSEL">
+    <var name="condition" value=" (ISHIDE is null or ISHIDE like '0%') 
+         and BM like @BM and length(XTHASH)>0"/>
+    <value>
+      SELECT COUNT(BM) FROM BM_SP WHERE #condition#;
+      SELECT *
+      FROM [BM_SP]  where  #condition#
+      ORDER BY BM   Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+    </value>
+    <type>Text</type>
+    <param name="BM" type="AnsiString"></param>
+  </SQL>
+
+  <!--bmSelect特殊商品特殊过滤-石脑油-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSP.SPbmlikeAndSNYSEL">
+    <var name="condition" value=" (ISHIDE is null or ISHIDE like '0%' and (XTHASH is null or XTHASH = '')) 
+         and BM like @BM and (HYSY &lt;&gt; '1' and SLV  &lt;&gt; '0.015'and ((XTHASH is null or XTHASH='')) )"/>
+    <value>
+      SELECT COUNT(BM) FROM BM_SP WHERE #condition#;
+      SELECT *
+      FROM [BM_SP]  where  #condition#
+      ORDER BY BM   Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+    </value>
+    <type>Text</type>
+    <param name="BM" type="AnsiString"></param>
+  </SQL>
+
+  <!--bmSelect查询检索-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSP.SPqueryKeyDisplaySEL">
+    <var name="condition" value="(BM like @key or MC like @key or JM like @key or KJM like @key or GGXH like @key)"/>
+    <value>
+      SELECT COUNT(BM) FROM BM_SP WHERE (ISHIDE is null or ISHIDE like '0%' ) and #condition#;
+      SELECT *
+      FROM [BM_SP]  where (ISHIDE is null or ISHIDE like '0%') and #condition#
+      ORDER BY BM   Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+    </value>
+    <type>Text</type>
+    <param name="key" type="AnsiString"></param>
+  </SQL>
+
+  <!--bmSelect查询检索,按税率相同的选择-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSP.SPqueryKeyAndSlvDisplaySEL">
+    <var name="condition" value=" (ISHIDE is null or ISHIDE like '0%') 
+         and (BM like @key or MC like @key or JM like @key or KJM like @key or GGXH like @key) and SLV = @SLV 
+         and HYSY &lt;&gt; '1' and (XTHASH is null or XTHASH = '')"/>
+    <value>
+      SELECT COUNT(BM) FROM BM_SP WHERE #condition#;
+      SELECT *
+      FROM [BM_SP]  where  #condition#
+      ORDER BY BM   Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+    </value>
+    <type>Text</type>
+    <param name="key" type="AnsiString"></param>
+    <param name="SLV" type="Double"></param>
+  </SQL>
+
+  <!--bmSelect-查询检索-特殊商品特殊过滤-中外合作油气田-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSP.SPqueryKeyHYSYDisplaySEL">
+    <var name="condition" value=" (ISHIDE is null or ISHIDE like '0%'  and (XTHASH is null or XTHASH = '')) 
+         and (BM like @key or MC like @key or JM like @key or KJM like @key or GGXH like @key) and HYSY = '1'"/>
+    <value>
+      SELECT COUNT(BM) FROM BM_SP WHERE #condition#;
+      SELECT *
+      FROM [BM_SP]  where  #condition#
+      ORDER BY BM   Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+    </value>
+    <type>Text</type>
+    <param name="key" type="AnsiString"></param>
+  </SQL>
+
+  <!--bmSelect-查询检索-特殊商品特殊过滤-除了中外合作油气田以外的其它商品-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSP.SPqueryKeyExceptHYSYDisplaySEL">
+    <var name="condition" value=" (ISHIDE is null or ISHIDE like '0%' and (XTHASH is null or XTHASH = '')) 
+         and (BM like @key or MC like @key or JM like @key or KJM like @key or GGXH like @key) and HYSY &lt;&gt; '1'"/>
+    <value>
+      SELECT COUNT(BM) FROM BM_SP WHERE #condition#;
+      SELECT *
+      FROM [BM_SP]  where  #condition#
+      ORDER BY BM   Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+    </value>
+    <type>Text</type>
+    <param name="key" type="AnsiString"></param>
+  </SQL>
+
+  <!--bmSelect-查询检索-特殊商品特殊过滤-稀土-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSP.SPqueryKeyXTDisplaySEL">
+    <var name="condition" value=" (ISHIDE is null or ISHIDE like '0%'  and (XTHASH is null or XTHASH = '')) 
+         and (BM like @key or MC like @key or JM like @key or KJM like @key or GGXH like @key) and length(XTHASH)>0"/>
+    <value>
+      SELECT COUNT(BM) FROM BM_SP WHERE #condition#;
+      SELECT *
+      FROM [BM_SP]  where  #condition#
+      ORDER BY BM   Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+    </value>
+    <type>Text</type>
+    <param name="key" type="AnsiString"></param>
+  </SQL>
+
+  <!--bmSelect-查询检索-特殊商品特殊过滤-石脑油-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSP.SPqueryKeySNYDisplaySEL">
+    <var name="condition" value=" (ISHIDE is null or ISHIDE like '0%' and (XTHASH is null or XTHASH = '')) 
+         and (BM like @key or MC like @key or JM like @key or KJM like @key or GGXH like @key) and HYSY &lt;&gt; '1'"/>
+    <value>
+      SELECT COUNT(BM) FROM BM_SP WHERE #condition#;
+      SELECT *
+      FROM [BM_SP]  where  #condition#
+      ORDER BY BM   Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+    </value>
+    <type>Text</type>
+    <param name="key" type="AnsiString"></param>
+  </SQL>
+
+  <!--bmSelect一个关键字查询多个字段的查询-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSP.SPqueryKeySEL">
+    <var name="condition" value="(ISHIDE is null or ISHIDE like '0%' or (ISHIDE like '1%' and (XTHASH is null or XTHASH = ''))) 
+         and (MC like  @key or  BM like  @key  or JM like  @key or KJM like @key or KJM like @key or GGXH like @key)"/>
+    <value>
+      SELECT  COUNT(BM) FROM BM_SP where #condition#;
+      SELECT  *
+      FROM [BM_SP] WHERE   #condition#
+      ORDER BY BM   Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+    </value>
+    <type>Text</type>
+    <param name="key" type="AnsiString"></param>
+  </SQL>
+
+
+  <!--bmSelect一个关键字查询多个字段的查询 税率-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSP.SPqueryKeySlvSEL">
+    <var name="condition" value="SLV=case when(@SLV=-1.0) then SLV else @SLV end  and WJ=case when(@WJ=-1) then WJ else @WJ end 
+         and ( KJM like  @key or MC like  @key or  BM like  @key  or JM like  @key or KJM like @key or GGXH like @key) 
+         and (ISHIDE is null or ISHIDE like '0%' or (ISHIDE like '1%' and (XTHASH is null or XTHASH = ''))) 
+         and HYSY &lt;&gt; '1' and (XTHASH is null or XTHASH = '')"/>
+    <value>
+      SELECT  *
+      FROM [BM_SP] WHERE   #condition#  Limit  @Top
+    </value>
+    <type>Text</type>
+    <param name="key" type="AnsiString"></param>
+    <param name="SLV" type="Double"></param>
+    <param name="WJ" type="Int32"></param>
+    <param name="Top" type="Int32"></param>
+  </SQL>
+
+  <!--bmSelect特殊商品特殊过滤-中外合作油气田-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSP.SPqueryKeyAndHYSYSEL">
+    <var name="condition" value="WJ=case when(@WJ=-1) then WJ else @WJ end 
+         and (MC like  @key or  BM like  @key  or JM like  @key or KJM like @key or GGXH like @key) 
+         and (ISHIDE is null or ISHIDE like '0%' or (ISHIDE like '1%' and (XTHASH is null or XTHASH = ''))) 
+         and HYSY = '1'"/>
+    <value>
+      SELECT  *
+      FROM [BM_SP] WHERE   #condition#  Limit  @Top
+    </value>
+    <type>Text</type>
+    <param name="key" type="AnsiString"></param>
+    <param name="WJ" type="Int32"></param>
+    <param name="Top" type="Int32"></param>
+  </SQL>
+
+  <!--bmSelect特殊商品特殊过滤-稀土-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSP.SPqueryKeyAndXTSEL">
+    <var name="condition" value="WJ=case when(@WJ=-1) then WJ else @WJ end 
+         and (MC like  @key or  BM like  @key  or JM like  @key or KJM like @key or GGXH like @key) 
+         and (ISHIDE is null or ISHIDE like '0%' or (ISHIDE like '1%' and (XTHASH is null or XTHASH = ''))) 
+         and length(XTHASH)>0"/>
+    <value>
+      SELECT  *
+      FROM [BM_SP] WHERE   #condition#  Limit  @Top
+    </value>
+    <type>Text</type>
+    <param name="key" type="AnsiString"></param>
+    <param name="WJ" type="Int32"></param>
+    <param name="Top" type="Int32"></param>
+  </SQL>
+
+  <!--bmSelect特殊商品特殊过滤-石脑油-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSP.SPqueryKeyAndSNYSEL">
+    <var name="condition" value="WJ=case when(@WJ=-1) then WJ else @WJ end 
+         and (MC like  @key or  BM like  @key  or JM like  @key or KJM like @key or GGXH like @key) 
+         and (ISHIDE is null or ISHIDE like '0%' or (ISHIDE like '1%' and (XTHASH is null or XTHASH = ''))) 
+         and HYSY &lt;&gt; '1'"/>
+    <value>
+      SELECT  *
+      FROM [BM_SP] WHERE   #condition#  Limit  @Top
+    </value>
+    <type>Text</type>
+    <param name="key" type="AnsiString"></param>
+    <param name="WJ" type="Int32"></param>
+    <param name="Top" type="Int32"></param>
+  </SQL>
+
+
+  <!--Test绑定TreeView-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSP.SPTreeView">
+    <var name="condition" value="SJBM=@sjbm and WJ=0"/>
+    <value>
+      SELECT BM,MC,SJBM,WJ FROM [BM_SP] where #condition#;
+    </value>
+    <type>Text</type>
+    <param name="sjbm" type="AnsiString"></param>
+  </SQL>
+
+  <!--Test绑定TreeView-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSP.SPTreeViewISHIDE">
+    <var name="condition" value="SJBM=@sjbm and WJ=0 and (ISHIDE like '0%' or ISHIDE is null )"/>
+    <value>
+      SELECT BM,MC,SJBM,WJ FROM [BM_SP] where #condition#;
+    </value>
+    <type>Text</type>
+    <param name="sjbm" type="AnsiString"></param>
+  </SQL>
+  
+  
+  
+  <!--导出中使用一个关键字查询多个字段的查询-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSP.SPqueryKeyout">
+    <var name="condition" value="MC like @key or  BM like @key or JM like  @key or KJM like @key or GGXH like @key"/>
+    <value>
+      SELECT  * FROM BM_SP where #condition# ORDER BY BM;
+    </value>
+    <type>Text</type>
+    <param name="key" type="AnsiString"></param>
+  </SQL>
+
+  <!--增加商品的推荐编码-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSP.SPRecommend">
+    <value>
+      SELECT BM from [BM_SP] where SJBM=@bm and BM like  @bmLike
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+    <param name="bmLike" type="AnsiString"></param>
+  </SQL>
+
+  <!--BM_SP修改客户BM子节点都需更改BM、SJBM-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSP.SPBMModify">
+    <value>
+      UPDATE [BM_SP] SET
+      BM= @afterbm ,[MC] = @MC,[JM] = @JM,[KJM] = @KJM,[SJBM] = @SJBM,[SLV] = @SLV,[SPSM] = @SPSM,[GGXH] = @GGXH,[JLDW] = @JLDW,[DJ] = @DJ,[HSJBZ] = @HSJBZ,[XSSRKM] = @XSSRKM,[YJZZSKM] = @YJZZSKM,[XSTHKM] = @XSTHKM
+      WHERE BM=@bm
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+    <param name="afterbm" type="AnsiString"></param>
+    <param name="MC" type="AnsiString"></param>
+    <param name="JM" type="AnsiString"></param>
+    <param name="KJM" type="AnsiString"></param>
+    <param name="SJBM" type="AnsiString"></param>
+    <param name="SLV" type="Double"></param>
+    <param name="SPSM" type="AnsiString"></param>
+    <param name="GGXH" type="AnsiString"></param>
+    <param name="JLDW" type="AnsiString"></param>
+    <param name="DJ" type="Double"></param>
+    <param name="HSJBZ" type="Boolean"></param>
+    <param name="XSSRKM" type="AnsiString"></param>
+    <param name="YJZZSKM" type="AnsiString"></param>
+    <param name="XSTHKM" type="AnsiString"></param>
+  </SQL>
+
+
+  <!--BM_KH获得此节点下的所有子节点-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSP.SPBMGetSubNode">
+    <value>
+      SELECT BM,SJBM FROM [BM_SP]  WHERE  BM&lt;&gt;@bm and BM like  @bmLike  and SJBM like  @bmLike
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+    <param name="bmLike" type="AnsiString"></param>
+  </SQL>
+
+
+  <!--BM_KH更改节点下的编码和上级编码-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSP.SPBMUpdateSJBMandBM">
+    <value>
+      UPDATE [BM_SP] SET BM= @newBM ,SJBM= @newSJBM  WHERE BM=@bm
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+    <param name="newBM" type="AnsiString"></param>
+    <param name="newSJBM" type="AnsiString"></param>
+  </SQL>
+
+
+
+  <!--判断下级编码能否增位，当编码族中的最大编码长度>16时不能增位-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSP.SPBmZWverify">
+    <value>
+      select MAX( length(BM))  as BmLenth  from [BM_SP] where BM like @bm
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+  </SQL>
+
+
+
+  <!--TreeView减位验证是否可以减位操作方法-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSP.SPBmJWVerify">
+    <value>
+      SELECT substr(BM,length(@bm)+1,1) as JWvalue
+      FROM [BM_SP] WHERE  SJBM=@bm  order by JWvalue desc  limit 1
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+  </SQL>
+  
+  <!--一个关键字查询多个字段的查询,返回前几条数据-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSP.SPqueryKeySlvAppend">
+    <var name="condition" value="BM_SP.WJ=1 
+         and (BM_SP.MC like @key  or BM_SP.BM like @key or BM_SP.JM like @key or BM_SP.KJM like @key or BM_SP.GGXH like @key) 
+         and BM_SP.slv=case when(@slv=-1) then BM_SP.slv else @slv end 
+         and (BM_SP.ISHIDE is null or BM_SP.ISHIDE like '0%' or (BM_SP.ISHIDE like '1%' and (BM_SP.XTHASH is null or BM_SP.XTHASH = '')))
+         and case when (@slv=-1) then 1=1 else (BM_SP.HYSY &lt;&gt; '1' and (BM_SP.XTHASH is null or BM_SP.XTHASH = '')) end 
+         and case when (@MUST_WITH_SPFL='true') then (BM_SP.SPFL is not null and BM_SP.SPFL &lt;&gt; '') else 1=1 end"/>
+    <value>
+      SELECT BM_SP.*,BM_SPFL.ZZSTSGL AS SPFL_ZZSTSGL,BM_YHZC.SLV AS YHZC_SLV
+      from (BM_SP left join BM_SPFL on BM_SP.SPFL = BM_SPFL.BM) left join BM_YHZC on BM_SPFL.ZZSTSGL like ('%'||BM_YHZC.YHZCMC||'%')
+      where  #condition#  Limit  @TopNo
+    </value>
+    <type>Text</type>
+    <param name="key" type="AnsiString"></param>
+    <param name="slv" type="Double"></param>
+    <param name="TopNo" type="Int32"></param>
+    <param name="MUST_WITH_SPFL" type="AnsiString"></param>
+  </SQL>
+
+  <SQL id="aisino.Fwkp.Bmgl.BMSP.SPqueryKeyHYSYAppend">
+    <var name="condition" value="BM_SP.WJ=1 
+         and( BM_SP.MC like @key  or BM_SP.BM like @key or BM_SP.JM like @key  or BM_SP.KJM like @key or BM_SP.GGXH like @key) 
+         and (BM_SP.ISHIDE is null or BM_SP.ISHIDE like '0%' or (BM_SP.ISHIDE like '1%' and (BM_SP.XTHASH is null or BM_SP.XTHASH = ''))) 
+         and BM_SP.HYSY = '1' 
+         and case when (@MUST_WITH_SPFL='true') then (BM_SP.SPFL is not null and BM_SP.SPFL &lt;&gt; '') else 1=1 end "/>
+    <value>
+      SELECT BM_SP.*,BM_SPFL.ZZSTSGL AS SPFL_ZZSTSGL,BM_YHZC.SLV AS YHZC_SLV
+      from (BM_SP left join BM_SPFL on BM_SP.SPFL = BM_SPFL.BM) left join BM_YHZC on BM_SPFL.ZZSTSGL like ('%'||BM_YHZC.YHZCMC||'%')
+      where  #condition#  Limit  @TopNo
+    </value>
+    <type>Text</type>
+    <param name="key" type="AnsiString"></param>
+    <param name="TopNo" type="Int32"></param>
+    <param name="MUST_WITH_SPFL" type="AnsiString"></param>
+  </SQL>
+
+  <SQL id="aisino.Fwkp.Bmgl.BMSP.SPqueryKeyOPFAppend">
+    <var name="condition" value="BM_SP.WJ=1 
+         and( BM_SP.MC like @key  or BM_SP.BM like @key or BM_SP.JM like @key  or BM_SP.KJM like @key or BM_SP.GGXH like @key) 
+         and (BM_SP.ISHIDE is null or BM_SP.ISHIDE like '0%' or (BM_SP.ISHIDE like '1%' and (BM_SP.XTHASH is null or BM_SP.XTHASH = ''))) 
+         and BM_SP.SLV = '0.015' 
+         and case when (@MUST_WITH_SPFL='true') then (BM_SP.SPFL is not null and BM_SP.SPFL &lt;&gt; '') else 1=1 end "/>
+    <value>
+      SELECT BM_SP.*,BM_SPFL.ZZSTSGL AS SPFL_ZZSTSGL,BM_YHZC.SLV AS YHZC_SLV
+      from (BM_SP left join BM_SPFL on BM_SP.SPFL = BM_SPFL.BM) left join BM_YHZC on BM_SPFL.ZZSTSGL like ('%'||BM_YHZC.YHZCMC||'%')
+      where  #condition#  Limit  @TopNo
+    </value>
+    <type>Text</type>
+    <param name="key" type="AnsiString"></param>
+    <param name="TopNo" type="Int32"></param>
+    <param name="MUST_WITH_SPFL" type="AnsiString"></param>
+  </SQL>
+  
+  
+  
+  
+  
+  <SQL id="aisino.Fwkp.Bmgl.BMSP.SPqueryKeyXTAppend">
+    <var name="condition" value="BM_SP.WJ=1 
+         and( BM_SP.MC like @key  or BM_SP.BM like @key or BM_SP.JM like @key  or BM_SP.KJM like @key or BM_SP.GGXH like @key) 
+         and (BM_SP.ISHIDE is null or BM_SP.ISHIDE like '0%' or (BM_SP.ISHIDE like '1%' and (BM_SP.XTHASH is null or BM_SP.XTHASH = ''))) 
+         and length(BM_SP.XTHASH)>0 
+         and case when (@MUST_WITH_SPFL='true') then (BM_SP.SPFL is not null and BM_SP.SPFL &lt;&gt; '') else 1=1 end"/>
+    <value>
+      SELECT BM_SP.*,BM_SPFL.ZZSTSGL AS SPFL_ZZSTSGL,BM_YHZC.SLV AS YHZC_SLV
+      from (BM_SP left join BM_SPFL on BM_SP.SPFL = BM_SPFL.BM) left join BM_YHZC on BM_SPFL.ZZSTSGL like ('%'||BM_YHZC.YHZCMC||'%')
+      where  #condition#  Limit  @TopNo
+    </value>
+    <type>Text</type>
+    <param name="key" type="AnsiString"></param>
+    <param name="TopNo" type="Int32"></param>
+    <param name="MUST_WITH_SPFL" type="AnsiString"></param>
+  </SQL>
+
+  <SQL id="aisino.Fwkp.Bmgl.BMSP.SPqueryKeySNYAppend">
+    <var name="condition" value="BM_SP.WJ=1 
+         and( BM_SP.MC like @key  or BM_SP.BM like @key or BM_SP.JM like @key  or BM_SP.KJM like @key or BM_SP.GGXH like @key) 
+         and (BM_SP.ISHIDE is null or BM_SP.ISHIDE like '0%' or (BM_SP.ISHIDE like '1%' and (BM_SP.XTHASH is null or BM_SP.XTHASH = ''))) 
+         and (BM_SP.HYSY &lt;&gt; '1' and BM_SP.SLV &lt;&gt; '0.015' and (BM_SP.XTHASH is null or BM_SP.XTHASH=''))
+         and case when (@MUST_WITH_SPFL='true') then (BM_SP.SPFL is not null and BM_SP.SPFL &lt;&gt; '') else 1=1 end"/>
+    <value>
+      SELECT BM_SP.*,BM_SPFL.ZZSTSGL AS SPFL_ZZSTSGL,BM_YHZC.SLV AS YHZC_SLV
+      from (BM_SP left join BM_SPFL on BM_SP.SPFL = BM_SPFL.BM) left join BM_YHZC on BM_SPFL.ZZSTSGL like ('%'||BM_YHZC.YHZCMC||'%')
+      where  #condition#  Limit  @TopNo
+    </value>
+    <type>Text</type>
+    <param name="key" type="AnsiString"></param>
+    <param name="TopNo" type="Int32"></param>
+    <param name="MUST_WITH_SPFL" type="AnsiString"></param>
+  </SQL>
+
+
+  <!--查询是否存在稀土商品-->
+  <SQL id="aisino.Fwkp.Bmgl.BMKH.XTSPExist">
+    <value>SELECT COUNT(BM) FROM BM_SP WHERE XTHASH &lt;&gt; ''</value>
+    <type>Text</type>
+  </SQL>
+
+  <SQL id="aisino.Fwkp.Bmgl.BMKH.XTSPByNameExist">
+    <value>
+      SELECT BM,XTCODE FROM BM_SP WHERE XTHASH &lt;&gt; '' AND MC = @spmc
+    </value>
+    <type>Text</type>
+    <param name="spmc" type="AnsiString"></param>
+  </SQL>
+
+  <!--编码下是否含有稀土商品-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSP.ContainXTSP">
+    <value>
+      SELECT COUNT(*) FROM BM_SP WHERE XTHASH &lt;&gt; '' AND SJBM = @SJBM
+    </value>
+    <type>Text</type>
+    <param name="SJBM" type="AnsiString"></param>
+  </SQL>
+
+  <!--删除稀土商品-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSP.DeleteXT">
+    <value>
+      DELETE FROM [BM_SP]  WHERE  XTHASH &lt;&gt; ''
+    </value>
+    <type>Text</type>
+  </SQL>
+
+  <!--修改稀土商品分类下所有商品的隐藏标志-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSP.SPBMUpdateXTHIDE">
+    <value>
+      UPDATE [BM_SP] SET ISHIDE= @ISHIDE  WHERE SJBM=@SJBM
+    </value>
+    <type>Text</type>
+    <param name="SJBM" type="AnsiString"></param>
+    <param name="ISHIDE" type="AnsiString"></param>
+  </SQL>
+
+  <!--修改普通商品的隐藏标志-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSP.SPBMUpdateSPHIDE">
+    <value>
+      UPDATE [BM_SP] SET ISHIDE= @ISHIDE  WHERE BM=@BM
+    </value>
+    <type>Text</type>
+    <param name="BM" type="AnsiString"></param>
+    <param name="ISHIDE" type="AnsiString"></param>
+  </SQL>
+
+  <!--根据商品名称查找商品编码信息-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSP.SelectSPByMC">
+    <value>
+      select BM, XTHASH from BM_SP where  MC = @spmc
+    </value>
+    <type>Text</type>
+    <param name="spmc" type="AnsiString"></param>
+  </SQL>
+
+  <!--获取该上级编码的下级编码-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSP.GetXJBMBySJBM">
+    <value>
+      select BM from BM_SP where  SJBM = @SJBM
+    </value>
+    <type>Text</type>
+    <param name="SJBM" type="AnsiString"></param>
+  </SQL>
+
+  <!--删除与稀土商品重名的普通商品-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSP.DelCommonSPByName">
+    <value>
+      DELETE FROM [BM_SP]  WHERE (XTHASH is null or XTHASH = '') AND MC=@mc
+    </value>
+    <type>Text</type>
+    <param name="mc" type="AnsiString"></param>
+  </SQL>
+
+ <!--检索所有的稀土商品信息-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSP.QueryAllXTSP">
+    <value>
+      SELECT * FROM BM_SP WHERE XTHASH &lt;&gt; '' AND XTHASH IS NOT NULL
+    </value>
+    <type>Text</type>
+  </SQL>
+
+
+  <!--更新分类编码是，没有选择优惠政策类型的数据-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSP.QuerySPNotYHZCMC">
+    <value>
+      SELECT BM,MC,SLV,HYSY,SPFL,YHZC,YHZCMC,LSLVBS FROM BM_SP WHERE (SPFL!='' and YHZC='是' and (YHZCMC='' or YHZCMC is null) and (XTHASH is null or XTHASH=''))
+    </value>
+    <type>Text</type>
+  </SQL>
+  
+  <!--更新分类编码是，没有选择优惠政策类型的数据-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSP.QuerySPSPFLNotEmptyAndNotXT">
+    <value>
+      SELECT BM,SPFL,YHZC,YHZCMC,LSLVBS FROM BM_SP WHERE (SPFL!='' and (XTHASH is null or XTHASH=''))
+    </value>
+    <type>Text</type>
+  </SQL>
+ 
+  
+  <!--判断分类编码下是否有下级编码-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSP.SPChildDetermine">
+    <value>
+      select BM from BM_SP where SJBM = @sjbm
+    </value>
+    <type>Text</type>
+    <param name="sjbm" type="AnsiString"></param>
+  </SQL>
+  
+  <!--更新商品分类表数据-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSPFL.ReplaceSPFL">
+    <value>
+      <![CDATA[REPLACE INTO [BM_SPFL](
+        BM,HBBM,MC,SM,SLV,ZZSTSGL,ZZSZCYJ,ZZSTSNRDM,XFSGL,XFSZCYJ,XFSTSNRDM,GJZ,HZX,TJJBM,HGJCKSPPM
+        ,BMB_BBH,BBH,KYZT,QYSJ,GDQJZSJ,GXSJ,SJBM,WJ,ISHIDE
+        )
+        VALUES
+        (
+        @BM,@HBBM,@MC,@SM,@SLV,@ZZSTSGL,@ZZSZCYJ,@ZZSTSNRDM,@XFSGL,@XFSZCYJ,@XFSTSNRDM,@GJZ,@HZX,@TJJBM,@HGJCKSPPM
+        ,@BMB_BBH,@BBH,@KYZT,@QYSJ,@GDQJZSJ,@GXSJ,@SJBM,@WJ,(select case ISHIDE when null then 0 else ISHIDE end end from BM_SPFL where BM=@BM limit 1)
+        )]]>
+    </value>
+    <type>Text</type>
+    <param name="BM" type="AnsiString"></param>
+    <param name="HBBM" type="AnsiString"></param>
+    <param name="MC" type="AnsiString"></param>
+    <param name="SM" type="AnsiString"></param>
+    <param name="SLV" type="AnsiString"></param>
+    <param name="ZZSTSGL" type="AnsiString"></param>
+    <param name="ZZSZCYJ" type="AnsiString"></param>
+    <param name="ZZSTSNRDM" type="AnsiString"></param>
+    <param name="XFSGL" type="AnsiString"></param>
+    <param name="XFSZCYJ" type="AnsiString"></param>
+    <param name="XFSTSNRDM" type="AnsiString"></param>
+    <param name="GJZ" type="AnsiString"></param>
+    <param name="HZX" type="AnsiString"></param>
+    <param name="TJJBM" type="AnsiString"></param>
+    <param name="HGJCKSPPM" type="AnsiString"></param>
+    <param name="BMB_BBH" type="AnsiString"></param>
+    <param name="BBH" type="AnsiString"></param>
+    <param name="KYZT" type="AnsiString"></param>
+    <param name="QYSJ" type="AnsiString"></param>
+    <param name="GDQJZSJ" type="AnsiString"></param>
+    <param name="GXSJ" type="DateTime"></param>
+    <param name="SJBM" type="AnsiString"></param>
+    <param name="WJ" type="Int32"></param>
+  </SQL>
+  <!--清空优惠政策表-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSPFL.DeleteYHZC">
+    <value>DELETE FROM BM_YHZC</value>
+  </SQL>
+
+  <!--插入优惠政策表-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSPFL.InsertYHZC">
+    <value>INSERT INTO BM_YHZC(Yhzcmc,SLv) VALUES(@Yhzcmc,@SLv)</value>
+    <type>Text</type>
+    <param name="Yhzcmc" type="AnsiString"></param>
+    <param name="SLv" type="AnsiString"></param>
+  </SQL>
+
+  <!--&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&7-->
+  <!--&&&&&&&&&&——————————————收/发货人管理—————————————————&&&&&&&&&&&&&&&&7-->
+  <!--&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&7-->
+
+  <!--GetModel客户编码-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSFHR.SFHRGetModel">
+    <value>
+      select  *  from BM_SFHR  where BM=@bm  Limit 1
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+  </SQL>
+
+  <!--增加客户-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSFHR.SFHRAdd">
+    <value>
+      INSERT INTO [BM_SFHR](
+      [BM],[MC],[JM],[SJBM],[SH],[DZDH],[YHZH],[YZBM],[KJM],[WJ]
+      )VALUES(
+      @BM,@MC,@JM,@SJBM,@SH,@DZDH,@YHZH,@YZBM,@KJM,@WJ
+      )
+    </value>
+    <type>Text</type>
+    <param name="BM" type="AnsiString"></param>
+    <param name="MC" type="AnsiString"></param>
+    <param name="JM" type="AnsiString"></param>
+    <param name="SJBM" type="AnsiString"></param>
+    <param name="SH" type="AnsiString"></param>
+    <param name="DZDH" type="AnsiString"></param>
+    <param name="YHZH" type="AnsiString"></param>
+    <param name="YZBM" type="AnsiString"></param>
+    <param name="KJM" type="AnsiString"></param>
+    <param name="WJ" type="Int64"></param>
+  </SQL>
+  
+  <!--修改客户-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSFHR.SFHRModify">
+    <value>
+      UPDATE [BM_SFHR] SET
+      [BM] = @BM,[MC] = @MC,[JM] = @JM,[SJBM] = @SJBM,[SH] = @SH,[DZDH] = @DZDH,[YHZH] = @YHZH,[YZBM] = @YZBM,[KJM] = @KJM,[WJ] = @WJ
+      WHERE BM=@oldBM
+    </value>
+    <type>Text</type>
+    <param name="oldBM" type="AnsiString"></param>
+    <param name="BM" type="AnsiString"></param>
+    <param name="MC" type="AnsiString"></param>
+    <param name="JM" type="AnsiString"></param>
+    <param name="SJBM" type="AnsiString"></param>
+    <param name="SH" type="AnsiString"></param>
+    <param name="DZDH" type="AnsiString"></param>
+    <param name="YHZH" type="AnsiString"></param>
+    <param name="YZBM" type="AnsiString"></param>
+    <param name="KJM" type="AnsiString"></param>
+    <param name="WJ" type="AnsiString"></param>
+  </SQL>
+  
+  <!--删除分类的子节点-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSFHR.SFHRDeleteSubNodes">
+    <value>
+      DELETE from [BM_SFHR]  WHERE  BM like  @bmLike and BM &lt;&gt; @bm
+    </value>
+    <type>Text</type>
+    <param name="bmLike" type="AnsiString"></param>
+  </SQL>
+
+  <!--获取删除的分类及其子节点-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSFHR.SFHRDeleteFenLei">
+    <value>
+      DELETE from [BM_SFHR]  WHERE  BM like  @bm
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+  </SQL>
+  
+  <!--删除一条记录-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSFHR.SFHRDelete">
+    <value>
+      DELETE from [BM_SFHR]  WHERE  BM=@bm
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+  </SQL>
+  
+  <!--查询指定客户编码是否存在-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSFHR.SFHRExist">
+    <value>SELECT COUNT(BM) FROM BM_SFHR WHERE BM=@bm</value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+  </SQL>
+
+
+  <!--查询指定客户税号是否存在-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSFHR.SFHRSHExist">
+    <value>SELECT COUNT(BM) FROM BM_SFHR WHERE SH=@SH AND BM &lt;&gt; @BM</value>
+    <type>Text</type>
+    <param name="SH" type="AnsiString"></param>
+    <param name="BM" type="AnsiString"></param>
+  </SQL>
+
+  <!--查询指定客户名称是否存在-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSFHR.SFHRMCExist">
+    <value>SELECT * FROM BM_SFHR WHERE MC=@MC and SJBM=@SJBM</value>
+    <type>Text</type>
+    <param name="MC" type="AnsiString"></param>
+    <param name="SJBM" type="AnsiString"></param>
+  </SQL>
+
+
+
+  <SQL id="aisino.Fwkp.Bmgl.BMSFHR.SFHRbmlike">
+    <var name="condition" value="BM like @key"/>
+    <value>
+      SELECT COUNT(BM) FROM BM_SFHR where #condition#;
+      select BM,MC,JM,SJBM,SH,DZDH,YHZH,YZBM,WJ from BM_SFHR
+      where  #condition#
+      ORDER BY BM   Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+    </value>
+    <type>Text</type>
+    <param name="key" type="AnsiString"></param>
+  </SQL>
+
+  <!--Test绑定TreeView-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSFHR.SFHRTreeView">
+    <var name="condition" value="SJBM=@sjbm and WJ=0"/>
+    <value>
+      SELECT BM,MC,SJBM,WJ FROM BM_SFHR where #condition#;
+    </value>
+    <type>Text</type>
+    <param name="sjbm" type="AnsiString"></param>
+  </SQL>
+
+  <!--BM_SFHR修改客户BM节点都需更改BM、SJBM-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSFHR.SFHRBMModify">
+    <value>
+      UPDATE [BM_SFHR] SET
+      [BM] =  @afterbm,[MC] = @MC,[JM] = @JM,[SJBM] = @SJBM,[SH] = @SH,[DZDH] = @DZDH,[YHZH] = @YHZH,[YZBM] = @YZBM
+      WHERE BM=@bm
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+    <param name="afterbm" type="AnsiString"></param>
+    <param name="MC" type="AnsiString"></param>
+    <param name="JM" type="AnsiString"></param>
+    <param name="SH" type="AnsiString"></param>
+    <param name="SJBM" type="AnsiString"></param>
+    <param name="DZDH" type="AnsiString"></param>
+    <param name="YHZH" type="AnsiString"></param>
+    <param name="YZBM" type="AnsiString"></param>
+  </SQL>
+
+
+
+  <!--BM_KH获得此节点下的所有子节点-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSFHR.SFHRBMGetSubNode">
+    <value>
+      SELECT BM,SJBM FROM [BM_SFHR]  WHERE  BM&lt;&gt;@bm and BM like  @bmLike  and SJBM like  @bmLike
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+    <param name="bmLike" type="AnsiString"></param>
+  </SQL>
+
+
+  <!--BM_SFHR更改节点下的编码和上级编码-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSFHR.SFHRBMUpdateSJBMandBM">
+    <value>
+      UPDATE BM_SFHR SET BM= @newBM ,SJBM= @newSJBM  WHERE BM=@bm
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+    <param name="newBM" type="AnsiString"></param>
+    <param name="newSJBM" type="AnsiString"></param>
+  </SQL>
+
+
+
+
+  <!--一个关键字查询多个字段的查询-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSFHR.SFHRqueryKey">
+    <var name="condition" value="MC like @key or SH like @key  or BM like @key or DZDH like @key or YHZH like @key or KJM like @key"/>
+    <value>
+      SELECT COUNT(BM) FROM BM_SFHR where #condition#;
+      select BM,MC,JM,SJBM,SH,DZDH,YHZH,YZBM,WJ from BM_SFHR
+      where  #condition#  ORDER BY BM   Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+    </value>
+    <type>Text</type>
+    <param name="key" type="AnsiString"></param>
+  </SQL>
+
+  <!--一个关键字查询多个字段的查询,返回前几条数据-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSFHR.SFHRqueryKeyAppend">
+    <var name="condition" value="MC like @key or SH like @key  or BM like @key or JM  like @key or KJM like @key "/>
+    <value>
+      SELECT * from BM_SFHR  where  #condition#    Limit  @TopNo
+    </value>
+    <type>Text</type>
+    <param name="key" type="AnsiString"></param>
+    <param name="TopNo" type="AnsiString"></param>
+  </SQL>
+
+  <!--一个关键字查询多个字段的查询wj=1,返回前几条数据-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSFHR.SFHRqueryKeyAppendWJ">
+    <var name="condition" value="WJ=1 and ( MC like @key or SH like @key  or BM like @key or JM  like @key or KJM like @key) "/>
+    <value>
+      SELECT * from BM_SFHR   where  #condition#    Limit  @TopNo
+    </value>
+    <type>Text</type>
+    <param name="key" type="AnsiString"></param>
+    <param name="TopNo" type="AnsiString"></param>
+  </SQL>
+
+  <!--根据税号查询-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSFHR.SFHRquerySH">
+    <value>
+      SELECT * from BM_SFHR   where  SH =@SH    Limit  1
+    </value>
+    <type>Text</type>
+    <param name="SH" type="AnsiString"></param>
+  </SQL>
+
+  <!--根据名称和上级编码查询-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSFHR.SFHRqueryMCAndSJBM">
+    <value>
+      SELECT * from BM_SFHR  where  MC=@MC and SJBM=@SJBM   Limit  1
+    </value>
+    <type>Text</type>
+    <param name="MC" type="AnsiString"></param>
+    <param name="SJBM" type="AnsiString"></param>
+  </SQL>
+
+  <!--增加客户的推荐编码-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSFHR.SFHRRecommend">
+    <value>
+      select   BM from BM_SFHR where SJBM=@bm
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+  </SQL>
+
+  <!--判断分类编码下是否有下级编码-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSFHR.SFHRHasChild">
+    <value>
+      select count(BM) as CountBM from BM_SFHR where SJBM = @bm
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+  </SQL>
+
+
+  <!--判断下级编码能否增位，当编码族中的最大编码长度>16时不能增位-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSFHR.SFHRBmZWverify">
+    <value>
+      SELECT  max(length(BM))  AS BmLenth  FROM [BM_SFHR] WHERE BM like @bm
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+  </SQL>
+
+
+  <!--验证 是否可以减位 操作方法-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSFHR.SFHRBmJWVerify">
+    <value>
+      SELECT substr(BM,length(@bm)+1,1) as JWvalue   FROM [BM_SFHR] WHERE  SJBM=@bm  order by JWvalue desc  limit 1
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+  </SQL>
+
+  <!--**导出中使用一个关键字查询多个字段的查询-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSFHR.SFHRqueryKeyout">
+    <var name="condition" value="MC like @key or SH like @key or BM like @key or KJM like @key"/>
+    <value>
+      SELECT  BM,MC,JM,SH,DZDH,YHZH,YZBM,WJ  FROM BM_SFHR where #condition# ORDER BY BM;
+    </value>
+    <type>Text</type>
+    <param name="key" type="AnsiString"></param>
+  </SQL>
+
+  <!--导出客户-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSFHR.SFHRExportCustomer">
+    <value>
+      SELECT  BM,MC,JM,SJBM,SH,DZDH,YHZH,YZBM,WJ FROM BM_SFHR where #condition#;
+    </value>
+    <type>Text</type>
+  </SQL>
+
+  <!--获取该上级编码的下级编码-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSFHR.GetXJBMBySJBM">
+    <value>
+      select BM from BM_SFHR where  SJBM = @SJBM
+    </value>
+    <type>Text</type>
+    <param name="SJBM" type="AnsiString"></param>
+  </SQL>
+
+  <!--判断分类编码下是否有下级编码-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSFHR.SFHRChildDetermine">
+    <value>
+      select BM from BM_SFHR where SJBM = @sjbm
+    </value>
+    <type>Text</type>
+    <param name="sjbm" type="AnsiString"></param>
+  </SQL>
+
+
+  <!--&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&7-->
+  <!--&&&&&&&&&&——————费用项目管理————————&&&&&&&&&&&&&&&&7-->
+  <!--&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&7-->
+
+  <!--GetModel费用项目编码--><!--
+  <SQL id="aisino.Fwkp.Bmgl.BMFYXM.FYXMGetModel">
+    <value>
+      select  *  from BM_FYXM  where BM=@bm  Limit 1
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+  </SQL>-->
+
+
+  <!--GetModel费用项目编码-->
+  <SQL id="aisino.Fwkp.Bmgl.BMFYXM.FYXMGetModel">
+    <value>
+      SELECT BM_FYXM.*,BM_SPFL.ZZSTSGL AS SPFL_ZZSTSGL,BM_YHZC.SLV AS YHZC_SLV
+      from (BM_FYXM left join BM_SPFL on BM_FYXM.SPFL = BM_SPFL.BM) left join BM_YHZC on BM_SPFL.ZZSTSGL like ('%'||BM_YHZC.YHZCMC||'%')
+      where BM_FYXM.BM=@bm  Limit 1
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+  </SQL>
+  
+  <!--增加费用项目-->
+  <SQL id="aisino.Fwkp.Bmgl.BMFYXM.FYXMAdd">
+    <value>
+      INSERT INTO [BM_FYXM](
+      [BM],[MC],[JM],[SJBM],[KJM],[WJ],[SPFL],[YHZC],[SPFLMC],[YHZCMC]
+      )VALUES(
+      @BM,@MC,@JM,@SJBM,@KJM,@WJ,@SPFL,@YHZC,@SPFLMC,@YHZCMC
+      )
+    </value>
+    <type>Text</type>
+    <param name="BM" type="AnsiString"></param>
+    <param name="MC" type="AnsiString"></param>
+    <param name="JM" type="AnsiString"></param>
+    <param name="SJBM" type="AnsiString"></param>
+    <param name="KJM" type="AnsiString"></param>
+    <param name="WJ" type="Int64"></param>
+    <param name="SPFL" type="AnsiString"></param>
+    <param name="YHZC" type="AnsiString"></param>
+    <param name="SPFLMC" type="AnsiString"></param>
+    <param name="YHZCMC" type="AnsiString"></param>
+  </SQL>
+  <!--修改费用项目-->
+  <SQL id="aisino.Fwkp.Bmgl.BMFYXM.FYXMModify">
+    <value>
+      UPDATE [BM_FYXM] SET
+      [BM] = @BM,[MC] = @MC,[JM] = @JM,[SJBM] = @SJBM,[KJM] = @KJM,[SPFL] = @SPFL,[YHZC] = @YHZC,[SPFLMC] = @SPFLMC,[YHZCMC] = @YHZCMC
+      WHERE BM=@oldBM
+    </value>
+    <type>Text</type>
+    <param name="oldBM" type="AnsiString"></param>
+    <param name="BM" type="AnsiString"></param>
+    <param name="MC" type="AnsiString"></param>
+    <param name="JM" type="AnsiString"></param>
+    <param name="SJBM" type="AnsiString"></param>
+    <param name="KJM" type="AnsiString"></param>
+    <param name="SPFL" type="AnsiString"></param>
+    <param name="YHZC" type="AnsiString"></param>
+    <param name="SPFLMC" type="AnsiString"></param>
+    <param name="YHZCMC" type="AnsiString"></param>
+  </SQL>
+  <!--删除分类的子节点-->
+  <SQL id="aisino.Fwkp.Bmgl.BMFYXM.FYXMDeleteSubNodes">
+    <value>
+      DELETE from [BM_FYXM]  WHERE  BM like  @bmLike and BM &lt;&gt; @bm
+    </value>
+    <type>Text</type>
+    <param name="bmLike" type="AnsiString"></param>
+  </SQL>
+  <!--获取删除的分类及其子节点-->
+  <SQL id="aisino.Fwkp.Bmgl.BMFYXM.FYXMDeleteFenLei">
+    <value>
+      DELETE from [BM_FYXM]  WHERE  BM like  @bm
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+  </SQL>
+  <!--删除一条记录-->
+  <SQL id="aisino.Fwkp.Bmgl.BMFYXM.FYXMDelete">
+    <value>
+      DELETE from [BM_FYXM]  WHERE  BM=@bm
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+  </SQL>
+  <!--查询指定费用项目编码是否存在-->
+  <SQL id="aisino.Fwkp.Bmgl.BMFYXM.FYXMExist">
+    <value>SELECT COUNT(BM) FROM BM_FYXM WHERE BM=@bm</value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+  </SQL>
+
+  <!--查询指定费用项目名称是否存在-->
+  <SQL id="aisino.Fwkp.Bmgl.BMFYXM.FYXXMMCExist">
+    <value>SELECT * FROM BM_FYXM WHERE MC=@MC and SJBM=@SJBM</value>
+    <type>Text</type>
+    <param name="MC" type="AnsiString"></param>
+    <param name="SJBM" type="AnsiString"></param>
+  </SQL>
+
+  <SQL id="aisino.Fwkp.Bmgl.BMFYXM.FYXMbmlike">
+    <var name="condition" value="BM like @key"/>
+    <value>
+      SELECT COUNT(BM) FROM BM_FYXM where #condition#;
+      select * from BM_FYXM
+      where  #condition#
+      ORDER BY BM   Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+    </value>
+    <type>Text</type>
+    <param name="key" type="AnsiString"></param>
+  </SQL>
+
+  <!--Test绑定TreeView-->
+  <SQL id="aisino.Fwkp.Bmgl.BMFYXM.FYXMTreeView">
+    <var name="condition" value="SJBM=@sjbm and WJ=0"/>
+    <value>
+      SELECT BM,MC,SJBM,WJ FROM BM_FYXM where #condition#;
+    </value>
+    <type>Text</type>
+    <param name="sjbm" type="AnsiString"></param>
+  </SQL>
+
+  <!--BM_FYXM修改费用项目BM节点都需更改BM、SJBM-->
+  <SQL id="aisino.Fwkp.Bmgl.BMFYXM.FYXMBMModify">
+    <value>
+      UPDATE [BM_FYXM] SET
+      [BM] =  @afterbm,[MC] = @MC,[JM] = @JM,[SJBM] = @SJBM
+      WHERE BM=@bm
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+    <param name="afterbm" type="AnsiString"></param>
+    <param name="MC" type="AnsiString"></param>
+    <param name="JM" type="AnsiString"></param>
+    <param name="SJBM" type="AnsiString"></param>
+  </SQL>
+
+
+
+  <!--BM_FYXM获得此节点下的所有子节点-->
+  <SQL id="aisino.Fwkp.Bmgl.BMFYXM.FYXMBMGetSubNode">
+    <value>
+      SELECT BM,SJBM FROM [BM_FYXM]  WHERE  BM&lt;&gt;@bm and BM like  @bmLike  and SJBM like  @bmLike
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+    <param name="bmLike" type="AnsiString"></param>
+  </SQL>
+
+
+  <!--BM_FYXM更改节点下的编码和上级编码-->
+  <SQL id="aisino.Fwkp.Bmgl.BMFYXM.FYXMBMUpdateSJBMandBM">
+    <value>
+      UPDATE BM_FYXM SET BM= @newBM ,SJBM= @newSJBM  WHERE BM=@bm
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+    <param name="newBM" type="AnsiString"></param>
+    <param name="newSJBM" type="AnsiString"></param>
+  </SQL>
+
+
+
+
+  <!--一个关键字查询多个字段的查询-->
+  <SQL id="aisino.Fwkp.Bmgl.BMFYXM.FYXMqueryKey">
+    <var name="condition" value="MC like @key or BM like @key or JM like @key or KJM like @key"/>
+    <value>
+      SELECT COUNT(BM) FROM BM_FYXM where #condition#;
+      select * from BM_FYXM
+      where  #condition#  ORDER BY BM   Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+    </value>
+    <type>Text</type>
+    <param name="key" type="AnsiString"></param>
+  </SQL>
+
+  <!--一个关键字查询多个字段的查询,返回前几条数据-->
+  <SQL id="aisino.Fwkp.Bmgl.BMFYXM.FYXMqueryKeyAppend">
+    <var name="condition" value="MC like @key or BM like @key or JM  like @key or KJM like @key"/>
+    <value>
+      SELECT * from BM_FYXM  where  #condition#    Limit  @TopNo
+    </value>
+    <type>Text</type>
+    <param name="key" type="AnsiString"></param>
+    <param name="TopNo" type="AnsiString"></param>
+  </SQL>
+
+  <!--一个关键字查询多个字段的查询wj=1,返回前几条数据--><!--
+  <SQL id="aisino.Fwkp.Bmgl.BMFYXM.FYXMqueryKeyAppendWJ">
+    <var name="condition" value="WJ=1 and ( MC like @key or BM like @key or JM  like @key  or KJM like @key) "/>
+    <value>
+      SELECT * from BM_FYXM   where  #condition#    Limit  @TopNo
+    </value>
+    <type>Text</type>
+    <param name="key" type="AnsiString"></param>
+    <param name="TopNo" type="AnsiString"></param>
+  </SQL>-->
+
+  <!--一个关键字查询多个字段的查询wj=1,返回前几条数据-->
+  <SQL id="aisino.Fwkp.Bmgl.BMFYXM.FYXMqueryKeyAppendWJ">
+    <var name="condition" value="
+         BM_FYXM.WJ=1 
+         and ( BM_FYXM.MC like @key or BM_FYXM.BM like @key or BM_FYXM.JM  like @key  or BM_FYXM.KJM like @key)"/>
+    <value>
+      SELECT BM_FYXM.*,BM_SPFL.ZZSTSGL AS SPFL_ZZSTSGL,BM_YHZC.SLV AS YHZC_SLV
+      from (BM_FYXM left join BM_SPFL on BM_FYXM.SPFL = BM_SPFL.BM) left join BM_YHZC on BM_SPFL.ZZSTSGL like ('%'||BM_YHZC.YHZCMC||'%')
+      where  #condition#    Limit  @TopNo
+    </value>
+    <type>Text</type>
+    <param name="key" type="AnsiString"></param>
+    <param name="TopNo" type="AnsiString"></param>
+  </SQL>
+
+
+
+  <!--增加费用项目的推荐编码-->
+  <SQL id="aisino.Fwkp.Bmgl.BMFYXM.FYXMRecommend">
+    <value>
+      select BM from BM_FYXM where SJBM=@bm
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+
+  </SQL>
+
+  <!--判断分类编码下是否有下级编码-->
+  <SQL id="aisino.Fwkp.Bmgl.BMFYXM.FYXMHasChild">
+    <value>
+      select count(BM) as CountBM from BM_FYXM where SJBM = @bm
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+  </SQL>
+
+
+  <!--判断下级编码能否增位，当编码族中的最大编码长度>16时不能增位-->
+  <SQL id="aisino.Fwkp.Bmgl.BMFYXM.FYXMBmZWverify">
+    <value>
+      SELECT  max(length(BM))  AS BmLenth  FROM [BM_FYXM] WHERE BM like @bm
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+  </SQL>
+
+
+  <!--验证 是否可以减位 操作方法-->
+  <SQL id="aisino.Fwkp.Bmgl.BMFYXM.FYXMBmJWVerify">
+    <value>
+      SELECT substr(BM,length(@bm)+1,1) as JWvalue   FROM [BM_FYXM] WHERE  SJBM=@bm  order by JWvalue desc  limit 1
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+  </SQL>
+
+  <!--**导出中使用一个关键字查询多个字段的查询-->
+  <SQL id="aisino.Fwkp.Bmgl.BMFYXM.FYXMqueryKeyout">
+    <var name="condition" value="MC like @key or BM like @key or KJM like @key"/>
+    <value>
+      SELECT  *  FROM BM_FYXM where #condition# ORDER BY BM;
+    </value>
+    <type>Text</type>
+    <param name="key" type="AnsiString"></param>
+  </SQL>
+
+  <!--导出费用项目-->
+  <SQL id="aisino.Fwkp.Bmgl.BMFYXM.FYXMExportExpense">
+    <value>
+      SELECT  BM,MC,JM,SJBM,WJ    FROM BM_FYXM where #condition#;
+    </value>
+    <type>Text</type>
+  </SQL>
+
+  <!--获取该上级编码的下级编码-->
+  <SQL id="aisino.Fwkp.Bmgl.BMFYXM.GetXJBMBySJBM">
+    <value>
+      select BM from BM_FYXM where  SJBM = @SJBM
+    </value>
+    <type>Text</type>
+    <param name="SJBM" type="AnsiString"></param>
+  </SQL>
+
+  <!--判断分类编码下是否有下级编码-->
+  <SQL id="aisino.Fwkp.Bmgl.BMFYXM.FYXMChildDetermine">
+    <value>
+      select BM from BM_FYXM where SJBM = @sjbm
+    </value>
+    <type>Text</type>
+    <param name="sjbm" type="AnsiString"></param>
+  </SQL>
+
+  <!--&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&-->
+  <!--&&&&&&&&&&———————购货单位管理———————&&&&&&&&&&&&&&&&-->
+  <!--&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&-->
+
+  <!--GetModel购货单位编码-->
+  <SQL id="aisino.Fwkp.Bmgl.BMGHDW.GHDWGetModel">
+    <value>
+      select  *  from BM_GHDW  where BM=@bm  Limit 1
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+  </SQL>
+  <!--增加购货单位-->
+  <SQL id="aisino.Fwkp.Bmgl.BMGHDW.GHDWAdd">
+    <value>
+      INSERT INTO [BM_GHDW](
+      [BM],[MC],[JM],[SH],[DZDH],[YHZH],[IDCOC],[SJBM],[KJM],[WJ]
+      )VALUES(
+      @BM,@MC,@JM,@SH,@DZDH,@YHZH,@IDCOC,@SJBM,@KJM,@WJ
+      )
+    </value>
+    <type>Text</type>
+    <param name="BM" type="AnsiString"></param>
+    <param name="MC" type="AnsiString"></param>
+    <param name="JM" type="AnsiString"></param>
+    <param name="SH" type="AnsiString"></param>
+    <param name="DZDH" type="AnsiString"></param>
+    <param name="YHZH" type="AnsiString"></param>
+    <param name="IDCOC" type="AnsiString"></param>
+    <param name="SJBM" type="AnsiString"></param>
+    <param name="KJM" type="AnsiString"></param>
+    <param name="WJ" type="Int64"></param>
+  </SQL>
+  <!--修改购货单位-->
+  <SQL id="aisino.Fwkp.Bmgl.BMGHDW.GHDWModify">
+    <value>
+      UPDATE [BM_GHDW] SET
+      [BM] = @BM,[MC] = @MC,[JM] = @JM,[SH] = @SH,[DZDH] = @DZDH,[YHZH] = @YHZH,[IDCOC] = @IDCOC,[SJBM] = @SJBM,[KJM] = @KJM
+      WHERE BM=@oldBM
+    </value>
+    <type>Text</type>
+    <param name="oldBM" type="AnsiString"></param>
+    <param name="BM" type="AnsiString"></param>
+    <param name="MC" type="AnsiString"></param>
+    <param name="JM" type="AnsiString"></param>
+    <param name="SH" type="AnsiString"></param>
+    <param name="DZDH" type="AnsiString"></param>
+    <param name="YHZH" type="AnsiString"></param>
+    <param name="IDCOC" type="AnsiString"></param>
+    <param name="SJBM" type="AnsiString"></param>
+    <param name="KJM" type="AnsiString"></param>
+  </SQL>
+  <!--删除分类的子节点-->
+  <SQL id="aisino.Fwkp.Bmgl.BMGHDW.GHDWDeleteSubNodes">
+    <value>
+      DELETE from [BM_GHDW]  WHERE  BM like  @bmLike and BM &lt;&gt; @bm
+    </value>
+    <type>Text</type>
+    <param name="bmLike" type="AnsiString"></param>
+  </SQL>
+  <!--获取删除的分类及其子节点-->
+  <SQL id="aisino.Fwkp.Bmgl.BMGHDW.GHDWDeleteFenLei">
+    <value>
+      DELETE from [BM_GHDW]  WHERE  BM like  @bm
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+  </SQL>
+  <!--删除一条记录-->
+  <SQL id="aisino.Fwkp.Bmgl.BMGHDW.GHDWDelete">
+    <value>
+      DELETE from [BM_GHDW]  WHERE  BM=@bm
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+  </SQL>
+  <!--查询指定购货单位编码是否存在-->
+  <SQL id="aisino.Fwkp.Bmgl.BMGHDW.GHDWExist">
+    <value>SELECT COUNT(BM) FROM BM_GHDW WHERE BM=@bm</value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+  </SQL>
+
+
+  <!--查询指定购货单位税号是否存在-->
+  <SQL id="aisino.Fwkp.Bmgl.BMGHDW.GHDWSHExist">
+    <value>SELECT COUNT(BM) FROM BM_GHDW WHERE SH=@SH</value>
+    <type>Text</type>
+    <param name="SH" type="AnsiString"></param>
+  </SQL>
+
+  <!--查询指定客户名称是否存在-->
+  <SQL id="aisino.Fwkp.Bmgl.BMGHDW.GHDWMCExist">
+    <value>SELECT * FROM BM_GHDW WHERE MC=@MC and SJBM=@SJBM</value>
+    <type>Text</type>
+    <param name="MC" type="AnsiString"></param>
+    <param name="SJBM" type="AnsiString"></param>
+  </SQL>
+
+  <SQL id="aisino.Fwkp.Bmgl.BMGHDW.GHDWbmlike">
+    <var name="condition" value="BM like @key"/>
+    <value>
+      SELECT COUNT(BM) FROM BM_GHDW where #condition#;
+      select BM,MC,JM,SH,DZDH,YHZH,IDCOC,SJBM,WJ from BM_GHDW
+      where  #condition#
+      ORDER BY BM   Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+    </value>
+    <type>Text</type>
+    <param name="key" type="AnsiString"></param>
+  </SQL>
+  <!--Test绑定TreeView-->
+  <SQL id="aisino.Fwkp.Bmgl.BMGHDW.GHDWTreeView">
+    <var name="condition" value="SJBM=@sjbm and WJ=0"/>
+    <value>
+      SELECT BM,MC,SJBM,WJ FROM BM_GHDW where #condition#;
+    </value>
+    <type>Text</type>
+    <param name="sjbm" type="AnsiString"></param>
+  </SQL>
+
+  <!--BM_GHDW修改购货单位BM节点都需更改BM、SJBM-->
+  <SQL id="aisino.Fwkp.Bmgl.BMGHDW.GHDWBMModify">
+    <value>
+      UPDATE [BM_GHDW] SET
+      [BM] =  @afterbm,[MC] = @MC,[JM] = @JM,[SH] = @SH,[DZDH] = @DZDH,[YHZH] = @YHZH,[IDCOC] = @IDCOC,[SJBM] = @SJBM
+      WHERE BM=@bm
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+    <param name="afterbm" type="AnsiString"></param>
+    <param name="MC" type="AnsiString"></param>
+    <param name="JM" type="AnsiString"></param>
+    <param name="SH" type="AnsiString"></param>
+    <param name="DZDH" type="AnsiString"></param>
+    <param name="YHZH" type="AnsiString"></param>
+    <param name="IDCOC" type="AnsiString"></param>
+    <param name="SJBM" type="AnsiString"></param>
+  </SQL>
+
+
+
+  <!--BM_GHDW获得此节点下的所有子节点-->
+  <SQL id="aisino.Fwkp.Bmgl.BMGHDW.GHDWBMGetSubNode">
+    <value>
+      SELECT BM,SJBM FROM [BM_GHDW]  WHERE  BM&lt;&gt;@bm and BM like  @bmLike  and SJBM like  @bmLike
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+    <param name="bmLike" type="AnsiString"></param>
+  </SQL>
+
+
+  <!--BM_GHDW更改节点下的编码和上级编码-->
+  <SQL id="aisino.Fwkp.Bmgl.BMGHDW.GHDWBMUpdateSJBMandBM">
+    <value>
+      UPDATE BM_GHDW SET BM= @newBM ,SJBM= @newSJBM  WHERE BM=@bm
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+    <param name="newBM" type="AnsiString"></param>
+    <param name="newSJBM" type="AnsiString"></param>
+  </SQL>
+
+  <!--一个关键字查询多个字段的查询-->
+  <SQL id="aisino.Fwkp.Bmgl.BMGHDW.GHDWqueryKey">
+    <var name="condition" value="MC like @key or SH like @key  or BM like @key or KJM like @key"/>
+    <value>
+      SELECT COUNT(BM) FROM BM_GHDW where #condition#;
+      select BM,MC,JM,SH,DZDH,YHZH,IDCOC,SJBM,WJ from BM_GHDW
+      where  #condition#  ORDER BY BM   Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+    </value>
+    <type>Text</type>
+    <param name="key" type="AnsiString"></param>
+  </SQL>
+
+  <!--一个关键字查询多个字段的查询,返回前几条数据-->
+  <SQL id="aisino.Fwkp.Bmgl.BMGHDW.GHDWqueryKeyAppend">
+    <var name="condition" value="MC like @key or SH like @key  or BM like @key or JM  like @key or KJM like @key"/>
+    <value>
+      SELECT * from BM_GHDW  where  #condition#    Limit  @TopNo
+    </value>
+    <type>Text</type>
+    <param name="key" type="AnsiString"></param>
+    <param name="TopNo" type="AnsiString"></param>
+  </SQL>
+
+  <!--一个关键字查询多个字段的查询wj=1,返回前几条数据-->
+  <SQL id="aisino.Fwkp.Bmgl.BMGHDW.GHDWqueryKeyAppendWJ">
+    <var name="condition" value="WJ=1 and ( MC like @key or SH like @key  or BM like @key or JM  like @key or IDCOC like @key or KJM like @key) "/>
+    <value>
+      SELECT * from BM_GHDW   where  #condition#    Limit  @TopNo
+    </value>
+    <type>Text</type>
+    <param name="key" type="AnsiString"></param>
+    <param name="TopNo" type="AnsiString"></param>
+  </SQL>
+
+  <!--根据税号查询-->
+  <SQL id="aisino.Fwkp.Bmgl.BMGHDW.GHDWquerySH">
+    <value>
+      SELECT * from BM_GHDW   where  SH =@SH    Limit  1
+    </value>
+    <type>Text</type>
+    <param name="SH" type="AnsiString"></param>
+  </SQL>
+
+  <!--根据名称和上级编码查询-->
+  <SQL id="aisino.Fwkp.Bmgl.BMGHDW.GHDWqueryMCAndSJBM">
+    <value>
+      SELECT * from BM_GHDW   where  MC=@MC and SJBM=@SJBM   Limit  1
+    </value>
+    <type>Text</type>
+    <param name="MC" type="AnsiString"></param>
+    <param name="SJBM" type="AnsiString"></param>
+  </SQL>
+
+  <!--增加购货单位的推荐编码-->
+  <SQL id="aisino.Fwkp.Bmgl.BMGHDW.GHDWRecommend">
+    <value>
+      select BM from BM_GHDW where SJBM=@bm
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+  </SQL>
+
+  <!--判断分类编码下是否有下级编码-->
+  <SQL id="aisino.Fwkp.Bmgl.BMGHDW.GHDWHasChild">
+    <value>
+      select count(BM) as CountBM from BM_GHDW where SJBM = @bm
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+  </SQL>
+
+
+  <!--判断下级编码能否增位，当编码族中的最大编码长度>16时不能增位-->
+  <SQL id="aisino.Fwkp.Bmgl.BMGHDW.GHDWBmZWverify">
+    <value>
+      SELECT  max(length(BM))  AS BmLenth  FROM [BM_GHDW] WHERE BM like @bm
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+  </SQL>
+
+
+  <!--验证 是否可以减位 操作方法-->
+  <SQL id="aisino.Fwkp.Bmgl.BMGHDW.GHDWBmJWVerify">
+    <value>
+      SELECT substr(BM,length(@bm)+1,1) as JWvalue   FROM [BM_GHDW] WHERE  SJBM=@bm  order by JWvalue desc  limit 1
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+  </SQL>
+
+  <!--**导出中使用一个关键字查询多个字段的查询-->
+  <SQL id="aisino.Fwkp.Bmgl.BMGHDW.GHDWqueryKeyout">
+    <var name="condition" value="MC like @key or SH like @key or BM like @key or KJM like @key"/>
+    <value>
+      SELECT  BM,MC,JM,SH,DZDH,YHZH,IDCOC,WJ  FROM BM_GHDW where #condition# ORDER BY BM;
+    </value>
+    <type>Text</type>
+    <param name="key" type="AnsiString"></param>
+  </SQL>
+
+  <!--导出购货单位-->
+  <SQL id="aisino.Fwkp.Bmgl.BMGHDW.GHDWExportPurchase">
+    <value>
+      SELECT  BM,MC,JM,SH,DZDH,YHZH,IDCOC,SJBM,WJ    FROM BM_GHDW where #condition#;
+    </value>
+    <type>Text</type>
+  </SQL>
+
+  <!--获取该上级编码的下级编码-->
+  <SQL id="aisino.Fwkp.Bmgl.BMGHDW.GetXJBMBySJBM">
+    <value>
+      select BM from BM_GHDW where  SJBM = @SJBM
+    </value>
+    <type>Text</type>
+    <param name="SJBM" type="AnsiString"></param>
+  </SQL>
+
+  <!--判断分类编码下是否有下级编码-->
+  <SQL id="aisino.Fwkp.Bmgl.BMGHDW.GHDWChildDetermine">
+    <value>
+      select BM from BM_GHDW where SJBM = @sjbm
+    </value>
+    <type>Text</type>
+    <param name="sjbm" type="AnsiString"></param>
+  </SQL>
+
+  <!--根据名称和上级编码查询-->
+  <SQL id="aisino.Fwkp.Bmgl.BMGHDW.GHDWqueryMCAndSJBMAndSHEmpty">
+    <value>
+      SELECT * from BM_GHDW where MC=@MC and SJBM=@SJBM and (SH is null or SH="")  Limit  1
+    </value>
+    <type>Text</type>
+    <param name="MC" type="AnsiString"></param>
+    <param name="SJBM" type="AnsiString"></param>
+  </SQL>
+
+  <!--根据税号和上级编码查询-->
+  <SQL id="aisino.Fwkp.Bmgl.BMGHDW.GHDWquerySHAndSJBM">
+    <value>
+      SELECT * from BM_GHDW where  SH=@SH and SJBM=@SJBM   Limit  1
+    </value>
+    <type>Text</type>
+    <param name="SH" type="AnsiString"></param>
+    <param name="SJBM" type="AnsiString"></param>
+  </SQL>
+
+  <!--根据名称税号查询-->
+  <SQL id="aisino.Fwkp.Bmgl.BMGHDW.QueryByMCAndSH">
+    <value>
+      SELECT * from BM_GHDW where  MC=@MC and SH=@SH
+    </value>
+    <type>Text</type>
+    <param name="MC" type="AnsiString"></param>
+    <param name="SH" type="AnsiString"></param>
+  </SQL>
+  
+  
+  <!--&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&7-->
+  <!--&&&&&&&&&&——————————————销货单位编码管理—————————————————&&&&&&&&&&&&&&&&7-->
+  <!--&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&7-->
+
+  <!--GetModel销货单位编码-->
+  <SQL id="aisino.Fwkp.Bmgl.BMXHDW.XHDWGetModel">
+    <value>
+      select  *  from BM_XHDW  where BM=@bm  Limit 1
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+  </SQL>
+
+  <!--增加销货单位-->
+  <SQL id="aisino.Fwkp.Bmgl.BMXHDW.XHDWAdd">
+    <value>
+      INSERT INTO [BM_XHDW](
+      [BM],[MC],[JM],[SJBM],[SH],[DZDH],[YHZH],[YZBM],[KJM],[WJ]
+      )VALUES(
+      @BM,@MC,@JM,@SJBM,@SH,@DZDH,@YHZH,@YZBM,@KJM,@WJ
+      )
+    </value>
+    <type>Text</type>
+    <param name="BM" type="AnsiString"></param>
+    <param name="MC" type="AnsiString"></param>
+    <param name="JM" type="AnsiString"></param>
+    <param name="SJBM" type="AnsiString"></param>
+    <param name="SH" type="AnsiString"></param>
+    <param name="DZDH" type="AnsiString"></param>
+    <param name="YHZH" type="AnsiString"></param>
+    <param name="YZBM" type="AnsiString"></param>
+    <param name="KJM" type="AnsiString"></param>
+    <param name="WJ" type="Int64"></param>
+  </SQL>
+
+  <!--修改销货单位-->
+  <SQL id="aisino.Fwkp.Bmgl.BMXHDW.XHDWModify">
+    <value>
+      UPDATE [BM_XHDW] SET
+      [BM] = @BM,[MC] = @MC,[JM] = @JM,[SJBM] = @SJBM,[SH] = @SH,[DZDH] = @DZDH,[YHZH] = @YHZH,[YZBM] = @YZBM,[KJM] = @KJM,[WJ] = @WJ
+      WHERE BM=@oldBM
+    </value>
+    <type>Text</type>
+    <param name="oldBM" type="AnsiString"></param>
+    <param name="BM" type="AnsiString"></param>
+    <param name="MC" type="AnsiString"></param>
+    <param name="JM" type="AnsiString"></param>
+    <param name="SJBM" type="AnsiString"></param>
+    <param name="SH" type="AnsiString"></param>
+    <param name="DZDH" type="AnsiString"></param>
+    <param name="YHZH" type="AnsiString"></param>
+    <param name="YZBM" type="AnsiString"></param>
+    <param name="KJM" type="AnsiString"></param>
+    <param name="WJ" type="AnsiString"></param>
+  </SQL>
+
+  <!--删除分类的子节点-->
+  <SQL id="aisino.Fwkp.Bmgl.BMXHDW.XHDWDeleteSubNodes">
+    <value>
+      DELETE from [BM_XHDW]  WHERE  BM like  @bmLike and BM &lt;&gt; @bm
+    </value>
+    <type>Text</type>
+    <param name="bmLike" type="AnsiString"></param>
+  </SQL>
+
+  <!--获取删除的分类及其子节点-->
+  <SQL id="aisino.Fwkp.Bmgl.BMXHDW.XHDWDeleteFenLei">
+    <value>
+      DELETE from [BM_XHDW]  WHERE  BM like  @bm
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+  </SQL>
+
+  <!--删除一条记录-->
+  <SQL id="aisino.Fwkp.Bmgl.BMXHDW.XHDWDelete">
+    <value>
+      DELETE from [BM_XHDW]  WHERE  BM=@bm
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+  </SQL>
+
+  <!--查询指定销货单位编码是否存在-->
+  <SQL id="aisino.Fwkp.Bmgl.BMXHDW.XHDWExist">
+    <value>SELECT COUNT(BM) FROM BM_XHDW WHERE BM=@bm</value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+  </SQL>
+
+
+  <!--查询指定销货单位税号是否存在-->
+  <SQL id="aisino.Fwkp.Bmgl.BMXHDW.XHDWSHExist">
+    <value>SELECT COUNT(BM) FROM BM_XHDW WHERE SH=@SH AND BM &lt;&gt; @BM</value>
+    <type>Text</type>
+    <param name="SH" type="AnsiString"></param>
+    <param name="BM" type="AnsiString"></param>
+  </SQL>
+
+  <!--查询指定销货单位名称是否存在-->
+  <SQL id="aisino.Fwkp.Bmgl.BMXHDW.XHDWMCExist">
+    <value>SELECT * FROM BM_XHDW WHERE MC=@MC and SJBM=@SJBM</value>
+    <type>Text</type>
+    <param name="MC" type="AnsiString"></param>
+    <param name="SJBM" type="AnsiString"></param>
+  </SQL>
+
+
+
+  <SQL id="aisino.Fwkp.Bmgl.BMXHDW.XHDWbmlike">
+    <var name="condition" value="BM like @key"/>
+    <value>
+      SELECT COUNT(BM) FROM BM_XHDW where #condition#;
+      select BM,MC,JM,SJBM,SH,DZDH,YHZH,YZBM,WJ from BM_XHDW
+      where  #condition#
+      ORDER BY BM   Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+    </value>
+    <type>Text</type>
+    <param name="key" type="AnsiString"></param>
+  </SQL>
+
+  <!--Test绑定TreeView-->
+  <SQL id="aisino.Fwkp.Bmgl.BMXHDW.XHDWTreeView">
+    <var name="condition" value="SJBM=@sjbm and WJ=0"/>
+    <value>
+      SELECT BM,MC,SJBM,WJ FROM BM_XHDW where #condition#;
+    </value>
+    <type>Text</type>
+    <param name="sjbm" type="AnsiString"></param>
+  </SQL>
+
+  <!--BM_XHDW修改销货单位BM节点都需更改BM、SJBM-->
+  <SQL id="aisino.Fwkp.Bmgl.BMXHDW.XHDWBMModify">
+    <value>
+      UPDATE [BM_XHDW] SET
+      [BM] =  @afterbm,[MC] = @MC,[JM] = @JM,[SJBM] = @SJBM,[SH] = @SH,[DZDH] = @DZDH,[YHZH] = @YHZH,[YZBM] = @YZBM
+      WHERE BM=@bm
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+    <param name="afterbm" type="AnsiString"></param>
+    <param name="MC" type="AnsiString"></param>
+    <param name="JM" type="AnsiString"></param>
+    <param name="SH" type="AnsiString"></param>
+    <param name="SJBM" type="AnsiString"></param>
+    <param name="DZDH" type="AnsiString"></param>
+    <param name="YHZH" type="AnsiString"></param>
+    <param name="YZBM" type="AnsiString"></param>
+  </SQL>
+
+
+
+  <!--BM_KH获得此节点下的所有子节点-->
+  <SQL id="aisino.Fwkp.Bmgl.BMXHDW.XHDWBMGetSubNode">
+    <value>
+      SELECT BM,SJBM FROM [BM_XHDW]  WHERE  BM&lt;&gt;@bm and BM like  @bmLike  and SJBM like  @bmLike
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+    <param name="bmLike" type="AnsiString"></param>
+  </SQL>
+
+
+  <!--BM_XHDW更改节点下的编码和上级编码-->
+  <SQL id="aisino.Fwkp.Bmgl.BMXHDW.XHDWBMUpdateSJBMandBM">
+    <value>
+      UPDATE BM_XHDW SET BM= @newBM ,SJBM= @newSJBM  WHERE BM=@bm
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+    <param name="newBM" type="AnsiString"></param>
+    <param name="newSJBM" type="AnsiString"></param>
+  </SQL>
+
+
+
+
+  <!--一个关键字查询多个字段的查询-->
+  <SQL id="aisino.Fwkp.Bmgl.BMXHDW.XHDWqueryKey">
+    <var name="condition" value="MC like @key or SH like @key  or BM like @key or DZDH like @key or YHZH like @key or KJM like @key"/>
+    <value>
+      SELECT COUNT(BM) FROM BM_XHDW where #condition#;
+      select BM,MC,JM,SJBM,SH,DZDH,YHZH,YZBM,WJ from BM_XHDW
+      where  #condition#  ORDER BY BM   Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+    </value>
+    <type>Text</type>
+    <param name="key" type="AnsiString"></param>
+  </SQL>
+
+  <!--一个关键字查询多个字段的查询,返回前几条数据-->
+  <SQL id="aisino.Fwkp.Bmgl.BMXHDW.XHDWqueryKeyAppend">
+    <var name="condition" value="MC like @key or SH like @key  or BM like @key or JM  like @key or KJM like @key"/>
+    <value>
+      SELECT * from BM_XHDW  where  #condition#    Limit  @TopNo
+    </value>
+    <type>Text</type>
+    <param name="key" type="AnsiString"></param>
+    <param name="TopNo" type="AnsiString"></param>
+  </SQL>
+
+  <!--一个关键字查询多个字段的查询wj=1,返回前几条数据-->
+  <SQL id="aisino.Fwkp.Bmgl.BMXHDW.XHDWqueryKeyAppendWJ">
+    <var name="condition" value="WJ=1 and ( MC like @key or SH like @key  or BM like @key or JM like @key or KJM like @key or DZDH like @key) "/>
+    <value>
+      SELECT * from BM_XHDW   where  #condition#    Limit  @TopNo
+    </value>
+    <type>Text</type>
+    <param name="key" type="AnsiString"></param>
+    <param name="TopNo" type="AnsiString"></param>
+  </SQL>
+
+  <!--根据税号查询-->
+  <SQL id="aisino.Fwkp.Bmgl.BMXHDW.XHDWquerySH">
+    <value>
+      SELECT * from BM_XHDW   where  SH =@SH    Limit  1
+    </value>
+    <type>Text</type>
+    <param name="SH" type="AnsiString"></param>
+  </SQL>
+
+  <!--根据名称和上级编码查询-->
+  <SQL id="aisino.Fwkp.Bmgl.BMXHDW.XHDWqueryMCAndSJBM">
+    <value>
+      SELECT * from BM_XHDW  where  MC=@MC and SJBM=@SJBM   Limit  1
+    </value>
+    <type>Text</type>
+    <param name="MC" type="AnsiString"></param>
+    <param name="SJBM" type="AnsiString"></param>
+  </SQL>
+
+  <!--增加销货单位的推荐编码-->
+  <SQL id="aisino.Fwkp.Bmgl.BMXHDW.XHDWRecommend">
+    <value>
+      select   BM from BM_XHDW where SJBM=@bm
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+  </SQL>
+
+  <!--判断分类编码下是否有下级编码-->
+  <SQL id="aisino.Fwkp.Bmgl.BMXHDW.XHDWHasChild">
+    <value>
+      select count(BM) as CountBM from BM_XHDW where SJBM = @bm
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+  </SQL>
+
+
+  <!--判断下级编码能否增位，当编码族中的最大编码长度>16时不能增位-->
+  <SQL id="aisino.Fwkp.Bmgl.BMXHDW.XHDWBmZWverify">
+    <value>
+      SELECT  max(length(BM))  AS BmLenth  FROM [BM_XHDW] WHERE BM like @bm
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+  </SQL>
+
+
+  <!--验证 是否可以减位 操作方法-->
+  <SQL id="aisino.Fwkp.Bmgl.BMXHDW.XHDWBmJWVerify">
+    <value>
+      SELECT substr(BM,length(@bm)+1,1) as JWvalue   FROM [BM_XHDW] WHERE  SJBM=@bm  order by JWvalue desc  limit 1
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+  </SQL>
+
+  <!--**导出中使用一个关键字查询多个字段的查询-->
+  <SQL id="aisino.Fwkp.Bmgl.BMXHDW.XHDWqueryKeyout">
+    <var name="condition" value="MC like @key or SH like @key or BM like @key or KJM like @key"/>
+    <value>
+      SELECT  BM,MC,JM,SH,DZDH,YHZH,YZBM,WJ  FROM BM_XHDW where #condition# ORDER BY BM;
+    </value>
+    <type>Text</type>
+    <param name="key" type="AnsiString"></param>
+  </SQL>
+
+  <!--导出销货单位-->
+  <SQL id="aisino.Fwkp.Bmgl.BMXHDW.XHDWExportCustomer">
+    <value>
+      SELECT  BM,MC,JM,SJBM,SH,DZDH,YHZH,YZBM,WJ FROM BM_XHDW where #condition#;
+    </value>
+    <type>Text</type>
+  </SQL>
+
+  <!--获取该上级编码的下级编码-->
+  <SQL id="aisino.Fwkp.Bmgl.BMXHDW.GetXJBMBySJBM">
+    <value>
+      select BM from BM_XHDW where  SJBM = @SJBM
+    </value>
+    <type>Text</type>
+    <param name="SJBM" type="AnsiString"></param>
+  </SQL>
+
+  <!--判断分类编码下是否有下级编码-->
+  <SQL id="aisino.Fwkp.Bmgl.BMXHDW.XHDWChildDetermine">
+    <value>
+      select BM from BM_XHDW where SJBM = @sjbm
+    </value>
+    <type>Text</type>
+    <param name="sjbm" type="AnsiString"></param>
+  </SQL>
+
+
+  <!--&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&7-->
+  <!--&&&&&&&&&&——————————————商品税目管理—————————————————&&&&&&&&&&&&&&&&7-->
+  <!--&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&7-->
+
+  <!--GetModel商品税目编码-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSPSM.SPSMGetModel">
+    <value>
+      select  *  from BM_SPSM  where SZ=@sz and BM=@bm  ORDER BY SZ Limit 1
+    </value>
+    <type>Text</type>
+    <param name="sz" type="AnsiString"></param>
+    <param name="bm" type="AnsiString"></param>
+  </SQL>
+
+  <!--增加商品税目-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSPSM.SPSMAdd">
+    <value>
+      INSERT INTO [BM_SPSM]
+      (
+      [SZ],[BM],[MC],[SLV],[ZSL],[SLJS],[JSDW],[SE],[MDXS],[FHDBZ]
+      )
+      VALUES(
+      @SZ,@BM,@MC,@SLV,@ZSL,@SLJS,@JSDW,@SE,@MDXS,@FHDBZ
+      )
+    </value>
+    <type>Text</type>
+    <param name="SZ" type="AnsiString"></param>
+    <param name="BM" type="AnsiString"></param>
+    <param name="MC" type="AnsiString"></param>
+    <param name="SLV" type="AnsiString"></param>
+    <param name="ZSL" type="AnsiString"></param>
+    <param name="SLJS" type="AnsiString"></param>
+    <param name="JSDW" type="AnsiString"></param>
+    <param name="SE" type="AnsiString"></param>
+    <param name="MDXS" type="AnsiString"></param>
+    <param name="FHDBZ" type="Boolean"></param>
+  </SQL>
+  <!--修改商品税目-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSPSM.SPSMModify">
+    <value>
+      UPDATE [BM_SPSM] SET
+      [SZ]=@SZ, [BM] = @BM,[MC] = @MC,[SLV] = @SLV,[ZSL] = @ZSL,[SLJS] = @SLJS,[JSDW] = @JSDW,[SE] = @SE,[MDXS] = @MDXS,[FHDBZ] = @FHDBZ
+      WHERE BM=@oldBM and SZ=@oldSZ
+    </value>
+    <type>Text</type>
+    <param name="oldSZ" type="AnsiString"></param>
+    <param name="oldBM" type="AnsiString"></param>
+    <param name="SZ" type="AnsiString"></param>
+    <param name="BM" type="AnsiString"></param>
+    <param name="MC" type="AnsiString"></param>
+    <param name="SLV" type="AnsiString"></param>
+    <param name="ZSL" type="AnsiString"></param>
+    <param name="SLJS" type="AnsiString"></param>
+    <param name="JSDW" type="AnsiString"></param>
+    <param name="SE" type="AnsiString"></param>
+    <param name="MDXS" type="AnsiString"></param>
+    <param name="FHDBZ" type="Boolean"></param>
+  </SQL>
+  <!--删除分类的子节点-->
+  <SQL id="aisino.Fwkp.Bmgl.SPSM.SPSMDeleteSubNodes">
+    <value>
+      DELETE from [BM_SPSM]  WHERE  BM like  @bmLike and BM &lt;&gt; @bm
+    </value>
+    <type>Text</type>
+    <param name="bmLike" type="AnsiString"></param>
+  </SQL>
+  <!--获取删除的分类及其子节点-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSPSM.SPSMDeleteFenLei">
+    <value>
+      DELETE from [BM_SPSM]  WHERE  BM like  @bm
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+  </SQL>
+  <!--删除一条记录-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSPSM.SPSMDelete">
+    <value>
+      DELETE from [BM_SPSM]  WHERE  BM=@bm AND SZ=@sz
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+    <param name="sz" type="AnsiString"></param>
+  </SQL>
+
+  <!--查询指定商品税目编码是否存在-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSPSM.SPSMExist">
+    <value>SELECT COUNT(BM) FROM BM_SPSM WHERE BM=@bm AND SZ=@sz</value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+    <param name="sz" type="AnsiString"></param>
+  </SQL>
+
+  <SQL id="aisino.Fwkp.Bmgl.BMSPSM.SPSMbmlike">
+    <var name="condition" value="BM like @key"/>
+    <value>
+      SELECT COUNT(BM) FROM BM_SPSM where #condition#;
+      select SZ,BM,MC,SLV,ZSL,SLJS,JSDW,SE,MDXS,FHDBZ from BM_SPSM
+      where  #condition#
+      ORDER BY BM   Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+    </value>
+    <type>Text</type>
+    <param name="key" type="AnsiString"></param>
+  </SQL>
+
+  <!--Test绑定TreeView-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSPSM.SPSMTreeView">
+    <var name="condition" value="BM=@bm"/>
+    <value>
+      SELECT BM,MC FROM BM_SPSM where #condition#;
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+  </SQL>
+
+
+  <!--BM_KH获得此节点下的所有子节点-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSPSM.SPSMBMGetSubNode">
+    <value>
+      SELECT BM FROM [BM_SPSM]  WHERE  BM&lt;&gt;@bm and BM like  @bmLike
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+    <param name="bmLike" type="AnsiString"></param>
+  </SQL>
+
+
+  <!--BM_FPSM更改节点下的编码和上级编码-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSPSM.SPSMBMUpdateBM">
+    <value>
+      UPDATE BM_SPSM SET BM= @newBM WHERE BM=@bm
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+    <param name="newBM" type="AnsiString"></param>
+  </SQL>
+
+  <!--一个关键字查询多个字段的查询-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSPSM.SPSMqueryKey">
+    <var name="condition" value="SZ like @key or MC like @key or BM like @key "/>
+    <value>
+      SELECT COUNT(BM) FROM BM_SPSM where #condition#;
+      select SZ,BM,MC,SLV,ZSL,SLJS,JSDW,SE,MDXS,FHDBZ,(case fhdbz when 0 then "否" else "是" end ) as FHDBZSTR from BM_SPSM
+      where  #condition#  ORDER BY SZ asc  Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+    </value>
+    <type>Text</type>
+    <param name="key" type="AnsiString"></param>
+  </SQL>
+
+  <!--一个关键字查询多个字段的查询,返回前几条数据-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSPSM.SPSMqueryKeyAppend">
+    <var name="condition" value="MC like @key or BM like @key "/>
+    <value>
+      SELECT * from BM_SPSM  where  #condition#   ORDER BY BM Limit  @TopNo
+    </value>
+    <type>Text</type>
+    <param name="key" type="AnsiString"></param>
+    <param name="TopNo" type="AnsiString"></param>
+  </SQL>
+
+  <!--一个关键字查询多个字段的查询wj=1,返回前几条数据-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSPSM.SPSMquery">
+    <value>
+      SELECT COUNT(*) FROM BM_SPSM;
+      SELECT SZ,BM,MC,SLV,ZSL,SLJS,JSDW,SE,MDXS,FHDBZ,(case fhdbz when 0 then "否" else "是" end ) as FHDBZSTR from BM_SPSM ORDER BY SZ asc  Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+    </value>
+  </SQL>
+
+  <!--增加客户的推荐编码-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSPSM.SPSMRecommend">
+    <value>
+      select   BM from BM_SPSM where BM=@bm order by cast(BM as int) desc Limit 1
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+
+  </SQL>
+
+
+  <!--判断分类编码下是否有下级编码-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSPSM.SPSMHasChild">
+    <value>
+      select count(BM) as CountBM from BM_SPSM where BM = @bm
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+  </SQL>
+
+
+  <!--判断下级编码能否增位，当编码族中的最大编码长度>16时不能增位-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSPSM.SPSMBmZWverify">
+    <value>
+      SELECT  max(length(BM))  AS BmLenth  FROM [BM_SPSM] WHERE BM like @bm
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+  </SQL>
+
+
+  <!--验证 是否可以减位 操作方法-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSPSM.SPSMBmJWVerify">
+    <value>
+      SELECT substr(BM,length(@bm)+1,1) as JWvalue   FROM [BM_SPSM] WHERE  BM=@bm  order by JWvalue desc  limit 1
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+  </SQL>
+
+  <!--**导出中使用一个关键字查询多个字段的查询-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSPSM.SPSMqueryKeyout">
+    <var name="condition" value="MC like @key or BM like @key"/>
+    <value>
+      SELECT  SZ,BM,MC,SLV,ZSL,SLJS,JSDW,SE,MDXS,FHDBZ  FROM BM_SPSM where #condition# ORDER BY BM;
+    </value>
+    <type>Text</type>
+    <param name="key" type="AnsiString"></param>
+  </SQL>
+
+  <!--导出商品税目-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSPSM.SPSMExportGoodsTax">
+    <value>
+      SELECT  SZ,BM,MC,SLV,ZSL,SLJS,JSDW,SE,MDXS,FHDBZ    FROM BM_SPSM where #condition#;
+    </value>
+    <type>Text</type>
+  </SQL>
+
+  <!--&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&7-->
+  <!--&&&&&&&&&&——————————————行政区域管理—————————————————&&&&&&&&&&&&&&&&7-->
+  <!--&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&7-->
+
+  <!--GetModel行政区域编码-->
+  <SQL id="aisino.Fwkp.Bmgl.BMXZQY.BMXZQYGetModel">
+    <value>
+      select  *  from BM_XZQY  where BM=@bm  Limit 1
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+  </SQL>
+  <!--增加行政区域编码-->
+  <SQL id="aisino.Fwkp.Bmgl.BMXZQY.XZQYAdd">
+    <value>
+      INSERT INTO [BM_XZQY](
+      [BM],[MC]
+      )VALUES(
+      @BM,@MC
+      )
+    </value>
+    <type>Text</type>
+    <param name="BM" type="AnsiString"></param>
+    <param name="MC" type="AnsiString"></param>
+  </SQL>
+  <!--修改行政区域-->
+  <SQL id="aisino.Fwkp.Bmgl.BMXZQY.XZQYModify">
+    <value>
+      UPDATE [BM_XZQY] SET
+      [BM] = @BM,[MC] = @MC
+      WHERE BM=@oldBM
+    </value>
+    <type>Text</type>
+    <param name="oldBM" type="AnsiString"></param>
+    <param name="BM" type="AnsiString"></param>
+    <param name="MC" type="AnsiString"></param>
+  </SQL>
+  <!--删除分类的子节点-->
+  <SQL id="aisino.Fwkp.Bmgl.BMXZQY.XZQYDeleteSubNodes">
+    <value>
+      DELETE from [BM_XZQY]  WHERE  BM like  @bmLike and BM &lt;&gt; @bm
+    </value>
+    <type>Text</type>
+    <param name="bmLike" type="AnsiString"></param>
+  </SQL>
+  <!--获取删除的分类及其子节点-->
+  <SQL id="aisino.Fwkp.Bmgl.BMXZQY.XZQYDeleteFenLei">
+    <value>
+      DELETE from [BM_XZQY]  WHERE  BM like  @bm
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+  </SQL>
+  <!--删除一条记录-->
+  <SQL id="aisino.Fwkp.Bmgl.BMXZQY.XZQYDelete">
+    <value>
+      DELETE from [BM_XZQY]  WHERE  BM=@bm
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+  </SQL>
+
+  <!--查询指定客户编码是否存在-->
+  <SQL id="aisino.Fwkp.Bmgl.BMXZQY.XZQYExist">
+    <value>SELECT COUNT(BM) FROM BM_XZQY WHERE BM=@bm</value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+  </SQL>
+
+  <SQL id="aisino.Fwkp.Bmgl.BMXZQY.XZQYbmlike">
+    <var name="condition" value="BM like @key"/>
+    <value>
+      SELECT COUNT(BM) FROM BM_XZQY where #condition#;
+      select BM,MC from BM_XZQY
+      where  #condition#
+      ORDER BY BM   Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+    </value>
+    <type>Text</type>
+    <param name="key" type="AnsiString"></param>
+  </SQL>
+  <!--查看对应上级编码是否存在-->
+  <SQL id="aisino.Fwkp.Bmgl.BMXZQY.XZQYLike">
+    <var name="condition" value="BM like @bm"/>
+    <value>
+      SELECT count(*) NUM from BM_XZQY where #condition#;
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+  </SQL>
+
+  <!--BM_XZQY修改行政区域编码节点都需更改BM、SJBM-->
+  <SQL id="aisino.Fwkp.Bmgl.BMXZQY.XZQYBMModify">
+    <value>
+      UPDATE [BM_XZQY] SET
+      [BM] =  @afterbm,[MC] = @MC
+      WHERE BM=@bm
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+    <param name="afterbm" type="AnsiString"></param>
+    <param name="MC" type="AnsiString"></param>
+  </SQL>
+
+  <!--BM_XZQY获得此节点下的所有子节点-->
+  <SQL id="aisino.Fwkp.Bmgl.BMXZQY.XZQYBMGetSubNode">
+    <value>
+      SELECT BM FROM [BM_XZQY]  WHERE  BM&lt;&gt;@bm and BM like  @bmLike
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+    <param name="bmLike" type="AnsiString"></param>
+  </SQL>
+
+
+  <!--BM_XZQY更改节点下的编码和上级编码-->
+  <SQL id="aisino.Fwkp.Bmgl.BMXZQY.XZQYBMUpdateSJBMandBM">
+    <value>
+      UPDATE BM_XZQY SET BM= @newBM WHERE BM=@bm
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+    <param name="newBM" type="AnsiString"></param>
+  </SQL>
+
+  <!--一个关键字查询多个字段的查询-->
+  <SQL id="aisino.Fwkp.Bmgl.BMXZQY.XZQYqueryKey">
+    <var name="condition" value="MC like @key or BM like @key "/>
+    <value>
+      SELECT COUNT(BM) FROM BM_XZQY where #condition#;
+      select BM,MC from BM_XZQY
+      where  #condition#  ORDER BY BM asc  Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+    </value>
+    <type>Text</type>
+    <param name="key" type="AnsiString"></param>
+  </SQL>
+
+  <!--一个关键字查询多个字段的查询,返回前几条数据-->
+  <SQL id="aisino.Fwkp.Bmgl.BMXZQY.XZQYqueryKeyAppend">
+    <var name="condition" value="MC like @key or BM like @key "/>
+    <value>
+      SELECT * from BM_XZQY  where  #condition#    Limit  @TopNo
+    </value>
+    <type>Text</type>
+    <param name="key" type="AnsiString"></param>
+    <param name="TopNo" type="AnsiString"></param>
+  </SQL>
+
+  <!--查询行政区域表格表中所有数据-->
+  <SQL id="aisino.Fwkp.Bmgl.BMXZQY.XZQYquery">
+    <value>
+      SELECT COUNT(BM) FROM BM_XZQY;
+      SELECT BM, MC from BM_XZQY order by BM ASC  Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+    </value>
+  </SQL>
+
+  <!--增加行政区域编码-->
+  <SQL id="aisino.Fwkp.Bmgl.BMXZQY.XZQYRecommend">
+    <value>
+      select   BM from BM_XZQY where BM=@bm order by cast(BM as int) desc Limit 1
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+
+  </SQL>
+
+
+  <!--判断分类编码下是否有下级编码-->
+  <SQL id="aisino.Fwkp.Bmgl.BMXZQY.XZQYHasChild">
+    <value>
+      select count(BM) as CountBM from BM_XZQY where BM = @bm
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+  </SQL>
+
+
+  <!--判断下级编码能否增位，当编码族中的最大编码长度>16时不能增位-->
+  <SQL id="aisino.Fwkp.Bmgl.BMXZQY.XZQYBmZWverify">
+    <value>
+      SELECT  max(length(BM))  AS BmLenth  FROM [BM_XZQY] WHERE BM like @bm
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+  </SQL>
+
+
+  <!--验证 是否可以减位 操作方法-->
+  <SQL id="aisino.Fwkp.Bmgl.BMXZQY.XZQYBmJWVerify">
+    <value>
+      SELECT substr(BM,length(@bm)+1,1) as JWvalue   FROM [BM_XZQY] WHERE  BM=@bm  order by JWvalue desc  limit 1
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+  </SQL>
+
+  <!--**导出中使用一个关键字查询多个字段的查询-->
+  <SQL id="aisino.Fwkp.Bmgl.BMXZQY.XZQYqueryKeyout">
+    <var name="condition" value="MC like @key or BM like @key"/>
+    <value>
+      SELECT  BM,MC FROM BM_XZQY where #condition# ORDER BY BM;
+    </value>
+    <type>Text</type>
+    <param name="key" type="AnsiString"></param>
+  </SQL>
+
+  <!--导出行政区域编码-->
+  <SQL id="aisino.Fwkp.Bmgl.BMXZQY.XZQYExportGoodsTax">
+    <value>
+      SELECT  BM,MC,JM,KJM,SH,DZDH,YHZH,YJDZ,BZ,YSKM,DQBM,DQMC,DQKM,SJBM,WJ    FROM BM_KH where #condition#;
+    </value>
+    <type>Text</type>
+  </SQL>
+
+  <!--&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&7-->
+  <!--&&&&&&&&&&——————————————车辆编码管理—————————————————&&&&&&&&&&&&&&&&7-->
+  <!--&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&7-->
+
+  <!--GetModel客户编码--><!--
+  <SQL id="aisino.Fwkp.Bmgl.BMCL.CLGetModel">
+    <value>
+      select  *  from BM_CL  where BM=@bm  Limit 1
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+  </SQL>-->
+
+  <!--GetModel客户编码-->
+  <SQL id="aisino.Fwkp.Bmgl.BMCL.CLGetModel">
+    <value>
+      SELECT BM_CL.*,BM_SPFL.ZZSTSGL AS SPFL_ZZSTSGL,BM_YHZC.SLV AS YHZC_SLV
+      from (BM_CL left join BM_SPFL on BM_CL.SPFL = BM_SPFL.BM) left join BM_YHZC on BM_SPFL.ZZSTSGL like ('%'||BM_YHZC.YHZCMC||'%')
+      where BM_CL.BM=@bm  Limit 1
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+  </SQL>
+
+  <!--增加客户-->
+  <SQL id="aisino.Fwkp.Bmgl.BMCL.CLAdd">
+    <value>
+      INSERT INTO [BM_CL](
+      [BM],[MC],[JM],[SJBM],[CPXH],[CD],[SCCJMC],[KJM],[WJ],[SPFL],[YHZC],[SPFLMC],[YHZCMC]
+      )VALUES(
+      @BM,@MC,@JM,@SJBM,@CPXH,@CD,@SCCJMC,@KJM,@WJ,@SPFL,@YHZC,@SPFLMC,@YHZCMC
+      )
+    </value>
+    <type>Text</type>
+    <param name="BM" type="AnsiString"></param>
+    <param name="MC" type="AnsiString"></param>
+    <param name="JM" type="AnsiString"></param>
+    <param name="SJBM" type="AnsiString"></param>
+    <param name="CPXH" type="AnsiString"></param>
+    <param name="CD" type="AnsiString"></param>
+    <param name="SCCJMC" type="AnsiString"></param>
+    <param name="KJM" type="AnsiString"></param>
+    <param name="WJ" type="Int64"></param>
+    <param name="SPFL" type="AnsiString"></param>
+    <param name="YHZC" type="AnsiString"></param>
+    <param name="SPFLMC" type="AnsiString"></param>
+    <param name="YHZCMC" type="AnsiString"></param>
+  </SQL>
+
+  <!--修改客户-->
+  <SQL id="aisino.Fwkp.Bmgl.BMCL.CLModify">
+    <value>
+      UPDATE [BM_CL] SET
+      [BM] = @BM,[MC] = @MC,[JM] = @JM,[SJBM] = @SJBM,[CPXH] = @CPXH,[CD] = @CD,[SCCJMC] = @SCCJMC,[KJM] = @KJM,[WJ] = @WJ,[SPFL] = @SPFL,[YHZC] = @YHZC,[SPFLMC] = @SPFLMC,[YHZCMC] = @YHZCMC
+      WHERE BM=@oldBM
+    </value>
+    <type>Text</type>
+    <param name="oldBM" type="AnsiString"></param>
+    <param name="BM" type="AnsiString"></param>
+    <param name="MC" type="AnsiString"></param>
+    <param name="JM" type="AnsiString"></param>
+    <param name="SJBM" type="AnsiString"></param>
+    <param name="CPXH" type="AnsiString"></param>
+    <param name="CD" type="AnsiString"></param>
+    <param name="SCCJMC" type="AnsiString"></param>
+    <param name="KJM" type="AnsiString"></param>
+    <param name="WJ" type="AnsiString"></param>
+    <param name="SPFL" type="AnsiString"></param>
+    <param name="YHZC" type="AnsiString"></param>
+    <param name="SPFLMC" type="AnsiString"></param>
+    <param name="YHZCMC" type="AnsiString"></param>
+  </SQL>
+
+  <!--删除分类的子节点-->
+  <SQL id="aisino.Fwkp.Bmgl.BMCL.CLDeleteSubNodes">
+    <value>
+      DELETE from [BM_CL]  WHERE  BM like  @bmLike and BM &lt;&gt; @bm
+    </value>
+    <type>Text</type>
+    <param name="bmLike" type="AnsiString"></param>
+  </SQL>
+
+  <!--获取删除的分类及其子节点-->
+  <SQL id="aisino.Fwkp.Bmgl.BMCL.CLDeleteFenLei">
+    <value>
+      DELETE from [BM_CL]  WHERE  BM like  @bm
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+  </SQL>
+
+  <!--删除一条记录-->
+  <SQL id="aisino.Fwkp.Bmgl.BMCL.CLDelete">
+    <value>
+      DELETE from [BM_CL]  WHERE  BM=@bm
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+  </SQL>
+
+  <!--查询指定客户编码是否存在-->
+  <SQL id="aisino.Fwkp.Bmgl.BMCL.CLExist">
+    <value>SELECT COUNT(BM) FROM BM_CL WHERE BM=@bm</value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+  </SQL>
+
+
+  <SQL id="aisino.Fwkp.Bmgl.BMCL.CLbmlike">
+    <var name="condition" value="BM like @key"/>
+    <value>
+      SELECT COUNT(BM) FROM BM_CL where #condition#;
+      select * from BM_CL
+      where  #condition#
+      ORDER BY BM   Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+    </value>
+    <type>Text</type>
+    <param name="key" type="AnsiString"></param>
+  </SQL>
+
+  <!--Test绑定TreeView-->
+  <SQL id="aisino.Fwkp.Bmgl.BMCL.CLTreeView">
+    <var name="condition" value="SJBM=@sjbm and WJ=0"/>
+    <value>
+      SELECT BM,MC,SJBM,WJ FROM BM_CL where #condition#;
+    </value>
+    <type>Text</type>
+    <param name="sjbm" type="AnsiString"></param>
+  </SQL>
+
+  <!--BM_CL修改客户BM节点都需更改BM、SJBM-->
+  <SQL id="aisino.Fwkp.Bmgl.BMCL.CLBMModify">
+    <value>
+      UPDATE [BM_CL] SET
+      [BM] =  @afterbm,[MC] = @MC,[JM] = @JM,[SJBM] = @SJBM,[CPXH] = @CPXH,[CD] = @CD,[SCCJMC] = @SCCJMC
+      WHERE BM=@bm
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+    <param name="afterbm" type="AnsiString"></param>
+    <param name="MC" type="AnsiString"></param>
+    <param name="JM" type="AnsiString"></param>
+    <param name="SJBM" type="AnsiString"></param>
+    <param name="CPXH" type="AnsiString"></param>
+    <param name="CD" type="AnsiString"></param>
+    <param name="SCCJMC" type="AnsiString"></param>
+  </SQL>
+
+  <!--根据产地查询--><!--
+  <SQL id="aisino.Fwkp.Bmgl.BMCL.CLQueryMC">
+    <value>
+      SELECT * from BM_CL   where  MC =@MC   Limit  1
+    </value>
+    <type>Text</type>
+    <param name="SH" type="AnsiString"></param>
+  </SQL>-->
+
+  <!--根据产地查询-->
+  <SQL id="aisino.Fwkp.Bmgl.BMCL.CLQueryMC">
+    <value>
+
+      SELECT BM_CL.*,BM_SPFL.ZZSTSGL AS SPFL_ZZSTSGL,BM_YHZC.SLV AS YHZC_SLV
+      from (BM_CL left join BM_SPFL on BM_CL.SPFL = BM_SPFL.BM) left join BM_YHZC on BM_SPFL.ZZSTSGL like ('%'||BM_YHZC.YHZCMC||'%')
+      where BM_CL.MC =@MC  and  BM_CL.WJ =1
+    </value>
+    <type>Text</type>
+    <param name="MC" type="AnsiString"></param>
+  </SQL>  
+  
+  <!--BM_CL获得此节点下的所有子节点-->
+  <SQL id="aisino.Fwkp.Bmgl.BMCL.CLBMGetSubNode">
+    <value>
+      SELECT BM,SJBM FROM [BM_CL]  WHERE  BM&lt;&gt;@bm and BM like  @bmLike  and SJBM like  @bmLike
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+    <param name="bmLike" type="AnsiString"></param>
+  </SQL>
+
+
+  <!--BM_CL更改节点下的编码和上级编码-->
+  <SQL id="aisino.Fwkp.Bmgl.BMCL.CLBMUpdateSJBMandBM">
+    <value>
+      UPDATE BM_CL SET BM= @newBM ,SJBM= @newSJBM  WHERE BM=@bm
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+    <param name="newBM" type="AnsiString"></param>
+    <param name="newSJBM" type="AnsiString"></param>
+  </SQL>
+
+  <!--一个关键字查询多个字段的查询-->
+  <SQL id="aisino.Fwkp.Bmgl.BMCL.CLqueryKey">
+    <var name="condition" value="BM like @key or MC like @key or CPXH like @key or CD like @key or SCCJMC like @key or KJM like @key"/>
+    <value>
+      SELECT COUNT(BM) FROM BM_CL where #condition#;
+      select * from BM_CL
+      where  #condition#  ORDER BY BM   Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+    </value>
+    <type>Text</type>
+    <param name="key" type="AnsiString"></param>
+  </SQL>
+
+  <!--一个关键字查询多个字段的查询,返回前几条数据-->
+  <SQL id="aisino.Fwkp.Bmgl.BMCL.CLqueryKeyAppend">
+    <var name="condition" value="MC like @key or BM like @key or JM  like @key  or JM  like @key or CD like @key or CPXH like @key or SCCJMC like @key or KJM like @key"/>
+    <value>
+      SELECT * from BM_CL  where  #condition#    Limit  @TopNo
+    </value>
+    <type>Text</type>
+    <param name="key" type="AnsiString"></param>
+    <param name="TopNo" type="AnsiString"></param>
+  </SQL>
+
+  <!--一个关键字查询多个字段的查询wj=1,返回前几条数据--><!--
+  <SQL id="aisino.Fwkp.Bmgl.BMCL.CLqueryKeyAppendWJ">
+    <var name="condition" value="WJ=1 and ( MC like @key or BM like @key or JM  like @key or CD like @key or CPXH like @key or SCCJMC like @key or KJM like @key) "/>
+    <value>
+      SELECT * from BM_CL   where  #condition#    Limit  @TopNo
+    </value>
+    <type>Text</type>
+    <param name="key" type="AnsiString"></param>
+    <param name="TopNo" type="AnsiString"></param>
+  </SQL>-->
+
+  <!--一个关键字查询多个字段的查询wj=1,返回前几条数据-->
+  <SQL id="aisino.Fwkp.Bmgl.BMCL.CLqueryKeyAppendWJ">
+    <var name="condition" value="
+         BM_CL.WJ=1 
+         and (BM_CL.MC like @key or BM_CL.BM like @key or BM_CL.JM  like @key or BM_CL.CD like @key or BM_CL.CPXH like @key or BM_CL.SCCJMC like @key or BM_CL.KJM like @key) "/>
+    <value>
+      SELECT BM_CL.*,BM_SPFL.ZZSTSGL AS SPFL_ZZSTSGL,BM_YHZC.SLV AS YHZC_SLV
+      from (BM_CL left join BM_SPFL on BM_CL.SPFL = BM_SPFL.BM) left join BM_YHZC on BM_SPFL.ZZSTSGL like ('%'||BM_YHZC.YHZCMC||'%')
+      where  #condition#    Limit  @TopNo
+    </value>
+    <type>Text</type>
+    <param name="key" type="AnsiString"></param>
+    <param name="TopNo" type="AnsiString"></param>
+  </SQL>
+  
+ 
+  <!--增加车辆的推荐编码-->
+  <SQL id="aisino.Fwkp.Bmgl.BMCL.CLRecommend">
+    <value>
+      select   BM from BM_CL where SJBM=@bm
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+  </SQL>
+
+  <!--判断分类编码下是否有下级编码-->
+  <SQL id="aisino.Fwkp.Bmgl.BMCL.CLHasChild">
+    <value>
+      select count(BM) as CountBM from BM_CL where SJBM = @bm
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+  </SQL>
+
+
+  <!--判断下级编码能否增位，当编码族中的最大编码长度>16时不能增位-->
+  <SQL id="aisino.Fwkp.Bmgl.BMCL.CLBmZWverify">
+    <value>
+      SELECT  max(length(BM))  AS BmLenth  FROM [BM_CL] WHERE BM like @bm
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+  </SQL>
+
+
+  <!--验证 是否可以减位 操作方法-->
+  <SQL id="aisino.Fwkp.Bmgl.BMCL.CLBmJWVerify">
+    <value>
+      SELECT substr(BM,length(@bm)+1,1) as JWvalue   FROM [BM_CL] WHERE  SJBM=@bm  order by JWvalue desc  limit 1
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+  </SQL>
+
+  <!--**导出中使用一个关键字查询多个字段的查询-->
+  <SQL id="aisino.Fwkp.Bmgl.BMCL.CLqueryKeyout">
+    <var name="condition" value="MC like @key or BM like @key or KJM like @key"/>
+    <value>
+      SELECT  *  FROM BM_CL where #condition# ORDER BY BM;
+    </value>
+    <type>Text</type>
+    <param name="key" type="AnsiString"></param>
+  </SQL>
+
+  <!--导出车辆编码-->
+  <SQL id="aisino.Fwkp.Bmgl.BMCL.CLExportCustomer">
+    <value>
+      SELECT  BM,MC,JM,SJBM,CPXH,CD,SCCJMC,WJ FROM BM_CL where #condition#;
+    </value>
+    <type>Text</type>
+  </SQL>
+
+  <!--获取该上级编码的下级编码-->
+  <SQL id="aisino.Fwkp.Bmgl.BMCL.GetXJBMBySJBM">
+    <value>
+      select BM from BM_CL where  SJBM = @SJBM
+    </value>
+    <type>Text</type>
+    <param name="SJBM" type="AnsiString"></param>
+  </SQL>
+
+  <!--判断分类编码下是否有下级编码-->
+  <SQL id="aisino.Fwkp.Bmgl.BMCL.CLChildDetermine">
+    <value>
+      select BM from BM_CL where SJBM = @sjbm
+    </value>
+    <type>Text</type>
+    <param name="sjbm" type="AnsiString"></param>
+  </SQL>
+
+  <!--查询指定车辆名称是否存在-->
+  <SQL id="aisino.Fwkp.Bmgl.BMCL.CLMCExist">
+    <value>SELECT * FROM BM_CL WHERE MC=@MC and SJBM=@SJBM</value>
+    <type>Text</type>
+    <param name="MC" type="AnsiString"></param>
+    <param name="SJBM" type="AnsiString"></param>
+  </SQL>
+
+  <!--根据名称和上级编码查询-->
+  <SQL id="aisino.Fwkp.Bmgl.BMCL.CLQueryMCAndSJBM">
+    <value>
+      SELECT * from BM_CL   where  MC =@MC and SJBM=@SJBM  Limit  1
+    </value>
+    <type>Text</type>
+    <param name="MC" type="AnsiString"></param>
+    <param name="SJBM" type="AnsiString"></param>
+  </SQL>
+
+  
+    
+  <!--检索车辆里面分类编码非空的车辆-->
+  <SQL id="aisino.Fwkp.Bmgl.BMCL.QueryCLSPFLNotEmpty">
+    <value>
+      SELECT BM,SPFL,YHZC,YHZCMC FROM BM_CL WHERE (SPFL!='')
+    </value>
+    <type>Text</type>
+  </SQL>
+
+    <!--检索车辆编码里面有分类编码，优惠政策为是且优惠政策类型为空-->
+  <SQL id="aisino.Fwkp.Bmgl.BMCL.QueryCLYHZCIsAndYHZCMCIsEmpty">
+    <value>
+      SELECT BM,SPFL,YHZC FROM BM_CL WHERE (SPFL!=''and YHZC='是'and YHZCMC='')
+    </value>
+    <type>Text</type>
+  </SQL>
+  
+  
+  
+  <!--&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&7-->
+  <!--&&&&&&&&&&——————————————产地编码管理—————————————————&&&&&&&&&&&&&&&&7-->
+  <!--&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&7-->
+
+  <!--产地编码-->
+  <SQL id="aisino.Fwkp.Bmgl.BMCD.CDQueryTable">
+    <value>
+      SELECT * FROM BM_CD
+    </value>
+  </SQL>
+
+  <!--产地编码-->
+  <SQL id="aisino.Fwkp.Bmgl.BMCD.CDQueryByKey">
+    <var name="condition" value="CDMC like @key or CDDM like @key or CDJC like @key"/>
+    <value>
+      select CDMC,CDDM,CDJC,XYBZ,YXBZ from BM_CD where #condition#
+    </value>
+    <type>Text</type>
+    <param name="key" type="AnsiString"></param>
+  </SQL>
+
+  <SQL id="aisino.Fwkp.Bmgl.BMCD.CDbmlike">
+    <var name="condition" value="CDMC like @key"/>
+    <value>
+      SELECT COUNT(CDMC) FROM BM_CD where #condition#;
+      select CDMC,CDDM,CDJC,XYBZ,YXBZ from BM_CD where  #condition#
+      ORDER BY CDMC Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+    </value>
+    <type>Text</type>
+    <param name="key" type="AnsiString"></param>
+  </SQL>
+
+  <!--&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&7-->
+  <!--&&&&&&&&&&——————————————生产厂家编码—————————————————&&&&&&&&&&&&&&&&7-->
+  <!--&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&7-->
+
+  <!--产地编码-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSCCJ.SCCJQueryTable">
+    <value>
+      SELECT * FROM BM_SCCJ
+    </value>
+  </SQL>
+
+  <!--产地编码-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSCCJ.SCCJQueryByKey">
+    <var name="condition" value="SCCJMC like @key or SCCJDM like @key or SCCJJC like @key"/>
+    <value>
+      select SCCJDM,CDDM,SCCJMC,SCCJJC,ZGSWJGDM,SCCJNSRSBH,XYBZ,YXBZ from BM_SCCJ where #condition#
+    </value>
+    <type>Text</type>
+    <param name="key" type="AnsiString"></param>
+  </SQL>
+
+  <!--&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&7-->
+  <!--&&&&&&&&&&——————————————车辆种类编码—————————————————&&&&&&&&&&&&&&&&7-->
+  <!--&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&7-->
+
+  <!--产地编码-->
+  <SQL id="aisino.Fwkp.Bmgl.BMCLZL.CLZLQueryTable">
+    <value>
+      select CLZLDM,CLDLMC,CLZLMC,XSSX,BM_CLZL.[XYBZ],BM_CLZL.[YXBZ] from BM_CLZL,BM_CLDL
+      where BM_CLZL.[CLDLDM] = BM_CLDL.[CLDLDM]
+    </value>
+  </SQL>
+
+  <!--产地编码-->
+  <SQL id="aisino.Fwkp.Bmgl.BMCLZL.CLZLQueryByKey">
+    <var name="condition" value="CLZLMC like @key or CLZLDM like @key or CLDLMC like @key"/>
+    <value>
+      select CLZLDM,CLDLMC,CLZLMC,XSSX,BM_CLZL.[XYBZ],BM_CLZL.[YXBZ] from BM_CLZL,BM_CLDL
+      where BM_CLZL.[CLDLDM] = BM_CLDL.[CLDLDM] and (#condition#)
+    </value>
+    <type>Text</type>
+    <param name="key" type="AnsiString"></param>
+  </SQL>
+
+  
+  <!--&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&7-->
+  <!--&&&&&&&&&&——————————————商品分类管理—————————————————&&&&&&&&&&&&&&&&7-->
+  <!--&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&7-->
+
+  <!--GetModel客户编码-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSP.SPFLGetModel">
+    <value>
+      select  *  from BM_SPFL where BM=@bm  Limit 1
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+  </SQL>
+  
+  
+  <SQL id="aisino.Fwkp.Bmgl.BMSPFL.SPFLTreeView">
+    <var name="condition" value="SJBM=@sjbm and WJ=0"/>
+    <value>
+      SELECT BM,MC,SJBM,WJ FROM [BM_SPFL] where #condition#;
+    </value>
+    <type>Text</type>
+    <param name="sjbm" type="AnsiString"></param>
+  </SQL>
+
+  <SQL id="aisino.Fwkp.Bmgl.BMSPFL.SPFLTreeViewISHIDE">
+    <var name="condition" value="SJBM=@sjbm and WJ=0 and ISHIDE='0'"/>
+    <value>
+      SELECT BM,MC,SJBM,WJ FROM [BM_SPFL] where #condition#;
+    </value>
+    <type>Text</type>
+    <param name="sjbm" type="AnsiString"></param>
+  </SQL>
+
+  <!--特定编码起头-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSPFL.SPFLbmlike">
+    <var name="condition" value="BM like @key and KYZT='Y'"/>
+    <value>
+      SELECT COUNT(BM) FROM BM_SPFL WHERE #condition#;
+      SELECT *
+      FROM [BM_SPFL]  where  #condition#
+      ORDER BY BM   Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+    </value>
+    <type>Text</type>
+    <param name="key" type="AnsiString"></param>
+  </SQL>
+
+  <!--一个关键字查询多个字段的查询-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSPFL.SPFLqueryKey">
+    <var name="condition" value="((BM like  @key or MC like  @key or SM like @key or SLV like @key or ZZSTSGL like @key or GJZ like @key) and  KYZT='Y')"/>
+    <value>
+      SELECT  COUNT(BM) FROM BM_SPFL where #condition#;
+      SELECT  *
+      FROM [BM_SPFL] WHERE   #condition#
+      ORDER BY BM   Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+    </value>
+    <type>Text</type>
+    <param name="key" type="AnsiString"></param>
+  </SQL>
+
+  <!--一个关键字查询多个字段的查询,返回前几条数据-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSPFL.SPFLqueryKeyAppend">
+    <var name="condition" value="((BM like @key or MC like @key or GJZ like @key) and KYZT='Y')"/>
+    <value>
+      SELECT * from
+      (select * from BM_SPFL where case  when @DXQY='true' then (BM='303' or BM='30301' or BM='30302' or HZX='N') else HZX='N' end 
+      and case when @XTQY='false' then ZZSTSGL not like '%稀土产品%' else 1=1 end)
+      where  #condition#   ORDER BY BM Limit  @TopNo
+    </value>
+    <type>Text</type>
+    <param name="key" type="AnsiString"></param>
+    <param name="TopNo" type="AnsiString"></param>
+    <param name="DXQY" type="AnsiString"></param>
+    <param name="XTQY" type="AnsiString"></param>
+  </SQL>
+
+
+  <!--查询税收分类编码是否有优惠政策-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSPFL.CanUseThisYHZC">
+    <var name="condition" value="(BM =@bm)"/>
+    <value>
+      SELECT ZZSTSGL from BM_SPFL where  #condition#
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>   
+  </SQL>
+   
+  
+  <!--查询商品分类是否存在于商品分类表里-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSPFL.CanUseThisSPFLBM">
+    <value>
+      select * from BM_SPFL where
+      BM = @bm
+      and
+      KYZT='Y'
+      and
+      (
+      case when (@XTQY=1 and @XTSP=1) then ZZSTSGL like '%稀土产品%'  and HZX='N'
+      when (@XTQY=0 or @XTSP=0) then ZZSTSGL  not like '%稀土产品%'   and HZX='N'
+      else 1=0 end
+      or
+      case  when (@DXQY=1 and @XTSP=0) then (BM='303' or BM='30301' or BM='30302') or (HZX='N'  and ZZSTSGL not like '%稀土产品%')
+      when (@DXQY=1 and @XTSP=1) then   (HZX='N'  and ZZSTSGL  like '%稀土产品%')
+      else 1=0  end
+
+      )
+      ORDER BY BM
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+    <param name="DXQY" type="Int32"></param>
+    <param name="XTQY" type="Int32"></param>
+    <param name="XTSP" type="Int32"></param>
+  </SQL>
+  
+   <!--稀土商品只能用稀土商品分类-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSPFL.XTCanUseThisSPFLBM">
+    <var name="condition" value="(BM = @bm and KYZT='Y')"/>
+    <value>
+      SELECT * from
+      (select * from BM_SPFL where case when @XTQY='true'and @XTSP='true' then ZZSTSGL like '%稀土产品%' and HZX='N' and WJ=1 else 1=1 end
+      and case when @XTQY='true'and @XTSP='false'then (ZZSTSGL not like '%稀土产品%' and HZX='N' and WJ=1)else 1=1 end
+      and case when @XTQY='false'then (ZZSTSGL not like '%稀土产品%' and HZX='N' and WJ=1)else 1=1 end )
+      where  #condition#   ORDER BY BM
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param> 
+    <param name="XTQY" type="AnsiString"></param>
+    <param name="XTSP" type="AnsiString"></param>
+  </SQL>
+  
+    
+    
+      
+
+  <!--一个关键字查询多个字段的查询,返回前几条数据-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSPFL.SPFLquerySLV_BY_BM">
+    <var name="condition" value="BM_SPFL.BM = @key "/>
+    <value>
+      SELECT BM_SPFL.SLV,BM_SPFL.ZZSTSGL,BM_YHZC.SLV as YHZC_SLV from (BM_SPFL LEFT JOIN BM_YHZC ON BM_SPFL.ZZSTSGL like ('%'||BM_YHZC.YHZCMC||'%')) where  #condition#
+    </value>
+    <type>Text</type>
+    <param name="key" type="AnsiString"></param>
+  </SQL>
+
+  <!--bmSelect特定编码起头-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSPFL.SPFLbmlikeSEL">
+    <var name="condition" value="BM like @key and KYZT='Y' and ISHIDE='0'"/>
+    <value>
+      SELECT COUNT(BM) FROM BM_SPFL WHERE #condition#;
+      SELECT *
+      FROM [BM_SPFL]  where #condition#
+      ORDER BY BM   Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+    </value>
+    <type>Text</type>
+    <param name="key" type="AnsiString"></param>
+  </SQL>
+
+  <!--bmSelect查询检索-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSPFL.SPFLqueryKeyDisplaySEL">
+    <var name="condition" value="((BM like  @key or MC like  @key or SM like @key or SLV like @key or ZZSTSGL like @key or GJZ like @key) and KYZT='Y' and ISHIDE='0')"/>
+    <value>
+      SELECT COUNT(BM) FROM BM_SPFL WHERE #condition#;
+      SELECT *
+      FROM [BM_SPFL]  where  #condition#
+      ORDER BY BM   Limit  @endNO-@beginNO+1  Offset  @beginNO-1
+    </value>
+    <type>Text</type>
+    <param name="key" type="AnsiString"></param>
+  </SQL>
+
+  <!--查询商品分类编码表版本号-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSPF.GetSPBMBBBH">
+    <value>select max(cast (BMB_BBH as float)) FROM BM_SPFL</value>
+  </SQL>
+
+  <!--查询商品分类编码表是否为空-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSPFL.BMSPFLISEMPTY">
+    <value>select count(*) FROM BM_SPFL</value>
+  </SQL>
+
+  <!--修改商品表的商品分类-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSPFL.UpdateSPSPFL">
+    <value>
+      UPDATE [BM_SP] SET [SPFL] = @SPFL ,[SPFLMC] = @SPFLMC ,[YHZC] = @YHZC ,[YHZCMC] = @YHZCMC,[LSLVBS] = @LSLVBS
+      WHERE  BM=@BM
+    </value>
+    <type>Text</type>
+    <param name="YHZC" type="AnsiString"></param>
+    <param name="BM" type="AnsiString"></param>
+    <param name="SPFL" type="AnsiString"></param>
+    <param name="SPFLMC" type="AnsiString"></param>
+    <param name="YHZCMC" type="AnsiString"></param>
+    <param name="LSLVBS" type="AnsiString"></param>
+  </SQL>
+
+  <!--修改车辆表的商品分类-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSPFL.UpdateCLSPFL">
+    <value>
+      UPDATE [BM_CL] SET [SPFL] = @SPFL,[SPFLMC] = @SPFLMC,[YHZC] = @YHZC,[YHZCMC] = @YHZCMC
+      WHERE  BM=@BM
+    </value>
+    <type>Text</type>
+    <param name="BM" type="AnsiString"></param>
+    <param name="SPFL" type="AnsiString"></param>
+    <param name="SPFLMC" type="AnsiString"></param>
+    <param name="YHZC" type="AnsiString"></param>
+    <param name="YHZCMC" type="AnsiString"></param>
+  </SQL>
+
+  <!--修改费用项目表的商品分类-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSPFL.UpdateFYXMSPFL">
+    <value>
+      UPDATE [BM_FYXM] SET [SPFL] = @SPFL,[SPFLMC] = @SPFLMC,[YHZC] = @YHZC,[YHZCMC] = @YHZCMC
+      WHERE  BM=@BM
+    </value>
+    <type>Text</type>
+    <param name="BM" type="AnsiString"></param>
+    <param name="SPFL" type="AnsiString"></param>
+    <param name="SPFLMC" type="AnsiString"></param>
+    <param name="YHZC" type="AnsiString"></param>
+    <param name="YHZCMC" type="AnsiString"></param>
+  </SQL>
+
+  <!--根据税收分类编码获得名称-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSPFL.GetSPFLMCBYBM">
+    <value>
+      select mc from bm_spfl where bm=@bm
+    </value>
+    <type>Text</type>
+    <param name="bm" type="AnsiString"></param>
+  </SQL>
+
+  <!--根据优惠政策名称获得优惠政策税率-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSPFL.GetSPFLSLVBYMC">
+    <value>
+      select slv from bm_yhzc where yhzcmc=@mc
+    </value>
+    <type>Text</type>
+    <param name="mc" type="AnsiString"></param>
+  </SQL>
+
+  <!--获得分类编码对应的商品优惠政策-->
+  <SQL id ="aisino.Fwkp.Bmgl.BMSPFL.SelectYHZCS">
+    <value>
+      SELECT ZZSTSGL
+      FROM BM_SPFL
+      WHERE BM = @BM
+      <type>Text</type>
+      <param name="BM" type="AnsiString"></param>
+    </value>
+  </SQL>
+  <!--获得优惠税率字典-->
+  <SQL id ="aisino.Fwkp.Bmgl.BMSPFL.SelectYhzcs">
+    <value>
+      SELECT YHZCMC,SLV FROM BM_YHZC
+      <type>Text</type>
+    </value>
+  </SQL>
+
+
+  <!--更新商品库-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSPFL.UpdateSPBySPFL">
+    <value>
+      UPDATE BM_SP SET SPFL='',SPFLMC='',YHZC='',YHZCMC='',LSLVBS=''
+      WHERE SPFL= @SPFL
+    </value>
+    <type>Text</type>
+    <param name="SPFL" type="AnsiString"></param>
+  </SQL>
+
+  <!--更新车辆库-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSPFL.UpdateCLBySPFL">
+    <value>
+      UPDATE BM_CL SET SPFL='',SPFLMC='',YHZC='',YHZCMC=''
+      WHERE SPFL= @SPFL
+    </value>
+    <type>Text</type>
+    <param name="SPFL" type="AnsiString"></param>
+  </SQL>
+
+  <!--更新费用项目库-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSPFL.UpdateFYXMBySPFL">
+    <value>
+      UPDATE BM_FYXM SET SPFL='',SPFLMC='',YHZC='',YHZCMC=''
+      WHERE SPFL= @SPFL
+    </value>
+    <type>Text</type>
+    <param name="SPFL" type="AnsiString"></param>
+  </SQL>
+
+ <!--检索费用项目里面分类编码非空内容-->
+  <SQL id="aisino.Fwkp.Bmgl.BMFYXM.QueryFYXMSPFLNotEmpty">
+    <value>
+      SELECT BM,SPFL,YHZC,YHZCMC FROM BM_FYXM WHERE (SPFL!='')
+    </value>
+    <type>Text</type>
+  </SQL>
+
+  
+  <!--检索费用项目里面有分类编码，优惠政策为是且优惠政策类型为空-->
+  <SQL id="aisino.Fwkp.Bmgl.BMFYXM. QueryFYXMYHZCIsAndYHZCMCIsEmpty">
+    <value>
+      SELECT BM,SPFL,YHZC FROM BM_FYXM WHERE (SPFL!=''and YHZC='是'and YHZCMC='')
+    </value>
+    <type>Text</type>
+  </SQL>
+
+  <!--修改商品分类隐藏标志-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSPFL.SPFLUpdateHIDE">
+    <value>
+      UPDATE [BM_SPFL] SET ISHIDE= @ISHIDE  WHERE BM=@BM
+    </value>
+    <type>Text</type>
+    <param name="BM" type="AnsiString"></param>
+    <param name="ISHIDE" type="AnsiString"></param>
+  </SQL>
+
+  <!--修改分类编码下所有商品的隐藏标志-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSPFL.SPFLHZXUpdateXTHIDEUpToDown">
+    <value>
+      UPDATE [BM_SPFL] SET ISHIDE= @ISHIDE  WHERE SJBM like @SJBM
+    </value>
+    <type>Text</type>
+    <param name="SJBM" type="AnsiString"></param>
+    <param name="ISHIDE" type="AnsiString"></param>
+  </SQL>
+
+  <!--修改分类编码上级的隐藏标志-->
+  <SQL id="aisino.Fwkp.Bmgl.BMSPFL.SPFLHZXUpdateXTHIDEDownToUp">
+    <value>
+      UPDATE [BM_SPFL] SET ISHIDE= @ISHIDE  WHERE BM=@BM
+    </value>
+    <type>Text</type>
+    <param name="BM" type="AnsiString"></param>
+    <param name="ISHIDE" type="AnsiString"></param>
+  </SQL>
+  
+  
+  
+</SQLLIB>
+
+

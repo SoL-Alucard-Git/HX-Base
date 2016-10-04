@@ -1,0 +1,305 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SQLLIB>
+
+  <!--跟新发票状态0：未报送，1：已报送,2报送失败，3报送中-->
+  <SQL id="Aisino.Framework.MainForm.UpDown.UpdateFpStatus">
+    <value>UPDATE XXFP SET BSZT=@BSZT WHERE FPHM=@FPHM AND FPDM=@FPDM AND FPZL=@FPZL  AND BSZT!='1' AND BSZT !='2' AND ZFBZ=@ZFBZ</value>
+    <type>Text</type>
+    <param name="BSZT" type="AnsiString"></param>
+    <param name="FPHM" type="AnsiString"></param>
+    <param name="FPDM" type="AnsiString"></param>
+    <param name="FPZL" type="AnsiString"></param>
+    <param name="ZFBZ" type="AnsiString"></param>
+  </SQL>
+
+  <!--跟新发票状态0：未报送，1：已报送,2报送失败，3报送中-->
+  <SQL id="Aisino.Framework.MainForm.UpDown.UpdateFpDBSuccStatus">
+    <value>UPDATE XXFP SET BSZT=@BSZT WHERE FPHM=@FPHM AND FPDM=@FPDM AND FPZL=@FPZL AND BSZT='3' AND ZFBZ=@ZFBZ</value>
+    <type>Text</type>
+    <param name="BSZT" type="AnsiString"></param>
+    <param name="FPHM" type="AnsiString"></param>
+    <param name="FPDM" type="AnsiString"></param>
+    <param name="FPZL" type="AnsiString"></param>
+    <param name="ZFBZ" type="AnsiString"></param>
+  </SQL>
+
+  <!--获取发票受理序列号号-->
+  <SQL id="Aisino.Framework.MainForm.UpDown.FPSLHChaxun">
+    <value>SELECT FPSLH FROM FPSLH WHERE FPHM=@FPHM AND FPDM=@FPDM AND FPZL=@FPZL LIMIT 1</value>
+    <type>Text</type>
+    <param name="FPHM" type="AnsiString"></param>
+    <param name="FPDM" type="AnsiString"></param>
+    <param name="FPZL" type="AnsiString"></param>
+  </SQL>
+
+  <!--获取发票上传时间-->
+  <SQL id="Aisino.Framework.MainForm.UpDown.FPSCSJ">
+    <value>SELECT SCSJ FROM FPSLH WHERE FPHM=@FPHM AND FPDM=@FPDM AND FPZL=@FPZL LIMIT 1</value>
+    <type>Text</type>
+    <param name="FPHM" type="AnsiString"></param>
+    <param name="FPDM" type="AnsiString"></param>
+    <param name="FPZL" type="AnsiString"></param>
+  </SQL>
+
+  <!--获取发票上传时作废标志-->
+  <SQL id="Aisino.Framework.MainForm.UpDown.FPZFBZ">
+    <value>SELECT ZFBZ FROM FPSLH WHERE FPHM=@FPHM AND FPDM=@FPDM AND FPZL=@FPZL LIMIT 1</value>
+    <type>Text</type>
+    <param name="FPHM" type="AnsiString"></param>
+    <param name="FPDM" type="AnsiString"></param>
+    <param name="FPZL" type="AnsiString"></param>
+  </SQL>
+
+  <!--删除发票受理序列号记录-->
+  <SQL id="Aisino.Framework.MainForm.UpDown.DeleteFPSLH">
+    <value>DELETE FROM FPSLH WHERE FPHM=@FPHM AND FPDM=@FPDM AND FPZL=@FPZL</value>
+    <type>Text</type>
+    <param name="FPHM" type="AnsiString"></param>
+    <param name="FPDM" type="AnsiString"></param>
+    <param name="FPZL" type="AnsiString"></param>
+  </SQL>
+
+  <!--插入一条发票受理序列号记录-->
+  <SQL id="Aisino.Framework.MainForm.UpDown.replaceFPSLH">
+    <value>REPLACE INTO FPSLH(FPHM,FPDM,FPZL,FPSLH,SCSJ,ZFBZ) VALUES(@FPHM,@FPDM,@FPZL,@FPSLH,@SCSJ,@ZFBZ)</value>
+    <type>Text</type>
+    <param name="FPHM" type="AnsiString"></param>
+    <param name="FPSLH" type="AnsiString"></param>
+    <param name="FPDM" type="AnsiString"></param>
+    <param name="FPZL" type="AnsiString"></param>
+    <param name="SCSJ" type="AnsiString"></param>
+    <param name="ZFBZ" type="AnsiString"></param>
+  </SQL>
+
+  <!--获取未上传发票张数 发票状态0：未报送，1：已报送,2报送失败，3报送中-->
+  <SQL id="Aisino.Framework.MainForm.UpDown.GetFPNum">
+    <value>SELECT COUNT(*) FROM XXFP WHERE BSZT=@BSZT AND SIGN is not null AND length(SIGN) > 20</value>
+    <type>Text</type>
+    <param name="BSZT" type="Int32"></param>
+  </SQL>
+
+  <!--查询上传方式-->
+  <SQL id="Aisino.Framework.MainForm.UpDown.CXSCFS">
+    <value>SELECT INTERVALTIME || ',' || ACCUMULATENUM || ',' || DATASIZE FROM XTDZDZXX LIMIT 1</value>
+    <type>Text</type>
+  </SQL>
+
+  <!--获取发票受理序列号号-->
+  <SQL id="Aisino.Framework.MainForm.UpDown.FPBSCS">
+    <value>SELECT BSCS FROM XXFP WHERE FPHM=@FPHM AND FPDM=@FPDM AND FPZL=@FPZL LIMIT 1</value>
+    <type>Text</type>
+    <param name="FPHM" type="AnsiString"></param>
+    <param name="FPDM" type="AnsiString"></param>
+    <param name="FPZL" type="AnsiString"></param>
+  </SQL>
+
+  <!--获取发票受理序列号号-->
+  <SQL id="Aisino.Framework.MainForm.UpDown.SetBSZTAndBSCS">
+    <value>UPDATE XXFP SET BSZT=@BSZT,BSCS=@BSCS WHERE FPHM=@FPHM AND FPDM=@FPDM AND FPZL=@FPZL</value>
+    <type>Text</type>
+    <param name="FPHM" type="AnsiString"></param>
+    <param name="FPDM" type="AnsiString"></param>
+    <param name="FPZL" type="AnsiString"></param>
+    <param name="BSZT" type="AnsiString"></param>
+    <param name="BSCS" type="AnsiString"></param>
+  </SQL>
+
+  <!--获取发票受理序列号号-->
+  <SQL id="Aisino.Framework.MainForm.UpDown.SetBSCS">
+    <value>UPDATE XXFP SET BSCS=@BSCS WHERE FPHM=@FPHM AND FPDM=@FPDM AND FPZL=@FPZL</value>
+    <type>Text</type>
+    <param name="FPHM" type="AnsiString"></param>
+    <param name="FPDM" type="AnsiString"></param>
+    <param name="FPZL" type="AnsiString"></param>
+    <param name="BSCS" type="AnsiString"></param>
+  </SQL>
+
+  <!--插入一条发票受理序列号记录-->
+  <SQL id="Aisino.Framework.MainForm.UpDown.UpdateBSRZ">
+    <value>update XXFP set BSRZ=@BSRZ where FPDM=@FPDM and FPHM=@FPHM and FPZL=@FPZL and BSZT=@BSZT</value>
+    <type>Text</type>
+    <param name="FPHM" type="AnsiString"></param>
+    <param name="BSRZ" type="AnsiString"></param>
+    <param name="FPDM" type="AnsiString"></param>
+    <param name="FPZL" type="AnsiString"></param>
+    <param name="BSZT" type="AnsiString"></param>
+  </SQL>
+
+  <!--获取发票受理序列号号-->
+  <SQL id="Aisino.Framework.MainForm.UpDown.SetBSCSAndBSRZ">
+    <value>UPDATE XXFP SET BSCS=@BSCS,BSRZ=@BSRZ WHERE FPHM=@FPHM AND FPDM=@FPDM AND FPZL=@FPZL</value>
+    <type>Text</type>
+    <param name="FPHM" type="AnsiString"></param>
+    <param name="FPDM" type="AnsiString"></param>
+    <param name="FPZL" type="AnsiString"></param>
+    <param name="BSCS" type="AnsiString"></param>
+    <param name="BSRZ" type="AnsiString"></param>
+  </SQL>
+
+  <!--检查发票受理序列号记录是否存在-->
+
+  <SQL id="Aisino.Framework.MainForm.UpDown.GetSSYF">
+    <value>SELECT SSYF FROM XXFP WHERE FPHM=@FPHM AND FPDM=@FPDM AND FPZL=@FPZL</value>
+    <type>Text</type>
+    <param name="FPHM" type="AnsiString"></param>
+    <param name="FPDM" type="AnsiString"></param>
+    <param name="FPZL" type="AnsiString"></param>
+  </SQL>
+
+  <SQL id="Aisino.Framework.MainForm.UpDown.GetBSQ">
+    <value>SELECT BSQ FROM XXFP WHERE FPHM=@FPHM AND FPDM=@FPDM AND FPZL=@FPZL</value>
+    <type>Text</type>
+    <param name="FPHM" type="AnsiString"></param>
+    <param name="FPDM" type="AnsiString"></param>
+    <param name="FPZL" type="AnsiString"></param>
+  </SQL>
+
+  <!--获取发票地址索引号-->
+  <SQL id="Aisino.Framework.MainForm.UpDown.GetDZSHY">
+    <value>SELECT DZSYH FROM XXFP WHERE FPHM=@FPHM AND FPDM=@FPDM AND FPZL=@FPZL LIMIT 1</value>
+    <type>Text</type>
+    <param name="FPHM" type="AnsiString"></param>
+    <param name="FPDM" type="AnsiString"></param>
+    <param name="FPZL" type="AnsiString"></param>
+  </SQL>
+
+  <!--获取发票地址索引号-->
+  <SQL id="Aisino.Framework.MainForm.UpDown.GetDZSHY1">
+    <value>SELECT DZSYH FROM XXFP WHERE FPHM=@FPHM AND FPDM=@FPDM LIMIT 1</value>
+    <type>Text</type>
+    <param name="FPHM" type="AnsiString"></param>
+    <param name="FPDM" type="AnsiString"></param>
+  </SQL>
+
+  <!--检查发票受理序列号记录是否存在-->
+  <!--
+  <SQL id="Aisino.Framework.MainForm.UpDown.isExistFPSLH">
+    <value>SELECT COUNT(*) FROM FPSLH WHERE FPHM=@FPHM AND FPDM=@FPDM AND FPZL=@FPZL</value>
+    <type>Text</type>
+    <param name="FPHM" type="AnsiString"></param>
+    <param name="FPDM" type="AnsiString"></param>
+    <param name="FPZL" type="AnsiString"></param>
+  </SQL>
+
+  -->
+  <!--更新发票受理序列号记录是否存在-->
+  <!--
+  <SQL id="Aisino.Framework.MainForm.UpDown.updateFPSLH">
+    <value>UPDATE FPSLH SET FPSLH=@FPSLH WHERE FPHM=@FPHM AND FPDM=@FPDM AND FPZL=@FPZL</value>
+    <type>Text</type>
+    <param name="FPHM" type="AnsiString"></param>
+    <param name="FPDM" type="AnsiString"></param>
+    <param name="FPZL" type="AnsiString"></param>
+    <param name="FPSLH" type="AnsiString"></param>
+  </SQL>-->
+
+  <!--通过受理序列号获取发票种类-->
+  <SQL id="Aisino.Framework.MainForm.UpDown.GetFPZLBySLXLH">
+    <value>SELECT FPZL FROM FPSLH WHERE FPSLH=@SLXLH LIMIT 1</value>
+    <type>Text</type>
+    <param name="SLXLH" type="AnsiString"></param>
+  </SQL>
+
+  <!--查询商品分类编码表版本号-->
+  <SQL id="Aisino.Framework.MainForm.UpDown.GetSPBMBBBH">
+    <value>SELECT VALUE FROM SYS_CONFIG WHERE NAME='BMB_BBH'</value>
+  </SQL>
+  
+
+   <!--插入商品分类编码表版本号-->
+  <SQL id="Aisino.Framework.MainForm.UpDown.ReplaceSPBMBBBH">
+    <value>REPLACE INTO SYS_CONFIG(NAME,VALUE) VALUES('BMB_BBH',@VERSION)</value>
+    <type>Text</type>
+    <param name="VERSION" type="AnsiString"></param>
+
+  </SQL>
+
+  <!--更新商品分类表数据-->
+  <SQL id="Aisino.Framework.MainForm.UpDown.ReplaceSPFL">
+    <value>
+      <![CDATA[REPLACE INTO [BM_SPFL](
+        BM,HBBM,MC,SM,SLV,ZZSTSGL,ZZSZCYJ,ZZSTSNRDM,XFSGL,XFSZCYJ,XFSTSNRDM,GJZ,HZX,TJJBM,HGJCKSPPM
+        ,BMB_BBH,BBH,KYZT,QYSJ,GDQJZSJ,GXSJ,SJBM,WJ,ISHIDE
+        )
+        VALUES
+        (
+        @BM,@HBBM,@MC,@SM,@SLV,@ZZSTSGL,@ZZSZCYJ,@ZZSTSNRDM,@XFSGL,@XFSZCYJ,@XFSTSNRDM,@GJZ,@HZX,@TJJBM,@HGJCKSPPM
+        ,@BMB_BBH,@BBH,@KYZT,@QYSJ,@GDQJZSJ,@GXSJ,@SJBM,@WJ,(select case ISHIDE when null then 0 else ISHIDE end end from BM_SPFL where BM=@BM limit 1)
+        )]]>
+    </value>
+    <type>Text</type>
+    <param name="BM" type="AnsiString"></param>
+    <param name="HBBM" type="AnsiString"></param>
+    <param name="MC" type="AnsiString"></param>
+    <param name="SM" type="AnsiString"></param>
+    <param name="SLV" type="AnsiString"></param>
+    <param name="ZZSTSGL" type="AnsiString"></param>
+    <param name="ZZSZCYJ" type="AnsiString"></param>
+    <param name="ZZSTSNRDM" type="AnsiString"></param>
+    <param name="XFSGL" type="AnsiString"></param>
+    <param name="XFSZCYJ" type="AnsiString"></param>
+    <param name="XFSTSNRDM" type="AnsiString"></param>
+    <param name="GJZ" type="AnsiString"></param>
+    <param name="HZX" type="AnsiString"></param>
+    <param name="TJJBM" type="AnsiString"></param>
+    <param name="HGJCKSPPM" type="AnsiString"></param>
+    <param name="BMB_BBH" type="AnsiString"></param>
+    <param name="BBH" type="AnsiString"></param>
+    <param name="KYZT" type="AnsiString"></param>
+    <param name="QYSJ" type="AnsiString"></param>
+    <param name="GDQJZSJ" type="AnsiString"></param>
+    <param name="GXSJ" type="DateTime"></param>
+    <param name="SJBM" type="AnsiString"></param>
+    <param name="WJ" type="Int32"></param>
+  </SQL>
+
+    <!--清空优惠政策表-->
+  <SQL id="Aisino.Framework.MainForm.UpDown.DeleteYHZC">
+    <value>DELETE FROM BM_YHZC</value>
+  </SQL>
+
+    <!--插入优惠政策表-->
+  <SQL id="Aisino.Framework.MainForm.UpDown.InsertYHZC">
+    <value>INSERT INTO BM_YHZC(Yhzcmc,SLv) VALUES(@Yhzcmc,@SLv)</value>
+    <type>Text</type>
+    <param name="Yhzcmc" type="AnsiString"></param>
+    <param name="SLv" type="AnsiString"></param>
+  </SQL>
+
+  <!--根据受理序列号查询发票上传信息-->
+  <SQL id="Aisino.Framework.MainForm.UpDown.SelectFPsBySLH">
+    <value>
+      <![CDATA[SELECT [FPSLH].*,[XXFP].[DZSYH],[XXFP].[KPJH],[XXFP].[BSZT],[XXFP].[BSRZ] FROM [FPSLH]
+LEFT JOIN [XXFP] ON [FPSLH].[FPDM]=[XXFP].[FPDM] AND [FPSLH].[FPHM]=[XXFP].[FPHM] AND [FPSLH].[FPZL]=[XXFP].[FPZL]
+WHERE [FPSLH].[FPSLH]=@SLXLH]]>
+    </value>
+    <type>Text</type>
+    <param name="SLXLH" type="AnsiString"></param>
+  </SQL>
+  
+    <!--更新编码表版本号-->
+  <SQL id="Aisino.Framework.MainForm.UpDown.UpdateBMBBBH">
+    <value>UPDATE BM_SPFL SET BMB_BBH=@BMBBBH</value>
+    <type>Text</type>
+    <param name="BMBBBH" type="BMBBBH"></param>
+  </SQL>
+
+
+  <!--跟新发票状态0：未报送，1：已报送,2报送失败，3报送中-->
+  <SQL id="Aisino.Framework.MainForm.UpDown.UpdateFPWithResultFromKPServer">
+    <value>UPDATE XXFP SET BSZT=@BSZT,BSRZ=@BSRZ,ZFBZ=@ZFBZ,ZFRQ=@ZFRQ WHERE FPDM=@FPDM AND FPHM=@FPHM AND FPZL=@FPZL</value>
+    <type>Text</type>
+    <param name="BSZT" type="AnsiString"></param>
+    <param name="FPHM" type="AnsiString"></param>
+    <param name="FPDM" type="AnsiString"></param>
+    <param name="FPZL" type="AnsiString"></param>
+    <param name="ZFBZ" type="AnsiString"></param>
+    <param name="BSRZ" type="AnsiString"></param>
+    <param name="ZFRQ" type="AnsiString"></param>
+  </SQL>
+
+  <!--获取税收编码总条数-->
+  <SQL id="Aisino.Framework.MainForm.UpDown.GetTotalRowCountFromSPFL">
+    <value>SELECT COUNT(*) FROM BM_SPFL</value>
+  </SQL>
+</SQLLIB>

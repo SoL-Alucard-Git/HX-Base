@@ -1,0 +1,5 @@
+E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Output\Automation\Update.Model.dll
+E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Output\Automation\Update.Model.pdb
+E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Update.Model\obj\x86\Debug\Update.Model.dll
+E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Update.Model\obj\x86\Debug\Update.Model.pdb
+E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Update.Model\obj\x86\Debug\Update.Model.csprojResolveAssemblyReference.cache
