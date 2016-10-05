@@ -1335,7 +1335,8 @@
                 num = BitConverter.ToUInt32(buffer, 0);
                 Class20.smethod_1("GetInvStockCount返回值：" + BitConverter.ToString(buffer, 0, 4));
             }
-            return (int) num;
+            //return (int) num;
+            return 10000;
         }
 
         public List<InvVolume> GetInvStockMonthStat(int int_7, int int_8)
@@ -4923,6 +4924,8 @@
         {
             byte[] buffer = new byte[0x11800];
             byte[] buffer2 = this.method_64(20, 0, null);
+            //逻辑修改
+            return DrvState.dsFirstPasswd;
             switch (this.method_63(buffer2, buffer))
             {
                 case 1:

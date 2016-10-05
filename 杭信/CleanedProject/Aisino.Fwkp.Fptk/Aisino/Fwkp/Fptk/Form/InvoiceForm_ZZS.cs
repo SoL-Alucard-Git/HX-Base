@@ -5930,13 +5930,11 @@
                     }
                     if ((!base._onlyShow && base._fpxx.IsRed) && (((int)fpData.fplx == 0) && !this.fpm.CheckRedNum(fpData.redNum, fpData.fplx)))
                     {
-                        MessageBox.Show($"242111进入if");
                         string[] textArray5 = new string[] { fpData.redNum };
                         MessageManager.ShowMsgBox(this.fpm.Code(), textArray5);
                     }
                     else
                     {
-                        MessageBox.Show($"242111进入else");
                         string str = "Aisino.Fwkp.Invoice" + base._fpxx.Fpdm + base._fpxx.Fphm;
                         byte[] destinationArray = new byte[0x20];
                         byte[] bytes = Encoding.Unicode.GetBytes(MD5_Crypt.GetHashStr(str));

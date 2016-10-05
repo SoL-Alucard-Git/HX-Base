@@ -52,6 +52,9 @@
     <Compile Include="Forms\LodgingWindow_ChaXun.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\LodgingWindow_DaYin.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

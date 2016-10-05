@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Args\ChaXunArgs.cs" />
+    <Compile Include="Args\DaYinArgs.cs" />
     <Compile Include="DataService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -33,6 +33,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -43,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Client\BaseClient.cs" />
     <Compile Include="Client\ChaXunClient.cs" />
+    <Compile Include="Client\DaYinClient.cs" />
     <Compile Include="DataClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -54,6 +56,10 @@
     <ProjectReference Include="..\Aisino.Fwkp.Fpkj\Aisino.Fwkp.Fpkj.csproj">
       <Project>{bda7dc4f-afd7-4286-b925-997570604ef1}</Project>
       <Name>Aisino.Fwkp.Fpkj</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Aisino.Fwkp.Print\Aisino.Fwkp.Print.csproj">
+      <Project>{1e1ed23b-b53d-4fbc-9677-cff0e926080f}</Project>
+      <Name>Aisino.Fwkp.Print</Name>
     </ProjectReference>
     <ProjectReference Include="..\InternetWare.Lodging.Data\InternetWare.Lodging.Data.csproj">
       <Project>{76ba417d-dc90-4828-9cc9-13adedd54d78}</Project>

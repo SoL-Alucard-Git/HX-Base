@@ -2,3 +2,4 @@ E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Output\Bin\Aisino.Fwkp
 E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Output\Bin\Aisino.Fwkp.Sjbf.pdb
 E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Aisino.Fwkp.Sjbf\obj\x86\Debug\Aisino.Fwkp.Sjbf.dll
 E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Aisino.Fwkp.Sjbf\obj\x86\Debug\Aisino.Fwkp.Sjbf.pdb
+E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Aisino.Fwkp.Sjbf\obj\x86\Debug\Aisino.Fwkp.Sjbf.csprojResolveAssemblyReference.cache

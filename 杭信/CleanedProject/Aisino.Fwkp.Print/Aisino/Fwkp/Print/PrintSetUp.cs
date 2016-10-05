@@ -32,7 +32,7 @@
         protected ILog loger;
         private object[] object_0;
         public static PageSetupDialog pageSetupDialog;
-        private PaperSize paperSize_0;
+        public PaperSize paperSize_0;
         private PaperSize paperSize_1;
         private PaperSize paperSize_2;
         private PaperSize paperSize_3;
@@ -41,7 +41,7 @@
         private PaperSize paperSize_6;
         private PaperSize paperSize_7;
         private PrintDocument printDocument_0;
-        private Printer printer_0;
+        public Printer printer_0;
         private GroupBox printerDefault;
         private AisinoRDO r1;
         private AisinoRDO r2;

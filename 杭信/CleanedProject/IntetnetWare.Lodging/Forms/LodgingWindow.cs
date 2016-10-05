@@ -12,6 +12,7 @@ namespace InternetWare.Form
         private void LodgingWindow_Load(object sender, EventArgs e)
         {
             Init_ChaXunPage();
+            Init_DaYinPage();
         }
     }
 }

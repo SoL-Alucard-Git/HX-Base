@@ -126,7 +126,7 @@
             catch (Exception exception)
             {
                 this.log.Error("开票前读取金税卡状态时异常:" + exception.ToString());
-                this.code = $"ExceptionType:{exception.GetType()}; Msg:{exception.Message}";
+                this.code = "9999";
                 return false;
             }
         }
@@ -1126,7 +1126,18 @@
                     }
                 }
             }
-            source = source.GroupBy<double, double>((serializeClass.staticFunc_11)).Select<IGrouping<double, double>, double>((serializeClass.staticFunc_12)).ToList<double>();
+            //source = source.GroupBy<double, double>((serializeClass.staticFunc_11)).Select<IGrouping<double, double>, double>((serializeClass.staticFunc_12)).ToList<double>();
+            for (int i = source.Count - 1; i >= 0; i--)
+            {
+                for (int j = 0; j < i; j++)
+                {
+                    if (source[i] == source[j])
+                    {
+                        source.Remove(source[i]);
+                        break;
+                    }
+                }
+            }
             if (flag2)
             {
                 source.Add(0.05);
@@ -2481,7 +2492,7 @@
             dictionary.Add("ZYSPMC", fp.zyspmc);
             dictionary.Add("SPSM", fp.zyspsm);
             dictionary.Add("DYBZ", fp.dybz);
-            dictionary.Add("QDBZ", fp.Qdxx);
+            dictionary.Add("QDBZ", fp.Qdxx != null);
             dictionary.Add("ZFBZ", fp.zfbz);
             dictionary.Add("BSBZ", fp.bsbz);
             dictionary.Add("XFBZ", fp.xfbz);
@@ -2578,7 +2589,7 @@
             dictionary.Add("SPSM_BM", fp.zyspsm);
             dictionary.Add("BZ", fp.bz);
             dictionary.Add("DYBZ", fp.dybz);
-            dictionary.Add("QDBZ", fp.Qdxx);
+            dictionary.Add("QDBZ", fp.Qdxx != null);
             dictionary.Add("ZFBZ", fp.zfbz);
             dictionary.Add("BSBZ", fp.bsbz);
             dictionary.Add("XFBZ", fp.xfbz);
@@ -2671,7 +2682,7 @@
             dictionary.Add("SKR", fp.skr);
             dictionary.Add("FHR", fp.fhr);
             dictionary.Add("DYBZ", fp.dybz);
-            dictionary.Add("QDBZ", fp.Qdxx);
+            dictionary.Add("QDBZ", fp.Qdxx != null);
             dictionary.Add("ZFBZ", fp.zfbz);
             dictionary.Add("BSBZ", fp.bsbz);
             dictionary.Add("XFBZ", fp.xfbz);

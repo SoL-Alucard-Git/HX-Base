@@ -1,8 +1,10 @@
-﻿using InternetWare.Lodging.Data;
+﻿using InternetWare.Lodging.Args;
+using InternetWare.Lodging.Data;
 using IntetnetWare.Lodging.Args;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing.Printing;
 using System.Windows.Forms;
 
 namespace InternetWare.Form
@@ -29,7 +31,7 @@ namespace InternetWare.Form
         private void Init_ChaXun_CmbYear()
         {
             Dictionary<string, object> dict = new Dictionary<string, object>();
-            for(int i = 2016; i >  2010; i--)
+            for (int i = 2016; i > 2010; i--)
             {
                 dict.Add(i.ToString(), i);
             }
@@ -75,8 +77,8 @@ namespace InternetWare.Form
             return new ChaXunArgs()
             {
                 Year = int.Parse(ChaXun_CmbYear.SelectedValue.ToString()),
-                Month = ChaXun_CmbMonth.Text == "全年" 
-                ? 0 
+                Month = ChaXun_CmbMonth.Text == "全年"
+                ? 0
                 : int.Parse(ChaXun_CmbMonth.SelectedValue.ToString()),
                 MathStr = ChaXun_txtMathStr.Text,
                 FPZL = ChaXun_CmbFpType.SelectedValue.ToString(),
