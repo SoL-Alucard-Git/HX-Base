@@ -1679,7 +1679,7 @@
             {
                 if ((int)fpzl <= 11)
                 {
-                    if ((fpzl == null) || ((int)fpzl == 2))
+                    if ((fpzl == 0) || ((int)fpzl == 2))
                     {
                         goto Label_0022;
                     }
@@ -1872,7 +1872,7 @@
                 string str = _fpxx.bz.Substring(index + 5, (num2 - index) - 5);
                 _fpxx.bz = _fpxx.bz.Remove(index, (num2 - index) + 1);
                 new List<Dictionary<SPXX, string>>();
-                ((_fpxx.Mxxx.Count == null) ? _fpxx.Qdxx : _fpxx.Mxxx)[0][(SPXX)0x18] = _fpxx.isRed ? ("-" + str) : str;
+                ((_fpxx.Mxxx.Count == 0) ? _fpxx.Qdxx : _fpxx.Mxxx)[0][(SPXX)0x18] = _fpxx.isRed ? ("-" + str) : str;
             }
             return true;
         }

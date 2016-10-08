@@ -53,7 +53,7 @@
 
         private string GetTypeStr(FPLX type)
         {
-            if (type == null)
+            if (type == 0)
             {
                 return "专用发票";
             }

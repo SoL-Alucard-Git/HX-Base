@@ -1888,7 +1888,7 @@
                                                     {
                                                         num5 = decimal.Parse(str9);
                                                         num14 = num5 / num3;
-                                                        if (((decimal.Round(Math.Abs((decimal) (decimal.Parse(num14.ToString()) - num2)), 3, MidpointRounding.AwayFromZero) - decimal.Parse("1.27")) > decimal.Parse("0.000001")) && (base.TaxCardInstance.ECardType == null))
+                                                        if (((decimal.Round(Math.Abs((decimal) (decimal.Parse(num14.ToString()) - num2)), 3, MidpointRounding.AwayFromZero) - decimal.Parse("1.27")) > decimal.Parse("0.000001")) && (base.TaxCardInstance.ECardType == 0))
                                                         {
                                                             return false;
                                                         }

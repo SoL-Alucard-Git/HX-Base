@@ -298,7 +298,8 @@
             this.printSetUp_0.OnPreview += new PrintSetUp.PrintSet(this.method_3);
             this.printSetUp_0.OnPrint += new PrintSetUp.PrintSet(this.method_5);
             this.printSetUp_0.OnClose += new PrintSetUp.PrintSet(this.method_4);
-            //this.printSetUp_0.ShowDialog();
+			//逻辑修改 本地运行需要屏蔽此弹窗
+            this.printSetUp_0.ShowDialog();
         }
 
         public void Print(bool bool_1 = true)

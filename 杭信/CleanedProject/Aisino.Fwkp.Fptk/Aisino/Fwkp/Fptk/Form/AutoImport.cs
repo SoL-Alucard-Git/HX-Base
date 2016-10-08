@@ -600,7 +600,7 @@
 
         private void GetPaths(FPLX type)
         {
-            if ((type == null) || ((int)type == 2))
+            if ((type == 0) || ((int)type == 2))
             {
                 this.drPath = PropertyUtil.GetValue("FPDJ_DRPATH");
                 this.bfPath = PropertyUtil.GetValue("FPDJ_BFPATH");

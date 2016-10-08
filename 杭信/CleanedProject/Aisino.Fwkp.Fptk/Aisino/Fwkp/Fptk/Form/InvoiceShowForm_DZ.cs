@@ -878,7 +878,7 @@
             {
                 string[] strArray = this.data[this.index];
                 FPLX fpzl = Invoice.ParseFPLX(strArray[0]);
-                if ((fpzl == null) || ((int)fpzl == 0x33))
+                if ((fpzl == 0) || ((int)fpzl == 0x33))
                 {
                     this.fpxx = this.fpm.GetXxfp(fpzl, strArray[1], int.Parse(strArray[2]));
                     this._DataGridView.Rows.Clear();

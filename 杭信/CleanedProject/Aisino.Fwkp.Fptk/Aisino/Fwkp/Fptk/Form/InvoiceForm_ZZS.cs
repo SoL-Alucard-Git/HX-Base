@@ -1967,7 +1967,7 @@
                                                     {
                                                         num5 = decimal.Parse(str9);
                                                         num14 = num5 / num3;
-                                                        if (((decimal.Round(Math.Abs((decimal)(decimal.Parse(num14.ToString()) - num2)), 3, MidpointRounding.AwayFromZero) - decimal.Parse("1.27")) > decimal.Parse("0.000001")) && (base.TaxCardInstance.ECardType == null))
+                                                        if (((decimal.Round(Math.Abs((decimal)(decimal.Parse(num14.ToString()) - num2)), 3, MidpointRounding.AwayFromZero) - decimal.Parse("1.27")) > decimal.Parse("0.000001")) && (base.TaxCardInstance.ECardType == 0))
                                                         {
                                                             return false;
                                                         }
@@ -3265,11 +3265,13 @@
                 string str = print1.IsPrint;
                 if ((str != "0000") && (str != "0005"))
                 {
+                    System.Windows.Forms.MessageBox.Show("str == " + str);
                     MessageManager.ShowMsgBox("INP-242116");
                 }
             }
             catch (Exception exception)
             {
+                System.Windows.Forms.MessageBox.Show("发票打印异常：" + exception.Message);
                 this.log.Error("发票打印异常：" + exception.Message);
                 MessageManager.ShowMsgBox("INP-242116");
             }
