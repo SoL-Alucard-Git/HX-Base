@@ -1,5 +1,4 @@
-﻿using InternetWare.Lodging.Args;
-using InternetWare.Lodging.Data;
+﻿using InternetWare.Lodging.Data;
 using System;
 using System.Collections.Generic;
 using System.Drawing.Printing;

@@ -1,21 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Aisino.Fwkp.Print;
-using InternetWare.Lodging.Args;
+﻿using Aisino.Fwkp.Print;
 using System.Drawing.Printing;
+using InternetWare.Lodging.Data;
 
 namespace InternetWare.Util.Client
 {
     internal class DaYinClient: BaseClient
     {
-        private DaYinArgs _args;
-        public DaYinClient(DaYinArgs args)
+        private InternetWare.Lodging.Data.DaYinArgs _args;
+        public DaYinClient(InternetWare.Lodging.Data.DaYinArgs args)
         {
             _args = args;
         }
-        internal override object DoService()
+        internal override ResultBase DoService()
         {
             IPrint print = FPPrint.Create(_args.FPZL,_args.FPDM,_args.FPHM, true);
             print.Print();
@@ -27,7 +23,7 @@ namespace InternetWare.Util.Client
             print.printSetUp_0.CurrentPrinterName = _args.Printer;
             PrintSetUp.pageSetupDialog.Document.PrinterSettings.DefaultPageSettings.PaperSize = print.printSetUp_0.paperSize_0;
             print.method_5(print.printSetUp_0,new PrintSetEventArgs());
-            return null;
+            return new ResultBase(_args, null, false);
         }
     }
 }

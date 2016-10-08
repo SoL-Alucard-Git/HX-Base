@@ -1,10 +1,7 @@
-﻿using InternetWare.Lodging.Args;
-using InternetWare.Lodging.Data;
-using IntetnetWare.Lodging.Args;
+﻿using InternetWare.Lodging.Data;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Drawing.Printing;
 using System.Windows.Forms;
 
 namespace InternetWare.Form
@@ -69,7 +66,7 @@ namespace InternetWare.Form
 
         private void ChaXun_BtnGo_Click(object sender, EventArgs e)
         {
-            ChaXun_DataGrid.DataSource = DataService.DoService(GetChaXunArgs()) as DataTable;
+            ChaXun_DataGrid.DataSource = (DataService.DoService(GetChaXunArgs()) as ResultBase).Data as DataTable;
         }
 
         private ChaXunArgs GetChaXunArgs()

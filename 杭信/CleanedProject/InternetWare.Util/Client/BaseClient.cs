@@ -1,8 +1,10 @@
-﻿namespace InternetWare.Util.Client
+﻿using InternetWare.Lodging.Data;
+
+namespace InternetWare.Util.Client
 {
     internal class BaseClient
     {
-        internal virtual object DoService()
+        internal virtual ResultBase DoService()
         {
             return null;
         }

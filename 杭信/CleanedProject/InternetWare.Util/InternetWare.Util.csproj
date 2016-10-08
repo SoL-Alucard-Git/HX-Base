@@ -45,6 +45,7 @@
     <Compile Include="Client\BaseClient.cs" />
     <Compile Include="Client\ChaXunClient.cs" />
     <Compile Include="Client\DaYinClient.cs" />
+    <Compile Include="Client\ZuoFeiClient.cs" />
     <Compile Include="DataClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

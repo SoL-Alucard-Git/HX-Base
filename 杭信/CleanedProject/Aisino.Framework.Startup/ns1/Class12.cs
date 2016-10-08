@@ -43,7 +43,7 @@
         public bool Login(bool bool_1, string string_2)
         {
             //逻辑修改:无Key调试时需要把下面Region里面的TaxCard登录校验屏蔽掉
-            //#region
+            #region
             //bool flag = false;
             //LoginForm form = new LoginForm();
             //if (bool_1)
@@ -243,7 +243,7 @@
             //        MessageBoxHelper.Show("开票注册文件验证失败！");
             //    }
             //}
-            //#endregion
+            #endregion
             string_2 = "管理员";
             this.method_1(string_2);
             return true;

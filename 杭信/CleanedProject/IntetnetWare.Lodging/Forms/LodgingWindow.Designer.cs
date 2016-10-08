@@ -300,6 +300,7 @@
             this.DaYin_tbFpdm.Name = "DaYin_tbFpdm";
             this.DaYin_tbFpdm.Size = new System.Drawing.Size(319, 28);
             this.DaYin_tbFpdm.TabIndex = 2;
+            this.DaYin_tbFpdm.Text = "3100153130";
             // 
             // DaYin_tbFphm
             // 
@@ -307,6 +308,7 @@
             this.DaYin_tbFphm.Name = "DaYin_tbFphm";
             this.DaYin_tbFphm.Size = new System.Drawing.Size(319, 28);
             this.DaYin_tbFphm.TabIndex = 1;
+            this.DaYin_tbFphm.Text = "28046320";
             // 
             // DaYin_CmbPrinter
             // 

@@ -1,5 +1,5 @@
 ﻿using Aisino.Fwkp.Fpkj.Form.FPCX;
-using IntetnetWare.Lodging.Args;
+using InternetWare.Lodging.Data;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -14,7 +14,7 @@ namespace InternetWare.Util.Client
             _args = args;
         }
 
-        internal override object DoService()
+        internal override ResultBase DoService()
         {
             FaPiaoChaXun form = new FaPiaoChaXun();
             DateTime DateStart = new DateTime(_args.Year, _args.Month < 1 ? 1 : _args.Month, 1);
@@ -32,7 +32,7 @@ namespace InternetWare.Util.Client
             dict.Add("GFSH", $"%{_args.MathStr}%");
             dict.Add("FPHM", string.IsNullOrEmpty(_args.MathStr) ?  $"%请输入检索关键字...%" : $"%{_args.MathStr}%");
             DataTable table = form.xxfpChaXunBll.SelectPage(1, 30, 0, dict, 1, DateTime.Now, -1, 1).Data;
-            return table;
+            return new ResultBase(_args, table, false);
         }
     }
 }

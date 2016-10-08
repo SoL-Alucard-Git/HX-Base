@@ -1,9 +1,15 @@
-﻿using System;
-
-namespace IntetnetWare.Lodging.Args
+﻿namespace InternetWare.Lodging.Data
 {
-    public class ChaXunArgs : EventArgs
+    public class ChaXunArgs : BaseArgs
     {
+        public override ArgsType Type
+        {
+            get
+            {
+                return ArgsType.ChaXun;
+            }
+        }
+
         public int Year { get; set; }
         /// <summary>小于等于0 时表示全年</summary>
         public int Month { get; set; }
@@ -12,6 +18,5 @@ namespace IntetnetWare.Lodging.Args
         public string MathStr { get; set; }
         public bool WeiBaoSongChecked { get; set; } = false;
         public bool YanQianShiBaiChecked { get; set; } = false;
-
     }
 }

@@ -1,6 +1,5 @@
-﻿using InternetWare.Lodging.Args;
-using InternetWare.Util.Client;
-using IntetnetWare.Lodging.Args;
+﻿using InternetWare.Util.Client;
+using InternetWare.Lodging.Data;
 using System;
 
 namespace InternetWare.Util

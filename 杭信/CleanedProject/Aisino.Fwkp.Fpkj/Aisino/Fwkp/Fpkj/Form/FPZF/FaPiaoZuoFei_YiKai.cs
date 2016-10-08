@@ -28,7 +28,7 @@
         private string _QuickSearchText = "请输入检索关键字...";
         private string _strFilePath = string.Empty;
         private XMLOperation _XmlOperation = new XMLOperation();
-        private AisinoDataGrid aisinoGrid;
+        public AisinoDataGrid aisinoGrid;
         public int AvePageNum = 30;
         public static DateTime CardClock;
         private ChaXunTiaoJian chaXunTiaoJian;
@@ -37,7 +37,7 @@
         private ContextMenuStrip contextMenu_BSZT;
         private XXFP Dal = new XXFP(false);
         private FaPiaoChaXun.EditFPCX editFPCX = FaPiaoChaXun.EditFPCX.ZuoFei;
-        private Dictionary<string, object> gridviewRowDict = new Dictionary<string, object>();
+        public Dictionary<string, object> gridviewRowDict = new Dictionary<string, object>();
         private ILog loger = LogUtil.GetLogger<FaPiaoZuoFei_YiKai>();
         private ToolStripMenuItem MenuItem_Yanqianshibai;
         public int Month;
@@ -55,7 +55,7 @@
         private ToolStripSeparator toolStripSeparator1;
         private ToolStripSeparator toolStripSeparator2;
         private ToolStripTextBox toolTxt_quick;
-        private List<Dictionary<string, object>> WasteFpCondition = new List<Dictionary<string, object>>();
+        public List<Dictionary<string, object>> WasteFpCondition = new List<Dictionary<string, object>>();
         private XmlComponentLoader xmlComponentLoader1;
         public int Year = 0x7d0;
 
