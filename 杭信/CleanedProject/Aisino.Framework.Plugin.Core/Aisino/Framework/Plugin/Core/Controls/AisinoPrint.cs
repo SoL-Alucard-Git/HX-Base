@@ -110,8 +110,20 @@
             this.Data = new DataDict(listBind);
         }
 
-        private void method_0(Graphics graphics_0, int int_1)
+        private void method_0(Graphics g, int int_1,Rectangle rect)
         {
+            PaperSize size3 = new PaperSize("Custom", this.canvas_0.PageSize.Width, this.canvas_0.PageSize.Height);
+            Image img = new Bitmap(size3.Width, size3.Height);
+            Graphics graphics_0 = Graphics.FromImage(img);
+            graphics_0.Clip = new Region(rect);
+            graphics_0.CompositingMode = g.CompositingMode;
+            graphics_0.CompositingQuality = g.CompositingQuality;
+            graphics_0.PageScale = g.PageScale;
+            graphics_0.PageUnit = g.PageUnit;
+            graphics_0.RenderingOrigin = g.RenderingOrigin;
+            graphics_0.TextContrast = g.TextContrast;
+            graphics_0.TextRenderingHint = g.TextRenderingHint;
+            graphics_0.Transform = g.Transform;
             try
             {
                 graphics_0.SmoothingMode = SmoothingMode.AntiAlias;
@@ -166,10 +178,12 @@
                 if (int_1 < this.dataDict_0.Count)
                 {
                     this.canvas_0.Print(graphics_0, this.dataDict_0.Data(int_1), this.bool_0);
+                    img.Save($"E:/img{DateTime.Now.Ticks}.bmp");
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 throw;
             }
         }
@@ -208,7 +222,7 @@
                                 }
                                 if ((num2 <= this.dataDict_0.Count) && (num2 >= 1))
                                 {
-                                    this.method_0(graphics, num2 - 1);
+                                    this.method_0(graphics, num2 - 1,new Rectangle());
                                 }
                                 image.Save(this.string_0);
                             }
@@ -224,7 +238,7 @@
                                 for (int i = 1; i <= this.dataDict_0.Count; i++)
                                 {
                                     graphics.FillRectangle(Brushes.White, 0, 0, 950, 0x44c);
-                                    this.method_0(graphics, i - 1);
+                                    this.method_0(graphics, i - 1,new Rectangle());
                                     if (this.dataDict_0.Count > 1)
                                     {
                                         filename = this.string_0 + str.Insert(index, "_" + i.ToString());
@@ -307,7 +321,7 @@
                 {
                     this.printEventBegin(e);
                 }
-                this.method_0(e.Graphics, this.int_0);
+                this.method_0(e.Graphics, this.int_0,e.MarginBounds);
                 this.int_0++;
                 if (this.int_0 < this.dataDict_0.Count)
                 {

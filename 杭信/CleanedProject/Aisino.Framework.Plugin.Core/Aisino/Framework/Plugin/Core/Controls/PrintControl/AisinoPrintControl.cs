@@ -22,7 +22,7 @@
         protected AisinoPrintControl _parent;
         protected float _width;
         protected PointF absoluteLocation;
-        protected Graphics gDpi;
+        public Graphics gDpi;
 
         public event ChangeNode AddChangeNode;
 

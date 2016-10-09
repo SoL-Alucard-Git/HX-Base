@@ -720,7 +720,7 @@
         public DateTime GetCardClock()
         {
             //逻辑修改:试本地运行时需要直接返回DateTime.Now
-            //return DateTime.Now;
+            return DateTime.Now;
             if (this.ctaxCardMode_0 == CTaxCardMode.tcmNone)
             {
                 return DateTime.Now;

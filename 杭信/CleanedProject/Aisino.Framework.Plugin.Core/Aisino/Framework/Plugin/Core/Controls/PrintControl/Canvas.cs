@@ -13,7 +13,7 @@
     {
         public bool _Landscape;
         public Margins _Margin;
-        private AisinoPrintPanel aisinoPrintPanel_0;
+        public AisinoPrintPanel aisinoPrintPanel_0;
         private Size size_0;
         public PointF startPoint;
         private string string_0;

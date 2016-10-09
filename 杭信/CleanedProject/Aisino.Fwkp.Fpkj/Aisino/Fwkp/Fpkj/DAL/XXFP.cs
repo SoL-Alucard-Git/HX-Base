@@ -1175,11 +1175,6 @@
 
         public AisinoDataSet SelectPage(int page, int num, int TiaojianChaXun, Dictionary<string, object> dict, int SortWay, DateTime dataYearCard, int type = -1, int sqlType = 0)
         {
-            Console.WriteLine($"SelectPage(int {page}, int {num}, int {TiaojianChaXun}, Dictionary<string, object> dict, int {SortWay}, DateTime {dataYearCard}, int {type} = -1, int {sqlType} = 0)");
-            foreach(KeyValuePair<string,object> pair in dict)
-            {
-                Console.WriteLine($"{pair.Key}:{pair.Value}");
-            }
             AisinoDataSet set = null;
             try
             {
