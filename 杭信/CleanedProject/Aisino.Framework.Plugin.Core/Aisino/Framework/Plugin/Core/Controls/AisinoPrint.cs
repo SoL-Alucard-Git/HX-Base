@@ -7,7 +7,9 @@
     using System.ComponentModel;
     using System.Drawing;
     using System.Drawing.Drawing2D;
+    using System.Drawing.Imaging;
     using System.Drawing.Printing;
+    using System.IO;
     using System.Runtime.CompilerServices;
     using System.Runtime.InteropServices;
     using System.Threading;
@@ -35,7 +37,7 @@
 
         public AisinoPrint()
         {
-            
+
             this.string_1 = string.Empty;
             if (this.printDocument == null)
             {
@@ -64,7 +66,7 @@
                     {
                         if (item is ToolStripControlHost)
                         {
-                            this.toolStripControlHost_0 = (ToolStripControlHost) item;
+                            this.toolStripControlHost_0 = (ToolStripControlHost)item;
                         }
                     }
                 }
@@ -77,39 +79,39 @@
 
         public AisinoPrint(DataDict dataDict_1, Aisino.Framework.Plugin.Core.Controls.PrintControl.Canvas canvas_1) : this()
         {
-            
+
             this.Data = dataDict_1;
             this.Canvas = canvas_1;
         }
 
         public AisinoPrint(Dictionary<string, object> dict, bool bool_2, Aisino.Framework.Plugin.Core.Controls.PrintControl.Canvas canvas_1) : this()
         {
-            
+
             this.Canvas = canvas_1;
             this.Data = new DataDict(dict);
         }
 
         public AisinoPrint(Dictionary<string, object> dict, bool bool_2, string string_2) : this()
         {
-            
+
             this.Canvas = new Aisino.Framework.Plugin.Core.Controls.PrintControl.Canvas(string_2);
             this.Data = new DataDict(dict);
         }
 
         private AisinoPrint(Dictionary<string, object> dict, bool bool_2, XmlDocument xmlDocument_0) : this()
         {
-            
+
             this.Canvas = new Aisino.Framework.Plugin.Core.Controls.PrintControl.Canvas(xmlDocument_0, "Canvas");
             this.Data = new DataDict(dict);
         }
 
         public AisinoPrint(List<Dictionary<string, object>> listBind, bool bool_2, string string_2) : this()
         {
-            
+
             new Aisino.Framework.Plugin.Core.Controls.PrintControl.Canvas(string_2);
             this.Data = new DataDict(listBind);
         }
-
+        
         private void method_0(Graphics g, int int_1,Rectangle rect)
         {
             PaperSize size3 = new PaperSize("Custom", this.canvas_0.PageSize.Width, this.canvas_0.PageSize.Height);
@@ -133,7 +135,7 @@
                 if (this.bool_1)
                 {
                     Bitmap image = null;
-                    PointF empty = (PointF) Point.Empty;
+                    PointF empty = (PointF)Point.Empty;
                     string str = this.string_1.ToUpper();
                     if (str != null)
                     {
@@ -171,7 +173,7 @@
                         if (this.string_1.ToUpper() == "F")
                         {
                             empty.X += 3f;
-                        }
+                        }                        
                         graphics_0.DrawImage(image, empty);
                     }
                 }
@@ -192,7 +194,8 @@
         {
             try
             {
-                SaveFileDialog dialog = new SaveFileDialog {
+                SaveFileDialog dialog = new SaveFileDialog
+                {
                     Filter = "EMF文件(*.EMF)|*.EMF|JPG文件(*.JPG)|*.JPG"
                 };
                 string str = "";
@@ -294,10 +297,91 @@
             this.bool_1 = false;
             this.printDocument.Print();
         }
+        public byte[] PrintMethod(bool isyulan, string string_2, bool bool_2 = false)
+        {
+            this.bool_0 = bool_2;
+            this.bool_1 = false;
+            if (isyulan)
+            {
+                this.bool_1 = true;
+                this.string_1 = string_2;
+            }
+            try
+            {
+                Image img = new Bitmap(this.canvas_0.PageSize.Width, this.canvas_0.PageSize.Height);
+                Graphics graphics_0 = Graphics.FromImage(img);
+                graphics_0.FillRectangle(Brushes.White, 0, 0, this.canvas_0.PageSize.Width, this.canvas_0.PageSize.Height);
+                graphics_0.SmoothingMode = SmoothingMode.AntiAlias;
+                graphics_0.SmoothingMode = SmoothingMode.HighQuality;
+                graphics_0.InterpolationMode = InterpolationMode.HighQualityBilinear;
+                graphics_0.PixelOffsetMode = PixelOffsetMode.HighQuality;
+                if (this.bool_1)
+                {
+                    Bitmap image = null;
+                    PointF empty = (PointF)Point.Empty;
+                    string str = this.string_1.ToUpper();
+                    if (str != null)
+                    {
+                        if (str == "C")
+                        {
+                            image = Class131.smethod_39();
+                            empty = new PointF(this.canvas_0.startPoint.X + 5f, this.canvas_0.startPoint.Y - 20f);
+                        }
+                        else if (str == "S")
+                        {
+                            image = Class131.smethod_47();
+                            empty = new PointF(this.canvas_0.startPoint.X + 8f, this.canvas_0.startPoint.Y - 18f);
+                        }
+                        else if (str == "JO")
+                        {
+                            image = Class131.smethod_12();
+                            empty = new PointF(this.canvas_0.startPoint.X, this.canvas_0.startPoint.Y - 18f);
+                        }
+                        else if (!(str == "JN"))
+                        {
+                            if (str == "F")
+                            {
+                                image = Class131.smethod_11();
+                                empty = new PointF(this.canvas_0.startPoint.X - 25f, this.canvas_0.startPoint.Y - 13f);
+                            }
+                        }
+                        else
+                        {
+                            image = Class131.smethod_13();
+                            empty = new PointF(this.canvas_0.startPoint.X - 15f, this.canvas_0.startPoint.Y - 18f);
+                        }
+                    }
+                    if (image != null)
+                    {
+                        if (this.string_1.ToUpper() == "F")
+                        {
+                            empty.X += 3f;
+                        }
+                        graphics_0.DrawImage(image, empty);
+                    }
+                }
+                this.canvas_0.Print(graphics_0, this.dataDict_0.Data(0), this.bool_0);
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    img.Save(ms, ImageFormat.Jpeg);
+                    byte[] bytes = new byte[ms.Length];
+                    ms.Seek(0, SeekOrigin.Begin);
+                    ms.Read(bytes, 0, bytes.Length);
+                    return bytes;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                throw;
+
+            }
+        }
 
         public void Print(out PreviewPageInfo[] previewPageInfo_0)
         {
-            PreviewPrintController controller = new PreviewPrintController {
+            PreviewPrintController controller = new PreviewPrintController
+            {
                 UseAntiAlias = true
             };
             this.printDocument.PrintController = controller;
@@ -311,6 +395,90 @@
 
         private void printDocument_EndPrint(object sender, PrintEventArgs e)
         {
+        }
+
+        public byte[] PreviewImgMethod(string string_2, bool bool_2)
+        {
+            this.bool_0 = bool_2;
+            this.bool_1 = true;
+            this.string_1 = string_2;
+            this.printPreviewDialogEx_0.Document = this.printDocument;
+
+            try
+            {
+                Image img = new Bitmap(this.canvas_0.PageSize.Width, this.canvas_0.PageSize.Height);
+                Graphics graphics_0 = Graphics.FromImage(img);
+                graphics_0.SmoothingMode = SmoothingMode.AntiAlias;
+                graphics_0.SmoothingMode = SmoothingMode.HighQuality;
+                graphics_0.InterpolationMode = InterpolationMode.HighQualityBilinear;
+                graphics_0.PixelOffsetMode = PixelOffsetMode.HighQuality;
+                Bitmap image = null;
+                PointF empty = (PointF)Point.Empty;
+                string str = this.string_1.ToUpper();
+                if (str != null)
+                {
+                    if (str == "C")
+                    {
+                        image = Class131.smethod_39();
+                        empty = new PointF(this.canvas_0.startPoint.X + 5f, this.canvas_0.startPoint.Y - 20f);
+                    }
+                    else if (str == "S")
+                    {
+                        image = Class131.smethod_47();
+                        empty = new PointF(this.canvas_0.startPoint.X + 8f, this.canvas_0.startPoint.Y - 18f);
+                    }
+                    else if (str == "JO")
+                    {
+                        image = Class131.smethod_12();
+                        empty = new PointF(this.canvas_0.startPoint.X, this.canvas_0.startPoint.Y - 18f);
+                    }
+                    else if (!(str == "JN"))
+                    {
+                        if (str == "F")
+                        {
+                            image = Class131.smethod_11();
+                            empty = new PointF(this.canvas_0.startPoint.X - 25f, this.canvas_0.startPoint.Y - 13f);
+                        }
+                    }
+                    else
+                    {
+                        image = Class131.smethod_13();
+                        empty = new PointF(this.canvas_0.startPoint.X - 15f, this.canvas_0.startPoint.Y - 18f);
+                    }
+                }
+                if (image != null)
+                {
+                    if (this.string_1.ToUpper() == "F")
+                    {
+                        empty.X += 3f;
+                    }
+
+                    Bitmap b = new Bitmap(Convert.ToInt32(image.Width * 1.5), Convert.ToInt32(image.Height * 1.5));
+                    Graphics g = Graphics.FromImage(b);
+                    // 插值算法的质量
+                    g.InterpolationMode = InterpolationMode.HighQualityBicubic;
+
+                    g.DrawImage(image, new Rectangle(0, 0, Convert.ToInt32(image.Width * 0.5), Convert.ToInt32(image.Height * 0.5)), new Rectangle(0, 0, image.Width, image.Height), GraphicsUnit.Pixel);
+                    g.Dispose();
+
+
+
+                    graphics_0.DrawImage(b, empty);
+                }
+                this.canvas_0.Print(graphics_0, this.dataDict_0.Data(0), this.bool_0);
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    img.Save(ms, ImageFormat.Jpeg);
+                    byte[] bytes = new byte[ms.Length];
+                    ms.Seek(0, SeekOrigin.Begin);
+                    ms.Read(bytes, 0, bytes.Length);
+                    return bytes;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         private void printDocument_PrintPage(object sender, PrintPageEventArgs e)
@@ -337,8 +505,9 @@
                     }
                 }
                 this.bool_1 = false;
+
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 throw;
             }

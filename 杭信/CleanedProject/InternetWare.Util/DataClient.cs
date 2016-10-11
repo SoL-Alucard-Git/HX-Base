@@ -23,6 +23,10 @@ namespace InternetWare.Util
                 return new ZuoFeiClient(args as ZuoFeiArgs);
             else if (args is ZuoFeiChaXunArgs)
                 return new ZuoFeiChaXunClient(args as ZuoFeiChaXunArgs);
+            else if (args is WeiKaiArgs)
+                return new WeiKaiClient(args as WeiKaiArgs);
+            else if (args is WeiKaiChaXunArgs)
+                return new WeiKaiChaXunClient(args as WeiKaiChaXunArgs);
             return new BaseClient();
         }
     }

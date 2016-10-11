@@ -4,7 +4,7 @@ using InternetWare.Lodging.Data;
 
 namespace InternetWare.Util.Client
 {
-    internal class DaYinClient: BaseClient
+    internal class DaYinClient : BaseClient
     {
         private InternetWare.Lodging.Data.DaYinArgs _args;
         public DaYinClient(InternetWare.Lodging.Data.DaYinArgs args)
@@ -13,7 +13,7 @@ namespace InternetWare.Util.Client
         }
         internal override ResultBase DoService()
         {
-            IPrint print = FPPrint.Create(_args.FPZL,_args.FPDM,_args.FPHM, true);
+            IPrint print = FPPrint.Create(_args.FPZL, _args.FPDM, _args.FPHM, true);
             print.Print();
             PrinterEventArgs printeventargs = new PrinterEventArgs() { Left = -10, Top = 0, IsQuanDa = true, PageLenght = 0, PrinterName = _args.Printer };
             print.printSetUp_0.printer_0.SaveUserPrinterEdge(printeventargs);
@@ -22,8 +22,10 @@ namespace InternetWare.Util.Client
             PrintSetUp.pageSetupDialog.Document.PrinterSettings.PrinterName = _args.Printer;
             print.printSetUp_0.CurrentPrinterName = _args.Printer;
             PrintSetUp.pageSetupDialog.Document.PrinterSettings.DefaultPageSettings.PaperSize = print.printSetUp_0.paperSize_0;
-            print.method_5(print.printSetUp_0,new PrintSetEventArgs());
-            return new ResultBase(_args, null, false);
+            //byte[] imgbyte = print.DaYinMethod(print.printSetUp_0, new PrintSetEventArgs(), false);
+            ;
+            byte[] imgbyte1 = print.PreviewMethod();
+            return new ResultBase(_args, imgbyte1, false);
         }
     }
 }

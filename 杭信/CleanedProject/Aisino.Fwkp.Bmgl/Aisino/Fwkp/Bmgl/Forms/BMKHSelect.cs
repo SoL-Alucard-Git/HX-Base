@@ -141,6 +141,12 @@
             }
         }
 
+        public AisinoDataSet GetKHData(string keyword, int pagesize, int pageno)
+        {
+            AisinoDataSet dataset= this.customerManager.QueryByKey(keyword, pagesize, pageno);
+            return dataset;
+        }
+
         private void aisinoDataGrid1_GoToPageEvent(object sender, GoToPageEventArgs e)
         {
             this.customerManager.CurrentPage = e.PageNO;

@@ -44,13 +44,27 @@
             this.ChaXun_CmbYear = new System.Windows.Forms.ComboBox();
             this.TianKaiPage = new System.Windows.Forms.TabPage();
             this.ZuoFeiPage = new System.Windows.Forms.TabPage();
+            this.ZuoFei_gridView = new System.Windows.Forms.DataGridView();
             this.ZuoFei_paramGroup = new System.Windows.Forms.GroupBox();
             this.ZuoFei_grpSearch = new System.Windows.Forms.GroupBox();
             this.ZuoFei_txtMatch = new System.Windows.Forms.TextBox();
             this.ZuoFei_btnDoService = new System.Windows.Forms.Button();
             this.ZuoFei_btnSearch = new System.Windows.Forms.Button();
             this.ZuoFei_checkYanQianShiBai = new System.Windows.Forms.CheckBox();
+            this.WeiKaiPage = new System.Windows.Forms.TabPage();
+            this.WeiKai_btn作废未开 = new System.Windows.Forms.Button();
+            this.WeiKai_txt要作废发票份数 = new System.Windows.Forms.TextBox();
+            this.WeiKai_txt发票起始号码 = new System.Windows.Forms.TextBox();
+            this.WeiKai_txt发票份数 = new System.Windows.Forms.TextBox();
+            this.WeiKai_txt发票代码 = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.WeiKai_cmbFpType = new System.Windows.Forms.ComboBox();
             this.HongZiPage = new System.Windows.Forms.TabPage();
+            this.HZSells = new System.Windows.Forms.Button();
             this.HZByer_wdk = new System.Windows.Forms.Button();
             this.HZByer_ydk = new System.Windows.Forms.Button();
             this.DaYinPage = new System.Windows.Forms.TabPage();
@@ -60,19 +74,19 @@
             this.DaYin_tbFpdm = new System.Windows.Forms.TextBox();
             this.DaYin_tbFphm = new System.Windows.Forms.TextBox();
             this.DaYin_CmbPrinter = new System.Windows.Forms.ComboBox();
-            this.HZSells = new System.Windows.Forms.Button();
             this.ZuoFei_gridView = new System.Windows.Forms.DataGridView();
             this.tabControl.SuspendLayout();
             this.ChaXunPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ChaXun_DataGrid)).BeginInit();
             this.groupChaXun.SuspendLayout();
             this.ChaXun_grpMatchStr.SuspendLayout();
-            this.HongZiPage.SuspendLayout();
             this.ZuoFeiPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ZuoFei_gridView)).BeginInit();
             this.ZuoFei_paramGroup.SuspendLayout();
             this.ZuoFei_grpSearch.SuspendLayout();
+            this.WeiKaiPage.SuspendLayout();
+            this.HongZiPage.SuspendLayout();
             this.DaYinPage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ZuoFei_gridView)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl
@@ -83,6 +97,7 @@
             this.tabControl.Controls.Add(this.ChaXunPage);
             this.tabControl.Controls.Add(this.TianKaiPage);
             this.tabControl.Controls.Add(this.ZuoFeiPage);
+            this.tabControl.Controls.Add(this.WeiKaiPage);
             this.tabControl.Controls.Add(this.HongZiPage);
             this.tabControl.Controls.Add(this.DaYinPage);
             this.tabControl.Location = new System.Drawing.Point(-1, 0);
@@ -258,8 +273,20 @@
             this.ZuoFeiPage.Name = "ZuoFeiPage";
             this.ZuoFeiPage.Size = new System.Drawing.Size(1358, 820);
             this.ZuoFeiPage.TabIndex = 2;
-            this.ZuoFeiPage.Text = "作废";
+            this.ZuoFeiPage.Text = "已开作废";
             this.ZuoFeiPage.UseVisualStyleBackColor = true;
+            // 
+            // ZuoFei_gridView
+            // 
+            this.ZuoFei_gridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ZuoFei_gridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ZuoFei_gridView.Location = new System.Drawing.Point(4, 130);
+            this.ZuoFei_gridView.Name = "ZuoFei_gridView";
+            this.ZuoFei_gridView.RowTemplate.Height = 30;
+            this.ZuoFei_gridView.Size = new System.Drawing.Size(1351, 687);
+            this.ZuoFei_gridView.TabIndex = 1;
             // 
             // ZuoFei_paramGroup
             // 
@@ -326,6 +353,118 @@
             this.ZuoFei_checkYanQianShiBai.Text = "验签失败";
             this.ZuoFei_checkYanQianShiBai.UseVisualStyleBackColor = true;
             // 
+            // WeiKaiPage
+            // 
+            this.WeiKaiPage.Controls.Add(this.WeiKai_btn作废未开);
+            this.WeiKaiPage.Controls.Add(this.WeiKai_txt要作废发票份数);
+            this.WeiKaiPage.Controls.Add(this.WeiKai_txt发票起始号码);
+            this.WeiKaiPage.Controls.Add(this.WeiKai_txt发票份数);
+            this.WeiKaiPage.Controls.Add(this.WeiKai_txt发票代码);
+            this.WeiKaiPage.Controls.Add(this.label7);
+            this.WeiKaiPage.Controls.Add(this.label6);
+            this.WeiKaiPage.Controls.Add(this.label5);
+            this.WeiKaiPage.Controls.Add(this.label4);
+            this.WeiKaiPage.Controls.Add(this.label2);
+            this.WeiKaiPage.Controls.Add(this.WeiKai_cmbFpType);
+            this.WeiKaiPage.Location = new System.Drawing.Point(4, 28);
+            this.WeiKaiPage.Name = "WeiKaiPage";
+            this.WeiKaiPage.Size = new System.Drawing.Size(1358, 820);
+            this.WeiKaiPage.TabIndex = 5;
+            this.WeiKaiPage.Text = "未开作废";
+            this.WeiKaiPage.UseVisualStyleBackColor = true;
+            // 
+            // WeiKai_btn作废未开
+            // 
+            this.WeiKai_btn作废未开.Location = new System.Drawing.Point(135, 261);
+            this.WeiKai_btn作废未开.Name = "WeiKai_btn作废未开";
+            this.WeiKai_btn作废未开.Size = new System.Drawing.Size(185, 39);
+            this.WeiKai_btn作废未开.TabIndex = 10;
+            this.WeiKai_btn作废未开.Text = "作废未开发票";
+            this.WeiKai_btn作废未开.UseVisualStyleBackColor = true;
+            this.WeiKai_btn作废未开.Click += new System.EventHandler(this.WeiKai_btn作废未开_Click);
+            // 
+            // WeiKai_txt要作废发票份数
+            // 
+            this.WeiKai_txt要作废发票份数.Location = new System.Drawing.Point(219, 213);
+            this.WeiKai_txt要作废发票份数.Name = "WeiKai_txt要作废发票份数";
+            this.WeiKai_txt要作废发票份数.Size = new System.Drawing.Size(274, 28);
+            this.WeiKai_txt要作废发票份数.TabIndex = 9;
+            // 
+            // WeiKai_txt发票起始号码
+            // 
+            this.WeiKai_txt发票起始号码.Location = new System.Drawing.Point(219, 164);
+            this.WeiKai_txt发票起始号码.Name = "WeiKai_txt发票起始号码";
+            this.WeiKai_txt发票起始号码.Size = new System.Drawing.Size(274, 28);
+            this.WeiKai_txt发票起始号码.TabIndex = 8;
+            // 
+            // WeiKai_txt发票份数
+            // 
+            this.WeiKai_txt发票份数.Location = new System.Drawing.Point(219, 120);
+            this.WeiKai_txt发票份数.Name = "WeiKai_txt发票份数";
+            this.WeiKai_txt发票份数.Size = new System.Drawing.Size(274, 28);
+            this.WeiKai_txt发票份数.TabIndex = 7;
+            // 
+            // WeiKai_txt发票代码
+            // 
+            this.WeiKai_txt发票代码.Location = new System.Drawing.Point(219, 68);
+            this.WeiKai_txt发票代码.Name = "WeiKai_txt发票代码";
+            this.WeiKai_txt发票代码.Size = new System.Drawing.Size(274, 28);
+            this.WeiKai_txt发票代码.TabIndex = 6;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(57, 216);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(116, 18);
+            this.label7.TabIndex = 5;
+            this.label7.Text = "作废发票份数";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(57, 174);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(116, 18);
+            this.label6.TabIndex = 4;
+            this.label6.Text = "发票起始号码";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(93, 130);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(80, 18);
+            this.label5.TabIndex = 3;
+            this.label5.Text = "发票份数";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(93, 79);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(80, 18);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "发票代码";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(93, 31);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(80, 18);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "发票种类";
+            // 
+            // WeiKai_cmbFpType
+            // 
+            this.WeiKai_cmbFpType.FormattingEnabled = true;
+            this.WeiKai_cmbFpType.Location = new System.Drawing.Point(219, 23);
+            this.WeiKai_cmbFpType.Name = "WeiKai_cmbFpType";
+            this.WeiKai_cmbFpType.Size = new System.Drawing.Size(274, 26);
+            this.WeiKai_cmbFpType.TabIndex = 0;
+            this.WeiKai_cmbFpType.SelectedIndexChanged += new System.EventHandler(this.WeiKai_cmbFpType_SelectedIndexChanged);
+            // 
             // HongZiPage
             // 
             this.HongZiPage.Controls.Add(this.HZSells);
@@ -338,6 +477,16 @@
             this.HongZiPage.TabIndex = 3;
             this.HongZiPage.Text = "红字";
             this.HongZiPage.UseVisualStyleBackColor = true;
+            // 
+            // HZSells
+            // 
+            this.HZSells.Location = new System.Drawing.Point(105, 276);
+            this.HZSells.Name = "HZSells";
+            this.HZSells.Size = new System.Drawing.Size(156, 39);
+            this.HZSells.TabIndex = 2;
+            this.HZSells.Text = "销售方申请";
+            this.HZSells.UseVisualStyleBackColor = true;
+            this.HZSells.Click += new System.EventHandler(this.HZSells_Click);
             // 
             // HZByer_wdk
             // 
@@ -408,7 +557,7 @@
             this.DaYin_tbFpdm.Name = "DaYin_tbFpdm";
             this.DaYin_tbFpdm.Size = new System.Drawing.Size(319, 28);
             this.DaYin_tbFpdm.TabIndex = 2;
-            this.DaYin_tbFpdm.Text = "3100153130";
+            this.DaYin_tbFpdm.Text = "3100153320";
             // 
             // DaYin_tbFphm
             // 
@@ -416,7 +565,7 @@
             this.DaYin_tbFphm.Name = "DaYin_tbFphm";
             this.DaYin_tbFphm.Size = new System.Drawing.Size(319, 28);
             this.DaYin_tbFphm.TabIndex = 1;
-            this.DaYin_tbFphm.Text = "28046320";
+            this.DaYin_tbFphm.Text = "35203341";
             // 
             // DaYin_CmbPrinter
             // 
@@ -425,16 +574,6 @@
             this.DaYin_CmbPrinter.Name = "DaYin_CmbPrinter";
             this.DaYin_CmbPrinter.Size = new System.Drawing.Size(344, 26);
             this.DaYin_CmbPrinter.TabIndex = 0;
-            // 
-            // HZSells
-            // 
-            this.HZSells.Location = new System.Drawing.Point(105, 276);
-            this.HZSells.Name = "HZSells";
-            this.HZSells.Size = new System.Drawing.Size(156, 39);
-            this.HZSells.TabIndex = 2;
-            this.HZSells.Text = "销售方申请";
-            this.HZSells.UseVisualStyleBackColor = true;
-            this.HZSells.Click += new System.EventHandler(this.HZSells_Click);
             // 
             // 
             // ZuoFei_gridView
@@ -466,15 +605,17 @@
             this.groupChaXun.PerformLayout();
             this.ChaXun_grpMatchStr.ResumeLayout(false);
             this.ChaXun_grpMatchStr.PerformLayout();
-            this.HongZiPage.ResumeLayout(false);
             this.ZuoFeiPage.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ZuoFei_gridView)).EndInit();
             this.ZuoFei_paramGroup.ResumeLayout(false);
             this.ZuoFei_paramGroup.PerformLayout();
             this.ZuoFei_grpSearch.ResumeLayout(false);
             this.ZuoFei_grpSearch.PerformLayout();
+            this.WeiKaiPage.ResumeLayout(false);
+            this.WeiKaiPage.PerformLayout();
+            this.HongZiPage.ResumeLayout(false);
             this.DaYinPage.ResumeLayout(false);
             this.DaYinPage.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ZuoFei_gridView)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -515,5 +656,17 @@
         private System.Windows.Forms.Button ZuoFei_btnSearch;
         private System.Windows.Forms.CheckBox ZuoFei_checkYanQianShiBai;
         private System.Windows.Forms.DataGridView ZuoFei_gridView;
+        private System.Windows.Forms.TabPage WeiKaiPage;
+        private System.Windows.Forms.TextBox WeiKai_txt要作废发票份数;
+        private System.Windows.Forms.TextBox WeiKai_txt发票起始号码;
+        private System.Windows.Forms.TextBox WeiKai_txt发票份数;
+        private System.Windows.Forms.TextBox WeiKai_txt发票代码;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox WeiKai_cmbFpType;
+        private System.Windows.Forms.Button WeiKai_btn作废未开;
     }
 }

@@ -393,6 +393,12 @@
         {
         }
 
+        public AisinoDataSet GetSPData(string keywork, int pagesize, int pageno)
+        {
+            AisinoDataSet dataSet = this.shangpinManager.QueryByKeySEL(this.KeyWord, this.shangpinManager.Pagesize, this.shangpinManager.CurrentPage);
+            return dataSet;
+        }
+
         private void btnQuery_Click(object sender, EventArgs e)
         {
             try

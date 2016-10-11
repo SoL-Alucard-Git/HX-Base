@@ -6,7 +6,7 @@
     using System.Drawing;
     using System.Windows.Forms;
     using Framework.Plugin.Core.Util;
-    internal class ShareMethods
+    public class ShareMethods
     {
         private static ILog loger = LogUtil.GetLogger<ShareMethods>();
 

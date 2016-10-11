@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Client\BaseClient.cs" />
     <Compile Include="Client\ChaXunClient.cs" />
+    <Compile Include="Client\CommonMethods.cs" />
     <Compile Include="Client\DaYinClient.cs" />
     <Compile Include="Client\WeiKaiChaXunClient.cs" />
     <Compile Include="Client\WeiKaiClient.cs" />
@@ -62,6 +63,10 @@
       <Project>{B65BB74A-99D3-4854-8151-A6BD4D4A489A}</Project>
       <Name>Aisino.Framework.Plugin.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Aisino.Fwkp.Bmgl\Aisino.Fwkp.Bmgl.csproj">
+      <Project>{1666a6e3-1c18-4a12-9d2f-4c09262e1eda}</Project>
+      <Name>Aisino.Fwkp.Bmgl</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Aisino.FTaxBase\Aisino.FTaxBase.csproj">
       <Project>{A9935674-60E2-44E1-8785-D391586D31F8}</Project>
       <Name>Aisino.FTaxBase</Name>
@@ -73,6 +78,10 @@
     <ProjectReference Include="..\Aisino.Fwkp.Fpkj\Aisino.Fwkp.Fpkj.csproj">
       <Project>{bda7dc4f-afd7-4286-b925-997570604ef1}</Project>
       <Name>Aisino.Fwkp.Fpkj</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Aisino.Fwkp.Fptk.Common\Aisino.Fwkp.Fptk.Common.csproj">
+      <Project>{28f427e2-da73-4ec6-855a-fbfce6cd9a70}</Project>
+      <Name>Aisino.Fwkp.Fptk.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\Aisino.Fwkp.Hzfp\Aisino.Fwkp.Hzfp.csproj">
       <Project>{def9b3aa-bfbc-4eae-aafd-efb020d72a2f}</Project>

@@ -103,7 +103,7 @@
         private ToolStripMenuItem tool_manualImport;
         private ToolStripMenuItem tool_manukh;
         private ToolStripButton tool_print;
-        private ToolStripMenuItem tool_zjkj;
+        private ToolStripMenuItem tool_hongzi;
         private ToolStripButton tool_zuofei;
         private ToolStrip toolStrip3;
         private AisinoTXT txt_bz;
@@ -2597,7 +2597,7 @@
             this.tool_autokh = base._xmlComponentLoader.GetControlByName<ToolStripMenuItem>("tool_autokh");
             this.tool_manukh = base._xmlComponentLoader.GetControlByName<ToolStripMenuItem>("tool_manukh");
             this.tool_fanlan = base._xmlComponentLoader.GetControlByName<ToolStripButton>("tool_fanlan");
-            this.tool_zjkj = base._xmlComponentLoader.GetControlByName<ToolStripMenuItem>("tool_zjkj");
+            this.tool_hongzi = base._xmlComponentLoader.GetControlByName<ToolStripMenuItem>("tool_zjkj");
             this.tool_DaoRuHZTZD = base._xmlComponentLoader.GetControlByName<ToolStripMenuItem>("tool_DaoRuHZTZD");
             this.tool_drgp = base._xmlComponentLoader.GetControlByName<ToolStripMenuItem>("tool_drgp");
             this.tool_fushu = base._xmlComponentLoader.GetControlByName<ToolStripButton>("tool_fushu");
@@ -2682,7 +2682,7 @@
             this.tool_print.Click += new EventHandler(this.tool_print_Click);
             this.tool_print.MouseDown += new MouseEventHandler(this.tool_print_MouseDown);
             this.tool_fuzhi.Click += new EventHandler(this.tool_fuzhi_Click);
-            this.tool_zjkj.Click += new EventHandler(this.tool_zjkj_Click);
+            this.tool_hongzi.Click += new EventHandler(this.tool_hongzi_Click);
             this.tool_DaoRuHZTZD.Click += new EventHandler(this.tool_DaoRuHZTZD_Click);
             this.tool_drgp.Click += new EventHandler(this.tool_drgp_Click);
             this.tool_fushu.Click += new EventHandler(this.tool_fushu_Click);
@@ -5494,7 +5494,7 @@
                 if (base._fpxx.Fplx == 0)
                 {
                     ContextMenuStrip strip = new ContextMenuStrip();
-                    ToolStripItem[] toolStripItems = new ToolStripItem[] { this.tool_zjkj, this.tool_DaoRuHZTZD, this.tool_drgp };
+                    ToolStripItem[] toolStripItems = new ToolStripItem[] { this.tool_hongzi, this.tool_DaoRuHZTZD, this.tool_drgp };
                     strip.Items.AddRange(toolStripItems);
                     strip.Show(this, new Point(this.tool_fushu.Bounds.X, this.tool_fushu.Bounds.Bottom));
                 }
@@ -6028,7 +6028,7 @@
             this.lab_title.Focus();
         }
 
-        private void tool_zjkj_Click(object sender, EventArgs e)
+        private void tool_hongzi_Click(object sender, EventArgs e)
         {
             this.tool_fushu.Checked = true;
             HZFPTK hzfptk = new HZFPTK(0)

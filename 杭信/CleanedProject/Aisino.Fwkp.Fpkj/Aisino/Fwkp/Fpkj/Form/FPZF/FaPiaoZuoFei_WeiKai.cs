@@ -38,7 +38,7 @@
         private int step = 0x7d0;
         private AisinoTXT txt_zuofeiNum;
         private XmlComponentLoader xmlComponentLoader1;
-        private XXFP xxfpChaXunBll = new XXFP(false);
+        public XXFP xxfpChaXunBll = new XXFP(false);
 
         public FaPiaoZuoFei_WeiKai()
         {
@@ -52,7 +52,7 @@
             }
         }
 
-        private Fpxx BlankWasteTaxCardZuoFei(object[] param)
+         public Fpxx BlankWasteTaxCardZuoFei(object[] param)
         {
             string str = param[0].ToString();
             string str2 = param[1].ToString();
@@ -228,7 +228,7 @@
         {
             _InvoiceType invoiceType = this.GetInvoiceType(this.FaPiaoType);
             //逻辑修改
-            //invCodeNum = base.TaxCardInstance.GetCurrentInvCode(invoiceType.TaxCardfpzl);
+            invCodeNum = base.TaxCardInstance.GetCurrentInvCode(invoiceType.TaxCardfpzl);
             invCodeNum = new InvCodeNum() { InvTypeCode = "32003100", InvNum = "88888888", EndNum = "99999999" };
             if ((string.IsNullOrEmpty(invCodeNum.InvNum) || string.IsNullOrEmpty(invCodeNum.InvTypeCode)) || (base.TaxCardInstance.RetCode != 0))
             {
@@ -244,7 +244,7 @@
             return "0001";
         }
 
-        private int GetTaxCardFPNum(string TypeCode, int InvType, int startNum)
+        public int GetTaxCardFPNum(string TypeCode, int InvType, int startNum)
         {
             //逻辑修改
             return 100;
@@ -314,7 +314,7 @@
             base.ResumeLayout(false);
         }
 
-        private string IsEmpty_DengYu(string strValue)
+        public string IsEmpty_DengYu(string strValue)
         {
             try
             {

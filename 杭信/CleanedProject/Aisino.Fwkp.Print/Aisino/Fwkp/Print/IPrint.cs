@@ -33,12 +33,12 @@
 
         static IPrint()
         {
-            
+
         }
 
         protected IPrint()
         {
-            
+
             this.taxCard_0 = TaxCard.CreateInstance(CTaxCardType.tctAddedTax);
             this.ZYFPLX = "";
             this.loger = LogUtil.GetLogger<IPrint>();
@@ -48,7 +48,7 @@
 
         protected IPrint(string string_0)
         {
-            
+
             this.taxCard_0 = TaxCard.CreateInstance(CTaxCardType.tctAddedTax);
             this.ZYFPLX = "";
             this.loger = LogUtil.GetLogger<IPrint>();
@@ -130,7 +130,7 @@
                         if (this.taxCard_0.SubSoftVersion == "Linux")
                         {
                             FPLX fplx = Aisino.Fwkp.Print.Common.DBFpzlToCardType(this._args[0].ToString());
-                            this.taxCard_0.UpdateDybzToDB((int) fplx, this._args[1].ToString(), this._args[2].ToString());
+                            this.taxCard_0.UpdateDybzToDB((int)fplx, this._args[1].ToString(), this._args[2].ToString());
                         }
                     }
                     this._isPrint = "0000";
@@ -142,6 +142,96 @@
                 }
             }
         }
+        #region 预览方法
+        public byte[] PreviewMethod()
+        {
+            byte[] imgbyte = null;
+            PrintSetEventArgs e = new PrintSetEventArgs
+            {
+                IsTaoDa = false,
+                Offset = (PointF)new Point(0, 0)
+            };
+            this.printSetUp_0.TopMost = false;
+            try
+            {
+                if (this._isPrint == "0000")
+                {
+                    this._isPrint = "0002";
+                }
+                this.printSetUp_0.TopMost = false;
+                this.IsTaoDa = e.IsTaoDa;
+                string[] strArray2 = Aisino.Fwkp.Print.Common.CheckInstalledFont();
+                if ((strArray2 != null) && (strArray2[0].Length > 0))
+                {
+                    if (this.IsHindErrorBox == 0)
+                    {
+                        MessageManager.ShowMsgBox("FPDY-000003", "错误", new string[] { strArray2[0] });
+                    }
+                    string message = string.Format("当前操作系统缺少{0}等字体，请及时安装所需字体！", strArray2[0]);
+                    this.loger.Error(message);
+                    this.loger.Error(strArray2[1]);
+                }
+                else
+                {
+                    this.aisinoPrint.Data = this.DictCreate(this._args);
+                    if (this.aisinoPrint.Data == null)
+                    {
+                        if (this.IsHindErrorBox == 0)
+                        {
+                            MessageManager.ShowMsgBox("FPDY-000004");
+                        }
+                        this.loger.Error("发票打印的对象为空");
+                        this._isPrint = "0004";
+                    }
+                    else
+                    {
+                        this.aisinoPrint.Canvas.startPoint = new PointF(this.MillimeterToPx(e.Offset.X), this.MillimeterToPx(e.Offset.Y));
+                        if ((this._IsHZFW && (this.printSetUp_0 != null)) && !this.printSetUp_0.IsSupportHZFW)
+                        {
+                            if (this.IsHindErrorBox == 0)
+                            {
+                                MessageManager.ShowMsgBox("FPDY-000001", "提示", new string[] { this.printSetUp_0.CurrentPrinterName });
+                            }
+                            this.loger.Error("当前打印机型号不支持汉字防伪发票打印");
+                            this._isPrint = "0004";
+                        }
+                        else
+                        {
+                            if (this._isPrint == "0002")
+                            {
+                                try
+                                {
+                                    if ((this._args != null) && (this._args.Length > 3))
+                                    {
+                                        string str = this._args[1].ToString() + " " + Aisino.Fwkp.Print.Common.smethod_1(this._args[2].ToString());
+                                        this.aisinoPrint.printDocument.DocumentName = str;
+                                    }
+                                    imgbyte= this.aisinoPrint.PreviewImgMethod(this.ZYFPLX, this._isZYPT);
+                                    this._isPrint = "0002";
+                                }
+                                catch (Exception exception)
+                                {
+                                    this._isPrint = "0004";
+                                    this.loger.Error("[OnPreview函数异常]" + exception.ToString());
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception exception)
+            {
+                MessageManager.ShowMsgBox(exception.Message);
+                this.loger.Error("[psu_OnPreview]:" + exception.ToString());
+                this._isPrint = "0004";
+                if (this.IsHindErrorBox == 0)
+                {
+                    MessageManager.ShowMsgBox("FPDY-000002");
+                }
+            }
+            return imgbyte;
+        }
+        #endregion
 
         private void method_3(object sender, PrintSetEventArgs e)
         {
@@ -275,17 +365,113 @@
                 }
             }
         }
-
+        #region 打印方法
+        public byte[] DaYinMethod(object sender, PrintSetEventArgs e, bool isyulan)
+        {
+            byte[] imgbyte = null;
+            try
+            {
+                if (this._isPrint == "0000")
+                {
+                    this._isPrint = "0002";
+                }
+                string[] strArray = Aisino.Fwkp.Print.Common.CheckInstalledFont();
+                if ((strArray != null) && (strArray[0].Length > 0))
+                {
+                    if (this.IsHindErrorBox == 0)
+                    {
+                        MessageManager.ShowMsgBox("FPDY-000003", "错误", new string[] { strArray[0] });
+                    }
+                    string message = string.Format("当前操作系统缺少{0}等字体，请及时安装所需字体！", strArray[0]);
+                    this.loger.Error(message);
+                    this.loger.Error(strArray[1]);
+                }
+                else
+                {
+                    Printer printer = new Printer(this._args);
+                    printer.GetPrinterArgs(IsZjFlag);
+                    this.IsTaoDa = printer.RealPrinterArgs.IsQuanDa;
+                    this.aisinoPrint.Data = this.DictCreate(this._args);
+                    if (this.aisinoPrint.Data == null)
+                    {
+                        if (this.IsHindErrorBox == 0)
+                        {
+                            MessageManager.ShowMsgBox("FPDY-000004");
+                        }
+                        this.loger.Error("发票打印的对象为空");
+                        this._isPrint = "0004";
+                    }
+                    else
+                    {
+                        this.loger.Error(string.Concat(new object[] { "[连续打印]Left:", printer.RealPrinterArgs.Left, "[Top]:", printer.RealPrinterArgs.Top }));
+                        this.aisinoPrint.Canvas.startPoint = new PointF(this.MillimeterToPx(printer.RealPrinterArgs.Left), this.MillimeterToPx(printer.RealPrinterArgs.Top));
+                        if ((this._IsHZFW && (this.printSetUp_0 != null)) && !this.printSetUp_0.IsSupportHZFW)
+                        {
+                            if (this.IsHindErrorBox == 0)
+                            {
+                                MessageManager.ShowMsgBox("FPDY-000001", "提示", new string[] { this.printSetUp_0.CurrentPrinterName });
+                            }
+                            this.loger.Error("当前打印机型号不支持汉字防伪发票打印");
+                            this._isPrint = "0004";
+                        }
+                        else
+                        {
+                            if (this._isPrint == "0002")
+                            {
+                                try
+                                {
+                                    string str;
+                                    if ((this._args != null) && (this._args.Length > 3))
+                                    {
+                                        string str2 = this._args[1].ToString() + " " + Aisino.Fwkp.Print.Common.smethod_1(this._args[2].ToString());
+                                        this.aisinoPrint.printDocument.DocumentName = str2;
+                                    }
+                                    imgbyte = this.aisinoPrint.PrintMethod(isyulan, this.ZYFPLX, this._isZYPT);
+                                    if ((((this._args != null) && (this._args.Length >= 4)) && ((this._args[3].ToString() == "_FP") && ((str = this._args[0].ToString()) != null))) && (((str == "s") || (str == "c")) || (((str == "f") || (str == "j")) || (str == "q"))))
+                                    {
+                                        ServiceFactory.InvokePubService("Aisino.Fwkp.Fpkj.FPDYShareMethod", this._args);
+                                        if (this.taxCard_0.SubSoftVersion == "Linux")
+                                        {
+                                            FPLX fplx = Aisino.Fwkp.Print.Common.DBFpzlToCardType(this._args[0].ToString());
+                                            this.taxCard_0.UpdateDybzToDB((int)fplx, this._args[1].ToString(), this._args[2].ToString());
+                                        }
+                                    }
+                                    this._isPrint = "0000";
+                                }
+                                catch (Exception exception)
+                                {
+                                    this._isPrint = "0004";
+                                    this.loger.Error("[OnPrint函数异常]" + exception.ToString());
+                                }
+                            }
+                        }
+                    }
+                }
+                return imgbyte;
+            }
+            catch (Exception exception)
+            {
+                this.loger.Error("[psu_OnPrint]: " + exception.ToString());
+                this._isPrint = "0004";
+                if (this.IsHindErrorBox == 0)
+                {
+                    MessageManager.ShowMsgBox("FPDY-000002");
+                }
+                return null;
+            }
+        }
+        #endregion
         public float MillimeterToPx(float float_0)
         {
-            return (float) PrinterUnitConvert.Convert((double) (float_0 * 10f), PrinterUnit.TenthsOfAMillimeter, PrinterUnit.Display);
+            return (float)PrinterUnitConvert.Convert((double)(float_0 * 10f), PrinterUnit.TenthsOfAMillimeter, PrinterUnit.Display);
         }
 
         public void Preview()
         {
-            PrintSetEventArgs e = new PrintSetEventArgs {
+            PrintSetEventArgs e = new PrintSetEventArgs
+            {
                 IsTaoDa = false,
-                Offset = (PointF) new Point(0, 0)
+                Offset = (PointF)new Point(0, 0)
             };
             this.printSetUp_0.TopMost = false;
             this.method_3(null, e);
@@ -311,9 +497,10 @@
             }
             else
             {
-                PrintSetEventArgs e = new PrintSetEventArgs {
+                PrintSetEventArgs e = new PrintSetEventArgs
+                {
                     IsTaoDa = false,
-                    Offset = (PointF) new Point(0, 0)
+                    Offset = (PointF)new Point(0, 0)
                 };
                 this.method_5(null, e);
             }
@@ -328,9 +515,10 @@
             }
             else
             {
-                PrintSetEventArgs e = new PrintSetEventArgs {
+                PrintSetEventArgs e = new PrintSetEventArgs
+                {
                     IsTaoDa = false,
-                    Offset = (PointF) new Point(0, 0)
+                    Offset = (PointF)new Point(0, 0)
                 };
                 this.method_5(null, e);
             }

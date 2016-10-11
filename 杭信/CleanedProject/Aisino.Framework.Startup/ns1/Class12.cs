@@ -244,7 +244,7 @@
             //    }
             //}
             //#endregion
-            string_2 = "开票员";
+            string_2 = "管理员";
             this.method_1(string_2);
             return true;
         }

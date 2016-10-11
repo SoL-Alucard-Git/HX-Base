@@ -5,7 +5,7 @@
     using System.Collections.Generic;
     using System.Drawing;
 
-    internal class DingYiZhiFuChuan1
+    public class DingYiZhiFuChuan1
     {
         public static byte[] _byteDefault = new byte[] { 210, 0xd3, 0xd0, 0xd9, 0xd7, 0xde, 0xd6, 0xd1, 0xd4, 0xd5, 0xdb, 0xd8, 0xda };
         public static byte[] _bytePos = new byte[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 };

@@ -55,7 +55,8 @@
     <Compile Include="DataService.cs" />
     <Compile Include="Data\ErrorBase.cs" />
     <Compile Include="Data\ResultBase.cs" />
-    <Compile Include="Data\ZuoFeiResult.cs" />
+    <Compile Include="Data\WeiKaiChaXunResult.cs" />
+    <Compile Include="Data\CountableResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
