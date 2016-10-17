@@ -136,40 +136,43 @@
             this.CAFileName = "";
             this.CAPassWord = "";
             this.all_slv_list = new string[] { string.Empty };
-            if ((int)fplx == 0)
+            if (!InternetWare.Config.Constants.IsTest)
             {
-                if (((int)zyfplx == 0) && !base.TaxCardInstance.QYLX.ISZYFP)
+                if (fplx == FPLX.ZYFP)
                 {
-                    string[] textArray2 = new string[] { " 无增值税专用发票授权。" };
-                    MessageManager.ShowMsgBox("INP-242115", textArray2);
-                    return;
+                    if (((int)zyfplx == 0) && !base.TaxCardInstance.QYLX.ISZYFP)
+                    {
+                        string[] textArray2 = new string[] { " 无增值税专用发票授权。" };
+                        MessageManager.ShowMsgBox("INP-242115", textArray2);
+                        return;
+                    }
+                    if (((int)zyfplx == 2) && !base.TaxCardInstance.QYLX.ISSNY)
+                    {
+                        string[] textArray3 = new string[] { " 无石脑油、燃料油增值税专用发票授权。" };
+                        MessageManager.ShowMsgBox("INP-242115", textArray3);
+                        return;
+                    }
                 }
-                if (((int)zyfplx == 2) && !base.TaxCardInstance.QYLX.ISSNY)
+                else if (fplx == FPLX.PTFP)
                 {
-                    string[] textArray3 = new string[] { " 无石脑油、燃料油增值税专用发票授权。" };
-                    MessageManager.ShowMsgBox("INP-242115", textArray3);
-                    return;
-                }
-            }
-            else if ((int)fplx == 2)
-            {
-                if (((int)zyfplx == 0) && !base.TaxCardInstance.QYLX.ISPTFP)
-                {
-                    string[] textArray4 = new string[] { " 无增值税普通发票授权。" };
-                    MessageManager.ShowMsgBox("INP-242114", textArray4);
-                    return;
-                }
-                if (((int)zyfplx == 8) && !base.TaxCardInstance.QYLX.ISNCPXS)
-                {
-                    string[] textArray5 = new string[] { " 无农产品销售发票授权。" };
-                    MessageManager.ShowMsgBox("INP-242158", textArray5);
-                    return;
-                }
-                if (((int)zyfplx == 9) && !base.TaxCardInstance.QYLX.ISNCPSG)
-                {
-                    string[] textArray6 = new string[] { " 无收购发票授权。" };
-                    MessageManager.ShowMsgBox("INP-242159", textArray6);
-                    return;
+                    if (((int)zyfplx == 0) && !base.TaxCardInstance.QYLX.ISPTFP)
+                    {
+                        string[] textArray4 = new string[] { " 无增值税普通发票授权。" };
+                        MessageManager.ShowMsgBox("INP-242114", textArray4);
+                        return;
+                    }
+                    if (((int)zyfplx == 8) && !base.TaxCardInstance.QYLX.ISNCPXS)
+                    {
+                        string[] textArray5 = new string[] { " 无农产品销售发票授权。" };
+                        MessageManager.ShowMsgBox("INP-242158", textArray5);
+                        return;
+                    }
+                    if (((int)zyfplx == 9) && !base.TaxCardInstance.QYLX.ISNCPSG)
+                    {
+                        string[] textArray6 = new string[] { " 无收购发票授权。" };
+                        MessageManager.ShowMsgBox("INP-242159", textArray6);
+                        return;
+                    }
                 }
             }
             if (((int)fplx == 0) && ((int)zyfplx == 2))

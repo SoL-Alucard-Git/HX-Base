@@ -33,9 +33,10 @@
 
         bool Interface1.imethod_3()
         {
-            //逻辑修改:无需校验直接通过
-            return true;
-            //return this.SetValid();
+            //逻辑修改:测试时无需校验直接通过
+            if(InternetWare.Config.Constants.IsTest)
+                return true;
+            return this.SetValid();
         }
 
         protected virtual void RunCommand()

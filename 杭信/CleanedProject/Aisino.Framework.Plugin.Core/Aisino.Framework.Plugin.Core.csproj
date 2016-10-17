@@ -31,7 +31,6 @@
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <Reference Include="System.Web" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Data" />
@@ -683,6 +682,10 @@
     <ProjectReference Include="..\Aisino.FTaxBase\Aisino.FTaxBase.csproj">
       <Project>{a9935674-60e2-44e1-8785-d391586d31f8}</Project>
       <Name>Aisino.FTaxBase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\InternetWare.Config\InternetWare.Config.csproj">
+      <Project>{5d3420eb-4f77-42c5-8fb6-08b1ec6fdafb}</Project>
+      <Name>InternetWare.Config</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>

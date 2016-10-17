@@ -1,5 +1,0 @@
-E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Output\Automation\Update.Tool.dll
-E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Output\Automation\Update.Tool.pdb
-E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Update.Tool\obj\x86\Debug\Update.Tool.csprojResolveAssemblyReference.cache
-E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Update.Tool\obj\x86\Debug\Update.Tool.dll
-E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Update.Tool\obj\x86\Debug\Update.Tool.pdb

@@ -15,12 +15,15 @@
 
         protected override object[] doService(object[] param)
         {
-			//逻辑修改:屏蔽判断
-            //if (!CheckPermission.Check("KH"))
-            //{
-            //    MessageBox.Show("KH Check Failure");
-            //    return null;
-            //}
+            //逻辑修改:屏蔽判断
+            if (!InternetWare.Config.Constants.IsTest)
+            {
+                if (!CheckPermission.Check("KH"))
+                {
+                    MessageBox.Show("KH Check Failure");
+                    return null;
+                }
+            }
             string keyWord = ((string) param[0]).Trim();
             int num = (int) param[1];
             string str2 = "MC,SH,DZDH,YHZH";

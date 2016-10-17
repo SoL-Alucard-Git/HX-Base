@@ -1,6 +1,0 @@
-E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Output\Bin\Aisino.Framework.Startup.exe.config
-E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Output\Bin\Aisino.Framework.Startup.exe
-E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Output\Bin\Aisino.Framework.Startup.pdb
-E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Aisino.Framework.Startup\obj\x86\Debug\Aisino.Framework.Startup.exe
-E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Aisino.Framework.Startup\obj\x86\Debug\Aisino.Framework.Startup.pdb
-E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Aisino.Framework.Startup\obj\x86\Debug\Aisino.Framework.Startup.csprojResolveAssemblyReference.cache

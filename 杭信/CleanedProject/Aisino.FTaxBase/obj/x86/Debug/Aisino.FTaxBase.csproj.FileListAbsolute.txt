@@ -1,5 +1,0 @@
-E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Output\Bin\Aisino.FTaxBase.dll
-E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Output\Bin\Aisino.FTaxBase.pdb
-E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Aisino.FTaxBase\obj\x86\Debug\Aisino.FTaxBase.dll
-E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Aisino.FTaxBase\obj\x86\Debug\Aisino.FTaxBase.pdb
-E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Aisino.FTaxBase\obj\x86\Debug\Aisino.FTaxBase.csprojResolveAssemblyReference.cache

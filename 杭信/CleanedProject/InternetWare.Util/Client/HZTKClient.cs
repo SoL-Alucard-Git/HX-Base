@@ -1,6 +1,5 @@
 ﻿
 using Aisino.Framework.Plugin.Core.Controls;
-using Aisino.Fwkp.Hzfp;
 using InternetWare.Lodging.Data;
 using System.Collections.Generic;
 
@@ -8,15 +7,15 @@ namespace InternetWare.Util.Client
 {
     internal class HZTKClient : BaseClient
     {
-        private InternetWare.Lodging.Data.HZTKArgs _args;
-        public HZTKClient(InternetWare.Lodging.Data.HZTKArgs args)
+        private HZTKArgs _args;
+        public HZTKClient(HZTKArgs args)
         {
             _args = args;
         }
 
-        internal override ResultBase DoService()
+        internal override BaseResult DoService()
         {
-            ResultBase result = new ResultBase();
+            BaseResult result = new BaseResult();
             //switch (_args.hztype)
             //{
             //    case HZType.GFYDK:
@@ -52,7 +51,7 @@ namespace InternetWare.Util.Client
         #endregion
 
         #region 销售方红字
-        private ResultBase XFHZMethod()
+        private BaseResult XFHZMethod()
         {
             //初始化
             Aisino.Fwkp.Hzfp.Form.SqdTianKai sqdtiankai = new Aisino.Fwkp.Hzfp.Form.SqdTianKai();
@@ -67,12 +66,12 @@ namespace InternetWare.Util.Client
             sqdtiankai.inv.SetSL(0, "-6");
             //保存
             sqdtiankai.dayingbt();
-            return new ResultBase();
+            return new BaseResult();
         }
         #endregion
 
         #region 购方申请未抵扣
-        private ResultBase GFWDKMethod()
+        private BaseResult GFWDKMethod()
         {
             //初始化
             Aisino.Fwkp.Hzfp.Form.SqdTianKai sqdtiankai = new Aisino.Fwkp.Hzfp.Form.SqdTianKai();
@@ -87,12 +86,12 @@ namespace InternetWare.Util.Client
             sqdtiankai.inv.SetSL(0, "-3");
             //保存
             sqdtiankai.dayingbt();
-            return new ResultBase();
+            return new BaseResult();
         }
         #endregion
 
         #region 购方申请已抵扣
-        private ResultBase GFYDKMethod()
+        private BaseResult GFYDKMethod()
         {
             //初始化
             Aisino.Fwkp.Hzfp.Form.SqdTianKai sqdtiankai = new Aisino.Fwkp.Hzfp.Form.SqdTianKai();
@@ -107,7 +106,7 @@ namespace InternetWare.Util.Client
             sqdtiankai.inv.SetSL(0, "-2");
             //保存
             sqdtiankai.dayingbt();
-            return new ResultBase();
+            return new BaseResult();
         }
         #endregion
     }

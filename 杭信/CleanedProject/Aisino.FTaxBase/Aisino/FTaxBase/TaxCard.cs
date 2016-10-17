@@ -720,7 +720,8 @@
         public DateTime GetCardClock()
         {
             //逻辑修改:试本地运行时需要直接返回DateTime.Now
-            return DateTime.Now;
+            if(InternetWare.Config.Constants.IsTest)
+                return DateTime.Now;
             if (this.ctaxCardMode_0 == CTaxCardMode.tcmNone)
             {
                 return DateTime.Now;
@@ -1302,20 +1303,51 @@
 
         public List<InvVolumeApp> GetInvStock()
         {
-            if (this.method_4() == DrvState.dsOpen)
+            if (InternetWare.Config.Constants.IsTest)
             {
-                List<string> inList = new List<string>();
-                byte[] array = this.method_64(13, 1, inList);
-                Encoding.GetEncoding("GBK").GetBytes("JSP").CopyTo(array, 0x3e8);
-                this.int_4 = this.method_63(array, this.byte_0);
-                if (this.RetCode == 0)
+                InvVolumeApp app = new InvVolumeApp()
                 {
-                    this.list_0.Clear();
-                    this.method_23();
-                    return this.list_0;
-                }
+                    BuyDate = DateTime.Parse("2016-01-21 10:00:00"),
+                    BuyNumber = 50,
+                    HeadCode = 28046325,
+                    InvLimit = 100000,
+                    InvType = 0,
+                    Number = 26,
+                    SaledDate = DateTime.Parse("2016-01-26 00:00:00"),
+                    Status = 'E',
+                    TypeCode = "3100153130"
+                };
+                InvVolumeApp app2 = new InvVolumeApp()
+                {
+                    BuyDate = DateTime.Parse("2016-05-30 09:00:00"),
+                    BuyNumber = 200,
+                    HeadCode = 35203369,
+                    InvLimit = 1000000,
+                    InvType = 2,
+                    Number = 32,
+                    SaledDate = DateTime.Parse("2016-05-30 00:00:00"),
+                    Status = 'E',
+                    TypeCode = "3100153320"
+                };
+                return new List<InvVolumeApp>() { app, app2 };
             }
-            return null;
+            else
+            {
+                if (this.method_4() == DrvState.dsOpen)
+                {
+                    List<string> inList = new List<string>();
+                    byte[] array = this.method_64(13, 1, inList);
+                    Encoding.GetEncoding("GBK").GetBytes("JSP").CopyTo(array, 0x3e8);
+                    this.int_4 = this.method_63(array, this.byte_0);
+                    if (this.RetCode == 0)
+                    {
+                        this.list_0.Clear();
+                        this.method_23();
+                        return this.list_0;
+                    }
+                }
+                return null;
+            }
         }
 
         public int GetInvStockCount(int int_7, int int_8)
@@ -6403,7 +6435,12 @@
             inList.Add(string_35);
             inList.Add(string_36);
             byte[] buffer = this.method_64(0x1c, 0, inList);
-            this.int_4 = this.method_63(buffer, this.byte_0);
+            if (InternetWare.Config.Constants.IsTest)
+            {
+                this.int_4 = 111;
+            }
+            else
+                this.int_4 = this.method_63(buffer, this.byte_0);
             return ("TCD_" + this.int_4 + "_28");
         }
 

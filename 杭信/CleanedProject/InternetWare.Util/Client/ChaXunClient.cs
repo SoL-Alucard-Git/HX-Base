@@ -14,7 +14,7 @@ namespace InternetWare.Util.Client
             _args = args;
         }
 
-        internal override ResultBase DoService()
+        internal override BaseResult DoService()
         {
             FaPiaoChaXun form = new FaPiaoChaXun();
             DateTime DateStart = new DateTime(_args.Year, _args.Month < 1 ? 1 : _args.Month, 1);
@@ -30,9 +30,9 @@ namespace InternetWare.Util.Client
             dict.Add("FPDM", $"%{_args.MathStr}%");
             dict.Add("GFMC", $"%{_args.MathStr}%");
             dict.Add("GFSH", $"%{_args.MathStr}%");
-            dict.Add("FPHM", string.IsNullOrEmpty(_args.MathStr) ?  $"%请输入检索关键字...%" : $"%{_args.MathStr}%");
+            dict.Add("FPHM", string.IsNullOrEmpty(_args.MathStr) ? $"%请输入检索关键字...%" : $"%{_args.MathStr}%");
             DataTable table = form.xxfpChaXunBll.SelectPage(1, 30, 0, dict, 1, DateTime.Now, -1, 1)?.Data;
-            return new ResultBase(_args, table, false);
+            return new ChaXunResult(_args, table);
         }
     }
 } 

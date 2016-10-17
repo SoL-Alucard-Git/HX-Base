@@ -4,7 +4,7 @@ namespace InternetWare.Util.Client
 {
     internal class BaseClient
     {
-        internal virtual ResultBase DoService()
+        internal virtual BaseResult DoService()
         {
             return null;
         }

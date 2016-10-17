@@ -404,5 +404,9 @@
       <Project>{75c5c3bc-cb11-4429-b042-46f1baab2fff}</Project>
       <Name>Aisino.Fwkp.BusinessObject</Name>
     </ProjectReference>
+    <ProjectReference Include="..\InternetWare.Config\InternetWare.Config.csproj">
+      <Project>{5d3420eb-4f77-42c5-8fb6-08b1ec6fdafb}</Project>
+      <Name>InternetWare.Config</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>

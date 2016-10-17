@@ -10,6 +10,7 @@
     <OutputType>WinExe</OutputType>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile />
+    <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -33,6 +34,15 @@
   <PropertyGroup>
     <StartupObject />
   </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>false</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Reference Include="ICSharpCode.SharpZipLib">
@@ -45,13 +55,18 @@
     <Reference Include="System.Data.SQLite">
       <HintPath>..\..\脱壳后文件\Bin\System.Data.SQLite.dll</HintPath>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Data" />
+    <Compile Include="AisinoService\AisinoService.cs" />
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="App.cs" />
     <Compile Include="Global.cs" />
+    <Compile Include="AisinoService\IAisinoService.cs" />
     <Compile Include="ns0\Class2.cs" />
     <Compile Include="ns0\Class3.cs" />
     <Compile Include="ns0\Interface0.cs" />
@@ -101,6 +116,10 @@
     <EmbeddedResource Include="Aisino.Framework.Startup.Properties.Resources.resources" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Aisino.Args\Aisino.Args.csproj">
+      <Project>{5cffba40-4b52-42e1-b170-ca1430e21e03}</Project>
+      <Name>Aisino.Args</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Aisino.Framework.Dao\Aisino.Framework.Dao.csproj">
       <Project>{ef96d157-73ba-410c-a2bd-698b4986fd18}</Project>
       <Name>Aisino.Framework.Dao</Name>
@@ -117,8 +136,21 @@
       <Project>{a9935674-60e2-44e1-8785-d391586d31f8}</Project>
       <Name>Aisino.FTaxBase</Name>
     </ProjectReference>
+    <ProjectReference Include="..\InternetWare.Config\InternetWare.Config.csproj">
+      <Project>{5d3420eb-4f77-42c5-8fb6-08b1ec6fdafb}</Project>
+      <Name>InternetWare.Config</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\InternetWare.Lodging.Data\InternetWare.Lodging.Data.csproj">
+      <Project>{76ba417d-dc90-4828-9cc9-13adedd54d78}</Project>
+      <Name>InternetWare.Lodging.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\app.manifest">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
 </Project>

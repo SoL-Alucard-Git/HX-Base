@@ -15,10 +15,10 @@ namespace InternetWare.Util.Client
             _args = args;
         }
 
-        internal override ResultBase DoService()
+        internal override BaseResult DoService()
         {
             WeiKaiChaXunResult fpInfo = new WeiKaiChaXunClient(new WeiKaiChaXunArgs() { FpType = _args.FpType }).DoService() as WeiKaiChaXunResult;
-            ResultBase res = new ResultBase();
+            BaseResult res = new BaseResult();
             if( !CheckFpInfo(fpInfo,out res))
             {
                 return res;
@@ -29,24 +29,24 @@ namespace InternetWare.Util.Client
             }
         }
 
-        private bool CheckFpInfo(WeiKaiChaXunResult fpInfo,out ResultBase result)
+        private bool CheckFpInfo(WeiKaiChaXunResult fpInfo, out BaseResult result)
         {
-            result = new ResultBase();
-            if (fpInfo.HasError == true)
+            result = new BaseResult();
+            if (fpInfo.ErrorInfo.HasError)
             {
-                result = new ResultBase(_args, null, true, fpInfo.ErrorInfo);
+                result = new BaseResult(_args, fpInfo.ErrorInfo);
             }
             else if (fpInfo.FpHasNum <= 0)
             {
-                result = new ResultBase(_args, null, true, new ErrorBase("无可用发票"));
+                result = new BaseResult(_args, new ErrorBase("无可用发票"));
             }
             else if (_args.Count <= 0)
             {
-                result = new ResultBase(_args, null, true, new ErrorBase("作废数量填写有误"));
+                result = new BaseResult(_args, new ErrorBase("作废数量填写有误"));
             }
             else if (_args.Count > fpInfo.FpHasNum)
             {
-                result = new ResultBase(_args, null, true, new ErrorBase("作废数量超过现有数量"));
+                result = new BaseResult(_args, new ErrorBase("作废数量超过现有数量"));
             }
             else
             {
@@ -60,7 +60,7 @@ namespace InternetWare.Util.Client
         /// <summary>
         /// 对应 FaPiaoZuoFei_WeiKai 的 ZuoFeiMainFunction 方法
         /// </summary>
-        private ResultBase DoWeiKaiZuoFei(WeiKaiChaXunResult fpInfo)
+        private BaseResult DoWeiKaiZuoFei(WeiKaiChaXunResult fpInfo)
         {
             int zuoFeiNum = _args.Count;
             try
@@ -89,13 +89,13 @@ namespace InternetWare.Util.Client
                 }
                 form.xxfpChaXunBll.SaveXxfp(FpList);
                 num2 = zuoFeiNum - num;
-                return new CountableResult(_args, null, false, null, zuoFeiNum, num, num2);
+                return new CountableResult(_args, zuoFeiNum, num, num2);
                 //MessageManager.ShowMsgBox("FPZF-000010", new string[] { ZuoFeiNum.ToString(), num.ToString(), num2.ToString() });
             }
             catch (Exception exception)
             {
                 //this.loger.Error("[ZuoFeiMainFunction函数异常]" + exception.ToString());
-                return new ResultBase(_args, null, true, new ErrorBase($"错误类型：{exception.GetType()} || 错误信息:{exception.Message}"));
+                return new BaseResult(_args, new ErrorBase($"错误类型：{exception.GetType()} || 错误信息:{exception.Message}"));
             }
         }
     }

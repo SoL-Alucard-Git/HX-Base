@@ -21,7 +21,7 @@
         public AisinoLBL FPZL;
         private AisinoTXT FPZS;
         private AisinoTXT LBDM;
-        private FPLX mfplx;
+        public FPLX mfplx;
         public AisinoLBL QSHM;
         private TaxCard taxCard = TaxCardFactory.CreateTaxCard();
         private ToolStripButton tool_exit;
@@ -50,9 +50,12 @@
         private void FillGridView()
         {
             this._ListModel = base.TaxCardInstance.GetInvStock();
-            if (base.TaxCardInstance.RetCode > 0)
+            if (!InternetWare.Config.Constants.IsTest)
             {
-                MessageManager.ShowMsgBox(base.TaxCardInstance.ErrCode);
+                if (base.TaxCardInstance.RetCode > 0)
+                {
+                    MessageManager.ShowMsgBox(base.TaxCardInstance.ErrCode);
+                }
             }
             else
             {
@@ -170,9 +173,13 @@
                 {
                     str = card.SetInvVols((InvoiceType)2, fpdmhm[0], fpdmhm[1]);
                 }
-                if (ToolUtil.GetReturnErrCode(str) != 0)
+                //逻辑修改
+                if (!InternetWare.Config.Constants.IsTest)
                 {
-                    MessageManager.ShowMsgBox(str);
+                    if (ToolUtil.GetReturnErrCode(str) != 0)
+                    {
+                        MessageManager.ShowMsgBox(str);
+                    }
                 }
                 base.DialogResult = DialogResult.OK;
             }

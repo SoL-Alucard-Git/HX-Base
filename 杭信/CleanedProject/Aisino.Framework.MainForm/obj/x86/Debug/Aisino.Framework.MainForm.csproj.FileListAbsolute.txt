@@ -1,5 +1,0 @@
-E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Aisino.Framework.MainForm\obj\x86\Debug\Aisino.Framework.MainForm.csprojResolveAssemblyReference.cache
-E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Output\Bin\Aisino.Framework.MainForm.dll
-E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Output\Bin\Aisino.Framework.MainForm.pdb
-E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Aisino.Framework.MainForm\obj\x86\Debug\Aisino.Framework.MainForm.dll
-E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Aisino.Framework.MainForm\obj\x86\Debug\Aisino.Framework.MainForm.pdb

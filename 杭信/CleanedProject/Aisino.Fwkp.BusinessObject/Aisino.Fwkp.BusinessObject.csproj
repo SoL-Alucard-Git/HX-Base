@@ -72,5 +72,9 @@
       <Project>{413f30c7-87a1-4418-9234-be436af12264}</Project>
       <Name>Aisino.Fwkp.CommonLibrary</Name>
     </ProjectReference>
+    <ProjectReference Include="..\InternetWare.Config\InternetWare.Config.csproj">
+      <Project>{5d3420eb-4f77-42c5-8fb6-08b1ec6fdafb}</Project>
+      <Name>InternetWare.Config</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>

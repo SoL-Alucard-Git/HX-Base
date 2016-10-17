@@ -1155,7 +1155,12 @@
             {
                 TaxCard card = TaxCardFactory.CreateTaxCard();
                 int.Parse(Enum.Format(typeof(FPLX), fplx, "d"));
-                InvCodeNum currentInvCode = card.GetCurrentInvCode((InvoiceType)fplx);
+                //InvCodeNum currentInvCode = card.GetCurrentInvCode((InvoiceType)fplx);
+                InvCodeNum currentInvCode;
+                //逻辑修改 使用假数据
+                if (InternetWare.Config.Constants.IsTest)
+                    currentInvCode = new InvCodeNum() { InvTypeCode = "3100153320", InvNum = "88888888", EndNum = "99999999" };
+                else currentInvCode = card.GetCurrentInvCode((InvoiceType)fplx);
                 if ((currentInvCode.InvTypeCode == null) || (currentInvCode.InvNum == null))
                 {
                     this.code = card.ErrCode;

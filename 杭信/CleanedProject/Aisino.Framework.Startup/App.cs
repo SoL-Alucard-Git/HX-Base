@@ -21,6 +21,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using System.ServiceModel;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
@@ -35,7 +36,10 @@ internal static class App
     [STAThread]
     private static void Main(string[] args)
     {
-        Application.EnableVisualStyles();
+        if(args.Length >= 1 && args[0] == "test")
+        {
+            InternetWare.Config.Constants.IsTest = true;
+        }
         Application.SetCompatibleTextRenderingDefault(false);
        
         try
@@ -349,6 +353,11 @@ internal static class App
                                     new fpUpDownInit().init();
                                     Thread.Sleep(100);
                                     MessageHelper.MsgWait();
+                                }
+                                ServiceHost serviceHost = new ServiceHost(typeof(AisinoService));
+                                if (serviceHost.State != CommunicationState.Opened)
+                                {
+                                    serviceHost.Open();
                                 }
                                 Application.Run(mainForm);
                             }

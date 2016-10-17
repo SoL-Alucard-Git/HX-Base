@@ -1,8 +1,0 @@
-<Conditions>
-  <Condition>
-    <Name>发票复制选择</Name>
-    <Field>发票代码</Field>
-    <Operator>等于</Operator>
-    <Value ValueType="String">1101001140</Value>
-  </Condition>
-</Conditions>

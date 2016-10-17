@@ -1,17 +1,18 @@
 ﻿using Aisino.Fwkp.Print;
 using System.Drawing.Printing;
 using InternetWare.Lodging.Data;
+using System;
 
 namespace InternetWare.Util.Client
 {
     internal class DaYinClient : BaseClient
     {
-        private InternetWare.Lodging.Data.DaYinArgs _args;
-        public DaYinClient(InternetWare.Lodging.Data.DaYinArgs args)
+        private DaYinArgs _args;
+        public DaYinClient(DaYinArgs args)
         {
             _args = args;
         }
-        internal override ResultBase DoService()
+        internal override BaseResult DoService()
         {
             IPrint print = FPPrint.Create(_args.FPZL, _args.FPDM, _args.FPHM, true);
             print.Print();
@@ -25,7 +26,7 @@ namespace InternetWare.Util.Client
             //byte[] imgbyte = print.DaYinMethod(print.printSetUp_0, new PrintSetEventArgs(), false);
             ;
             byte[] imgbyte1 = print.PreviewMethod();
-            return new ResultBase(_args, imgbyte1, false);
+            return new DaYinResult(_args,Convert.ToBase64String(imgbyte1));
         }
     }
 }

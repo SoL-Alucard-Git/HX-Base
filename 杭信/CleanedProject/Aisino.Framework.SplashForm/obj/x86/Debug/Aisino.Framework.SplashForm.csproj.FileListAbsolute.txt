@@ -1,4 +1,0 @@
-E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Output\Bin\Aisino.Framework.SplashForm.dll
-E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Output\Bin\Aisino.Framework.SplashForm.pdb
-E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Aisino.Framework.SplashForm\obj\x86\Debug\Aisino.Framework.SplashForm.dll
-E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Aisino.Framework.SplashForm\obj\x86\Debug\Aisino.Framework.SplashForm.pdb

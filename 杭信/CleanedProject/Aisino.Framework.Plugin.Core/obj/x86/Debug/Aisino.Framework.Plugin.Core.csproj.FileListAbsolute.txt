@@ -1,5 +1,0 @@
-E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Output\Bin\Aisino.Framework.Plugin.Core.dll
-E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Output\Bin\Aisino.Framework.Plugin.Core.pdb
-E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Aisino.Framework.Plugin.Core\obj\x86\Debug\Aisino.Framework.Plugin.Core.csprojResolveAssemblyReference.cache
-E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Aisino.Framework.Plugin.Core\obj\x86\Debug\Aisino.Framework.Plugin.Core.dll
-E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Aisino.Framework.Plugin.Core\obj\x86\Debug\Aisino.Framework.Plugin.Core.pdb

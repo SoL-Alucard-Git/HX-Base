@@ -1,5 +1,0 @@
-E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Output\Bin\Aisino.Fwkp.CommonLibrary.dll
-E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Output\Bin\Aisino.Fwkp.CommonLibrary.pdb
-E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Aisino.Fwkp.CommonLibrary\obj\x86\Debug\Aisino.Fwkp.CommonLibrary.dll
-E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Aisino.Fwkp.CommonLibrary\obj\x86\Debug\Aisino.Fwkp.CommonLibrary.pdb
-E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Aisino.Fwkp.CommonLibrary\obj\x86\Debug\Aisino.Fwkp.CommonLibrary.csprojResolveAssemblyReference.cache

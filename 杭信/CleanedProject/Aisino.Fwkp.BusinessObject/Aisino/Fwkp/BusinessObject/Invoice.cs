@@ -1515,9 +1515,12 @@
                         this.method_0();
                         str = "7";
                         //逻辑修改：红字开票时去掉校验
-                        if (!this.CheckInvoice())
+                        if (!InternetWare.Config.Constants.IsTest)
                         {
-                            return null;
+                            if (!this.CheckInvoice())
+                            {
+                                return null;
+                            }
                         }
                         str = "8";
                         string str5 = "0000";
@@ -2462,6 +2465,8 @@
 
         public string GetSqSLv()
         {
+            if (InternetWare.Config.Constants.IsTest)
+                return "0,0.02,0.03,0.05,0.06,0.11,0.13,0.015,0.17;0,0.02,0.03,0.05,0.06,0.11,0.13,0.015,0.17";
             List<string> list = new List<string>();
             List<string> list2 = new List<string>();
             switch (this.fplx_0)
@@ -3236,11 +3241,14 @@
             {
                 hjJeNotHs = this.GetHjJeNotHs();
                 //逻辑修改：红字去掉校验
-                if (Class34.smethod_9(hjJeNotHs.StartsWith("-") ? hjJeNotHs.Substring(1) : hjJeNotHs, this.string_52.ToString(), false))
+                if (!InternetWare.Config.Constants.IsTest)
                 {
-                    this.Code = "A028";
-                    this.Params = new string[] { this.string_52, hjJeNotHs };
-                    return false;
+                    if (Class34.smethod_9(hjJeNotHs.StartsWith("-") ? hjJeNotHs.Substring(1) : hjJeNotHs, this.string_52.ToString(), false))
+                    {
+                        this.Code = "A028";
+                        this.Params = new string[] { this.string_52, hjJeNotHs };
+                        return false;
+                    }
                 }
             }
             string hjJeHs = "";
@@ -6317,8 +6325,6 @@
         {
             get
             {
-                //逻辑修改:红字填开购方申请是直接返回购方名称
-                //return "购方名称测试";
                 if (this.string_6 == string.Empty)
                 {
                     return "";

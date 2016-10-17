@@ -1,7 +1,0 @@
-E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\IntetnetWare.Lodging\obj\Debug\InternetWare.Form.LodgingWindow.resources
-E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\IntetnetWare.Lodging\obj\Debug\IntetnetWare.Lodging.csproj.GenerateResource.Cache
-E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Output\Bin\IntetnetWare.Lodging.dll
-E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Output\Bin\IntetnetWare.Lodging.pdb
-E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\IntetnetWare.Lodging\obj\Debug\IntetnetWare.Lodging.dll
-E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\IntetnetWare.Lodging\obj\Debug\IntetnetWare.Lodging.pdb
-E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\IntetnetWare.Lodging\obj\Debug\IntetnetWare.Lodging.csprojResolveAssemblyReference.cache

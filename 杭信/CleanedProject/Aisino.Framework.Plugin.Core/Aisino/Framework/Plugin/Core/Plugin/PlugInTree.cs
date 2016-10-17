@@ -184,7 +184,6 @@
                             if (function.Properties.TryGetValue("class", out str))
                             {
                                 flag2 = ((Interface2) plugIn_0.method_9(str)).imethod_3();
-
                             }
                             if (flag2)
                             {

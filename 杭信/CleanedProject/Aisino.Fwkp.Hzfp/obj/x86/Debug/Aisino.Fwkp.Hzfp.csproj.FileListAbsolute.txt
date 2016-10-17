@@ -1,5 +1,0 @@
-E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Aisino.Fwkp.Hzfp\obj\x86\Debug\Aisino.Fwkp.Hzfp.csprojResolveAssemblyReference.cache
-E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Output\Bin\Aisino.Fwkp.Hzfp.dll
-E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Output\Bin\Aisino.Fwkp.Hzfp.pdb
-E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Aisino.Fwkp.Hzfp\obj\x86\Debug\Aisino.Fwkp.Hzfp.dll
-E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Aisino.Fwkp.Hzfp\obj\x86\Debug\Aisino.Fwkp.Hzfp.pdb

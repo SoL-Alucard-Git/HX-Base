@@ -32,6 +32,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net40\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Windows.Forms" />
@@ -42,22 +46,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Args\ArgsType.cs" />
-    <Compile Include="Args\BaseArgs.cs" />
-    <Compile Include="Args\ChaXunArgs.cs" />
-    <Compile Include="Args\DaYinArgs.cs" />
-    <Compile Include="Args\FaPiaoTypes.cs" />
-    <Compile Include="Args\HZTKArgs.cs" />
-    <Compile Include="Args\WeiKaiArgs.cs" />
-    <Compile Include="Args\WeiKaiChaXunArgs.cs" />
-    <Compile Include="Args\ZuoFeiArgs.cs" />
-    <Compile Include="Args\ZuoFeiChaXunArgs.cs" />
     <Compile Include="DataService.cs" />
-    <Compile Include="Data\ErrorBase.cs" />
-    <Compile Include="Data\ResultBase.cs" />
-    <Compile Include="Data\WeiKaiChaXunResult.cs" />
-    <Compile Include="Data\CountableResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Aisino.Args\Aisino.Args.csproj">
+      <Project>{5cffba40-4b52-42e1-b170-ca1430e21e03}</Project>
+      <Name>Aisino.Args</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

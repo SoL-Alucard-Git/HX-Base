@@ -1,4 +1,0 @@
-E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Output\Bin\MainExecute.exe
-E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Output\Bin\MainExecute.pdb
-E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\MainExecute\obj\x86\Debug\MainExecute.exe
-E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\MainExecute\obj\x86\Debug\MainExecute.pdb

@@ -1,4 +1,5 @@
 ﻿using InternetWare.Lodging.Data;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -66,7 +67,8 @@ namespace InternetWare.Form
 
         private void ChaXun_BtnGo_Click(object sender, EventArgs e)
         {
-            ChaXun_DataGrid.DataSource = (DataService.DoService(GetChaXunArgs()) as ResultBase).Data as DataTable;
+            ChaXunResult res = JsonConvert.DeserializeObject<ChaXunResult>(Base64Encode(DataService.DoService(GetChaXunArgs())));
+            ChaXun_DataGrid.DataSource = res.DataTable;
         }
 
         private ChaXunArgs GetChaXunArgs()
@@ -82,6 +84,22 @@ namespace InternetWare.Form
                 WeiBaoSongChecked = ChaXun_checkWeiBaoSong.Checked,
                 YanQianShiBaiChecked = ChaXun_checkYanQianShiBai.Checked
             };
+        }
+
+        private void ChaXun_btnPrint_Click(object sender, EventArgs e)
+        {
+            if (ChaXun_DataGrid.SelectedRows.Count != 1)
+            {
+                MessageBox.Show("请选择并且只能选择一行数据进行打印");
+            }
+            else
+            {
+                DataGridViewRow row = ChaXun_DataGrid.SelectedRows[0];
+                DataRow dataRow = (row.DataBoundItem as DataRowView).Row;
+                DaYin_tbFpdm.Text = dataRow["fpdm"].ToString();
+                DaYin_tbFphm.Text = dataRow["fphm"].ToString();
+                tabControl.SelectedTab = DaYinPage;
+            }
         }
     }
 }

@@ -32,6 +32,7 @@
             this.ChaXunPage = new System.Windows.Forms.TabPage();
             this.ChaXun_DataGrid = new System.Windows.Forms.DataGridView();
             this.groupChaXun = new System.Windows.Forms.GroupBox();
+            this.ChaXun_btnPrint = new System.Windows.Forms.Button();
             this.ChaXun_grpMatchStr = new System.Windows.Forms.GroupBox();
             this.ChaXun_txtMathStr = new System.Windows.Forms.TextBox();
             this.ChaXun_checkYanQianShiBai = new System.Windows.Forms.CheckBox();
@@ -68,13 +69,14 @@
             this.HZByer_wdk = new System.Windows.Forms.Button();
             this.HZByer_ydk = new System.Windows.Forms.Button();
             this.DaYinPage = new System.Windows.Forms.TabPage();
+            this.DaYin_picBox = new System.Windows.Forms.PictureBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.DaYin_btnDoPrint = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.发票号码 = new System.Windows.Forms.Label();
             this.DaYin_tbFpdm = new System.Windows.Forms.TextBox();
             this.DaYin_tbFphm = new System.Windows.Forms.TextBox();
             this.DaYin_CmbPrinter = new System.Windows.Forms.ComboBox();
-            this.ZuoFei_gridView = new System.Windows.Forms.DataGridView();
             this.tabControl.SuspendLayout();
             this.ChaXunPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ChaXun_DataGrid)).BeginInit();
@@ -87,6 +89,7 @@
             this.WeiKaiPage.SuspendLayout();
             this.HongZiPage.SuspendLayout();
             this.DaYinPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DaYin_picBox)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl
@@ -104,7 +107,7 @@
             this.tabControl.Margin = new System.Windows.Forms.Padding(6);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(1366, 852);
+            this.tabControl.Size = new System.Drawing.Size(1583, 852);
             this.tabControl.TabIndex = 0;
             // 
             // ChaXunPage
@@ -115,7 +118,7 @@
             this.ChaXunPage.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ChaXunPage.Name = "ChaXunPage";
             this.ChaXunPage.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ChaXunPage.Size = new System.Drawing.Size(1358, 820);
+            this.ChaXunPage.Size = new System.Drawing.Size(1575, 820);
             this.ChaXunPage.TabIndex = 0;
             this.ChaXunPage.Text = "查询";
             this.ChaXunPage.UseVisualStyleBackColor = true;
@@ -130,13 +133,14 @@
             this.ChaXun_DataGrid.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ChaXun_DataGrid.Name = "ChaXun_DataGrid";
             this.ChaXun_DataGrid.RowTemplate.Height = 27;
-            this.ChaXun_DataGrid.Size = new System.Drawing.Size(1343, 642);
+            this.ChaXun_DataGrid.Size = new System.Drawing.Size(1560, 642);
             this.ChaXun_DataGrid.TabIndex = 1;
             // 
             // groupChaXun
             // 
             this.groupChaXun.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupChaXun.Controls.Add(this.ChaXun_btnPrint);
             this.groupChaXun.Controls.Add(this.ChaXun_grpMatchStr);
             this.groupChaXun.Controls.Add(this.ChaXun_checkYanQianShiBai);
             this.groupChaXun.Controls.Add(this.ChaXun_checkWeiBaoSong);
@@ -150,10 +154,21 @@
             this.groupChaXun.Margin = new System.Windows.Forms.Padding(0);
             this.groupChaXun.Name = "groupChaXun";
             this.groupChaXun.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupChaXun.Size = new System.Drawing.Size(1350, 172);
+            this.groupChaXun.Size = new System.Drawing.Size(1567, 172);
             this.groupChaXun.TabIndex = 0;
             this.groupChaXun.TabStop = false;
             this.groupChaXun.Text = "查询参数";
+            // 
+            // ChaXun_btnPrint
+            // 
+            this.ChaXun_btnPrint.Location = new System.Drawing.Point(1200, 49);
+            this.ChaXun_btnPrint.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ChaXun_btnPrint.Name = "ChaXun_btnPrint";
+            this.ChaXun_btnPrint.Size = new System.Drawing.Size(127, 58);
+            this.ChaXun_btnPrint.TabIndex = 9;
+            this.ChaXun_btnPrint.Text = "打印";
+            this.ChaXun_btnPrint.UseVisualStyleBackColor = true;
+            this.ChaXun_btnPrint.Click += new System.EventHandler(this.ChaXun_btnPrint_Click);
             // 
             // ChaXun_grpMatchStr
             // 
@@ -199,10 +214,10 @@
             // 
             // ChaXun_BtnGo
             // 
-            this.ChaXun_BtnGo.Location = new System.Drawing.Point(1100, 55);
+            this.ChaXun_BtnGo.Location = new System.Drawing.Point(1044, 49);
             this.ChaXun_BtnGo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ChaXun_BtnGo.Name = "ChaXun_BtnGo";
-            this.ChaXun_BtnGo.Size = new System.Drawing.Size(201, 61);
+            this.ChaXun_BtnGo.Size = new System.Drawing.Size(127, 58);
             this.ChaXun_BtnGo.TabIndex = 5;
             this.ChaXun_BtnGo.Text = "查询";
             this.ChaXun_BtnGo.UseVisualStyleBackColor = true;
@@ -510,6 +525,8 @@
             // 
             // DaYinPage
             // 
+            this.DaYinPage.Controls.Add(this.DaYin_picBox);
+            this.DaYinPage.Controls.Add(this.label8);
             this.DaYinPage.Controls.Add(this.DaYin_btnDoPrint);
             this.DaYinPage.Controls.Add(this.label3);
             this.DaYinPage.Controls.Add(this.发票号码);
@@ -523,9 +540,30 @@
             this.DaYinPage.Text = "打印";
             this.DaYinPage.UseVisualStyleBackColor = true;
             // 
+            // DaYin_picBox
+            // 
+            this.DaYin_picBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.DaYin_picBox.Location = new System.Drawing.Point(3, 98);
+            this.DaYin_picBox.Name = "DaYin_picBox";
+            this.DaYin_picBox.Size = new System.Drawing.Size(1355, 726);
+            this.DaYin_picBox.TabIndex = 7;
+            this.DaYin_picBox.TabStop = false;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.ForeColor = System.Drawing.Color.Red;
+            this.label8.Location = new System.Drawing.Point(9, 11);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(476, 18);
+            this.label8.TabIndex = 6;
+            this.label8.Text = "请输入发票号码、代码，或在查询功能中选中行后点击打印";
+            // 
             // DaYin_btnDoPrint
             // 
-            this.DaYin_btnDoPrint.Location = new System.Drawing.Point(603, 35);
+            this.DaYin_btnDoPrint.Location = new System.Drawing.Point(1020, 49);
             this.DaYin_btnDoPrint.Name = "DaYin_btnDoPrint";
             this.DaYin_btnDoPrint.Size = new System.Drawing.Size(75, 31);
             this.DaYin_btnDoPrint.TabIndex = 5;
@@ -536,7 +574,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(42, 136);
+            this.label3.Location = new System.Drawing.Point(517, 49);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(80, 18);
             this.label3.TabIndex = 4;
@@ -545,7 +583,7 @@
             // 发票号码
             // 
             this.发票号码.AutoSize = true;
-            this.发票号码.Location = new System.Drawing.Point(39, 91);
+            this.发票号码.Location = new System.Drawing.Point(16, 42);
             this.发票号码.Name = "发票号码";
             this.发票号码.Size = new System.Drawing.Size(80, 18);
             this.发票号码.TabIndex = 3;
@@ -553,15 +591,15 @@
             // 
             // DaYin_tbFpdm
             // 
-            this.DaYin_tbFpdm.Location = new System.Drawing.Point(145, 127);
+            this.DaYin_tbFpdm.Location = new System.Drawing.Point(620, 49);
             this.DaYin_tbFpdm.Name = "DaYin_tbFpdm";
-            this.DaYin_tbFpdm.Size = new System.Drawing.Size(319, 28);
+            this.DaYin_tbFpdm.Size = new System.Drawing.Size(331, 28);
             this.DaYin_tbFpdm.TabIndex = 2;
             this.DaYin_tbFpdm.Text = "3100153320";
             // 
             // DaYin_tbFphm
             // 
-            this.DaYin_tbFphm.Location = new System.Drawing.Point(145, 81);
+            this.DaYin_tbFphm.Location = new System.Drawing.Point(122, 39);
             this.DaYin_tbFphm.Name = "DaYin_tbFphm";
             this.DaYin_tbFphm.Size = new System.Drawing.Size(319, 28);
             this.DaYin_tbFphm.TabIndex = 1;
@@ -570,29 +608,16 @@
             // DaYin_CmbPrinter
             // 
             this.DaYin_CmbPrinter.FormattingEnabled = true;
-            this.DaYin_CmbPrinter.Location = new System.Drawing.Point(33, 35);
+            this.DaYin_CmbPrinter.Location = new System.Drawing.Point(520, 11);
             this.DaYin_CmbPrinter.Name = "DaYin_CmbPrinter";
-            this.DaYin_CmbPrinter.Size = new System.Drawing.Size(344, 26);
+            this.DaYin_CmbPrinter.Size = new System.Drawing.Size(431, 26);
             this.DaYin_CmbPrinter.TabIndex = 0;
-            // 
-            // 
-            // ZuoFei_gridView
-            // 
-            this.ZuoFei_gridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ZuoFei_gridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ZuoFei_gridView.Location = new System.Drawing.Point(4, 130);
-            this.ZuoFei_gridView.Name = "ZuoFei_gridView";
-            this.ZuoFei_gridView.RowTemplate.Height = 30;
-            this.ZuoFei_gridView.Size = new System.Drawing.Size(1351, 687);
-            this.ZuoFei_gridView.TabIndex = 1;
             // 
             // LodgingWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1362, 850);
+            this.ClientSize = new System.Drawing.Size(1579, 850);
             this.Controls.Add(this.tabControl);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "LodgingWindow";
@@ -616,6 +641,7 @@
             this.HongZiPage.ResumeLayout(false);
             this.DaYinPage.ResumeLayout(false);
             this.DaYinPage.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DaYin_picBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -668,5 +694,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox WeiKai_cmbFpType;
         private System.Windows.Forms.Button WeiKai_btn作废未开;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button ChaXun_btnPrint;
+        private System.Windows.Forms.PictureBox DaYin_picBox;
     }
 }

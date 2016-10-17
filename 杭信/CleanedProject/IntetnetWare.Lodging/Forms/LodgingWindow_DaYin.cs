@@ -1,4 +1,5 @@
 ﻿using InternetWare.Lodging.Data;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -27,13 +28,15 @@ namespace InternetWare.Form
 
 
         #endregion
+
         private void DaYin_btnDoPrint_Click(object sender, EventArgs e)
         {
-            DaYinArgs args = new DaYinArgs() { FPZL = "c", FPHM =Convert.ToInt32(DaYin_tbFphm.Text), FPDM = DaYin_tbFpdm.Text, Printer = DaYin_CmbPrinter.SelectedValue.ToString() };
-            ResultBase rb=(ResultBase)DataService.DoService(args);
-            MemoryStream ms = new MemoryStream((byte[])rb.Data);
+            DaYinArgs args = new DaYinArgs() { FPZL = "c", FPHM = Convert.ToInt32(DaYin_tbFphm.Text), FPDM = DaYin_tbFpdm.Text, Printer = DaYin_CmbPrinter.SelectedValue.ToString() };
+            DaYinResult rb = JsonConvert.DeserializeObject<DaYinResult>(Base64Encode(DataService.DoService(args)));
+            MemoryStream ms = new MemoryStream(Convert.FromBase64String(rb.ImgBase64Str));
             Image bm = Image.FromStream(ms);
-            bm.Save($"C:/因特睿/因特睿解决方案/img{DateTime.Now.Ticks}.bmp",bm.RawFormat);
+            //bm.Save($"C:/因特睿/因特睿解决方案/img{DateTime.Now.Ticks}.bmp",bm.RawFormat);
+            DaYin_picBox.Image = bm;
         }
     }
 }

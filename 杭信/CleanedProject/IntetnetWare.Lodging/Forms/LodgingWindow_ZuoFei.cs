@@ -1,4 +1,5 @@
 ﻿using InternetWare.Lodging.Data;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -8,18 +9,18 @@ namespace InternetWare.Form
 {
     public partial class LodgingWindow
     {
-
         private void ZuoFei_btnSearch_Click(object sender, EventArgs e)
         {
-            ZuoFei_gridView.DataSource = (DataService.DoService(GetZuoFeiChaXunArgs()) as ResultBase).Data as DataTable;
+            ZuoFei_gridView.DataSource = JsonConvert.DeserializeObject<ZFCXResult>(Base64Encode(DataService.DoService(GetZuoFeiChaXunArgs()))).DataTable as DataTable;
         }
 
         private ZuoFeiChaXunArgs GetZuoFeiChaXunArgs()
         {
-            ZuoFeiChaXunArgs args = new ZuoFeiChaXunArgs();
-            args.MathStr = ZuoFei_txtMatch.Text;
-            args.YanQianShiBaiChecked = ZuoFei_checkYanQianShiBai.Checked;
-            return args;
+            return new ZuoFeiChaXunArgs()
+            {
+                MathStr = ZuoFei_txtMatch.Text,
+                YanQianShiBaiChecked = ZuoFei_checkYanQianShiBai.Checked
+            };
         }
 
         private void ZuoFei_btnDoService_Click(object sender, EventArgs e)
@@ -29,7 +30,8 @@ namespace InternetWare.Form
             {
                 list.Add(row);
             }
-            CountableResult res = DataService.DoService(new ZuoFeiArgs() { list = list }) as CountableResult;
+            string rtnStr = Base64Encode(DataService.DoService(new ZuoFeiArgs() { DataRowList = list }));
+            CountableResult res = JsonConvert.DeserializeObject<CountableResult>(rtnStr);
             MessageBox.Show($"作废{res.Total}条，成功{res.Succeed}条，失败{res.Failed}条。错误信息:{res.ErrorInfo.ErrorDescription}");
         }
     }

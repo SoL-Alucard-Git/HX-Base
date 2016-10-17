@@ -1,6 +1,0 @@
-E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Output\Automation\InvAutomation.exe.config
-E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Output\Automation\InvAutomation.exe
-E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Output\Automation\InvAutomation.pdb
-E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\InvAutomation\obj\x86\Debug\InvAutomation.csprojResolveAssemblyReference.cache
-E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\InvAutomation\obj\x86\Debug\InvAutomation.exe
-E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\InvAutomation\obj\x86\Debug\InvAutomation.pdb

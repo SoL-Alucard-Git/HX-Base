@@ -227,9 +227,10 @@
         public string GetTaxCardCurrentFpNum(ref InvCodeNum invCodeNum)
         {
             _InvoiceType invoiceType = this.GetInvoiceType(this.FaPiaoType);
-            //逻辑修改
-            invCodeNum = base.TaxCardInstance.GetCurrentInvCode(invoiceType.TaxCardfpzl);
-            invCodeNum = new InvCodeNum() { InvTypeCode = "32003100", InvNum = "88888888", EndNum = "99999999" };
+            //逻辑修改 本地测试使用假数据
+            if(InternetWare.Config.Constants.IsTest)
+                invCodeNum = new InvCodeNum() { InvTypeCode = "3100153320", InvNum = "88888888", EndNum = "99999999" };
+            else invCodeNum = base.TaxCardInstance.GetCurrentInvCode(invoiceType.TaxCardfpzl);
             if ((string.IsNullOrEmpty(invCodeNum.InvNum) || string.IsNullOrEmpty(invCodeNum.InvTypeCode)) || (base.TaxCardInstance.RetCode != 0))
             {
                 FormMain.CallUpload();
@@ -247,7 +248,7 @@
         public int GetTaxCardFPNum(string TypeCode, int InvType, int startNum)
         {
             //逻辑修改
-            return 100;
+            if(InternetWare.Config.Constants.IsTest) return 100;
 
             List<InvVolumeApp> invStock = base.TaxCardInstance.GetInvStock();
             if (invStock != null)

@@ -1,9 +1,9 @@
-﻿using System;
+﻿using InternetWare.Lodging.Data;
 
 namespace InternetWare
 {
     public interface BaseDataInterface
     {
-        object DoService(EventArgs args);
+        object DoService(BaseArgs args);
     }
 }

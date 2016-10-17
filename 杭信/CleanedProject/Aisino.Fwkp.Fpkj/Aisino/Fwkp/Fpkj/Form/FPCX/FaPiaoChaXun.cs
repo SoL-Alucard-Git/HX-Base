@@ -2218,10 +2218,16 @@
             catch (Exception exception)
             {
                 this.loger.Error(exception.ToString());
-                //逻辑修改 我们并不需要这一报错内容
+                //逻辑修改 
+                if (InternetWare.Config.Constants.IsTest)
+                {
+                    return DateTime.Now.ToString("yyyyMM");
+                }
+                else
+                {
+                    return base.TaxCardInstance.CardEffectDate;
+                }
                 //MessageManager.ShowMsgBox(exception.ToString());
-                //return base.TaxCardInstance.CardEffectDate;
-                return DateTime.Now.ToString("yyyyMM");
             }
         }
 

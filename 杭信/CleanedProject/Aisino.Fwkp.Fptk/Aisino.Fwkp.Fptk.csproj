@@ -208,5 +208,9 @@
       <Project>{1e1ed23b-b53d-4fbc-9677-cff0e926080f}</Project>
       <Name>Aisino.Fwkp.Print</Name>
     </ProjectReference>
+    <ProjectReference Include="..\InternetWare.Config\InternetWare.Config.csproj">
+      <Project>{5d3420eb-4f77-42c5-8fb6-08b1ec6fdafb}</Project>
+      <Name>InternetWare.Config</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>
