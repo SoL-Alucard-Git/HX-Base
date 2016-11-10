@@ -11,7 +11,7 @@
         protected ContextMenuStrip _menu;
         public string FormTagFlag;
         private IContainer icontainer_1;
-        protected TaxCard TaxCardInstance;
+        public TaxCard TaxCardInstance;
 
         public BaseForm()
         {

@@ -2,4 +2,3 @@ E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Output\Bin\ExecSecurit
 E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\Output\Bin\ExecSecurity.pdb
 E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\ExecSecurity\obj\x86\Debug\ExecSecurity.exe
 E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\ExecSecurity\obj\x86\Debug\ExecSecurity.pdb
-E:\Code\因特瑞SVN\CleanedProject\杭信\CleanedProject\ExecSecurity\obj\x86\Debug\ExecSecurity.csprojResolveAssemblyReference.cache

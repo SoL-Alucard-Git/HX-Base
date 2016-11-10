@@ -45,18 +45,38 @@
     <Compile Include="Client\BaseClient.cs" />
     <Compile Include="Client\ChaXunClient.cs" />
     <Compile Include="Client\DaYinClient.cs" />
+    <Compile Include="Client\WeiKaiChaXunClient.cs" />
+    <Compile Include="Client\WeiKaiClient.cs" />
+    <Compile Include="Client\ZuoFeiChaXunClient.cs" />
     <Compile Include="Client\ZuoFeiClient.cs" />
     <Compile Include="DataClient.cs" />
+    <Compile Include="Client\HZTKClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Aisino.Framework.Dao\Aisino.Framework.Dao.csproj">
+      <Project>{ef96d157-73ba-410c-a2bd-698b4986fd18}</Project>
+      <Name>Aisino.Framework.Dao</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Aisino.Framework.Plugin.Core\Aisino.Framework.Plugin.Core.csproj">
       <Project>{B65BB74A-99D3-4854-8151-A6BD4D4A489A}</Project>
       <Name>Aisino.Framework.Plugin.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Aisino.FTaxBase\Aisino.FTaxBase.csproj">
+      <Project>{A9935674-60E2-44E1-8785-D391586D31F8}</Project>
+      <Name>Aisino.FTaxBase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Aisino.Fwkp.BusinessObject\Aisino.Fwkp.BusinessObject.csproj">
+      <Project>{75c5c3bc-cb11-4429-b042-46f1baab2fff}</Project>
+      <Name>Aisino.Fwkp.BusinessObject</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Aisino.Fwkp.Fpkj\Aisino.Fwkp.Fpkj.csproj">
       <Project>{bda7dc4f-afd7-4286-b925-997570604ef1}</Project>
       <Name>Aisino.Fwkp.Fpkj</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Aisino.Fwkp.Hzfp\Aisino.Fwkp.Hzfp.csproj">
+      <Project>{def9b3aa-bfbc-4eae-aafd-efb020d72a2f}</Project>
+      <Name>Aisino.Fwkp.Hzfp</Name>
     </ProjectReference>
     <ProjectReference Include="..\Aisino.Fwkp.Print\Aisino.Fwkp.Print.csproj">
       <Project>{1e1ed23b-b53d-4fbc-9677-cff0e926080f}</Project>

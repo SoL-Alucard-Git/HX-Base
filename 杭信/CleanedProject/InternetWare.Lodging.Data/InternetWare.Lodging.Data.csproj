@@ -46,7 +46,12 @@
     <Compile Include="Args\BaseArgs.cs" />
     <Compile Include="Args\ChaXunArgs.cs" />
     <Compile Include="Args\DaYinArgs.cs" />
+    <Compile Include="Args\FaPiaoTypes.cs" />
+    <Compile Include="Args\HZTKArgs.cs" />
+    <Compile Include="Args\WeiKaiArgs.cs" />
+    <Compile Include="Args\WeiKaiChaXunArgs.cs" />
     <Compile Include="Args\ZuoFeiArgs.cs" />
+    <Compile Include="Args\ZuoFeiChaXunArgs.cs" />
     <Compile Include="DataService.cs" />
     <Compile Include="Data\ErrorBase.cs" />
     <Compile Include="Data\ResultBase.cs" />

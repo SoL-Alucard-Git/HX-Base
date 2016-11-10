@@ -21,7 +21,7 @@
                 if (form != null)
                 {
                     form.Close();
-                    kai.FaPiaoType = 0;
+                    kai.FaPiaoType = BusinessObject.FPLX.ZYFP;
                     if (kai.SetValue())
                     {
                         kai.ShowDialog();

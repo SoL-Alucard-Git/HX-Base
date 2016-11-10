@@ -51,7 +51,7 @@
         private bool hzfw = true;
         public bool InitSqdMxType_Edit;
         public bool InitSqdMxType_Read;
-        private Invoice inv;
+        public Invoice inv;
         public static bool isCes = (TaxCardFactory.CreateTaxCard().GetExtandParams("CEBTVisble") == "1");
         public static bool isFLBM = ((TaxCardFactory.CreateTaxCard().GetExtandParams("FLBMFlag") == "FLBM") && lpFLBM);
         private AisinoLBL lab_date;
@@ -2415,6 +2415,66 @@
             }
         }
 
+        public void spmcbt(object[] spxx)
+        {
+            double num;
+            string str = "";
+            if ((this.inv.GetSpxxs().Count > 0) && ((int)this.inv.Zyfplx == 1))
+            {
+                num = double.Parse(this.inv.SLv);
+            }
+            else if (((this.inv.SLv.Length == 0) && (this.inv.GetSpxxs().Count > 0)) || ((this.inv.GetSpxxs().Count == 1) && (this.blueje <= -1M)))
+            {
+                num = -1.0;
+            }
+            else
+            {
+                num = double.Parse(this.inv.SLv);
+            }
+            object[] objArray = null;
+            if ((num == 0.05) && ((int)this.inv.Zyfplx == 1))
+            {
+                objArray = new object[] { str, num, 0, 0, "", "HYSY" };
+            }
+            else if ((int)this.inv.Zyfplx == 10)
+            {
+                objArray = new object[] { str, num, 0, 0, "", "OPF" };
+            }
+            else
+            {
+                objArray = new object[] { str, -1.0, 0, 0, "", "" };
+            }
+            if (isFLBM)
+            {
+                if (spxx[11].ToString().Trim() == "")
+                {
+                    objArray = new object[] { spxx[1].ToString(), "", spxx[0].ToString(), true };
+                    spxx = ServiceFactory.InvokePubService("Aisino.Fwkp.Bmgl.BMGLAddSP", objArray);
+                }
+                if (spxx == null)
+                {
+                    this.spmcBt.Text = "";
+                    return;
+                }
+                bool flag = this.isXT(spxx[1].ToString());
+                object[] objArray3 = ServiceFactory.InvokePubService("Aisino.Fwkp.Bmgl.CanUseThisSPFLBM", new object[] { spxx[11].ToString(), true, flag });
+                if ((objArray3 != null) && !bool.Parse(objArray3[0].ToString()))
+                {
+                    this.spmcBt.Text = "";
+                    MessageManager.ShowMsgBox("INP-242207", new string[] { "商品", "\r\n可能原因：\r\n1、当前企业没有所选税收分类编码授权。\r\n2、当前版本所选税收分类编码可用状态为不可用。" });
+                    return;
+                }
+            }
+            if (((spxx[3].ToString() == "0") || (spxx[3].ToString() == "0.0")) || ((spxx[3].ToString() == "0.00") || (spxx[3].ToString() == "0%")))
+            {
+                MessageManager.ShowMsgBox("INP-431380");
+            }
+            else
+            {
+                this.SetSpxx(spxx);
+            }
+        }
+
         protected void SetDataGridReadOnlyColumns(string columns)
         {
             if (!string.IsNullOrEmpty(columns))
@@ -3363,7 +3423,7 @@
             this.CommitEditGrid();
             this.lab_No.Focus();
         }
-
+        
         private void tool_daying_Click(object sender, EventArgs e)
         {
             if (this.Radio_BuyerSQ.Checked)
@@ -3626,6 +3686,220 @@
                     }
                 }
             }
+        }
+
+        public void dayingbt()
+        {
+            if (!this.inv.IsGfSqdFp)
+            {
+                //if (!this.hysy_flag)
+                //{
+                //    if (Math.Abs(Convert.ToDouble(this.inv.GetHjJeNotHs())) > base.TaxCardInstance.GetInvLimit(0))
+                //    {
+                //        MessageManager.ShowMsgBox("INP-431316");
+                //        return;
+                //    }
+                //}
+                //else if (Math.Abs(Convert.ToDouble(this.inv.GetHjJeNotHs())) > base.TaxCardInstance.GetInvLimit(0))
+                //{
+                //    MessageManager.ShowMsgBox("INP-431316");
+                //    return;
+                //}
+            }
+            else if (this.hysy_flag)
+            {
+                if (Math.Abs(Convert.ToDouble(this.inv.GetHjJeNotHs())) > 99999999.99)
+                {
+                    MessageManager.ShowMsgBox("INP-431316");
+                    return;
+                }
+            }
+            else if (Math.Abs(Convert.ToDouble(this.inv.GetHjJeNotHs())) > 99999999.99)
+            {
+                MessageManager.ShowMsgBox("INP-431316");
+                return;
+            }
+            if (this.Radio_BuyerSQ.Checked)
+            {
+                string str = this.inv.Xfsh.Trim();
+                string str2 = new InvoiceHandler().CheckTaxCode(str, 0);
+                if (!str2.Equals("0000"))
+                {
+                    MessageManager.ShowMsgBox(str2, new string[] { "销售方纳税人识别号" });
+                    return;
+                }
+            }            
+            if (this.SqdMxType != InitSqdMxType.Read)
+            {
+                this.inv.Bz = ("");
+                Fpxx fpData = this.inv.GetFpData();
+                if (fpData == null)
+                {
+                    MessageManager.ShowMsgBox(this.inv.GetCode(), this.inv.Params);
+                    return;
+                }
+                if (!this.inv.CheckFpData())
+                {
+                    MessageManager.ShowMsgBox(this.inv.GetCode(), this.inv.Params);
+                    return;
+                }
+                double num = 0.0;
+                if (!string.IsNullOrEmpty(fpData.sLv))
+                {
+                    num = Convert.ToDouble(fpData.sLv);
+                }
+                else
+                {
+                    num = -1.0;
+                }
+                HZFP_SQD model = new HZFP_SQD
+                {
+                    SQDH = this.sqdh,
+                    FPDM = this.lab_fpdm.Text
+                };
+                if (this.lab_fphm.Text.Trim() != "")
+                {
+                    model.FPHM = Convert.ToInt32(this.lab_fphm.Text);
+                }
+                if (this.SqdMxType == InitSqdMxType.Add)
+                {
+                    model.FPZL = (this.lab_fpzl.Text == "增值税专用发票") ? "s" : "c";
+                }
+                model.KPJH = base.TaxCardInstance.Machine;
+                if (this.SqdMxType == InitSqdMxType.Add)
+                {
+                    model.REQNSRSBH = base.TaxCardInstance.TaxCode;
+                    string invControlNum = base.TaxCardInstance.GetInvControlNum();
+                    model.XXBBH = "";
+                    model.XXBZT = "TZD0500";
+                    model.XXBMS = "未上传";
+                    model.JSPH = invControlNum.Trim();
+                }
+                if (this.SqdMxType == InitSqdMxType.Edit)
+                {
+                    model.XXBBH = "";
+                    model.XXBZT = "TZD0500";
+                    model.XXBMS = "未上传";
+                }
+                DateTime time = Convert.ToDateTime(this.lab_date.Text);
+                model.TKRQ = time;
+                model.SSYF = Convert.ToInt32(model.TKRQ.ToString("yyyyMM"));
+                string str4 = "Aisino.Fwkp.Invoice" + fpData.fpdm + fpData.fphm;
+                byte[] bytes = Encoding.Unicode.GetBytes(MD5_Crypt.GetHashStr(str4));
+                byte[] destinationArray = new byte[0x20];
+                Array.Copy(bytes, 0, destinationArray, 0, 0x20);
+                byte[] buffer3 = new byte[0x10];
+                Array.Copy(bytes, 0x20, buffer3, 0, 0x10);
+                byte[] buffer4 = AES_Crypt.Decrypt(Convert.FromBase64String(fpData.gfmc), destinationArray, buffer3, null);
+                model.GFMC = (buffer4 == null) ? fpData.gfmc : Encoding.Unicode.GetString(buffer4);
+                model.GFSH = fpData.gfsh;
+                model.XFMC = fpData.xfmc;
+                model.XFSH = fpData.xfsh;
+                model.HJJE = Convert.ToDecimal(fpData.je);
+                model.HJSE = Convert.ToDecimal(fpData.se);
+                model.SL = num;
+                model.JBR = UserInfo.Yhmc;
+                string selectReason = this.GetSelectReason();
+                if (this.rad_hzfw_y.Checked)
+                {
+                    selectReason = selectReason + "1";
+                }
+                else
+                {
+                    selectReason = selectReason + "0";
+                }
+                model.SQXZ = selectReason;
+                model.SQLY = this.txt_sqly.Text.Trim();
+                model.SQRDH = this.txt_lxdh.Text.Trim();
+                model.BBBZ = "0";
+                model.YYSBZ = this.GetYYSBZ(fpData);
+                if (isFLBM && (this.codeInfoList.Count > 0))
+                {
+                    model.FLBMBBBH = new SPFLService().GetMaxBMBBBH();
+                }
+                else if (FLBMqy && (lpbmbbbh != ""))
+                {
+                    model.FLBMBBBH = new SPFLService().GetMaxBMBBBH();
+                }
+                else
+                {
+                    model.FLBMBBBH = "";
+                }
+                if (this.SqdMxType == InitSqdMxType.Add)
+                {
+                    this.sqdDal.Insert(model);
+                }
+                else if (this.SqdMxType == InitSqdMxType.Edit)
+                {
+                    this.sqdDal.Updata(model);
+                }
+                this.sqdMxDal.Delete(this.sqdh);
+                List<HZFP_SQD_MX> models = new List<HZFP_SQD_MX>();
+                for (int i = 0; i < fpData.Mxxx.Count; i++)
+                {
+                    Dictionary<SPXX, string> dictionary = fpData.Mxxx[i];
+                    HZFP_SQD_MX item = new HZFP_SQD_MX
+                    {
+                        SQDH = model.SQDH,
+                        MXXH = i,
+                        JE = Convert.ToDecimal(dictionary[(SPXX)7])
+                    };
+                    if (dictionary[(SPXX)8] != "")
+                    {
+                        item.SLV = Convert.ToDouble(dictionary[(SPXX)8]);
+                    }
+                    else
+                    {
+                        item.SLV = -1.0;
+                    }
+                    if (dictionary[(SPXX)9] != "")
+                    {
+                        item.SE = Convert.ToDecimal(dictionary[(SPXX)9]);
+                    }
+                    item.SPMC = dictionary[(SPXX)0];
+                    item.SPBH = dictionary[(SPXX)1];
+                    item.SPSM = dictionary[(SPXX)2];
+                    item.GGXH = dictionary[(SPXX)3];
+                    item.JLDW = dictionary[(SPXX)4];
+                    if (dictionary[(SPXX)6] != "")
+                    {
+                        item.SL = Convert.ToDouble(dictionary[(SPXX)6]);
+                    }
+                    if (dictionary[(SPXX)5] != "")
+                    {
+                        item.DJ = Convert.ToDecimal(dictionary[(SPXX)5]);
+                    }
+                    item.HSJBZ = dictionary[(SPXX)11] != "0";
+                    item.FPHXZ = Convert.ToInt32(dictionary[(SPXX)10]);
+                    item.XTHASH = dictionary[(SPXX)14];
+                    if (isFLBM && (this.codeInfoList.Count > 0))
+                    {
+                        string flbm = this.codeInfoList[i].flbm;
+                        if ((flbm != null) && (flbm != ""))
+                        {
+                            while (flbm.Length < 0x13)
+                            {
+                                flbm = flbm + "0";
+                            }
+                        }
+                        item.FLBM = flbm;
+                        item.QYSPBM = this.codeInfoList[i].spbm;
+                        item.SFXSYHZC = this.codeInfoList[i].sfxsyhzc;
+                        if (item.SFXSYHZC == "1")
+                        {
+                            item.YHZCMC = this.codeInfoList[i].yhzcmc;
+                        }
+                        else
+                        {
+                            item.YHZCMC = "";
+                        }
+                        item.LSLBS = this.codeInfoList[i].lslbs;
+                    }
+                    models.Add(item);
+                }
+                this.sqdMxDal.Insert(models);
+            }
+            this.lp_hysy = 0;
         }
 
         private void tool_DeleteRow_Click(object sender, EventArgs e)

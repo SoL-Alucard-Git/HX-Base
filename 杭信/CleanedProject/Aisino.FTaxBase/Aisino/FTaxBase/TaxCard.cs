@@ -803,12 +803,12 @@
                 }
                 if (this.ctaxCardType_0 >= CTaxCardType.tctCommonInv)
                 {
-                    inList.Add(((int) this.invoiceType_0).ToString());
+                    inList.Add(((int)this.invoiceType_0).ToString());
                 }
                 byte[] buffer2 = this.method_64(5, 0, inList);
                 if ((this.SQInfo.DHYBZ != "") && ((this.SQInfo.DHYBZ == "Z") || (this.SQInfo.DHYBZ == "Y")))
                 {
-                    buffer2[0x3e8] = Convert.ToByte((int) invoiceType_1);
+                    buffer2[0x3e8] = Convert.ToByte((int)invoiceType_1);
                 }
                 this.int_4 = this.method_63(buffer2, this.byte_0);
                 if (this.RetCode == 0)
@@ -887,6 +887,7 @@
             Class20.smethod_1(string.Format("获取当前代码号码执行总时间========================================", totalMilliseconds.ToString()));
             return num;
         }
+
 
         public string GetCurrentInvCode(InvoiceType invoiceType_1, int int_7, out InvCodeNum invCodeNum_1)
         {

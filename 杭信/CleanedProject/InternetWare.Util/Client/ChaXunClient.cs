@@ -31,8 +31,8 @@ namespace InternetWare.Util.Client
             dict.Add("GFMC", $"%{_args.MathStr}%");
             dict.Add("GFSH", $"%{_args.MathStr}%");
             dict.Add("FPHM", string.IsNullOrEmpty(_args.MathStr) ?  $"%请输入检索关键字...%" : $"%{_args.MathStr}%");
-            DataTable table = form.xxfpChaXunBll.SelectPage(1, 30, 0, dict, 1, DateTime.Now, -1, 1).Data;
+            DataTable table = form.xxfpChaXunBll.SelectPage(1, 30, 0, dict, 1, DateTime.Now, -1, 1)?.Data;
             return new ResultBase(_args, table, false);
         }
     }
-}
+} 

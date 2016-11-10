@@ -1514,6 +1514,7 @@
                         str = "6";
                         this.method_0();
                         str = "7";
+                        //逻辑修改：红字开票时去掉校验
                         if (!this.CheckInvoice())
                         {
                             return null;
@@ -3234,6 +3235,7 @@
             if (!bool_3 && (((this.fplx_0 == FPLX.ZYFP) && (this.zyfp_LX_0 != ZYFP_LX.HYSY)) || (((this.fplx_0 == FPLX.PTFP) || (this.fplx_0 == FPLX.DZFP)) || (this.fplx_0 == FPLX.HYFP))))
             {
                 hjJeNotHs = this.GetHjJeNotHs();
+                //逻辑修改：红字去掉校验
                 if (Class34.smethod_9(hjJeNotHs.StartsWith("-") ? hjJeNotHs.Substring(1) : hjJeNotHs, this.string_52.ToString(), false))
                 {
                     this.Code = "A028";
@@ -6315,6 +6317,8 @@
         {
             get
             {
+                //逻辑修改:红字填开购方申请是直接返回购方名称
+                //return "购方名称测试";
                 if (this.string_6 == string.Empty)
                 {
                     return "";

@@ -44,7 +44,15 @@
             this.ChaXun_CmbYear = new System.Windows.Forms.ComboBox();
             this.TianKaiPage = new System.Windows.Forms.TabPage();
             this.ZuoFeiPage = new System.Windows.Forms.TabPage();
+            this.ZuoFei_paramGroup = new System.Windows.Forms.GroupBox();
+            this.ZuoFei_grpSearch = new System.Windows.Forms.GroupBox();
+            this.ZuoFei_txtMatch = new System.Windows.Forms.TextBox();
+            this.ZuoFei_btnDoService = new System.Windows.Forms.Button();
+            this.ZuoFei_btnSearch = new System.Windows.Forms.Button();
+            this.ZuoFei_checkYanQianShiBai = new System.Windows.Forms.CheckBox();
             this.HongZiPage = new System.Windows.Forms.TabPage();
+            this.HZByer_wdk = new System.Windows.Forms.Button();
+            this.HZByer_ydk = new System.Windows.Forms.Button();
             this.DaYinPage = new System.Windows.Forms.TabPage();
             this.DaYin_btnDoPrint = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
@@ -52,12 +60,19 @@
             this.DaYin_tbFpdm = new System.Windows.Forms.TextBox();
             this.DaYin_tbFphm = new System.Windows.Forms.TextBox();
             this.DaYin_CmbPrinter = new System.Windows.Forms.ComboBox();
+            this.HZSells = new System.Windows.Forms.Button();
+            this.ZuoFei_gridView = new System.Windows.Forms.DataGridView();
             this.tabControl.SuspendLayout();
             this.ChaXunPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ChaXun_DataGrid)).BeginInit();
             this.groupChaXun.SuspendLayout();
             this.ChaXun_grpMatchStr.SuspendLayout();
+            this.HongZiPage.SuspendLayout();
+            this.ZuoFeiPage.SuspendLayout();
+            this.ZuoFei_paramGroup.SuspendLayout();
+            this.ZuoFei_grpSearch.SuspendLayout();
             this.DaYinPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ZuoFei_gridView)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl
@@ -92,6 +107,9 @@
             // 
             // ChaXun_DataGrid
             // 
+            this.ChaXun_DataGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.ChaXun_DataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ChaXun_DataGrid.Location = new System.Drawing.Point(10, 175);
             this.ChaXun_DataGrid.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -233,6 +251,8 @@
             // 
             // ZuoFeiPage
             // 
+            this.ZuoFeiPage.Controls.Add(this.ZuoFei_gridView);
+            this.ZuoFeiPage.Controls.Add(this.ZuoFei_paramGroup);
             this.ZuoFeiPage.Location = new System.Drawing.Point(4, 28);
             this.ZuoFeiPage.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ZuoFeiPage.Name = "ZuoFeiPage";
@@ -241,8 +261,76 @@
             this.ZuoFeiPage.Text = "作废";
             this.ZuoFeiPage.UseVisualStyleBackColor = true;
             // 
+            // ZuoFei_paramGroup
+            // 
+            this.ZuoFei_paramGroup.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ZuoFei_paramGroup.Controls.Add(this.ZuoFei_grpSearch);
+            this.ZuoFei_paramGroup.Controls.Add(this.ZuoFei_btnDoService);
+            this.ZuoFei_paramGroup.Controls.Add(this.ZuoFei_btnSearch);
+            this.ZuoFei_paramGroup.Controls.Add(this.ZuoFei_checkYanQianShiBai);
+            this.ZuoFei_paramGroup.Location = new System.Drawing.Point(0, 3);
+            this.ZuoFei_paramGroup.Name = "ZuoFei_paramGroup";
+            this.ZuoFei_paramGroup.Size = new System.Drawing.Size(1355, 120);
+            this.ZuoFei_paramGroup.TabIndex = 0;
+            this.ZuoFei_paramGroup.TabStop = false;
+            this.ZuoFei_paramGroup.Text = "查询参数";
+            // 
+            // ZuoFei_grpSearch
+            // 
+            this.ZuoFei_grpSearch.Controls.Add(this.ZuoFei_txtMatch);
+            this.ZuoFei_grpSearch.Location = new System.Drawing.Point(22, 33);
+            this.ZuoFei_grpSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ZuoFei_grpSearch.Name = "ZuoFei_grpSearch";
+            this.ZuoFei_grpSearch.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ZuoFei_grpSearch.Size = new System.Drawing.Size(225, 61);
+            this.ZuoFei_grpSearch.TabIndex = 9;
+            this.ZuoFei_grpSearch.TabStop = false;
+            this.ZuoFei_grpSearch.Text = "请输入检索关键字...";
+            // 
+            // ZuoFei_txtMatch
+            // 
+            this.ZuoFei_txtMatch.Location = new System.Drawing.Point(7, 24);
+            this.ZuoFei_txtMatch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ZuoFei_txtMatch.Name = "ZuoFei_txtMatch";
+            this.ZuoFei_txtMatch.Size = new System.Drawing.Size(211, 28);
+            this.ZuoFei_txtMatch.TabIndex = 0;
+            // 
+            // ZuoFei_btnDoService
+            // 
+            this.ZuoFei_btnDoService.Location = new System.Drawing.Point(516, 57);
+            this.ZuoFei_btnDoService.Name = "ZuoFei_btnDoService";
+            this.ZuoFei_btnDoService.Size = new System.Drawing.Size(101, 37);
+            this.ZuoFei_btnDoService.TabIndex = 4;
+            this.ZuoFei_btnDoService.Text = "作废选中";
+            this.ZuoFei_btnDoService.UseVisualStyleBackColor = true;
+            this.ZuoFei_btnDoService.Click += new System.EventHandler(this.ZuoFei_btnDoService_Click);
+            // 
+            // ZuoFei_btnSearch
+            // 
+            this.ZuoFei_btnSearch.Location = new System.Drawing.Point(407, 57);
+            this.ZuoFei_btnSearch.Name = "ZuoFei_btnSearch";
+            this.ZuoFei_btnSearch.Size = new System.Drawing.Size(90, 37);
+            this.ZuoFei_btnSearch.TabIndex = 3;
+            this.ZuoFei_btnSearch.Text = "查询";
+            this.ZuoFei_btnSearch.UseVisualStyleBackColor = true;
+            this.ZuoFei_btnSearch.Click += new System.EventHandler(this.ZuoFei_btnSearch_Click);
+            // 
+            // ZuoFei_checkYanQianShiBai
+            // 
+            this.ZuoFei_checkYanQianShiBai.AutoSize = true;
+            this.ZuoFei_checkYanQianShiBai.Location = new System.Drawing.Point(271, 69);
+            this.ZuoFei_checkYanQianShiBai.Name = "ZuoFei_checkYanQianShiBai";
+            this.ZuoFei_checkYanQianShiBai.Size = new System.Drawing.Size(106, 22);
+            this.ZuoFei_checkYanQianShiBai.TabIndex = 0;
+            this.ZuoFei_checkYanQianShiBai.Text = "验签失败";
+            this.ZuoFei_checkYanQianShiBai.UseVisualStyleBackColor = true;
+            // 
             // HongZiPage
             // 
+            this.HongZiPage.Controls.Add(this.HZSells);
+            this.HongZiPage.Controls.Add(this.HZByer_wdk);
+            this.HongZiPage.Controls.Add(this.HZByer_ydk);
             this.HongZiPage.Location = new System.Drawing.Point(4, 28);
             this.HongZiPage.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.HongZiPage.Name = "HongZiPage";
@@ -250,6 +338,26 @@
             this.HongZiPage.TabIndex = 3;
             this.HongZiPage.Text = "红字";
             this.HongZiPage.UseVisualStyleBackColor = true;
+            // 
+            // HZByer_wdk
+            // 
+            this.HZByer_wdk.Location = new System.Drawing.Point(105, 158);
+            this.HZByer_wdk.Name = "HZByer_wdk";
+            this.HZByer_wdk.Size = new System.Drawing.Size(156, 41);
+            this.HZByer_wdk.TabIndex = 1;
+            this.HZByer_wdk.Text = "购方申请未抵扣";
+            this.HZByer_wdk.UseVisualStyleBackColor = true;
+            this.HZByer_wdk.Click += new System.EventHandler(this.HZByer_wdk_Click);
+            // 
+            // HZByer_ydk
+            // 
+            this.HZByer_ydk.Location = new System.Drawing.Point(105, 53);
+            this.HZByer_ydk.Name = "HZByer_ydk";
+            this.HZByer_ydk.Size = new System.Drawing.Size(156, 44);
+            this.HZByer_ydk.TabIndex = 0;
+            this.HZByer_ydk.Text = "购方申请已抵扣";
+            this.HZByer_ydk.UseVisualStyleBackColor = true;
+            this.HZByer_ydk.Click += new System.EventHandler(this.HZByer_ydk_Click);
             // 
             // DaYinPage
             // 
@@ -318,6 +426,29 @@
             this.DaYin_CmbPrinter.Size = new System.Drawing.Size(344, 26);
             this.DaYin_CmbPrinter.TabIndex = 0;
             // 
+            // HZSells
+            // 
+            this.HZSells.Location = new System.Drawing.Point(105, 276);
+            this.HZSells.Name = "HZSells";
+            this.HZSells.Size = new System.Drawing.Size(156, 39);
+            this.HZSells.TabIndex = 2;
+            this.HZSells.Text = "销售方申请";
+            this.HZSells.UseVisualStyleBackColor = true;
+            this.HZSells.Click += new System.EventHandler(this.HZSells_Click);
+            // 
+            // 
+            // ZuoFei_gridView
+            // 
+            this.ZuoFei_gridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ZuoFei_gridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ZuoFei_gridView.Location = new System.Drawing.Point(4, 130);
+            this.ZuoFei_gridView.Name = "ZuoFei_gridView";
+            this.ZuoFei_gridView.RowTemplate.Height = 30;
+            this.ZuoFei_gridView.Size = new System.Drawing.Size(1351, 687);
+            this.ZuoFei_gridView.TabIndex = 1;
+            // 
             // LodgingWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -335,8 +466,15 @@
             this.groupChaXun.PerformLayout();
             this.ChaXun_grpMatchStr.ResumeLayout(false);
             this.ChaXun_grpMatchStr.PerformLayout();
+            this.HongZiPage.ResumeLayout(false);
+            this.ZuoFeiPage.ResumeLayout(false);
+            this.ZuoFei_paramGroup.ResumeLayout(false);
+            this.ZuoFei_paramGroup.PerformLayout();
+            this.ZuoFei_grpSearch.ResumeLayout(false);
+            this.ZuoFei_grpSearch.PerformLayout();
             this.DaYinPage.ResumeLayout(false);
             this.DaYinPage.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ZuoFei_gridView)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -367,5 +505,15 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label 发票号码;
         private System.Windows.Forms.Button DaYin_btnDoPrint;
+        private System.Windows.Forms.Button HZByer_ydk;
+        private System.Windows.Forms.Button HZByer_wdk;
+        private System.Windows.Forms.Button HZSells;
+        private System.Windows.Forms.GroupBox ZuoFei_paramGroup;
+        private System.Windows.Forms.GroupBox ZuoFei_grpSearch;
+        private System.Windows.Forms.TextBox ZuoFei_txtMatch;
+        private System.Windows.Forms.Button ZuoFei_btnDoService;
+        private System.Windows.Forms.Button ZuoFei_btnSearch;
+        private System.Windows.Forms.CheckBox ZuoFei_checkYanQianShiBai;
+        private System.Windows.Forms.DataGridView ZuoFei_gridView;
     }
 }

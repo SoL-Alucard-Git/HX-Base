@@ -14,5 +14,6 @@ namespace InternetWare.Form
             Init_ChaXunPage();
             Init_DaYinPage();
         }
+
     }
 }

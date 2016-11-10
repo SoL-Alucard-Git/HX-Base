@@ -36,7 +36,7 @@
         private int _StartYear;
         private string _strFilePath = string.Empty;
         private XMLOperation _XmlOperation = new XMLOperation();
-        public static AisinoDataGrid aisinoGrid;
+        public AisinoDataGrid aisinoGrid;
         public int AvePageNum = 30;
         public static DateTime CardClock;
         private Aisino.Fwkp.Fpkj.Form.FPCX.ChaXunTiaoJian chaXunTiaoJian;

@@ -14,10 +14,10 @@
 
         protected override object[] doService(object[] param)
         {
-            if (!CheckPermission.Check("SP"))
-            {
-                return null;
-            }
+            //if (!CheckPermission.Check("SP"))
+            //{
+            //    return null;
+            //}
             if (param.Length < 4)
             {
                 throw new ArgumentException("参数错误,至少有4个参数");

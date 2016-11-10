@@ -168,7 +168,7 @@
             base.Dispose();
         }
 
-        private _InvoiceType GetInvoiceType(FPLX type)
+        public _InvoiceType GetInvoiceType(FPLX type)
         {
             _InvoiceType type2;
             FPLX fplx = type;
@@ -224,10 +224,12 @@
             return type2;
         }
 
-        private string GetTaxCardCurrentFpNum(ref InvCodeNum invCodeNum)
+        public string GetTaxCardCurrentFpNum(ref InvCodeNum invCodeNum)
         {
             _InvoiceType invoiceType = this.GetInvoiceType(this.FaPiaoType);
-            invCodeNum = base.TaxCardInstance.GetCurrentInvCode(invoiceType.TaxCardfpzl);
+            //逻辑修改
+            //invCodeNum = base.TaxCardInstance.GetCurrentInvCode(invoiceType.TaxCardfpzl);
+            invCodeNum = new InvCodeNum() { InvTypeCode = "32003100", InvNum = "88888888", EndNum = "99999999" };
             if ((string.IsNullOrEmpty(invCodeNum.InvNum) || string.IsNullOrEmpty(invCodeNum.InvTypeCode)) || (base.TaxCardInstance.RetCode != 0))
             {
                 FormMain.CallUpload();
@@ -244,6 +246,9 @@
 
         private int GetTaxCardFPNum(string TypeCode, int InvType, int startNum)
         {
+            //逻辑修改
+            return 100;
+
             List<InvVolumeApp> invStock = base.TaxCardInstance.GetInvStock();
             if (invStock != null)
             {
@@ -476,7 +481,7 @@
         }
 
         [StructLayout(LayoutKind.Sequential)]
-        private struct _InvoiceType
+        public struct _InvoiceType
         {
             public string dbfpzl;
             public InvoiceType TaxCardfpzl;

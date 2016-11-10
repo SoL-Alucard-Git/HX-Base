@@ -35,7 +35,7 @@
         private IContainer components;
         private Dictionary<string, object> condition = new Dictionary<string, object>();
         private ContextMenuStrip contextMenu_BSZT;
-        private XXFP Dal = new XXFP(false);
+        public XXFP Dal = new XXFP(false);
         private FaPiaoChaXun.EditFPCX editFPCX = FaPiaoChaXun.EditFPCX.ZuoFei;
         public Dictionary<string, object> gridviewRowDict = new Dictionary<string, object>();
         private ILog loger = LogUtil.GetLogger<FaPiaoZuoFei_YiKai>();
@@ -1987,9 +1987,9 @@
                 if ((this.gridviewRowDict == null) || (this.gridviewRowDict.Count == 0))
                 {
                     isFromGridView = false;
-                    this.loger.Info("作废时读取DB发票对象");
+                    //this.loger.Info("作废时读取DB发票对象");
                     zffp = this.Dal.GetModel(fpzl, fpdm, Aisino.Fwkp.Fpkj.Common.Tool.ObjectToInt(fphm), "");
-                    this.loger.Info("结束读取DB发票对象");
+                    //this.loger.Info("结束读取DB发票对象");
                 }
                 else
                 {
@@ -1998,34 +1998,31 @@
             }
             else
             {
-                this.loger.Info("作废时读取DB发票对象");
+                //this.loger.Info("作废时读取DB发票对象");
                 zffp = this.Dal.GetModel(fpzl, fpdm, Aisino.Fwkp.Fpkj.Common.Tool.ObjectToInt(fphm), "");
-                this.loger.Info("结束读取DB发票对象");
+                //this.loger.Info("结束读取DB发票对象");
             }
             if (zffp.zfbz)
             {
-                this.loger.Debug("重复作废发票");
+                //this.loger.Debug("重复作废发票");
                 return "0000";
             }
             if (zffp == null)
             {
-                this.loger.Error("本张发票在数据库中未找到对应记录");
-                return "FPZF-000015";
+                return "本张发票在数据库中未找到对应记录。 错误码:FPZF-000015";
             }
             if ((Aisino.Fwkp.Fpkj.Common.Tool.ObjectToDouble(zffp.je) > 0.0) && (this.Dal.IsExistHZFP(this.condition) != 0))
             {
                 if (type != 2)
                 {
-                    MessageManager.ShowMsgBox("FPZF-000003");
+                    return "已开发票的对应的红字发票存在，不能作废! 错误码 FPZF-000003";
                 }
-                this.loger.Error("已开发票的对应的红字发票存在，不能作废!");
-                return "FPZF-000003";
+                //return "已开发票的对应的红字发票存在，不能作废! 错误码 FPZF-000003";
             }
             Fpxx fpxx2 = this.TaxCardZuoFei(zffp, isFromGridView);
             if (fpxx2 == null)
             {
-                this.loger.Error("金税设备作废发票，返回对象为空");
-                return fpxx2.retCode;
+                return $"金税设备作废发票，返回对象为空。错误码{fpxx2.retCode}";
             }
             if (fpxx2.zfbz)
             {
@@ -2062,7 +2059,7 @@
                     }
                     catch (Exception exception)
                     {
-                        this.loger.Debug(exception.ToString());
+                        return $"已开作废主方法错误。错误类型：{exception.GetType()} || 错误信息:{exception.Message}";
                     }
                 }
                 return "0000";
@@ -2072,13 +2069,13 @@
             {
                 if (Aisino.Fwkp.Fpkj.Common.Tool.GetReturnErrCode(fpxx2.retCode) == 0x2c2)
                 {
-                    MessageManager.ShowMsgBox(fpxx2.retCode);
-                    return "0001";
+                    //MessageManager.ShowMsgBox(fpxx2.retCode);
+                    return "错误码 0001 : 无法找到或成功初始化证书。";
                 }
-                MessageManager.ShowMsgBox(fpxx2.retCode);
+                //MessageManager.ShowMsgBox(fpxx2.retCode);
+                return $"错误码 {fpxx2.retCode}。";
             }
-            this.loger.Error("发票代码：" + fpxx2.fpdm + "号码：" + str2 + "的发票作废失败原因：写金税设备时失败，错误码：" + fpxx2.retCode);
-            return fpxx2.retCode;
+            return ($"发票代码：{fpxx2.fpdm}号码：{ str2}的发票作废失败原因：写金税设备时失败，错误码：{ fpxx2.retCode}");
         }
 
         private string FILE_PATH
